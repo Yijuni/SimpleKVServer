@@ -1,0 +1,16 @@
+/*
+2025-4-22 moyoj 
+rpc通信头部信息：
+|headersize|header|request arg|
+headersize记录了header的长度
+header内的args_len记录了request arg的长度
+*/
+syntax = "proto3";
+
+package rpc;
+
+message RpcHeader{
+    bytes service_name = 1;
+    bytes method_name = 2;
+    uint32 args_len = 3;
+}
