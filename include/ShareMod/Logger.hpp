@@ -6,23 +6,24 @@
  */
 #include <string>
 #include "LockQueue.hpp"
-enum LogLevel
-{
-    INFO,  // 普通的日志信息
-    ERROR, // 错误信息
-};
+
 class Logger
 {
 public:
+    enum LogLevel
+    {
+        INFO,  // 普通的日志信息
+        ERROR, // 错误信息
+    };
     // 获取日志的单例
     static Logger &GetInstance();
     // 设置日志级别
-    void SetLogLevel(LogLevel level);
+    void SetLogLevel(Logger::LogLevel level);
     // 设置写日志
     void Log(std::string msg);
     
 private:
-    LogLevel loglevel_myj;                // 日志级别
+    Logger::LogLevel loglevel_myj;                // 日志级别
     LockQueue<std::string> lockqueue_myj; // 日志缓冲队列
     Logger();
     Logger(const Logger &) = delete;
@@ -34,7 +35,7 @@ private:
     do{\
         char buf[1024]={0};\
         Logger &logger = Logger::GetInstance();\
-        logger.SetLogLevel(LogLevel::INFO);\
+        logger.SetLogLevel(Logger::LogLevel::INFO);\
         snprintf(buf,1024,format,##__VA_ARGS__);\
         logger.Log(buf);\
     }while(0);
@@ -43,7 +44,7 @@ private:
     do{\
         char buf[1024]={0};\
         Logger &logger = Logger::GetInstance();\
-        logger.SetLogLevel(ERROR);\
+        logger.SetLogLevel(Logger::LogLevel::ERROR);\
         snprintf(buf,1024,format,##__VA_ARGS__);\
         logger.Log(buf);\
     }while(0);

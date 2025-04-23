@@ -1,2 +1,3 @@
 add_subdirectory(HostNetTest)
 add_subdirectory(LockQueueTest)
+add_subdirectory(KVServiceTest)

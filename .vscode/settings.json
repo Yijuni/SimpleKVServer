@@ -64,6 +64,12 @@
         "io_context": "cpp",
         "netfwd": "cpp",
         "socket": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "bitset": "cpp",
+        "complex": "cpp",
+        "optional": "cpp",
+        "sstream": "cpp",
+        "typeindex": "cpp",
+        "variant": "cpp"
     }
 }

@@ -1,9 +1,9 @@
 #ifndef KVRPCCONTROLLER_H
 #define KVRPCCONTROLLER_H
-/*
-2025-4-22 moyoj
-重写RpcController，告知调用rpc的程序调用是否发生错误，如果发生错误错误信息是什么
-*/
+/**
+ * 2025-4-22 moyoj
+ * 重写RpcController，告知调用rpc的程序调用是否发生错误，如果发生错误错误信息是什么
+ */
 #include <google/protobuf/service.h>
 
 class KVRpcController : public google::protobuf::RpcController

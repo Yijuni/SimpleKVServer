@@ -1,0 +1,41 @@
+/**
+ * 2025-4-23 moyoj
+ * KVService proto文件
+*/
+syntax = "proto3";
+package kvservice;
+option cc_generic_services = true;
+
+message ResultCode{
+    int32 errorcode = 1;
+    bytes errormsg = 2;
+}
+
+message GetRequest{
+    bytes key = 1;
+    bytes clientid = 2;
+    int32 requestid = 3;
+}
+
+message GetResponse{
+    bytes value = 1;
+    ResultCode resultcode = 2;
+}
+
+message PutAppendRequest{
+    bytes key = 1;
+    bytes value = 2;
+    bytes clientid = 3;
+    int32 requestid = 4;
+    
+}
+
+message PutAppendResponse{
+    ResultCode resultcode = 1;
+}
+
+service KVServiceRPC{
+    rpc Get(GetRequest) returns (GetResponse);
+    rpc Put(PutAppendRequest) returns (PutAppendResponse);
+    rpc Append(PutAppendRequest) returns (PutAppendResponse);
+}

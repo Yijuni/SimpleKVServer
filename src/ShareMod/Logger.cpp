@@ -21,7 +21,8 @@ Logger::Logger()
 {
     lockqueue_myj.setCapacity(10000); // 设置缓冲大小
     // 启动专门的写日志线程
-    std::thread writeLogTask([&](){
+    std::thread writeLogTask([&]()
+                             {
         for(;;){
             //获取当天的日期,取lockqueue的日志写入文件中
             time_t now = time(nullptr);

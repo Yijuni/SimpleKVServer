@@ -28,7 +28,6 @@ void KVRpcController::SetFailed(const std::string &reason)
     errmsg_myj = reason;
 }
 
-
 void KVRpcController::StartCancel()
 {
 }
