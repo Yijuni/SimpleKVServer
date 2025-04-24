@@ -192,13 +192,13 @@ class ResultCode :
     kErrormsgFieldNumber = 2,
     kErrorcodeFieldNumber = 1,
   };
-  // bytes errormsg = 2;
+  // string errormsg = 2;
   void clear_errormsg();
   const std::string& errormsg() const;
   void set_errormsg(const std::string& value);
   void set_errormsg(std::string&& value);
   void set_errormsg(const char* value);
-  void set_errormsg(const void* value, size_t size);
+  void set_errormsg(const char* value, size_t size);
   std::string* mutable_errormsg();
   std::string* release_errormsg();
   void set_allocated_errormsg(std::string* errormsg);
@@ -208,13 +208,13 @@ class ResultCode :
   std::string* _internal_mutable_errormsg();
   public:
 
-  // int32 errorcode = 1;
+  // int64 errorcode = 1;
   void clear_errorcode();
-  ::PROTOBUF_NAMESPACE_ID::int32 errorcode() const;
-  void set_errorcode(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int64 errorcode() const;
+  void set_errorcode(::PROTOBUF_NAMESPACE_ID::int64 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_errorcode() const;
-  void _internal_set_errorcode(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_errorcode() const;
+  void _internal_set_errorcode(::PROTOBUF_NAMESPACE_ID::int64 value);
   public:
 
   // @@protoc_insertion_point(class_scope:kvservice.ResultCode)
@@ -223,7 +223,7 @@ class ResultCode :
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr errormsg_;
-  ::PROTOBUF_NAMESPACE_ID::int32 errorcode_;
+  ::PROTOBUF_NAMESPACE_ID::int64 errorcode_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_KVService_2eproto;
 };
@@ -355,13 +355,13 @@ class GetRequest :
   std::string* _internal_mutable_key();
   public:
 
-  // bytes clientid = 2;
+  // string clientid = 2;
   void clear_clientid();
   const std::string& clientid() const;
   void set_clientid(const std::string& value);
   void set_clientid(std::string&& value);
   void set_clientid(const char* value);
-  void set_clientid(const void* value, size_t size);
+  void set_clientid(const char* value, size_t size);
   std::string* mutable_clientid();
   std::string* release_clientid();
   void set_allocated_clientid(std::string* clientid);
@@ -371,13 +371,13 @@ class GetRequest :
   std::string* _internal_mutable_clientid();
   public:
 
-  // int32 requestid = 3;
+  // int64 requestid = 3;
   void clear_requestid();
-  ::PROTOBUF_NAMESPACE_ID::int32 requestid() const;
-  void set_requestid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int64 requestid() const;
+  void set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_requestid() const;
-  void _internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_requestid() const;
+  void _internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value);
   public:
 
   // @@protoc_insertion_point(class_scope:kvservice.GetRequest)
@@ -387,7 +387,7 @@ class GetRequest :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr key_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr clientid_;
-  ::PROTOBUF_NAMESPACE_ID::int32 requestid_;
+  ::PROTOBUF_NAMESPACE_ID::int64 requestid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_KVService_2eproto;
 };
@@ -688,13 +688,13 @@ class PutAppendRequest :
   std::string* _internal_mutable_value();
   public:
 
-  // bytes clientid = 3;
+  // string clientid = 3;
   void clear_clientid();
   const std::string& clientid() const;
   void set_clientid(const std::string& value);
   void set_clientid(std::string&& value);
   void set_clientid(const char* value);
-  void set_clientid(const void* value, size_t size);
+  void set_clientid(const char* value, size_t size);
   std::string* mutable_clientid();
   std::string* release_clientid();
   void set_allocated_clientid(std::string* clientid);
@@ -704,13 +704,13 @@ class PutAppendRequest :
   std::string* _internal_mutable_clientid();
   public:
 
-  // int32 requestid = 4;
+  // int64 requestid = 4;
   void clear_requestid();
-  ::PROTOBUF_NAMESPACE_ID::int32 requestid() const;
-  void set_requestid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int64 requestid() const;
+  void set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_requestid() const;
-  void _internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_requestid() const;
+  void _internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value);
   public:
 
   // @@protoc_insertion_point(class_scope:kvservice.PutAppendRequest)
@@ -721,7 +721,7 @@ class PutAppendRequest :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr key_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr clientid_;
-  ::PROTOBUF_NAMESPACE_ID::int32 requestid_;
+  ::PROTOBUF_NAMESPACE_ID::int64 requestid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_KVService_2eproto;
 };
@@ -945,27 +945,27 @@ class KVServiceRPC_Stub : public KVServiceRPC {
 #endif  // __GNUC__
 // ResultCode
 
-// int32 errorcode = 1;
+// int64 errorcode = 1;
 inline void ResultCode::clear_errorcode() {
-  errorcode_ = 0;
+  errorcode_ = PROTOBUF_LONGLONG(0);
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ResultCode::_internal_errorcode() const {
+inline ::PROTOBUF_NAMESPACE_ID::int64 ResultCode::_internal_errorcode() const {
   return errorcode_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ResultCode::errorcode() const {
+inline ::PROTOBUF_NAMESPACE_ID::int64 ResultCode::errorcode() const {
   // @@protoc_insertion_point(field_get:kvservice.ResultCode.errorcode)
   return _internal_errorcode();
 }
-inline void ResultCode::_internal_set_errorcode(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ResultCode::_internal_set_errorcode(::PROTOBUF_NAMESPACE_ID::int64 value) {
   
   errorcode_ = value;
 }
-inline void ResultCode::set_errorcode(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ResultCode::set_errorcode(::PROTOBUF_NAMESPACE_ID::int64 value) {
   _internal_set_errorcode(value);
   // @@protoc_insertion_point(field_set:kvservice.ResultCode.errorcode)
 }
 
-// bytes errormsg = 2;
+// string errormsg = 2;
 inline void ResultCode::clear_errormsg() {
   errormsg_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -1000,7 +1000,7 @@ inline void ResultCode::set_errormsg(const char* value) {
   errormsg_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:kvservice.ResultCode.errormsg)
 }
-inline void ResultCode::set_errormsg(const void* value, size_t size) {
+inline void ResultCode::set_errormsg(const char* value, size_t size) {
   
   errormsg_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1089,7 +1089,7 @@ inline void GetRequest::set_allocated_key(std::string* key) {
   // @@protoc_insertion_point(field_set_allocated:kvservice.GetRequest.key)
 }
 
-// bytes clientid = 2;
+// string clientid = 2;
 inline void GetRequest::clear_clientid() {
   clientid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -1124,7 +1124,7 @@ inline void GetRequest::set_clientid(const char* value) {
   clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:kvservice.GetRequest.clientid)
 }
-inline void GetRequest::set_clientid(const void* value, size_t size) {
+inline void GetRequest::set_clientid(const char* value, size_t size) {
   
   clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1149,22 +1149,22 @@ inline void GetRequest::set_allocated_clientid(std::string* clientid) {
   // @@protoc_insertion_point(field_set_allocated:kvservice.GetRequest.clientid)
 }
 
-// int32 requestid = 3;
+// int64 requestid = 3;
 inline void GetRequest::clear_requestid() {
-  requestid_ = 0;
+  requestid_ = PROTOBUF_LONGLONG(0);
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 GetRequest::_internal_requestid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int64 GetRequest::_internal_requestid() const {
   return requestid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 GetRequest::requestid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int64 GetRequest::requestid() const {
   // @@protoc_insertion_point(field_get:kvservice.GetRequest.requestid)
   return _internal_requestid();
 }
-inline void GetRequest::_internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void GetRequest::_internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value) {
   
   requestid_ = value;
 }
-inline void GetRequest::set_requestid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void GetRequest::set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value) {
   _internal_set_requestid(value);
   // @@protoc_insertion_point(field_set:kvservice.GetRequest.requestid)
 }
@@ -1417,7 +1417,7 @@ inline void PutAppendRequest::set_allocated_value(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:kvservice.PutAppendRequest.value)
 }
 
-// bytes clientid = 3;
+// string clientid = 3;
 inline void PutAppendRequest::clear_clientid() {
   clientid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -1452,7 +1452,7 @@ inline void PutAppendRequest::set_clientid(const char* value) {
   clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:kvservice.PutAppendRequest.clientid)
 }
-inline void PutAppendRequest::set_clientid(const void* value, size_t size) {
+inline void PutAppendRequest::set_clientid(const char* value, size_t size) {
   
   clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1477,22 +1477,22 @@ inline void PutAppendRequest::set_allocated_clientid(std::string* clientid) {
   // @@protoc_insertion_point(field_set_allocated:kvservice.PutAppendRequest.clientid)
 }
 
-// int32 requestid = 4;
+// int64 requestid = 4;
 inline void PutAppendRequest::clear_requestid() {
-  requestid_ = 0;
+  requestid_ = PROTOBUF_LONGLONG(0);
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 PutAppendRequest::_internal_requestid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int64 PutAppendRequest::_internal_requestid() const {
   return requestid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 PutAppendRequest::requestid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int64 PutAppendRequest::requestid() const {
   // @@protoc_insertion_point(field_get:kvservice.PutAppendRequest.requestid)
   return _internal_requestid();
 }
-inline void PutAppendRequest::_internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void PutAppendRequest::_internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value) {
   
   requestid_ = value;
 }
-inline void PutAppendRequest::set_requestid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void PutAppendRequest::set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value) {
   _internal_set_requestid(value);
   // @@protoc_insertion_point(field_set:kvservice.PutAppendRequest.requestid)
 }

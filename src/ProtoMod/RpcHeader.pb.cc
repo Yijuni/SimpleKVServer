@@ -58,8 +58,8 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_RpcHeader_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\017RpcHeader.proto\022\003rpc\"H\n\tRpcHeader\022\024\n\014s"
-  "ervice_name\030\001 \001(\014\022\023\n\013method_name\030\002 \001(\014\022\020"
-  "\n\010args_len\030\003 \001(\rb\006proto3"
+  "ervice_name\030\001 \001(\t\022\023\n\013method_name\030\002 \001(\t\022\020"
+  "\n\010args_len\030\003 \001(\004b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_RpcHeader_2eproto_deps[1] = {
 };
@@ -112,7 +112,7 @@ void RpcHeader::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RpcHeader_RpcHeader_2eproto.base);
   service_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   method_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  args_len_ = 0u;
+  args_len_ = PROTOBUF_ULONGLONG(0);
 }
 
 RpcHeader::~RpcHeader() {
@@ -142,7 +142,7 @@ void RpcHeader::Clear() {
 
   service_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   method_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  args_len_ = 0u;
+  args_len_ = PROTOBUF_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
 
@@ -153,26 +153,28 @@ const char* RpcHeader::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // bytes service_name = 1;
+      // string service_name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_service_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "rpc.RpcHeader.service_name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // bytes method_name = 2;
+      // string method_name = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_method_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "rpc.RpcHeader.method_name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // uint32 args_len = 3;
+      // uint64 args_len = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          args_len_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          args_len_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -202,22 +204,30 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes service_name = 1;
+  // string service_name = 1;
   if (this->service_name().size() > 0) {
-    target = stream->WriteBytesMaybeAliased(
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_service_name().data(), static_cast<int>(this->_internal_service_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "rpc.RpcHeader.service_name");
+    target = stream->WriteStringMaybeAliased(
         1, this->_internal_service_name(), target);
   }
 
-  // bytes method_name = 2;
+  // string method_name = 2;
   if (this->method_name().size() > 0) {
-    target = stream->WriteBytesMaybeAliased(
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_method_name().data(), static_cast<int>(this->_internal_method_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "rpc.RpcHeader.method_name");
+    target = stream->WriteStringMaybeAliased(
         2, this->_internal_method_name(), target);
   }
 
-  // uint32 args_len = 3;
+  // uint64 args_len = 3;
   if (this->args_len() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_args_len(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(3, this->_internal_args_len(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -236,24 +246,24 @@ size_t RpcHeader::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes service_name = 1;
+  // string service_name = 1;
   if (this->service_name().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_service_name());
   }
 
-  // bytes method_name = 2;
+  // string method_name = 2;
   if (this->method_name().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_method_name());
   }
 
-  // uint32 args_len = 3;
+  // uint64 args_len = 3;
   if (this->args_len() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
         this->_internal_args_len());
   }
 

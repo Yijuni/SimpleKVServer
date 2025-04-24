@@ -1,3 +1,5 @@
 add_subdirectory(HostNetTest)
 add_subdirectory(LockQueueTest)
 add_subdirectory(KVServiceTest)
+add_subdirectory(AfterTimerTest)
+add_subdirectory(PersisterTest)

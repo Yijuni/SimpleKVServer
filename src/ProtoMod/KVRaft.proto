@@ -1,0 +1,71 @@
+/**
+ * 2025-4-24 moyoj
+ * KVRaft proto文件
+ * Raft算法达成共识需要的服务
+*/
+syntax = "proto3";
+package kvraft;
+option cc_generic_services = true;
+
+//命令类型
+message Command{
+    bytes type = 1;     //命令类型
+    bytes key = 2;
+    bytes value = 3;
+    bytes clientid = 4;
+    int64 requestid = 5;
+}
+
+//日志类型
+message LogEntry{
+    Command command = 1;    //命令
+    int64 term = 2; 
+}
+
+//追加日志消息类型
+message AppendEntriesRequest{
+    int64 term = 1;               
+    string leaderid = 2;         
+    int64 preLogIndex = 3;     
+    int64 prevLogTerm = 4;      
+    repeated LogEntry logEntries = 5;
+} 
+message AppendEntriesResponse{
+    int64 term = 1;
+    bool success = 2;
+    int64 fastback = 3;
+}
+
+//下载快照消息类型
+message InstallSnapshotRequest{
+    int64 term = 1;
+    int64 leaderid = 2;
+    int64 lastIncludeIndex = 3;
+    int64 lastIncludeTerm = 4;
+    bytes data = 5;
+
+    int64 offset = 6;
+    bool done = 7;
+}
+message InstallSnapshotResponse{
+    int64 term = 1; 
+}
+
+//请求投票消息类型
+message RequestVoteRequest{
+    int64 term = 1;
+    bytes candidateid = 2;
+    string lastLogIndex = 3;
+    int64 lastLogTerm = 4;
+}
+
+message RequestVoteResponse{
+    int64 term = 1;
+    bool VoteGranted = 2;
+}
+
+service KVRaftRPC{
+    rpc AppendEntries(AppendEntriesRequest) returns (AppendEntriesResponse);
+    rpc RequestVote(RequestVoteRequest) returns (RequestVoteResponse);
+    rpc InstallSnapshot(InstallSnapshotRequest) returns (InstallSnapshotResponse);
+}

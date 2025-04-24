@@ -14,6 +14,7 @@ void Logger::SetLogLevel(LogLevel level)
 
 void Logger::Log(std::string msg)
 {
+    if(!DEBUG) return;
     lockqueue_myj.push(msg);
 }
 

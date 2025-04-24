@@ -7,14 +7,14 @@ package kvservice;
 option cc_generic_services = true;
 
 message ResultCode{
-    int32 errorcode = 1;
-    bytes errormsg = 2;
+    int64 errorcode = 1;
+    string errormsg = 2;
 }
 
 message GetRequest{
     bytes key = 1;
-    bytes clientid = 2;
-    int32 requestid = 3;
+    string clientid = 2;
+    int64 requestid = 3;
 }
 
 message GetResponse{
@@ -25,8 +25,8 @@ message GetResponse{
 message PutAppendRequest{
     bytes key = 1;
     bytes value = 2;
-    bytes clientid = 3;
-    int32 requestid = 4;
+    string clientid = 3;
+    int64 requestid = 4;
     
 }
 

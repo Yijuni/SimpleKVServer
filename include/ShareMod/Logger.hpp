@@ -7,6 +7,8 @@
 #include <string>
 #include "LockQueue.hpp"
 
+#define DEBUG true
+
 class Logger
 {
 public:
@@ -48,4 +50,5 @@ private:
         snprintf(buf,1024,format,##__VA_ARGS__);\
         logger.Log(buf);\
     }while(0);
+    
 #endif

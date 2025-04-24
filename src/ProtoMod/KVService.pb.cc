@@ -170,13 +170,13 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_KVService_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\017KVService.proto\022\tkvservice\"1\n\nResultCo"
-  "de\022\021\n\terrorcode\030\001 \001(\005\022\020\n\010errormsg\030\002 \001(\014\""
+  "de\022\021\n\terrorcode\030\001 \001(\003\022\020\n\010errormsg\030\002 \001(\t\""
   ">\n\nGetRequest\022\013\n\003key\030\001 \001(\014\022\020\n\010clientid\030\002"
-  " \001(\014\022\021\n\trequestid\030\003 \001(\005\"G\n\013GetResponse\022\r"
+  " \001(\t\022\021\n\trequestid\030\003 \001(\003\"G\n\013GetResponse\022\r"
   "\n\005value\030\001 \001(\014\022)\n\nresultcode\030\002 \001(\0132\025.kvse"
   "rvice.ResultCode\"S\n\020PutAppendRequest\022\013\n\003"
   "key\030\001 \001(\014\022\r\n\005value\030\002 \001(\014\022\020\n\010clientid\030\003 \001"
-  "(\014\022\021\n\trequestid\030\004 \001(\005\">\n\021PutAppendRespon"
+  "(\t\022\021\n\trequestid\030\004 \001(\003\">\n\021PutAppendRespon"
   "se\022)\n\nresultcode\030\001 \001(\0132\025.kvservice.Resul"
   "tCode2\313\001\n\014KVServiceRPC\0224\n\003Get\022\025.kvservic"
   "e.GetRequest\032\026.kvservice.GetResponse\022@\n\003"
@@ -235,7 +235,7 @@ ResultCode::ResultCode(const ResultCode& from)
 void ResultCode::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ResultCode_KVService_2eproto.base);
   errormsg_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  errorcode_ = 0;
+  errorcode_ = PROTOBUF_LONGLONG(0);
 }
 
 ResultCode::~ResultCode() {
@@ -263,7 +263,7 @@ void ResultCode::Clear() {
   (void) cached_has_bits;
 
   errormsg_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  errorcode_ = 0;
+  errorcode_ = PROTOBUF_LONGLONG(0);
   _internal_metadata_.Clear();
 }
 
@@ -274,18 +274,19 @@ const char* ResultCode::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // int32 errorcode = 1;
+      // int64 errorcode = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           errorcode_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // bytes errormsg = 2;
+      // string errormsg = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_errormsg();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kvservice.ResultCode.errormsg"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -315,15 +316,19 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 errorcode = 1;
+  // int64 errorcode = 1;
   if (this->errorcode() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_errorcode(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_errorcode(), target);
   }
 
-  // bytes errormsg = 2;
+  // string errormsg = 2;
   if (this->errormsg().size() > 0) {
-    target = stream->WriteBytesMaybeAliased(
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_errormsg().data(), static_cast<int>(this->_internal_errormsg().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kvservice.ResultCode.errormsg");
+    target = stream->WriteStringMaybeAliased(
         2, this->_internal_errormsg(), target);
   }
 
@@ -343,17 +348,17 @@ size_t ResultCode::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes errormsg = 2;
+  // string errormsg = 2;
   if (this->errormsg().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_errormsg());
   }
 
-  // int32 errorcode = 1;
+  // int64 errorcode = 1;
   if (this->errorcode() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
         this->_internal_errorcode());
   }
 
@@ -461,7 +466,7 @@ void GetRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GetRequest_KVService_2eproto.base);
   key_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   clientid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  requestid_ = 0;
+  requestid_ = PROTOBUF_LONGLONG(0);
 }
 
 GetRequest::~GetRequest() {
@@ -491,7 +496,7 @@ void GetRequest::Clear() {
 
   key_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   clientid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  requestid_ = 0;
+  requestid_ = PROTOBUF_LONGLONG(0);
   _internal_metadata_.Clear();
 }
 
@@ -510,15 +515,16 @@ const char* GetRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // bytes clientid = 2;
+      // string clientid = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_clientid();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kvservice.GetRequest.clientid"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 requestid = 3;
+      // int64 requestid = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
           requestid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
@@ -557,16 +563,20 @@ failure:
         1, this->_internal_key(), target);
   }
 
-  // bytes clientid = 2;
+  // string clientid = 2;
   if (this->clientid().size() > 0) {
-    target = stream->WriteBytesMaybeAliased(
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_clientid().data(), static_cast<int>(this->_internal_clientid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kvservice.GetRequest.clientid");
+    target = stream->WriteStringMaybeAliased(
         2, this->_internal_clientid(), target);
   }
 
-  // int32 requestid = 3;
+  // int64 requestid = 3;
   if (this->requestid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_requestid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_requestid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -592,17 +602,17 @@ size_t GetRequest::ByteSizeLong() const {
         this->_internal_key());
   }
 
-  // bytes clientid = 2;
+  // string clientid = 2;
   if (this->clientid().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_clientid());
   }
 
-  // int32 requestid = 3;
+  // int64 requestid = 3;
   if (this->requestid() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
         this->_internal_requestid());
   }
 
@@ -959,7 +969,7 @@ void PutAppendRequest::SharedCtor() {
   key_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   value_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   clientid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  requestid_ = 0;
+  requestid_ = PROTOBUF_LONGLONG(0);
 }
 
 PutAppendRequest::~PutAppendRequest() {
@@ -991,7 +1001,7 @@ void PutAppendRequest::Clear() {
   key_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   value_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   clientid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  requestid_ = 0;
+  requestid_ = PROTOBUF_LONGLONG(0);
   _internal_metadata_.Clear();
 }
 
@@ -1018,15 +1028,16 @@ const char* PutAppendRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // bytes clientid = 3;
+      // string clientid = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           auto str = _internal_mutable_clientid();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kvservice.PutAppendRequest.clientid"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 requestid = 4;
+      // int64 requestid = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           requestid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
@@ -1071,16 +1082,20 @@ failure:
         2, this->_internal_value(), target);
   }
 
-  // bytes clientid = 3;
+  // string clientid = 3;
   if (this->clientid().size() > 0) {
-    target = stream->WriteBytesMaybeAliased(
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_clientid().data(), static_cast<int>(this->_internal_clientid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kvservice.PutAppendRequest.clientid");
+    target = stream->WriteStringMaybeAliased(
         3, this->_internal_clientid(), target);
   }
 
-  // int32 requestid = 4;
+  // int64 requestid = 4;
   if (this->requestid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_requestid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_requestid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1113,17 +1128,17 @@ size_t PutAppendRequest::ByteSizeLong() const {
         this->_internal_value());
   }
 
-  // bytes clientid = 3;
+  // string clientid = 3;
   if (this->clientid().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_clientid());
   }
 
-  // int32 requestid = 4;
+  // int64 requestid = 4;
   if (this->requestid() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
         this->_internal_requestid());
   }
 

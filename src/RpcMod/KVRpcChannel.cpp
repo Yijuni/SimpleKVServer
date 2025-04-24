@@ -126,6 +126,7 @@ void KVRpcChannel::Connection()
         if (connect(clientfd_myj, (sockaddr *)&server_addr, sizeof(server_addr)) == -1)
         {
             LOG_INFO("ip[%s],port[%d],connect failed!", ip_myj.c_str(), port_myj);
+            std::this_thread::sleep_for(std::chrono::microseconds(500));
             continue;
         }
         connected_myj = true;

@@ -5,6 +5,7 @@ int main(){
     kvservice::KVServiceRPC_Stub stub(new KVRpcChannel());
     kvservice::GetRequest request;
     kvservice::GetResponse response;
+    std::cout<<"成功连接"<<std::endl;
     while(1){
         string str;
         std::cin>>str;

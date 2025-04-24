@@ -176,13 +176,13 @@ class RpcHeader :
     kMethodNameFieldNumber = 2,
     kArgsLenFieldNumber = 3,
   };
-  // bytes service_name = 1;
+  // string service_name = 1;
   void clear_service_name();
   const std::string& service_name() const;
   void set_service_name(const std::string& value);
   void set_service_name(std::string&& value);
   void set_service_name(const char* value);
-  void set_service_name(const void* value, size_t size);
+  void set_service_name(const char* value, size_t size);
   std::string* mutable_service_name();
   std::string* release_service_name();
   void set_allocated_service_name(std::string* service_name);
@@ -192,13 +192,13 @@ class RpcHeader :
   std::string* _internal_mutable_service_name();
   public:
 
-  // bytes method_name = 2;
+  // string method_name = 2;
   void clear_method_name();
   const std::string& method_name() const;
   void set_method_name(const std::string& value);
   void set_method_name(std::string&& value);
   void set_method_name(const char* value);
-  void set_method_name(const void* value, size_t size);
+  void set_method_name(const char* value, size_t size);
   std::string* mutable_method_name();
   std::string* release_method_name();
   void set_allocated_method_name(std::string* method_name);
@@ -208,13 +208,13 @@ class RpcHeader :
   std::string* _internal_mutable_method_name();
   public:
 
-  // uint32 args_len = 3;
+  // uint64 args_len = 3;
   void clear_args_len();
-  ::PROTOBUF_NAMESPACE_ID::uint32 args_len() const;
-  void set_args_len(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint64 args_len() const;
+  void set_args_len(::PROTOBUF_NAMESPACE_ID::uint64 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_args_len() const;
-  void _internal_set_args_len(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_args_len() const;
+  void _internal_set_args_len(::PROTOBUF_NAMESPACE_ID::uint64 value);
   public:
 
   // @@protoc_insertion_point(class_scope:rpc.RpcHeader)
@@ -224,7 +224,7 @@ class RpcHeader :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr service_name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr method_name_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 args_len_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 args_len_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_RpcHeader_2eproto;
 };
@@ -239,7 +239,7 @@ class RpcHeader :
 #endif  // __GNUC__
 // RpcHeader
 
-// bytes service_name = 1;
+// string service_name = 1;
 inline void RpcHeader::clear_service_name() {
   service_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -274,7 +274,7 @@ inline void RpcHeader::set_service_name(const char* value) {
   service_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:rpc.RpcHeader.service_name)
 }
-inline void RpcHeader::set_service_name(const void* value, size_t size) {
+inline void RpcHeader::set_service_name(const char* value, size_t size) {
   
   service_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -299,7 +299,7 @@ inline void RpcHeader::set_allocated_service_name(std::string* service_name) {
   // @@protoc_insertion_point(field_set_allocated:rpc.RpcHeader.service_name)
 }
 
-// bytes method_name = 2;
+// string method_name = 2;
 inline void RpcHeader::clear_method_name() {
   method_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -334,7 +334,7 @@ inline void RpcHeader::set_method_name(const char* value) {
   method_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:rpc.RpcHeader.method_name)
 }
-inline void RpcHeader::set_method_name(const void* value, size_t size) {
+inline void RpcHeader::set_method_name(const char* value, size_t size) {
   
   method_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -359,22 +359,22 @@ inline void RpcHeader::set_allocated_method_name(std::string* method_name) {
   // @@protoc_insertion_point(field_set_allocated:rpc.RpcHeader.method_name)
 }
 
-// uint32 args_len = 3;
+// uint64 args_len = 3;
 inline void RpcHeader::clear_args_len() {
-  args_len_ = 0u;
+  args_len_ = PROTOBUF_ULONGLONG(0);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 RpcHeader::_internal_args_len() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint64 RpcHeader::_internal_args_len() const {
   return args_len_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 RpcHeader::args_len() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint64 RpcHeader::args_len() const {
   // @@protoc_insertion_point(field_get:rpc.RpcHeader.args_len)
   return _internal_args_len();
 }
-inline void RpcHeader::_internal_set_args_len(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void RpcHeader::_internal_set_args_len(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   
   args_len_ = value;
 }
-inline void RpcHeader::set_args_len(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void RpcHeader::set_args_len(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   _internal_set_args_len(value);
   // @@protoc_insertion_point(field_set:rpc.RpcHeader.args_len)
 }
