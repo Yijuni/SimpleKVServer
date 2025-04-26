@@ -25,7 +25,8 @@ bool AfterTimer::Reset()
         { // 毫秒
             std::this_thread::sleep_for(std::chrono::microseconds(timelen_myj));
         }
-        callback_myj(); });
+        callback_myj(); 
+    });
 
     td.detach();
     return true;

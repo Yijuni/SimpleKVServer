@@ -111,7 +111,7 @@ private:
     void readPersist(std::string &data);
 
     // leader选举
-    void electStart(long long curterm, long long lastLogIndex, long long lastLogTerm, long long peerscount);
+    void electStart(std::string name,long long curterm, long long lastLogIndex, long long lastLogTerm, long long peerscount);
     // 发送心跳、追加日志
     void appendEntriesToFollower(long long curterm, long long leaderCommit, long long peerscount);
     // 匹配leader发来的日志
@@ -120,10 +120,12 @@ private:
     void applyEntries(long long sleep);
     // 更新大多数节点上达成共识的最大index
     void updateCommitIndex();
-    //将logEntries_myj序列化
-    std::string serializeLogEntriesVector();
-    //将LogEntries数组反序列化到logEntries_myj
-    void deserializeLogEntriesVector();
+    //将logEntries_myj预处理并序列化到输出流中
+    void serializeLogEntriesVector(boost::archive::binary_oarchive &bo);
+    //从输入流反序列化到logEntries_myj
+    void deserializeLogEntriesVector(boost::archive::binary_iarchive &bi);
+    //比较两个日志是否一致
+    bool compareEntry(kvraft::LogEntry& a,kvraft::LogEntry& b);
 };
 
 #endif

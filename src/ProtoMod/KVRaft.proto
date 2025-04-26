@@ -25,10 +25,11 @@ message LogEntry{
 //追加日志消息类型
 message AppendEntriesRequest{
     int64 term = 1;               
-    string leaderid = 2;         
-    int64 preLogIndex = 3;     
-    int64 prevLogTerm = 4;      
-    repeated LogEntry logEntries = 5;
+    string leaderid = 2;  
+    int64 leaderCommit = 3;  
+    int64 preLogIndex = 4;     
+    int64 preLogTerm = 5;      
+    repeated LogEntry logEntries = 6;
 } 
 message AppendEntriesResponse{
     int64 term = 1;
@@ -39,7 +40,7 @@ message AppendEntriesResponse{
 //下载快照消息类型
 message InstallSnapshotRequest{
     int64 term = 1;
-    int64 leaderid = 2;
+    string leaderid = 2;
     int64 lastIncludeIndex = 3;
     int64 lastIncludeTerm = 4;
     bytes data = 5;
@@ -54,8 +55,8 @@ message InstallSnapshotResponse{
 //请求投票消息类型
 message RequestVoteRequest{
     int64 term = 1;
-    bytes candidateid = 2;
-    string lastLogIndex = 3;
+    string candidateid = 2;
+    int64 lastLogIndex = 3;
     int64 lastLogTerm = 4;
 }
 

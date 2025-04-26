@@ -193,8 +193,9 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_KVRaft_2eproto::offsets[] PROT
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::kvraft::AppendEntriesRequest, term_),
   PROTOBUF_FIELD_OFFSET(::kvraft::AppendEntriesRequest, leaderid_),
+  PROTOBUF_FIELD_OFFSET(::kvraft::AppendEntriesRequest, leadercommit_),
   PROTOBUF_FIELD_OFFSET(::kvraft::AppendEntriesRequest, prelogindex_),
-  PROTOBUF_FIELD_OFFSET(::kvraft::AppendEntriesRequest, prevlogterm_),
+  PROTOBUF_FIELD_OFFSET(::kvraft::AppendEntriesRequest, prelogterm_),
   PROTOBUF_FIELD_OFFSET(::kvraft::AppendEntriesRequest, logentries_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kvraft::AppendEntriesResponse, _internal_metadata_),
@@ -243,11 +244,11 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, sizeof(::kvraft::Command)},
   { 10, -1, sizeof(::kvraft::LogEntry)},
   { 17, -1, sizeof(::kvraft::AppendEntriesRequest)},
-  { 27, -1, sizeof(::kvraft::AppendEntriesResponse)},
-  { 35, -1, sizeof(::kvraft::InstallSnapshotRequest)},
-  { 47, -1, sizeof(::kvraft::InstallSnapshotResponse)},
-  { 53, -1, sizeof(::kvraft::RequestVoteRequest)},
-  { 62, -1, sizeof(::kvraft::RequestVoteResponse)},
+  { 28, -1, sizeof(::kvraft::AppendEntriesResponse)},
+  { 36, -1, sizeof(::kvraft::InstallSnapshotRequest)},
+  { 48, -1, sizeof(::kvraft::InstallSnapshotResponse)},
+  { 54, -1, sizeof(::kvraft::RequestVoteRequest)},
+  { 63, -1, sizeof(::kvraft::RequestVoteResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -266,27 +267,28 @@ const char descriptor_table_protodef_KVRaft_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "e\030\001 \001(\014\022\013\n\003key\030\002 \001(\014\022\r\n\005value\030\003 \001(\014\022\020\n\010c"
   "lientid\030\004 \001(\014\022\021\n\trequestid\030\005 \001(\003\":\n\010LogE"
   "ntry\022 \n\007command\030\001 \001(\0132\017.kvraft.Command\022\014"
-  "\n\004term\030\002 \001(\003\"\206\001\n\024AppendEntriesRequest\022\014\n"
-  "\004term\030\001 \001(\003\022\020\n\010leaderid\030\002 \001(\t\022\023\n\013preLogI"
-  "ndex\030\003 \001(\003\022\023\n\013prevLogTerm\030\004 \001(\003\022$\n\nlogEn"
-  "tries\030\005 \003(\0132\020.kvraft.LogEntry\"H\n\025AppendE"
-  "ntriesResponse\022\014\n\004term\030\001 \001(\003\022\017\n\007success\030"
-  "\002 \001(\010\022\020\n\010fastback\030\003 \001(\003\"\227\001\n\026InstallSnaps"
-  "hotRequest\022\014\n\004term\030\001 \001(\003\022\020\n\010leaderid\030\002 \001"
-  "(\003\022\030\n\020lastIncludeIndex\030\003 \001(\003\022\027\n\017lastIncl"
-  "udeTerm\030\004 \001(\003\022\014\n\004data\030\005 \001(\014\022\016\n\006offset\030\006 "
-  "\001(\003\022\014\n\004done\030\007 \001(\010\"\'\n\027InstallSnapshotResp"
-  "onse\022\014\n\004term\030\001 \001(\003\"b\n\022RequestVoteRequest"
-  "\022\014\n\004term\030\001 \001(\003\022\023\n\013candidateid\030\002 \001(\014\022\024\n\014l"
-  "astLogIndex\030\003 \001(\t\022\023\n\013lastLogTerm\030\004 \001(\003\"8"
-  "\n\023RequestVoteResponse\022\014\n\004term\030\001 \001(\003\022\023\n\013V"
-  "oteGranted\030\002 \001(\0102\365\001\n\tKVRaftRPC\022L\n\rAppend"
-  "Entries\022\034.kvraft.AppendEntriesRequest\032\035."
-  "kvraft.AppendEntriesResponse\022F\n\013RequestV"
-  "ote\022\032.kvraft.RequestVoteRequest\032\033.kvraft"
-  ".RequestVoteResponse\022R\n\017InstallSnapshot\022"
-  "\036.kvraft.InstallSnapshotRequest\032\037.kvraft"
-  ".InstallSnapshotResponseB\003\200\001\001b\006proto3"
+  "\n\004term\030\002 \001(\003\"\233\001\n\024AppendEntriesRequest\022\014\n"
+  "\004term\030\001 \001(\003\022\020\n\010leaderid\030\002 \001(\t\022\024\n\014leaderC"
+  "ommit\030\003 \001(\003\022\023\n\013preLogIndex\030\004 \001(\003\022\022\n\npreL"
+  "ogTerm\030\005 \001(\003\022$\n\nlogEntries\030\006 \003(\0132\020.kvraf"
+  "t.LogEntry\"H\n\025AppendEntriesResponse\022\014\n\004t"
+  "erm\030\001 \001(\003\022\017\n\007success\030\002 \001(\010\022\020\n\010fastback\030\003"
+  " \001(\003\"\227\001\n\026InstallSnapshotRequest\022\014\n\004term\030"
+  "\001 \001(\003\022\020\n\010leaderid\030\002 \001(\t\022\030\n\020lastIncludeIn"
+  "dex\030\003 \001(\003\022\027\n\017lastIncludeTerm\030\004 \001(\003\022\014\n\004da"
+  "ta\030\005 \001(\014\022\016\n\006offset\030\006 \001(\003\022\014\n\004done\030\007 \001(\010\"\'"
+  "\n\027InstallSnapshotResponse\022\014\n\004term\030\001 \001(\003\""
+  "b\n\022RequestVoteRequest\022\014\n\004term\030\001 \001(\003\022\023\n\013c"
+  "andidateid\030\002 \001(\t\022\024\n\014lastLogIndex\030\003 \001(\003\022\023"
+  "\n\013lastLogTerm\030\004 \001(\003\"8\n\023RequestVoteRespon"
+  "se\022\014\n\004term\030\001 \001(\003\022\023\n\013VoteGranted\030\002 \001(\0102\365\001"
+  "\n\tKVRaftRPC\022L\n\rAppendEntries\022\034.kvraft.Ap"
+  "pendEntriesRequest\032\035.kvraft.AppendEntrie"
+  "sResponse\022F\n\013RequestVote\022\032.kvraft.Reques"
+  "tVoteRequest\032\033.kvraft.RequestVoteRespons"
+  "e\022R\n\017InstallSnapshot\022\036.kvraft.InstallSna"
+  "pshotRequest\032\037.kvraft.InstallSnapshotRes"
+  "ponseB\003\200\001\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_KVRaft_2eproto_deps[1] = {
 };
@@ -303,7 +305,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_KVR
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_KVRaft_2eproto_once;
 static bool descriptor_table_KVRaft_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_KVRaft_2eproto = {
-  &descriptor_table_KVRaft_2eproto_initialized, descriptor_table_protodef_KVRaft_2eproto, "KVRaft.proto", 997,
+  &descriptor_table_KVRaft_2eproto_initialized, descriptor_table_protodef_KVRaft_2eproto, "KVRaft.proto", 1018,
   &descriptor_table_KVRaft_2eproto_once, descriptor_table_KVRaft_2eproto_sccs, descriptor_table_KVRaft_2eproto_deps, 8, 0,
   schemas, file_default_instances, TableStruct_KVRaft_2eproto::offsets,
   file_level_metadata_KVRaft_2eproto, 8, file_level_enum_descriptors_KVRaft_2eproto, file_level_service_descriptors_KVRaft_2eproto,
@@ -891,8 +893,8 @@ AppendEntriesRequest::AppendEntriesRequest(const AppendEntriesRequest& from)
     leaderid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.leaderid_);
   }
   ::memcpy(&term_, &from.term_,
-    static_cast<size_t>(reinterpret_cast<char*>(&prevlogterm_) -
-    reinterpret_cast<char*>(&term_)) + sizeof(prevlogterm_));
+    static_cast<size_t>(reinterpret_cast<char*>(&prelogterm_) -
+    reinterpret_cast<char*>(&term_)) + sizeof(prelogterm_));
   // @@protoc_insertion_point(copy_constructor:kvraft.AppendEntriesRequest)
 }
 
@@ -900,8 +902,8 @@ void AppendEntriesRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_AppendEntriesRequest_KVRaft_2eproto.base);
   leaderid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&term_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&prevlogterm_) -
-      reinterpret_cast<char*>(&term_)) + sizeof(prevlogterm_));
+      reinterpret_cast<char*>(&prelogterm_) -
+      reinterpret_cast<char*>(&term_)) + sizeof(prelogterm_));
 }
 
 AppendEntriesRequest::~AppendEntriesRequest() {
@@ -931,8 +933,8 @@ void AppendEntriesRequest::Clear() {
   logentries_.Clear();
   leaderid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&term_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&prevlogterm_) -
-      reinterpret_cast<char*>(&term_)) + sizeof(prevlogterm_));
+      reinterpret_cast<char*>(&prelogterm_) -
+      reinterpret_cast<char*>(&term_)) + sizeof(prelogterm_));
   _internal_metadata_.Clear();
 }
 
@@ -959,30 +961,37 @@ const char* AppendEntriesRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAM
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int64 preLogIndex = 3;
+      // int64 leaderCommit = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          leadercommit_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int64 preLogIndex = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           prelogindex_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int64 prevLogTerm = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          prevlogterm_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+      // int64 preLogTerm = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          prelogterm_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated .kvraft.LogEntry logEntries = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+      // repeated .kvraft.LogEntry logEntries = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(_internal_add_logentries(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -1027,24 +1036,30 @@ failure:
         2, this->_internal_leaderid(), target);
   }
 
-  // int64 preLogIndex = 3;
+  // int64 leaderCommit = 3;
+  if (this->leadercommit() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_leadercommit(), target);
+  }
+
+  // int64 preLogIndex = 4;
   if (this->prelogindex() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_prelogindex(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_prelogindex(), target);
   }
 
-  // int64 prevLogTerm = 4;
-  if (this->prevlogterm() != 0) {
+  // int64 preLogTerm = 5;
+  if (this->prelogterm() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_prevlogterm(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(5, this->_internal_prelogterm(), target);
   }
 
-  // repeated .kvraft.LogEntry logEntries = 5;
+  // repeated .kvraft.LogEntry logEntries = 6;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_logentries_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(5, this->_internal_logentries(i), target, stream);
+      InternalWriteMessage(6, this->_internal_logentries(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1063,7 +1078,7 @@ size_t AppendEntriesRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .kvraft.LogEntry logEntries = 5;
+  // repeated .kvraft.LogEntry logEntries = 6;
   total_size += 1UL * this->_internal_logentries_size();
   for (const auto& msg : this->logentries_) {
     total_size +=
@@ -1084,18 +1099,25 @@ size_t AppendEntriesRequest::ByteSizeLong() const {
         this->_internal_term());
   }
 
-  // int64 preLogIndex = 3;
+  // int64 leaderCommit = 3;
+  if (this->leadercommit() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_leadercommit());
+  }
+
+  // int64 preLogIndex = 4;
   if (this->prelogindex() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
         this->_internal_prelogindex());
   }
 
-  // int64 prevLogTerm = 4;
-  if (this->prevlogterm() != 0) {
+  // int64 preLogTerm = 5;
+  if (this->prelogterm() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
-        this->_internal_prevlogterm());
+        this->_internal_prelogterm());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1137,11 +1159,14 @@ void AppendEntriesRequest::MergeFrom(const AppendEntriesRequest& from) {
   if (from.term() != 0) {
     _internal_set_term(from._internal_term());
   }
+  if (from.leadercommit() != 0) {
+    _internal_set_leadercommit(from._internal_leadercommit());
+  }
   if (from.prelogindex() != 0) {
     _internal_set_prelogindex(from._internal_prelogindex());
   }
-  if (from.prevlogterm() != 0) {
-    _internal_set_prevlogterm(from._internal_prevlogterm());
+  if (from.prelogterm() != 0) {
+    _internal_set_prelogterm(from._internal_prelogterm());
   }
 }
 
@@ -1170,8 +1195,9 @@ void AppendEntriesRequest::InternalSwap(AppendEntriesRequest* other) {
   leaderid_.Swap(&other->leaderid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(term_, other->term_);
+  swap(leadercommit_, other->leadercommit_);
   swap(prelogindex_, other->prelogindex_);
-  swap(prevlogterm_, other->prevlogterm_);
+  swap(prelogterm_, other->prelogterm_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata AppendEntriesRequest::GetMetadata() const {
@@ -1434,6 +1460,10 @@ InstallSnapshotRequest::InstallSnapshotRequest(const InstallSnapshotRequest& fro
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  leaderid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_leaderid().empty()) {
+    leaderid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.leaderid_);
+  }
   data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_data().empty()) {
     data_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.data_);
@@ -1446,6 +1476,7 @@ InstallSnapshotRequest::InstallSnapshotRequest(const InstallSnapshotRequest& fro
 
 void InstallSnapshotRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_InstallSnapshotRequest_KVRaft_2eproto.base);
+  leaderid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&term_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&done_) -
@@ -1458,6 +1489,7 @@ InstallSnapshotRequest::~InstallSnapshotRequest() {
 }
 
 void InstallSnapshotRequest::SharedDtor() {
+  leaderid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   data_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -1476,6 +1508,7 @@ void InstallSnapshotRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  leaderid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   data_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&term_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&done_) -
@@ -1497,10 +1530,12 @@ const char* InstallSnapshotRequest::_InternalParse(const char* ptr, ::PROTOBUF_N
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int64 leaderid = 2;
+      // string leaderid = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          leaderid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_leaderid();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kvraft.InstallSnapshotRequest.leaderid"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1572,10 +1607,14 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_term(), target);
   }
 
-  // int64 leaderid = 2;
-  if (this->leaderid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_leaderid(), target);
+  // string leaderid = 2;
+  if (this->leaderid().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_leaderid().data(), static_cast<int>(this->_internal_leaderid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kvraft.InstallSnapshotRequest.leaderid");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_leaderid(), target);
   }
 
   // int64 lastIncludeIndex = 3;
@@ -1624,6 +1663,13 @@ size_t InstallSnapshotRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string leaderid = 2;
+  if (this->leaderid().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_leaderid());
+  }
+
   // bytes data = 5;
   if (this->data().size() > 0) {
     total_size += 1 +
@@ -1636,13 +1682,6 @@ size_t InstallSnapshotRequest::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
         this->_internal_term());
-  }
-
-  // int64 leaderid = 2;
-  if (this->leaderid() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
-        this->_internal_leaderid());
   }
 
   // int64 lastIncludeIndex = 3;
@@ -1702,15 +1741,16 @@ void InstallSnapshotRequest::MergeFrom(const InstallSnapshotRequest& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.leaderid().size() > 0) {
+
+    leaderid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.leaderid_);
+  }
   if (from.data().size() > 0) {
 
     data_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.data_);
   }
   if (from.term() != 0) {
     _internal_set_term(from._internal_term());
-  }
-  if (from.leaderid() != 0) {
-    _internal_set_leaderid(from._internal_leaderid());
   }
   if (from.lastincludeindex() != 0) {
     _internal_set_lastincludeindex(from._internal_lastincludeindex());
@@ -1747,10 +1787,11 @@ bool InstallSnapshotRequest::IsInitialized() const {
 void InstallSnapshotRequest::InternalSwap(InstallSnapshotRequest* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  leaderid_.Swap(&other->leaderid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   data_.Swap(&other->data_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(term_, other->term_);
-  swap(leaderid_, other->leaderid_);
   swap(lastincludeindex_, other->lastincludeindex_);
   swap(lastincludeterm_, other->lastincludeterm_);
   swap(offset_, other->offset_);
@@ -1969,10 +2010,6 @@ RequestVoteRequest::RequestVoteRequest(const RequestVoteRequest& from)
   if (!from._internal_candidateid().empty()) {
     candidateid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.candidateid_);
   }
-  lastlogindex_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_lastlogindex().empty()) {
-    lastlogindex_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.lastlogindex_);
-  }
   ::memcpy(&term_, &from.term_,
     static_cast<size_t>(reinterpret_cast<char*>(&lastlogterm_) -
     reinterpret_cast<char*>(&term_)) + sizeof(lastlogterm_));
@@ -1982,7 +2019,6 @@ RequestVoteRequest::RequestVoteRequest(const RequestVoteRequest& from)
 void RequestVoteRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RequestVoteRequest_KVRaft_2eproto.base);
   candidateid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  lastlogindex_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&term_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&lastlogterm_) -
       reinterpret_cast<char*>(&term_)) + sizeof(lastlogterm_));
@@ -1995,7 +2031,6 @@ RequestVoteRequest::~RequestVoteRequest() {
 
 void RequestVoteRequest::SharedDtor() {
   candidateid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  lastlogindex_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void RequestVoteRequest::SetCachedSize(int size) const {
@@ -2014,7 +2049,6 @@ void RequestVoteRequest::Clear() {
   (void) cached_has_bits;
 
   candidateid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  lastlogindex_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&term_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&lastlogterm_) -
       reinterpret_cast<char*>(&term_)) + sizeof(lastlogterm_));
@@ -2035,20 +2069,19 @@ const char* RequestVoteRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // bytes candidateid = 2;
+      // string candidateid = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_candidateid();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kvraft.RequestVoteRequest.candidateid"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string lastLogIndex = 3;
+      // int64 lastLogIndex = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          auto str = _internal_mutable_lastlogindex();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kvraft.RequestVoteRequest.lastLogIndex"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          lastlogindex_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -2091,20 +2124,20 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_term(), target);
   }
 
-  // bytes candidateid = 2;
+  // string candidateid = 2;
   if (this->candidateid().size() > 0) {
-    target = stream->WriteBytesMaybeAliased(
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_candidateid().data(), static_cast<int>(this->_internal_candidateid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kvraft.RequestVoteRequest.candidateid");
+    target = stream->WriteStringMaybeAliased(
         2, this->_internal_candidateid(), target);
   }
 
-  // string lastLogIndex = 3;
-  if (this->lastlogindex().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_lastlogindex().data(), static_cast<int>(this->_internal_lastlogindex().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "kvraft.RequestVoteRequest.lastLogIndex");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_lastlogindex(), target);
+  // int64 lastLogIndex = 3;
+  if (this->lastlogindex() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_lastlogindex(), target);
   }
 
   // int64 lastLogTerm = 4;
@@ -2129,18 +2162,11 @@ size_t RequestVoteRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes candidateid = 2;
+  // string candidateid = 2;
   if (this->candidateid().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_candidateid());
-  }
-
-  // string lastLogIndex = 3;
-  if (this->lastlogindex().size() > 0) {
-    total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_lastlogindex());
+        this->_internal_candidateid());
   }
 
   // int64 term = 1;
@@ -2148,6 +2174,13 @@ size_t RequestVoteRequest::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
         this->_internal_term());
+  }
+
+  // int64 lastLogIndex = 3;
+  if (this->lastlogindex() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_lastlogindex());
   }
 
   // int64 lastLogTerm = 4;
@@ -2192,12 +2225,11 @@ void RequestVoteRequest::MergeFrom(const RequestVoteRequest& from) {
 
     candidateid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.candidateid_);
   }
-  if (from.lastlogindex().size() > 0) {
-
-    lastlogindex_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.lastlogindex_);
-  }
   if (from.term() != 0) {
     _internal_set_term(from._internal_term());
+  }
+  if (from.lastlogindex() != 0) {
+    _internal_set_lastlogindex(from._internal_lastlogindex());
   }
   if (from.lastlogterm() != 0) {
     _internal_set_lastlogterm(from._internal_lastlogterm());
@@ -2227,9 +2259,8 @@ void RequestVoteRequest::InternalSwap(RequestVoteRequest* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   candidateid_.Swap(&other->candidateid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  lastlogindex_.Swap(&other->lastlogindex_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   swap(term_, other->term_);
+  swap(lastlogindex_, other->lastlogindex_);
   swap(lastlogterm_, other->lastlogterm_);
 }
 
