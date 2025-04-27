@@ -115,7 +115,7 @@ private:
     // 发送心跳、追加日志
     void appendEntriesToFollower(long long curterm, long long leaderCommit, long long peerscount);
     // 匹配leader发来的日志
-    bool matchNewEntries(std::vector<kvraft::LogEntry> &entries, long long preLogIndex, long long preLogTerm, kvraft::AppendEntriesResponse *resposne);
+    bool matchNewEntries(const std::vector<kvraft::LogEntry> &entries, long long preLogIndex, long long preLogTerm, kvraft::AppendEntriesResponse *resposne);
     // 往服务层提交达成共识的日志 参数为多少毫秒提交一次
     void applyEntries(long long sleep);
     // 更新大多数节点上达成共识的最大index

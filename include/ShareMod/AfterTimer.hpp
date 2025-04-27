@@ -13,14 +13,20 @@ class AfterTimer
 {
 public:
     // 设置时间 参数1：时间大小 参数2：事件类型（秒、毫秒) 0：毫秒 1：秒
-    AfterTimer(double timelen=1000, int type=1, AfterTimerCallback callback=[](){});
+    AfterTimer(double timelen = 1000, int type = 1, AfterTimerCallback callback = []() {});
     void SetTime(double timelen, int type);
+    // Reset只执行一次，要想再次执行需要再调用Reset
     bool Reset();
     void SetCallback(AfterTimerCallback);
+    void run();
+    ~AfterTimer();
 
 private:
     AfterTimerCallback callback_myj;
     std::atomic<double> timelen_myj;
     std::atomic<double> type_myj;
+    std::atomic<bool> running_myj;
+    std::atomic<double> timecount_myj;
+    std::atomic<bool> isReset;
 };
 #endif
