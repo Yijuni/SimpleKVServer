@@ -10,6 +10,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include/ShareMod)
 include_directories(${PROJECT_SOURCE_DIR}/include/RpcMod)
 include_directories(${PROJECT_SOURCE_DIR}/include/ProtoMod)
 include_directories(${PROJECT_SOURCE_DIR}/include/ServiceMod)
+include_directories(${PROJECT_SOURCE_DIR}/include/RaftMod)
 #设置项目库文件输出路径
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 

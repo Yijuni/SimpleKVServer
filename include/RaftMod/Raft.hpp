@@ -8,6 +8,10 @@
 #include "AfterTimer.hpp"
 #include "LockQueue.hpp"
 #include "Persister.hpp"
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/string.hpp>
 #include <mutex>
 #include <vector>
 #include <memory>
@@ -34,8 +38,6 @@ struct ApplyMsg
 class KVRaft : public kvraft::KVRaftRPC
 {
 public:
-    // 参数1：与其他对端通信用的stub 参数2：该服务器名字（唯一标识） 参数3：用来持久化 参数4：往上层提交达成共识的命令、快照
-    KVRaft(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, std::string &name, std::shared_ptr<Persister> persister, std::shared_ptr<LockQueue<ApplyMsg>> applyChan);
     KVRaft();
     // 追加日志，其他服务器远程调用
     void AppendEntries(google::protobuf::RpcController *controller,
@@ -58,7 +60,8 @@ public:
     void Snapshot(long long index, std::string &snapshot);
     // 上层追加命令用 参数1：命令 参数2：如果这条命令达成共识他的index是多少 参数3：这条命令追加时服务器的任期
     bool Start(kvraft::Command command, long long &index, long long &term);
-
+    // 启动Raft，参数1：与其他对端通信用的stub 参数2：该服务器名字（唯一标识） 参数3：用来持久化 参数4：往上层提交达成共识的命令、快照
+    void Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, std::string &name, std::shared_ptr<Persister> persister, std::shared_ptr<LockQueue<ApplyMsg>> applyChan);
 private:
     // 共享资源的锁
     std::mutex sourceMutex_myj;
@@ -104,6 +107,9 @@ private:
     std::string voterFor_myj;
     // 保存在内存的日志
     std::vector<kvraft::LogEntry> logEntries_myj;
+    
+    //是否已经初始化完成,只有执行完Make才能响应其他服务器请求
+    std::atomic<bool> ready_myj;
 
     // 持久化函数，参数1：序列化的快照数据
     void persist(std::string &snapshot);
@@ -111,7 +117,7 @@ private:
     void readPersist(std::string &data);
 
     // leader选举
-    void electStart(std::string name,long long curterm, long long lastLogIndex, long long lastLogTerm, long long peerscount);
+    void electStart(std::string name, long long curterm, long long lastLogIndex, long long lastLogTerm, long long peerscount);
     // 发送心跳、追加日志
     void appendEntriesToFollower(long long curterm, long long leaderCommit, long long peerscount);
     // 匹配leader发来的日志
@@ -120,12 +126,12 @@ private:
     void applyEntries(long long sleep);
     // 更新大多数节点上达成共识的最大index
     void updateCommitIndex();
-    //将logEntries_myj预处理并序列化到输出流中
+    // 将logEntries_myj预处理并序列化到输出流中
     void serializeLogEntriesVector(boost::archive::binary_oarchive &bo);
-    //从输入流反序列化到logEntries_myj
+    // 从输入流反序列化到logEntries_myj
     void deserializeLogEntriesVector(boost::archive::binary_iarchive &bi);
-    //比较两个日志是否一致
-    bool compareEntry(kvraft::LogEntry& a,kvraft::LogEntry& b);
+    // 比较两个日志是否一致
+    bool compareEntry(kvraft::LogEntry &a, kvraft::LogEntry &b);
 };
 
 #endif

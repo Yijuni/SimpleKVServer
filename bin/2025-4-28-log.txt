@@ -1,0 +1,2356 @@
+10-48-31 => [info]ip[127.0.0.1],port[8000],connect failed!
+10-48-31 => [info]server>>ip[127.0.0.1]:port[8003] start,service name :KVRaftRPC file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:21
+10-48-31 => [info]server>>ip[127.0.0.1]:port[8003] method name :AppendEntries file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:29
+10-48-31 => [info]server>>ip[127.0.0.1]:port[8003] method name :RequestVote file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:29
+10-48-31 => [info]server>>ip[127.0.0.1]:port[8003] method name :InstallSnapshot file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:29
+10-48-31 => [info]server>>ip[127.0.0.1]:port[8003] name : start, file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:47
+10-48-31 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-31 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-31 => [info]server[127.0.0.1:8003]>>持久化数据[]
+10-48-33 => [info]server[127.0.0.1:8003]>>开始leader选举,term=1
+10-48-33 => [info]ip[127.0.0.1],port[8000],connect failed!
+10-48-33 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-33 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-33 => [info]server[127.0.0.1:8003]>>发送选举消息失败,pos=0,errormsg:ip[127.0.0.1],port[8000],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-33 => [info]server[127.0.0.1:8003]>>发送选举消息失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-33 => [info]server[127.0.0.1:8003]>>发送选举消息失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-33 => [info]server[127.0.0.1:8003]>>持久化数据[]
+10-48-33 => [info]server[127.0.0.1:8003]>>没收到足够选票
+10-48-33 => [info]server[127.0.0.1:8003]>>持久化数据[]
+10-48-33 => [info]server[127.0.0.1:8003]>>开始leader选举,term=2
+10-48-33 => [info]ip[127.0.0.1],port[8000],connect failed!
+10-48-33 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-33 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-33 => [info]server[127.0.0.1:8003]>>发送选举消息失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-33 => [info]server[127.0.0.1:8003]>>发送选举消息失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-33 => [info]server[127.0.0.1:8003]>>发送选举消息失败,pos=0,errormsg:ip[127.0.0.1],port[8000],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-33 => [info]server[127.0.0.1:8003]>>持久化数据[]
+10-48-33 => [info]server[127.0.0.1:8003]>>没收到足够选票
+10-48-34 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-34 => [info]server>>ip[127.0.0.1]:port[8000] start,service name :KVRaftRPC file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:21
+10-48-34 => [info]server>>ip[127.0.0.1]:port[8000] method name :AppendEntries file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:29
+10-48-34 => [info]server>>ip[127.0.0.1]:port[8000] method name :RequestVote file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:29
+10-48-34 => [info]server>>ip[127.0.0.1]:port[8000] method name :InstallSnapshot file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:29
+10-48-34 => [info]server>>ip[127.0.0.1]:port[8000] name : start, file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:47
+10-48-34 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-33 => [info]server[127.0.0.1:8003]>>持久化数据[]
+10-48-34 => [info]server[127.0.0.1:8003]>>开始leader选举,term=3
+10-48-34 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-34 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-34 => [info]server[127.0.0.1:8000]>>收到server[127.0.0.1:8003]请求投票
+10-48-34 => [info]server[127.0.0.1:8000]>>给server[127.0.0.1:8003]投票
+10-48-34 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-34 => [info]server[127.0.0.1:8003]收到来自3投票回复,granted:1
+10-48-34 => [info]server[127.0.0.1:8003]>>收到server[0]的投票
+10-48-34 => [info]server[127.0.0.1:8003]>>成为leader！term:3
+10-48-34 => [info]server[127.0.0.1:8003]>>持久化数据[]
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-34 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-34 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-34 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-34 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-34 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-34 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-34 => [info]server[127.0.0.1:8003]>>发送选举消息失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送选举消息失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-34 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-34 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-34 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-34 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-34 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-34 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-34 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-34 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-34 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-34 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-34 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-34 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-34 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-34 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-34 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-34 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-34 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-34 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-34 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-34 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-34 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-35 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-35 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-35 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-35 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-35 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-35 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]ip[127.0.0.1],port[8001],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8001],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server>>ip[127.0.0.1]:port[8001] start,service name :KVRaftRPC file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:21
+10-48-36 => [info]server>>ip[127.0.0.1]:port[8001] method name :AppendEntries file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:29
+10-48-36 => [info]server>>ip[127.0.0.1]:port[8001] method name :RequestVote file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:29
+10-48-36 => [info]server>>ip[127.0.0.1]:port[8001] method name :InstallSnapshot file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:29
+10-48-36 => [info]server>>ip[127.0.0.1]:port[8001] name : start, file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp line:47
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-36 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-36 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-36 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-36 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-36 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-36 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-36 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-36 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-37 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-37 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-37 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-37 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-37 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-37 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-37 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-38 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-38 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-38 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-38 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-38 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-38 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-38 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-38 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-39 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-39 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-39 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-39 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-39 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-39 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-39 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送日志/心跳/快照
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=0
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=1
+10-48-40 => [info]server[127.0.0.1:8003]>>开始发送心跳/日志/快照，sendindex=2
+10-48-40 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8000]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8000]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=1
+10-48-40 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8003]的追加日志请求
+10-48-40 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-40 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-40 => [info]server[127.0.0.1:8003]>>成功收到发送心跳/日志的回复,pos=0
+10-48-40 => [info]server[127.0.0.1:8003]>>发送心跳/心跳失败,pos=2,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-40 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>开始leader选举,term=4
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-40 => [info]server[127.0.0.1:8001]>>收到server[127.0.0.1:8000]请求投票
+10-48-41 => [info]server[127.0.0.1:8001]>>给server[127.0.0.1:8000]投票
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]收到来自2投票回复,granted:1
+10-48-41 => [info]server[127.0.0.1:8000]>>收到server[0]的投票
+10-48-41 => [info]server[127.0.0.1:8000]>>成为leader！term:4
+10-48-41 => [info]server[127.0.0.1:8000]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送选举消息失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-41 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-41 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-41 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-41 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-41 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-41 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-41 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送日志/心跳/快照
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=0
+10-48-42 => [info]server[127.0.0.1:8000]>>开始发送心跳/日志/快照，sendindex=1
+10-48-42 => [info]server[127.0.0.1:8001]>>收到leader[127.0.0.1:8000]的追加日志请求
+10-48-42 => [info]server[127.0.0.1:8001]>>leader coomitindex:-1,self commitindex:-1
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-42 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-42 => [info]server[127.0.0.1:8000]>>成功收到发送心跳/日志的回复,pos=0
+10-48-42 => [info]server[127.0.0.1:8000]>>发送心跳/心跳失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-42 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-43 => [info]server[127.0.0.1:8001]>>开始leader选举,term=5
+10-48-43 => [info]server[127.0.0.1:8001]收到来自2投票回复,granted:0
+10-48-43 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-43 => [info]server[127.0.0.1:8001]>>发送选举消息失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-43 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-43 => [info]server[127.0.0.1:8001]>>没收到足够选票
+10-48-43 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-44 => [info]server[127.0.0.1:8001]>>开始leader选举,term=6
+10-48-44 => [info]ip[127.0.0.1],port[8000],send failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:102
+10-48-44 => [info]server[127.0.0.1:8001]>>发送选举消息失败,pos=0,errormsg:ip[127.0.0.1],port[8000],send failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:104
+10-48-44 => [info]ip[127.0.0.1],port[8002],connect failed!
+10-48-44 => [info]server[127.0.0.1:8001]>>发送选举消息失败,pos=1,errormsg:ip[127.0.0.1],port[8002],connect to peers failed! file:/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp line:95
+10-48-44 => [info]server[127.0.0.1:8001]>>持久化数据[]
+10-48-44 => [info]server[127.0.0.1:8001]>>没收到足够选票

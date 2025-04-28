@@ -1,7 +1,8 @@
 #include "AfterTimer.hpp"
 #include <thread>
 #include <chrono>
-#include <iostream>
+#include <iostream> 
+#include <random>
 AfterTimer::AfterTimer(double timelen, int type, AfterTimerCallback callback)
     : timelen_myj(timelen), type_myj(type), callback_myj(callback),
       running_myj(true), timecount_myj(0), isReset(false)
@@ -24,6 +25,17 @@ bool AfterTimer::Reset()
     return true;
 }
 
+bool AfterTimer::RandomReset(double begin, double end)
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<double> dist(begin,end);
+    timelen_myj = dist(gen);
+    timecount_myj = 0;
+    isReset = true;
+    return true;
+}
+
 void AfterTimer::SetCallback(AfterTimerCallback callback)
 {
     callback_myj = callback;
@@ -41,6 +53,8 @@ void AfterTimer::run()
         if (!isReset)
         {
             continue;
+        }else{
+            isReset = false;
         }
         while (timecount_myj < timelen_myj)
         {
@@ -55,8 +69,6 @@ void AfterTimer::run()
             timecount_myj = timecount_myj + 1;
         }
         callback_myj();
-        timecount_myj = 0;
-        isReset = false;
     }
 }
 

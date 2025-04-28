@@ -17,6 +17,7 @@ public:
     void SetTime(double timelen, int type);
     // Reset只执行一次，要想再次执行需要再调用Reset
     bool Reset();
+    bool RandomReset(double begin,double end);
     void SetCallback(AfterTimerCallback);
     void run();
     ~AfterTimer();

@@ -90,6 +90,12 @@ bool KVRpcChannel::TcpSendRecvMsg(std::string &request, std::string &response)
     if (!connected_myj)
     {
         Connection();
+        if(!connected_myj){
+            char buf[1024];
+            sprintf(buf, "ip[%s],port[%d],connect to peers failed! file:%s line:%d", ip_myj.c_str(), port_myj, __FILE__, __LINE__);
+            response = std::string(buf);
+            return false;
+        }
     }
     if (send(clientfd_myj, request.c_str(), request.length(), 0) == -1)
     {
@@ -117,7 +123,7 @@ bool KVRpcChannel::TcpSendRecvMsg(std::string &request, std::string &response)
 
 void KVRpcChannel::Connection()
 {
-    while (!connected_myj)
+    if(!connected_myj)
     {
         sockaddr_in server_addr;
         server_addr.sin_family = AF_INET;
@@ -126,8 +132,8 @@ void KVRpcChannel::Connection()
         if (connect(clientfd_myj, (sockaddr *)&server_addr, sizeof(server_addr)) == -1)
         {
             LOG_INFO("ip[%s],port[%d],connect failed!", ip_myj.c_str(), port_myj);
-            std::this_thread::sleep_for(std::chrono::microseconds(500));
-            continue;
+            std::this_thread::sleep_for(std::chrono::microseconds(5000));
+            return;
         }
         connected_myj = true;
     }
