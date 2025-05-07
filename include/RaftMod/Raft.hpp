@@ -35,10 +35,11 @@ struct ApplyMsg
     long long snapshotIndex;
 };
 
-class KVRaft : public kvraft::KVRaftRPC
+class KVRaft : public kvraft::KVRaftRPC,public std::enable_shared_from_this<KVRaft>
 {
 public:
     KVRaft();
+    ~KVRaft();
     // 追加日志，其他服务器远程调用
     void AppendEntries(google::protobuf::RpcController *controller,
                        const ::kvraft::AppendEntriesRequest *request,
@@ -62,6 +63,8 @@ public:
     bool Start(kvraft::Command command, long long &index, long long &term);
     // 启动Raft，参数1：与其他对端通信用的stub 参数2：该服务器名字（唯一标识） 参数3：用来持久化 参数4：往上层提交达成共识的命令、快照
     void Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, std::string &name, std::shared_ptr<Persister> persister, std::shared_ptr<LockQueue<ApplyMsg>> applyChan);
+    //关闭服务
+    void Close();
 private:
     // 共享资源的锁
     std::mutex sourceMutex_myj;
@@ -132,6 +135,7 @@ private:
     void deserializeLogEntriesVector(boost::archive::binary_iarchive &bi);
     // 比较两个日志是否一致
     bool compareEntry(kvraft::LogEntry &a, kvraft::LogEntry &b);
+
 };
 
 #endif

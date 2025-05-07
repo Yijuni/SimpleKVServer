@@ -11,8 +11,18 @@ KVRaft::KVRaft() : ready_myj(false)
 {
 }
 
+KVRaft::~KVRaft()
+{
+    delete heartbeatsTimer_myj;
+    delete electionTimer_myj;
+}
+
 void KVRaft::AppendEntries(google::protobuf::RpcController *controller, const ::kvraft::AppendEntriesRequest *request, ::kvraft::AppendEntriesResponse *response, ::google::protobuf::Closure *done)
 {
+    // 当前是否有快照正在提交，如果有则先等待,防止快照后的日志到快照之前
+    std::unique_lock<std::mutex> slock(snapshotInstallingMutex_myj);
+    slock.unlock();
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
     if (!ready_myj)
     {
         response->set_term(request->term());
@@ -21,10 +31,7 @@ void KVRaft::AppendEntries(google::protobuf::RpcController *controller, const ::
         done->Run();
         return;
     }
-    // 当前是否有快照正在提交，如果有则先等待,防止快照后的日志到快照之前
-    std::unique_lock<std::mutex> slock(snapshotInstallingMutex_myj);
-    slock.unlock();
-    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    
     LOG_INFO("server[%s]>>收到leader[%s]的追加日志请求", name_myj.c_str(), request->leaderid().c_str());
     if (request->term() < currentTerm_myj)
     {
@@ -69,6 +76,7 @@ void KVRaft::AppendEntries(google::protobuf::RpcController *controller, const ::
 
 void KVRaft::RequestVote(google::protobuf::RpcController *controller, const ::kvraft::RequestVoteRequest *request, ::kvraft::RequestVoteResponse *response, ::google::protobuf::Closure *done)
 {
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
     if (!ready_myj)
     {
         response->set_term(request->term());
@@ -76,7 +84,6 @@ void KVRaft::RequestVote(google::protobuf::RpcController *controller, const ::kv
         done->Run();
         return;
     }
-    std::unique_lock<std::mutex> lock(sourceMutex_myj);
     printf("server[%s]>>收到server[%s]请求投票\n", name_myj.c_str(), request->candidateid().c_str());
     LOG_INFO("server[%s]>>收到server[%s]请求投票", name_myj.c_str(), request->candidateid().c_str());
     if (request->term() < currentTerm_myj)
@@ -138,13 +145,13 @@ void KVRaft::RequestVote(google::protobuf::RpcController *controller, const ::kv
 
 void KVRaft::InstallSnapshot(google::protobuf::RpcController *controller, const ::kvraft::InstallSnapshotRequest *request, ::kvraft::InstallSnapshotResponse *response, ::google::protobuf::Closure *done)
 {
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
     if (!ready_myj)
     { // 就装作成功安装快照，反正等本服务器真正启动，如果并没有这部分快照还会让leader回退的
         response->set_term(request->term());
         done->Run();
         return;
     }
-    std::unique_lock<std::mutex> lock(sourceMutex_myj);
     response->set_term(request->term());
     LOG_INFO("server[%s]>>收到leader[%s],下载快照请求", name_myj.c_str(), request->leaderid().c_str());
     if (request->term() < currentTerm_myj)
@@ -199,10 +206,12 @@ void KVRaft::InstallSnapshot(google::protobuf::RpcController *controller, const 
     sendApplyMsg.data = request->data();
 
     snapshotInstallingMutex_myj.lock();
-    std::thread td([&]()
-                   {
-        applyChan_myj->push(sendApplyMsg);
-        snapshotInstallingMutex_myj.unlock(); });
+    std::thread td(
+    [](std::shared_ptr<KVRaft> raft,ApplyMsg sendApplyMsg)
+    {
+        raft->applyChan_myj->push(sendApplyMsg);
+        raft->snapshotInstallingMutex_myj.unlock(); 
+    },shared_from_this(),sendApplyMsg);
     td.detach();
 
     lock.unlock();
@@ -212,6 +221,9 @@ void KVRaft::InstallSnapshot(google::protobuf::RpcController *controller, const 
 bool KVRaft::GetState(long long &term)
 {
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    if(!ready_myj){
+        return false;
+    }
     bool isLeader = false;
     if (status_myj == LEADER)
     {
@@ -224,7 +236,10 @@ bool KVRaft::GetState(long long &term)
 void KVRaft::Snapshot(long long index, std::string &snapshot)
 {
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
-    LOG_INFO("server[%s]>>收到快照请求", name_myj.c_str());
+    if(!ready_myj){
+        return;
+    }
+    LOG_INFO("server[%s]>>收到服务层生成快照请求", name_myj.c_str());
     if (index - 1 <= lastSnapshotIndex_myj)
     {
         LOG_INFO("server[%s]>>这部分快照已经存在", name_myj.c_str());
@@ -252,7 +267,7 @@ bool KVRaft::Start(kvraft::Command command, long long &index, long long &term)
 
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
 
-    if (status_myj != LEADER)
+    if (!ready_myj || status_myj != LEADER)
     {
         return false;
     }
@@ -273,6 +288,7 @@ bool KVRaft::Start(kvraft::Command command, long long &index, long long &term)
         std::thread td(std::bind(&KVRaft::appendEntriesToFollower, this, currentTerm_myj, commitIndex_myj, peers_myj.size()));
         td.detach();
         heartbeatsTimer_myj->Reset();
+        return true;
     }
 
     return false;
@@ -302,55 +318,81 @@ void KVRaft::Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, s
     lastSnapshotTerm_myj = -1;
 
     // 心跳定时器和选举超时定时器启动
-    heartbeatsTimer_myj = new AfterTimer(heartbeatsTime_myj, 0, [this]()
-                                         {
-        
-        std::unique_lock<std::mutex> lock(sourceMutex_myj);
-        if(status_myj==LEADER){
-            LOG_INFO("server[%s]>>发送心跳",name_myj.c_str());
-            std::thread td(std::bind(&KVRaft::appendEntriesToFollower,this,currentTerm_myj,commitIndex_myj,peers_myj.size()));
-            td.detach();
-            heartbeatsTimer_myj->Reset();
-        } });
-    electionTimer_myj = new AfterTimer(electionTimeout_myj, 0, [this]()
-                                       {
-        std::unique_lock<std::mutex> lock(sourceMutex_myj);
-        if(status_myj==FOLLOWER || status_myj==CANDIDATE){
-            //成为候选者
-            status_myj = CANDIDATE;
-            voterFor_myj = name_myj;
-            currentTerm_myj++;
-            //持久化数据
-            std::string snapshotdata = persister_myj->ReadSnapshot();
-            persist(snapshotdata);
+    heartbeatsTimer_myj = new AfterTimer(heartbeatsTime_myj, 0, 
+        [this](){
+            std::unique_lock<std::mutex> lock(sourceMutex_myj);
             
-            long long lastLogIndex = -1;
-            long long lastLogTerm = -1;
-            if(logEntries_myj.size()!=0 || lastSnapshotIndex_myj!=-1){
-                if(logEntries_myj.size()!=0){
-                    lastLogIndex = logEntries_myj.size() + lastSnapshotIndex_myj+1 -1;
-                    lastLogTerm = logEntries_myj[logEntries_myj.size()-1].term();
-                }else{
-                    lastLogIndex = lastSnapshotIndex_myj;
-                    lastLogTerm = lastSnapshotTerm_myj;
-                 }
+            if(!ready_myj){ 
+                return;
             }
-            std::thread td(std::bind(&KVRaft::electStart,this,name_myj.c_str(),currentTerm_myj,lastLogIndex,lastLogTerm,peers_myj.size()));
-            td.detach();
-            electionTimer_myj->RandomReset(electionTimeout_myj,electionTimeout_myj*2);
-        } });
+            if(status_myj==LEADER){
+                LOG_INFO("server[%s]>>发送心跳",name_myj.c_str());
+                std::thread td([](std::shared_ptr<KVRaft> raft){
+                    raft->appendEntriesToFollower(raft->currentTerm_myj,raft->commitIndex_myj,raft->peers_myj.size());
+                },shared_from_this());
+                td.detach();
+                heartbeatsTimer_myj->Reset();
+            } 
+        }
+    );
+    electionTimer_myj = new AfterTimer(electionTimeout_myj, 0, 
+        [this](){
+            std::unique_lock<std::mutex> lock(sourceMutex_myj);
+
+            if(!ready_myj){
+                return;
+            }
+
+            if(status_myj==FOLLOWER || status_myj==CANDIDATE){
+                //成为候选者
+                status_myj = CANDIDATE;
+                voterFor_myj = name_myj;
+                currentTerm_myj++;
+                //持久化数据
+                std::string snapshotdata = persister_myj->ReadSnapshot();
+                persist(snapshotdata);
+                
+                long long lastLogIndex = -1;
+                long long lastLogTerm = -1;
+                if(logEntries_myj.size()!=0 || lastSnapshotIndex_myj!=-1){
+                    if(logEntries_myj.size()!=0){
+                        lastLogIndex = logEntries_myj.size() + lastSnapshotIndex_myj+1 -1;
+                        lastLogTerm = logEntries_myj[logEntries_myj.size()-1].term();
+                    }else{
+                        lastLogIndex = lastSnapshotIndex_myj;
+                        lastLogTerm = lastSnapshotTerm_myj;
+                    }
+                }
+                std::thread td(std::bind(&KVRaft::electStart,this,name_myj.c_str(),currentTerm_myj,lastLogIndex,lastLogTerm,peers_myj.size()));
+                td.detach();
+                electionTimer_myj->RandomReset(electionTimeout_myj,electionTimeout_myj*2);
+                
+            } 
+
+        }
+    );
 
     // 读取持久化数据恢复
     std::string raftstatedata = persister_myj->ReadRaftState();
     readPersist(raftstatedata);
-
+    
+    ready_myj = true; //这个一定要在下面这些函数启动前，否则下面这个函数会直接退出
     // 启动定时上传日志线程
-    std::thread td(std::bind(&KVRaft::applyEntries, this, 20));
+    std::thread td([](std::shared_ptr<KVRaft> raft){
+        raft->applyEntries(20);
+    },shared_from_this()); //传入自身指针防止，上传过程中访问已释放变量
     td.detach();
+
     // 启动选举超时定时器
     electionTimer_myj->RandomReset(electionTimeout_myj, electionTimeout_myj * 2);
+    
+}
 
-    ready_myj = true;
+void KVRaft::Close()
+{
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    ready_myj = false;
+
 }
 
 void KVRaft::persist(std::string &snapshot)
@@ -475,12 +517,15 @@ void KVRaft::appendEntriesToFollower(long long curterm, long long leaderCommit, 
     lock.unlock();
 
     LOG_INFO("server[%s]>>开始发送日志/心跳/快照", name_myj.c_str());
+    std::vector<std::thread> waitGroup;
     for (int i = 0; i < peerscount; i++)
     {
-        std::thread td([&](int sendindex)
-                       {
+       waitGroup.emplace_back([&](int sendindex)
+        {
+
             LOG_INFO("server[%s]>>开始发送心跳/日志/快照，sendindex=%d",name_myj.c_str(),sendindex);
             std::unique_lock<std::mutex> td_lock(sourceMutex_myj);
+
             if(currentTerm_myj!=curterm){
                 td_lock.unlock();
                 return;
@@ -531,11 +576,13 @@ void KVRaft::appendEntriesToFollower(long long curterm, long long leaderCommit, 
                 //判断要发送日志是否产生改变，如果产生改变就不发送了，因为剩下的日志可能不是
                 if(logstmp.size()!=logEntries_myj.size()){
                     td_lock.unlock();
+    
                     return;
                 }
                 for(int index=0;index<logstmp.size();index++){
                     if(!compareEntry(logEntries_myj[index],logstmp[index])){
                         td_lock.unlock();
+             
                         return;
                     }
                 }
@@ -583,6 +630,7 @@ void KVRaft::appendEntriesToFollower(long long curterm, long long leaderCommit, 
                             }
                         }
                         if(appendEntriesRequest.logentries_size()==0 || !appendEntriesResponse.success()){
+                        
                             return;
                         }
                         //更新下次发送的nextIndex
@@ -596,8 +644,14 @@ void KVRaft::appendEntriesToFollower(long long curterm, long long leaderCommit, 
                     LOG_INFO("server[%s]>>发送心跳/心跳失败,pos=%d,errormsg:%s",name_myj.c_str(),sendindex,controller.ErrorText().c_str());
                 }
 
-            } }, i);
-        td.detach();
+            }
+           
+        }, i);
+    }
+    // 等待所有请求发送完成
+    for (int i = 0; i < waitGroup.size(); i++)
+    {
+        waitGroup[i].join();
     }
 }
 
@@ -654,7 +708,7 @@ bool KVRaft::matchNewEntries(const std::vector<kvraft::LogEntry> &entries, long 
 
 void KVRaft::applyEntries(long long sleep)
 {
-    while (1)
+    while (ready_myj)
     {
         std::unique_lock<std::mutex> td_lock(sourceMutex_myj);
         for (; lastApplied_myj < commitIndex_myj;)
@@ -673,6 +727,7 @@ void KVRaft::applyEntries(long long sleep)
             if (lastApplied_myj + 1 == nextApplied)
             {
                 lastApplied_myj = nextApplied;
+                LOG_INFO("server[%s]>>lastApplied[%lld],commitIndex[%lld]",name_myj.c_str(),lastApplied_myj,commitIndex_myj);
             }
         }
         td_lock.unlock();

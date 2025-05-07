@@ -14,6 +14,7 @@ class LockQueue
 {
 public:
     LockQueue(int capacity = 0);
+    ~LockQueue();
     void push(const T &data);
     T pop();
     void setCapacity(int capacity);
@@ -32,8 +33,17 @@ template <typename T>
 inline LockQueue<T>::LockQueue(int capacity) : capacity_myj(capacity)
 {
 }
+
 template <typename T>
-inline void LockQueue<T>::push(const T& data) {
+inline LockQueue<T>::~LockQueue()
+{
+    condpush_myj.notify_all();
+    condpop_myj.notify_all();
+}
+
+template <typename T>
+inline void LockQueue<T>::push(const T &data)
+{
     std::unique_lock lock(mutex_myj);
     if (capacity_myj == 0) {            // 无缓冲模式：等待接收者就绪
         condpush_myj.wait(lock, [this] { return has_receiver_myj; });

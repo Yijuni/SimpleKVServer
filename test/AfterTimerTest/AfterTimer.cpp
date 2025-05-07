@@ -13,7 +13,7 @@ int main()
     std::this_thread::sleep_for(std::chrono::seconds(2));
     timer.Reset();
     std::this_thread::sleep_for(std::chrono::seconds(10));
-    timer.Reset();
+    timer.RandomReset(5,10);
     std::this_thread::sleep_for(std::chrono::seconds(10));
     
     std::cout << "程序退出" << std::endl;

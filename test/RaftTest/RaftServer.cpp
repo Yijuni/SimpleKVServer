@@ -1,5 +1,5 @@
-#include "KVRpcProvider.hpp"
 #include "KVRpcChannel.hpp"
+#include "KVRpcProvider.hpp"
 #include <string>
 #include "Persister.hpp"
 #include <memory>
@@ -17,8 +17,7 @@ int main(int argc, char **argv)
     std::string ip(argv[1]);
     std::uint16_t port = std::stoul(argv[2]);
     std::cout << "ip:" << ip << "port" << port << std::endl;
-    KVRaft raft;
-
+    std::shared_ptr<KVRaft> raft = std::make_shared<KVRaft>();
     //这里之所以这么写，首先为了确保raft服务器能正常初始化需要调用Make传入参数启动
     //但是Make参数需要和其他服务器连接的Stub，也就是已经连接上其他服务器了，
     //这就需要其他服务器已经成功启动了，每个服务器的代码都是一样的，要想连接上需要
@@ -29,7 +28,7 @@ int main(int argc, char **argv)
     std::thread td([&]()
                    {    
         KVRpcProvider provider(ip, port);
-        provider.NotifyService(&raft);
+        provider.NotifyService(raft.get());
         provider.Run(); });
     std::cout << "111";
     std::string name = ip + ":" + std::string(argv[2]);
@@ -44,7 +43,7 @@ int main(int argc, char **argv)
         }
         stubs.emplace_back(std::make_shared<kvraft::KVRaftRPC_Stub>(new KVRpcChannel("127.0.0.1", 8000 + i)));
     }
-    raft.Make(stubs, name, persister, applChan);
+    raft->Make(stubs, name, persister, applChan);
     while (1)
     {
         ApplyMsg msg = applChan->pop();

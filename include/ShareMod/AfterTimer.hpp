@@ -8,8 +8,10 @@
 #include <functional>
 #include <atomic>
 #include <condition_variable>
+#include <memory>
+#include<thread>
 using AfterTimerCallback = std::function<void()>;
-class AfterTimer
+class AfterTimer:public std::enable_shared_from_this<AfterTimer>
 {
 public:
     // 设置时间 参数1：时间大小 参数2：事件类型（秒、毫秒) 0：毫秒 1：秒
@@ -29,5 +31,7 @@ private:
     std::atomic<bool> running_myj;
     std::atomic<double> timecount_myj;
     std::atomic<bool> isReset;
+    std::atomic<bool> created_myj;
+    std::shared_ptr<std::thread> td_myj;
 };
 #endif

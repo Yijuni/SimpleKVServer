@@ -1,14 +1,11 @@
 #include "AfterTimer.hpp"
-#include <thread>
 #include <chrono>
-#include <iostream> 
+#include <iostream>
 #include <random>
 AfterTimer::AfterTimer(double timelen, int type, AfterTimerCallback callback)
     : timelen_myj(timelen), type_myj(type), callback_myj(callback),
-      running_myj(true), timecount_myj(0), isReset(false)
+      running_myj(true), timecount_myj(0), isReset(false), created_myj(false)
 {
-    std::thread td(std::bind(&AfterTimer::run, this));
-    td.detach();
 }
 
 void AfterTimer::SetTime(double timelen, int type)
@@ -22,6 +19,12 @@ bool AfterTimer::Reset()
 {
     timecount_myj = 0;
     isReset = true;
+    if (!created_myj)
+    {
+        created_myj = true;
+        td_myj = std::make_shared<std::thread>([this]()
+                                               { this->run(); });
+    }
     return true;
 }
 
@@ -29,10 +32,20 @@ bool AfterTimer::RandomReset(double begin, double end)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<double> dist(begin,end);
+    std::uniform_real_distribution<double> dist(begin, end);
     timelen_myj = dist(gen);
+
     timecount_myj = 0;
     isReset = true;
+    if (!created_myj)
+    {
+        created_myj = true;
+        td_myj = std::make_shared<std::thread>(
+            [this]()
+            {
+                this->run();
+            });
+    }
     return true;
 }
 
@@ -47,15 +60,18 @@ void AfterTimer::run()
     {
         if (!running_myj)
         {
-            break;
+            return;
         }
 
         if (!isReset)
         {
             continue;
-        }else{
+        }
+        else
+        {
             isReset = false;
         }
+
         while (timecount_myj < timelen_myj)
         {
             if (type_myj)
@@ -67,7 +83,13 @@ void AfterTimer::run()
                 std::this_thread::sleep_for(std::chrono::microseconds(1));
             }
             timecount_myj = timecount_myj + 1;
+
+            if (!running_myj)
+            {
+                return;
+            }
         }
+
         callback_myj();
     }
 }
@@ -75,4 +97,5 @@ void AfterTimer::run()
 AfterTimer::~AfterTimer()
 {
     running_myj = false;
+    td_myj->join();
 }

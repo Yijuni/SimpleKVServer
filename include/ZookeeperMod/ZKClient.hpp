@@ -18,6 +18,10 @@
 class ZKClient{
 public:
     using watcherCallback = std::function<void()>; 
+    /// @brief 
+    /// @param zkip zookeeper服务器ip
+    /// @param zkport zookeeper服务器端口号
+    /// @param timeout 连接超时时间
     ZKClient(std::string zkip="127.0.0.1",uint16_t zkport=8010,int timeout=10000);
     bool Connect();
     //注册该路径下节点发生变化的回调函数

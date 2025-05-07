@@ -70,15 +70,14 @@ void KVRpcChannel::CallMethod(const MethodDescriptor *method, RpcController *con
     }
 }
 
-KVRpcChannel::KVRpcChannel(std::string ip, uint16_t port) : ip_myj(ip), port_myj(port), connected_myj(false)
+KVRpcChannel::KVRpcChannel(std::string ip, uint16_t port) : ip_myj(ip), port_myj(port), connected_myj(false),clientfd_myj(-1)
 {
-    clientfd_myj = socket(AF_INET, SOCK_STREAM, 0);
     Connection();
 }
 
 KVRpcChannel::~KVRpcChannel()
 {
-    connected_myj = false;
+    connected_myj= false;
     if (clientfd_myj != -1)
     {
         close(clientfd_myj);
@@ -104,6 +103,8 @@ bool KVRpcChannel::TcpSendRecvMsg(std::string &request, std::string &response)
         sprintf(buf, "ip[%s],port[%d],send failed! file:%s line:%d", ip_myj.c_str(), port_myj, __FILE__, __LINE__);
         response = std::string(buf);
         connected_myj = false;
+        close(clientfd_myj);
+        clientfd_myj=-1;
         return false;
     }
     int receive_size = 0;
@@ -115,6 +116,8 @@ bool KVRpcChannel::TcpSendRecvMsg(std::string &request, std::string &response)
         sprintf(buf, "ip[%s],port[%d],receive msg failed! file:%s line:%d", ip_myj.c_str(), port_myj, __FILE__, __LINE__);
         response = std::string(buf);
         connected_myj = false;
+        close(clientfd_myj);   
+        clientfd_myj=-1;
         return false;
     }
     response = std::string(buf, receive_size);
@@ -125,6 +128,7 @@ void KVRpcChannel::Connection()
 {
     if(!connected_myj)
     {
+        clientfd_myj = socket(AF_INET, SOCK_STREAM, 0);
         sockaddr_in server_addr;
         server_addr.sin_family = AF_INET;
         server_addr.sin_port = htons(port_myj);
@@ -132,7 +136,7 @@ void KVRpcChannel::Connection()
         if (connect(clientfd_myj, (sockaddr *)&server_addr, sizeof(server_addr)) == -1)
         {
             LOG_INFO("ip[%s],port[%d],connect failed!", ip_myj.c_str(), port_myj);
-            std::this_thread::sleep_for(std::chrono::microseconds(5000));
+            std::this_thread::sleep_for(std::chrono::microseconds(1000));
             return;
         }
         connected_myj = true;
