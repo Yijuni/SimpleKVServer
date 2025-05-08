@@ -137,6 +137,8 @@ void KVRpcChannel::Connection()
         {
             LOG_INFO("ip[%s],port[%d],connect failed!", ip_myj.c_str(), port_myj);
             std::this_thread::sleep_for(std::chrono::microseconds(1000));
+            close(clientfd_myj);
+            clientfd_myj = -1;
             return;
         }
         connected_myj = true;

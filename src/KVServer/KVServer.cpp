@@ -1,7 +1,7 @@
 #include "KVServer.hpp"
 #include "Logger.hpp"
 #include <string>
-KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkport)
+KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkport,long long maxraftsize)
     : ip_myj(ip), port_myj(port), zkip_myj(zkip), zkport_myj(zkport), 
     name_myj(ip + ":" + std::to_string(port))
 {
@@ -9,7 +9,7 @@ KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkp
     applyChan_myj = std::make_shared<LockQueue<ApplyMsg>>(0);
     zkConnptr_myj = std::make_shared<ZKClient>(zkip, zkport);
     raft_myj = std::make_shared<KVRaft>();
-    service_myj = std::make_shared<KVService>(name_myj,persister_myj,raft_myj,applyChan_myj,500,4096);
+    service_myj = std::make_shared<KVService>(name_myj,persister_myj,raft_myj,applyChan_myj,500,maxraftsize);
 
     //连接zookeeper
     zkConnptr_myj->Connect();
@@ -49,7 +49,8 @@ void KVServer::connectPeers(std::vector<std::string> &server)
         std::string peerip = peerinfo.substr(0, pos);
         uint16_t port = std::stoi(peerinfo.substr(pos + 1));
         LOG_INFO("server[%s]>>获取对端信息:ip[%s],port[%d]", name_myj.c_str(), peerip.c_str(), port);
-        peersConnPtrs_myj.emplace_back(std::make_shared<kvraft::KVRaftRPC_Stub>(new KVRpcChannel(peerip, port)));
+        peersChannels_myj.emplace_back(std::make_shared<KVRpcChannel>(peerip, port));
+        peersConnPtrs_myj.emplace_back(std::make_shared<kvraft::KVRaftRPC_Stub>(peersChannels_myj[peersChannels_myj.size()-1].get()));
         LOG_INFO("server[%s]>>成功连接对端:ip[%s],port[%d]", name_myj.c_str(), peerip.c_str(), port);
     }
     LOG_INFO("server[%s]>>所有对端连接完成", name_myj.c_str());

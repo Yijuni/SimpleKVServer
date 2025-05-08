@@ -392,7 +392,15 @@ void KVRaft::Close()
 {
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     ready_myj = false;
+}
 
+void KVRaft::ChangePeer(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &stubs)
+{
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    status_myj = FOLLOWER;
+    voterFor_myj = "";
+    leaderid_myj = "";
+    peers_myj = stubs;
 }
 
 void KVRaft::persist(std::string &snapshot)

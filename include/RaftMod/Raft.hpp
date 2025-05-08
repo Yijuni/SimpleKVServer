@@ -65,6 +65,8 @@ public:
     void Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, std::string &name, std::shared_ptr<Persister> persister, std::shared_ptr<LockQueue<ApplyMsg>> applyChan);
     //关闭服务
     void Close();
+    //更新对端连接
+    void ChangePeer(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>>& stubs);
 private:
     // 共享资源的锁
     std::mutex sourceMutex_myj;

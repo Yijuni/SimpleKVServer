@@ -14,7 +14,13 @@
 class KVServer
 {
 public:
-    KVServer(std::string ip="127.0.0.1",uint16_t port=8009,std::string zkip="127.0.0.1",uint16_t zkport=2181);
+    /// @brief 
+    /// @param ip 当前服务器ip
+    /// @param port 当前服务器端口
+    /// @param zkip zookeeper服务器ip
+    /// @param zkport zookeeper服务器端口
+    /// @param maxraftsize 持久化raftstate数据最大大小
+    KVServer(std::string ip="127.0.0.1",uint16_t port=8009,std::string zkip="127.0.0.1",uint16_t zkport=2181,long long maxraftsize=-1);
 
 private:
     std::string ip_myj;
@@ -27,7 +33,7 @@ private:
     std::shared_ptr<KVRpcProvider> provider_myj;
     //与对端通信用的stubs
     std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> peersConnPtrs_myj;
-
+    std::vector<std::shared_ptr<KVRpcChannel>> peersChannels_myj;
     //持久化方法
     std::shared_ptr<Persister> persister_myj;
 
