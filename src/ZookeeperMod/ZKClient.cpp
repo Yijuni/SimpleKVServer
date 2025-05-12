@@ -53,7 +53,7 @@ bool ZKClient::getChildInfo(std::string path, std::vector<std::string> &info)
     // zookeeper自带的用于返回孩子节点列表的结构体
     struct String_vector children;
     LOG_INFO("开始获取path[%s]的孩子信息", path.c_str());
-    int ok = zoo_get_children(zkConn_myj, path.c_str(), 0, &children);
+    int ok = zoo_get_children(zkConn_myj, path.c_str(), 1, &children);
     if (ok != ZOK)
     {
         LOG_INFO("获取path[%s]子节点列表信息失败", path.c_str());

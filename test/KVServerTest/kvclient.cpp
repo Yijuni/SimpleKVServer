@@ -2,111 +2,54 @@
 #include "KVRpcController.hpp"
 #include "KVService.pb.h"
 #include "ZKClient.hpp"
-enum ERRORID
-{
-    OK = 1,
-    ErrNoKey = 2,
-    ErrWrongLeader = 3,
-    ErrTimeOut = 4,
-};
+#include "KVClient.hpp"
+
 int main()
 {
-    ZKClient zkcli("127.0.0.1", 2181, 10000);
-    zkcli.Connect();
-    int leaderid = 0;
-    std::vector<std::string> info;
-    std::vector<std::shared_ptr<kvservice::KVServiceRPC_Stub>> kvserver;
-    zkcli.initChildWatcher("/kvserver/servers", []() {});
-    zkcli.registerChildWatcher("/kvserver/servers", info);
-    for (int i = 0; i < info.size(); i++)
-    {
-        std::string peerinfo;
-        zkcli.getPathData("/kvserver/servers/" + info[i], peerinfo);
-        int pos = peerinfo.find(":");
-        std::string peerip = peerinfo.substr(0, pos);
-        uint16_t port = std::stoi(peerinfo.substr(pos + 1));
-        kvserver.emplace_back(std::make_shared<kvservice::KVServiceRPC_Stub>(new KVRpcChannel(peerip, port)));
-    }
-    std::cout << "全部成功连接" << std::endl;
-    int requestid = 0;
+    KVClient client("127.0.0.1", 2181,"client1");
     while (1)
     {
-        string key;
-        std::string value;
         std::string type;
+        std::string key;
+        std::string value;
         std::cin >> type;
         std::cin >> key;
         std::cin >> value;
-
-        while (1)
+        if (type == "Get")
         {
-            if (type == "Get")
+            std::string value;
+            if (client.Get(key, value))
             {
-                kvservice::GetRequest request;
-                kvservice::GetResponse response;
-                request.set_clientid("makabaka");
-                request.set_requestid(requestid);
-                request.set_key(key);
-                KVRpcController controller;
-                kvserver[leaderid]->Get(&controller, &request, &response, nullptr);
-
-                if (controller.Failed())
-                {
-                    std::cout << controller.ErrorText()<<std::endl;
-                    leaderid = (leaderid + 1) % kvserver.size();
-                    continue;
-                }
-                if (response.resultcode().errorcode() != OK)
-                {
-                    leaderid = (leaderid + 1) % kvserver.size();
-                    std::cout << "code:" << response.resultcode().errorcode() << " msg:" << response.resultcode().errormsg() << std::endl;
-                    continue;
-                }
-                std::cout << "成功Get，leader:" << leaderid << std::endl;
-                std::cout << "key:" << key << " value:" << response.value() << std::endl;
+                std::cout << "Get [" << key << "] " << "value [" << value << "]" << std::endl;
             }
             else
             {
-                kvservice::PutAppendRequest request;
-                kvservice::PutAppendResponse response;
-                request.set_clientid("makabaka");
-                request.set_requestid(requestid);
-                request.set_key(key);
-                request.set_value(value);
-                KVRpcController controller;
-                if (type == "Put")
-                {
-                    kvserver[leaderid]->Put(&controller, &request, &response, nullptr);
-                }
-                else
-                {
-                    kvserver[leaderid]->Append(&controller, &request, &response, nullptr);
-                }
-                if (controller.Failed())
-                {
-                    std::cout << controller.ErrorText()<<std::endl;
-                    leaderid = (leaderid + 1) % kvserver.size();
-                    continue;
-                }
-                if (response.resultcode().errorcode() != OK)
-                {
-                    leaderid = (leaderid + 1) % kvserver.size();
-                    std::cout << "code:" << response.resultcode().errorcode() << " msg:" << response.resultcode().errormsg() << std::endl;
-                    continue;
-                }
-                if (type == "Put")
-                {
-                    std::cout << "成功Put，leader:" << leaderid << std::endl;
-                }
-                else
-                {
-                    std::cout << "成功Append，leader:" << leaderid << std::endl;
-                }
+                std::cout << "Get请求失败" << std::endl;
             }
-
-            break;
         }
-        requestid++;
+        else if (type == "Put")
+        {
+
+            if (client.Put(key, value))
+            {
+                std::cout << "Put [" << key << "] " << "value [" << value << "] 成功" << std::endl;
+            }
+            else
+            {
+                std::cout << "Put请求失败" << std::endl;
+            }
+        }
+        else
+        {
+            if (client.Append(key, value))
+            {
+                std::cout << "Append [" << key << "] " << "value [" << value << "] 成功" << std::endl;
+            }
+            else
+            {
+                std::cout << "Append请求失败" << std::endl;
+            }
+        }
     }
 
     return 0;

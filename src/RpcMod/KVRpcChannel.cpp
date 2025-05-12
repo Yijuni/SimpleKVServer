@@ -70,14 +70,14 @@ void KVRpcChannel::CallMethod(const MethodDescriptor *method, RpcController *con
     }
 }
 
-KVRpcChannel::KVRpcChannel(std::string ip, uint16_t port) : ip_myj(ip), port_myj(port), connected_myj(false),clientfd_myj(-1)
+KVRpcChannel::KVRpcChannel(std::string ip, uint16_t port) : ip_myj(ip), port_myj(port), connected_myj(false), clientfd_myj(-1)
 {
     Connection();
 }
 
 KVRpcChannel::~KVRpcChannel()
 {
-    connected_myj= false;
+    connected_myj = false;
     if (clientfd_myj != -1)
     {
         close(clientfd_myj);
@@ -89,14 +89,15 @@ bool KVRpcChannel::TcpSendRecvMsg(std::string &request, std::string &response)
     if (!connected_myj)
     {
         Connection();
-        if(!connected_myj){
+        if (!connected_myj)
+        {
             char buf[1024];
             sprintf(buf, "ip[%s],port[%d],connect to peers failed! file:%s line:%d", ip_myj.c_str(), port_myj, __FILE__, __LINE__);
             response = std::string(buf);
             return false;
         }
     }
-    if (send(clientfd_myj, request.c_str(), request.length(), 0) == -1)
+    if (send(clientfd_myj, request.c_str(), request.length(), MSG_NOSIGNAL) == -1)
     {
         LOG_INFO("ip[%s],port[%d],send failed! file:%s line:%d", ip_myj.c_str(), port_myj, __FILE__, __LINE__);
         char buf[1024];
@@ -104,7 +105,7 @@ bool KVRpcChannel::TcpSendRecvMsg(std::string &request, std::string &response)
         response = std::string(buf);
         connected_myj = false;
         close(clientfd_myj);
-        clientfd_myj=-1;
+        clientfd_myj = -1;
         return false;
     }
     int receive_size = 0;
@@ -116,8 +117,8 @@ bool KVRpcChannel::TcpSendRecvMsg(std::string &request, std::string &response)
         sprintf(buf, "ip[%s],port[%d],receive msg failed! file:%s line:%d", ip_myj.c_str(), port_myj, __FILE__, __LINE__);
         response = std::string(buf);
         connected_myj = false;
-        close(clientfd_myj);   
-        clientfd_myj=-1;
+        close(clientfd_myj);
+        clientfd_myj = -1;
         return false;
     }
     response = std::string(buf, receive_size);
@@ -126,7 +127,7 @@ bool KVRpcChannel::TcpSendRecvMsg(std::string &request, std::string &response)
 
 void KVRpcChannel::Connection()
 {
-    if(!connected_myj)
+    if (!connected_myj)
     {
         clientfd_myj = socket(AF_INET, SOCK_STREAM, 0);
         sockaddr_in server_addr;

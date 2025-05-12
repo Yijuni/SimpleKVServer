@@ -14,7 +14,10 @@ using AfterTimerCallback = std::function<void()>;
 class AfterTimer:public std::enable_shared_from_this<AfterTimer>
 {
 public:
-    // 设置时间 参数1：时间大小 参数2：事件类型（秒、毫秒) 0：毫秒 1：秒
+    /// @brief 
+    /// @param timelen 时间大小
+    /// @param type 事件类型（秒、毫秒) 0：毫秒 1：秒
+    /// @param callback 回调函数
     AfterTimer(double timelen = 1000, int type = 1, AfterTimerCallback callback = []() {});
     void SetTime(double timelen, int type);
     // Reset只执行一次，要想再次执行需要再调用Reset

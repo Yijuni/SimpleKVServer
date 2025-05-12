@@ -141,7 +141,7 @@ void KVRpcProvider::OnMessage(const muduo::net::TcpConnectionPtr &connptr, muduo
 void KVRpcProvider::RPCSendResponse(const muduo::net::TcpConnectionPtr &connptr, google::protobuf::Message *response)
 {
     std::string responsestr;
-        // 序列化回复信息
+    // 序列化回复信息
     if (!response->SerializeToString(&responsestr))
     {
         LOG_INFO("server>>ip[%s]:port[%d] response serialize failed! file:%s line:%d", ip_myj.c_str(), port_myj, __FILE__, __LINE__);

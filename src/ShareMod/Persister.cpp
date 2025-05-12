@@ -19,9 +19,7 @@ Persister::Persister(std::string raftstate_path, std::string snapshot_path)
 Persister::~Persister()
 {
     raftstate_inputFile_myj.close();
-    raftstate_outputFile_myj.close();
     snapshot_inputFile_myj.close();
-    snapshot_outputFile_myj.close();
 }
 
 std::string Persister::ReadRaftState()

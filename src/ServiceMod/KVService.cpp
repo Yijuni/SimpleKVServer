@@ -207,7 +207,7 @@ void KVService::applyLogs()
 void KVService::snapshot(long long logindex)
 {
     double datalen = persister_myj->RaftStateSize();
-    if (datalen / (1.0*maxraftstate_myj) >= 0.9)
+    if (datalen / (1.0 * maxraftstate_myj) >= 0.9)
     {
         LOG_INFO("server[%s]>>开始生成快照，快照最后命令的index = %lld,datalen[%f],maxraftsize[%lld]", name_myj.c_str(), logindex, datalen, maxraftstate_myj);
         std::ostringstream oss;
@@ -346,6 +346,10 @@ void KVService::snapshotHandler(ApplyMsg applymsg)
     }
     LOG_INFO("server[%s]>>开始处理提交的快照,lastLogIndex[%lld]", name_myj.c_str(), applymsg.snapshotIndex);
     std::string data = applymsg.data;
+    if (data == "")
+    {
+        return;
+    }
     std::istringstream iss(data);
     boost::archive::binary_iarchive bis(iss);
     bis >> maxCommitIndex_myj;

@@ -11,6 +11,7 @@
 #include <memory>
 #include <mutex>
 #include <unordered_map>
+
 struct clientLastReply{
     long long requestid;
     std::string replyMsg;
@@ -18,6 +19,7 @@ struct clientLastReply{
     {}
     clientLastReply(){}
 
+    //为了能让boost库的序列化对该结构体生效
     template<typename Archive>
     void serialize(Archive& archive, const unsigned int version)
     {
