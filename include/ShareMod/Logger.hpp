@@ -5,6 +5,7 @@
  * 异步输出日志函数
  */
 #include <string>
+#include <mutex>
 #include "LockQueue.hpp"
 
 #define DEBUG true
