@@ -51,7 +51,7 @@ private:
     std::shared_ptr<KVRaft> raft_myj;
     // raft往service提交日志用
     std::shared_ptr<LockQueue<ApplyMsg>> applyChan_myj;
-
+    
     void connectPeers(std::vector<std::string> &info);
     void childWatcher();
 };

@@ -4,6 +4,7 @@
 #include <string>
 #include <Logger.hpp>
 #include <vector>
+#include <unordered_map>
 class RocksDBAPI{
 public:
     static RocksDBAPI& GetInstance(std::string db_path="./db");
@@ -23,7 +24,10 @@ public:
     bool KVDelete(const std::string& key);
     // 开启数据库
     bool DBOpen();
-    
+    // 获取某个时间点rocksdb的所有kv数据
+    std::unordered_map<std::string,std::string> GenerateKVSnapshot();
+    // 下载数据到当前rocksdb
+    void InstallKVSnapshot(std::unordered_map<std::string,std::string>&);
 private:
     RocksDBAPI();
     ~RocksDBAPI();
