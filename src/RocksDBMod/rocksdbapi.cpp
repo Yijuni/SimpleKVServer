@@ -1,9 +1,9 @@
 #include "rocksdbapi.hpp"
 #include <iostream>
-RocksDBAPI &RocksDBAPI::GetInstance(std::string db_path)
+
+void RocksDBAPI::SetPath(const std::string &db_path)
 {
-    static RocksDBAPI dbapi(db_path);
-    return dbapi;
+    db_path_myj = db_path;
 }
 
 bool RocksDBAPI::RaftMetaPut(const std::string &key, const std::string &value)
@@ -28,7 +28,12 @@ bool RocksDBAPI::RaftMetaGet(const std::string &key, std::string &value)
     }
     rocksdb::Status s = db_myj->Get(rocksdb::ReadOptions(),raft_cf_myj,key,&value);
     if(!s.ok()){
-        LOG_ERROR("raft层原数据读取失败，信息:%s",s.ToString().c_str());
+        if(s.IsNotFound()){
+            value = "";
+        }
+        else{
+            LOG_ERROR("raft层原数据读取失败，信息:%s",s.ToString().c_str());
+        }
         return false;
     }
     return true;
@@ -70,8 +75,13 @@ bool RocksDBAPI::KVGet(const std::string &key, std::string &value)
     }
     rocksdb::Status s = db_myj->Get(rocksdb::ReadOptions(),kv_cf_myj,key,&value);
     if(!s.ok()){
-        LOG_ERROR("kv层原数据读取失败，信息:%s",s.ToString().c_str());
-        return false;
+        if(s.IsNotFound()){
+            value = "";
+            return true;
+        }else{
+            LOG_ERROR("kv层原数据读取失败，信息:%s",s.ToString().c_str());
+            return false;
+        }
     }
     return true;
 }
@@ -165,7 +175,7 @@ RocksDBAPI::~RocksDBAPI()
         db_myj = nullptr;
     }
 }
-RocksDBAPI::RocksDBAPI(std::string &db_path) : db_myj(nullptr), raft_cf_myj(nullptr), kv_cf_myj(nullptr)
+RocksDBAPI::RocksDBAPI(const std::string &db_path) : db_myj(nullptr), raft_cf_myj(nullptr), kv_cf_myj(nullptr)
 {
     LOG_INFO("开始初始化Rocksdb");
     db_path_myj = db_path;

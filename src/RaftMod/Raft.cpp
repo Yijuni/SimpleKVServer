@@ -5,9 +5,10 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/string.hpp>
 #include <sstream>
+#include <cstdio>
 #include "KVRpcController.hpp"
 
-KVRaft::KVRaft() : ready_myj(false)
+KVRaft::KVRaft() : ready_myj(false),dbptr_myj(nullptr)
 {
 }
 
@@ -67,9 +68,12 @@ void KVRaft::AppendEntries(google::protobuf::RpcController *controller, const ::
             }
         }
     }
+    // 有时候服务器重启会直接收到现有节点的追加日志请求，就没法在投票里面更新voterFor，
+    // 有可能导致目前的leader和自己数据库存储的voteFor不一样
+    // 虽然对我的Raft投票方法还没发现有什么不良影响，但是为了一致，还是修改一下voteFor比较好
+    voterFor_myj = request->leaderid();
     electionTimer_myj->RandomReset(electionTimeout_myj, electionTimeout_myj * 2);
-    std::string snapshotdata = persister_myj->ReadSnapshot();
-    persist(snapshotdata);
+    persist();
     lock.unlock();
     done->Run();
 }
@@ -136,8 +140,7 @@ void KVRaft::RequestVote(google::protobuf::RpcController *controller, const ::kv
     status_myj = FOLLOWER;
     response->set_term(currentTerm_myj);
 
-    std::string snapshotdata = persister_myj->ReadSnapshot();
-    persist(snapshotdata);
+    persist();
 
     lock.unlock();
     done->Run();
@@ -195,8 +198,7 @@ void KVRaft::InstallSnapshot(google::protobuf::RpcController *controller, const 
     status_myj = FOLLOWER;
     leaderid_myj = request->leaderid();
 
-    std::string snapshotdata = request->data();
-    persist(snapshotdata);
+    persist(request->data());
 
     ApplyMsg sendApplyMsg;
     sendApplyMsg.commandValid = false;
@@ -285,8 +287,7 @@ bool KVRaft::Start(kvraft::Command command, long long &index, long long &term)
         index = logEntries_myj.size() + lastSnapshotIndex_myj + 1;
         term = currentTerm_myj;
 
-        std::string snapshotdata = persister_myj->ReadSnapshot();
-        persist(snapshotdata);
+        persist();
 
         std::thread td(std::bind(&KVRaft::appendEntriesToFollower, this, currentTerm_myj, commitIndex_myj, peers_myj.size()));
         td.detach();
@@ -297,11 +298,14 @@ bool KVRaft::Start(kvraft::Command command, long long &index, long long &term)
     return false;
 }
 
-void KVRaft::Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, std::string &name, std::shared_ptr<Persister> persister, std::shared_ptr<LockQueue<ApplyMsg>> applyChan)
+void KVRaft::Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, std::string &name, 
+    std::shared_ptr<Persister> persister, std::shared_ptr<LockQueue<ApplyMsg>> applyChan,
+    std::shared_ptr<RocksDBAPI> dbptr)
 {
     peers_myj = peers;
     name_myj = name;
     persister_myj = persister;
+    dbptr_myj = dbptr;
 
     currentTerm_myj = 0;
     voterFor_myj = "";
@@ -356,8 +360,7 @@ void KVRaft::Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, s
                                                voterFor_myj = name_myj;
                                                currentTerm_myj++;
                                                // 持久化数据
-                                               std::string snapshotdata = persister_myj->ReadSnapshot();
-                                               persist(snapshotdata);
+                                               persist();
 
                                                long long lastLogIndex = -1;
                                                long long lastLogTerm = -1;
@@ -381,8 +384,7 @@ void KVRaft::Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, s
                                        });
 
     // 读取持久化数据恢复
-    std::string raftstatedata = persister_myj->ReadRaftState();
-    readPersist(raftstatedata);
+    readPersist();
 
     ready_myj = true; // 这个一定要在下面这些函数启动前，否则下面这个函数会直接退出
     // 启动定时上传日志线程
@@ -412,36 +414,60 @@ void KVRaft::ChangePeer(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &st
     LOG_INFO("server[%s]>>对端信息改变", name_myj.c_str());
 }
 
-void KVRaft::persist(std::string &snapshot)
+void KVRaft::persist(std::string snapshot)
 {
+
+    // 序列化log数组
     std::ostringstream ops;
     boost::archive::binary_oarchive bo(ops);
-
-    bo << currentTerm_myj;
-    bo << voterFor_myj;
-    bo << lastSnapshotIndex_myj;
-    bo << lastSnapshotTerm_myj;
     serializeLogEntriesVector(bo);
-    std::string ostring = ops.str();
-    persister_myj->Save(ostring, snapshot);
-    printf("server[%s]>>持久化数据[%s]\n", name_myj.c_str(), ostring.c_str());
-    LOG_INFO("server[%s]>>持久化数据[%s]", name_myj.c_str(), ostring.c_str());
+    std::string logsostring = ops.str();
+
+    // 这种元数据直接存在rocksdb里面
+    dbptr_myj->RaftMetaPut("currentTerm",std::to_string(currentTerm_myj));
+    dbptr_myj->RaftMetaPut("voteFor",voterFor_myj);
+    dbptr_myj->RaftMetaPut("lastSnapshotIndex",std::to_string(lastSnapshotIndex_myj));
+    dbptr_myj->RaftMetaPut("lastSnapshotTerm",std::to_string(lastSnapshotTerm_myj));
+    // bo << currentTerm_myj;
+    // bo << voterFor_myj;
+    // bo << lastSnapshotIndex_myj;
+    // bo << lastSnapshotTerm_myj;
+    // 只需要序列化日志数组
+    
+    persister_myj->Save(logsostring, snapshot);
+    printf("server[%s]>>logs序列化数据[%s]\n", name_myj.c_str(), logsostring.c_str());
+    LOG_INFO("server[%s]>>logs序列化数据[%s]", name_myj.c_str(), logsostring.c_str());
 }
 
-void KVRaft::readPersist(std::string &data)
+void KVRaft::readPersist()
 {
-    if (data.size() == 0)
-        return;
-    std::istringstream ips(data);
-    boost::archive::binary_iarchive bi(ips);
+    // 只解析log数组
+    std::string data = persister_myj->ReadRaftState();
+    if(data.size()!=0){
+        std::istringstream ips(data);
+        boost::archive::binary_iarchive bi(ips);
+        deserializeLogEntriesVector(bi);
+    }
 
-    bi >> currentTerm_myj;
-    bi >> voterFor_myj;
-    bi >> lastSnapshotIndex_myj;
-    bi >> lastSnapshotTerm_myj;
-    deserializeLogEntriesVector(bi);
-
+    std::string currentTerm="";
+    std::string lastSnapshotIndex="";
+    std::string lastSnapshotTerm="";
+    if(dbptr_myj->RaftMetaGet("currentTerm",currentTerm)){
+        currentTerm_myj = std::stoll(currentTerm);
+    }
+    if(dbptr_myj->RaftMetaGet("lastSnapshotIndex",lastSnapshotIndex)){
+        lastSnapshotIndex_myj = std::stoll(lastSnapshotIndex);
+    }
+    if(dbptr_myj->RaftMetaGet("lastSnapshotTerm",lastSnapshotTerm)){
+        lastSnapshotTerm_myj  =std::stoll(lastSnapshotTerm);
+    }
+    dbptr_myj->RaftMetaGet("voteFor",voterFor_myj);
+    // bi >> currentTerm_myj;
+    // bi >> voterFor_myj;
+    // bi >> lastSnapshotIndex_myj;
+    // bi >> lastSnapshotTerm_myj;
     LOG_INFO("server[%s]>>重启，term:%lld,voteFor:%s,lastSnapshotIndex:%lld,lastSnapshotTerm:%lld", name_myj.c_str(), currentTerm_myj, voterFor_myj.c_str(), lastSnapshotIndex_myj, lastSnapshotTerm_myj);
+    
 }
 
 void KVRaft::electStart(std::string name, long long curterm, long long lastLogIndex, long long lastLogTerm, long long peerscount)
@@ -498,8 +524,7 @@ void KVRaft::electStart(std::string name, long long curterm, long long lastLogIn
                                 }
 
                                 // 持久化
-                                std::string snapshotdata = persister_myj->ReadSnapshot();
-                                persist(snapshotdata);
+                                persist();
 
                                 // 立即发送心跳并启动心跳计时器
                                 std::thread td(std::bind(&KVRaft::appendEntriesToFollower, this, curterm, commitIndex_myj, peerscount));
@@ -513,8 +538,7 @@ void KVRaft::electStart(std::string name, long long curterm, long long lastLogIn
                             status_myj = FOLLOWER;
                             voterFor_myj = "";
                             electionTimer_myj->RandomReset(electionTimeout_myj, electionTimeout_myj * 2);
-                            std::string snapshotdata = persister_myj->ReadSnapshot();
-                            persist(snapshotdata);
+                            persist();
                         }
                     }
                 }
@@ -537,8 +561,7 @@ void KVRaft::electStart(std::string name, long long curterm, long long lastLogIn
         status_myj = FOLLOWER;
         voterFor_myj = "";
         electionTimer_myj->RandomReset(electionTimeout_myj, electionTimeout_myj * 2);
-        std::string snapshotdata = persister_myj->ReadSnapshot();
-        persist(snapshotdata);
+        persist();
         LOG_INFO("server[%s]>>没收到足够选票", name.c_str());
     }
 }
@@ -596,8 +619,7 @@ void KVRaft::appendEntriesToFollower(long long curterm, long long leaderCommit, 
                                                    voterFor_myj = "";
                                                    electionTimer_myj->RandomReset(electionTimeout_myj, electionTimeout_myj * 2);
 
-                                                   std::string snapshotdata = persister_myj->ReadSnapshot();
-                                                   persist(snapshotdata);
+                                                   persist();
 
                                                    return;
                                                }
@@ -674,8 +696,7 @@ void KVRaft::appendEntriesToFollower(long long curterm, long long leaderCommit, 
                                                        voterFor_myj = "";
                                                        electionTimer_myj->RandomReset(electionTimeout_myj, electionTimeout_myj * 2);
 
-                                                       std::string snapshotdata = persister_myj->ReadSnapshot();
-                                                       persist(snapshotdata);
+                                                       persist();
                                                    }
                                                    else
                                                    { // 没匹配上日志

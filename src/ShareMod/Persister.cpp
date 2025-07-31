@@ -50,22 +50,26 @@ void Persister::Save(std::string &raftstate, std::string &snapshot)
 {
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     raftstate_outputFile_myj = std::ofstream(raftstate_path_myj, std::ios::out | std::ios::binary | std::ios::trunc);
-    snapshot_outputFile_myj = std::ofstream(snapshot_path_myj, std::ios::out | std::ios::binary | std::ios::trunc);
     if (!raftstate_outputFile_myj.is_open())
     {
         LOG_ERROR("raftstate：%s 持久化文件无法打开", raftstate_path_myj.c_str());
         return;
     }
-    if (!snapshot_outputFile_myj.is_open())
-    {
-        LOG_ERROR("snapshot: %s 持久化文件无法打开", raftstate_path_myj.c_str());
-        return;
-    }
     WriteData(raftstate_outputFile_myj, raftstate);
-    WriteData(snapshot_outputFile_myj, snapshot);
-
     raftstate_outputFile_myj.close();
-    snapshot_outputFile_myj.close();
+
+    // 这次没传入快照信息，说明快照没变，不需要写入
+    if(snapshot.size()!=0){
+        snapshot_outputFile_myj = std::ofstream(snapshot_path_myj, std::ios::out | std::ios::binary | std::ios::trunc);
+        if (!snapshot_outputFile_myj.is_open())
+        {
+            LOG_ERROR("snapshot: %s 持久化文件无法打开", raftstate_path_myj.c_str());
+            return;
+        }
+        WriteData(snapshot_outputFile_myj, snapshot);
+        snapshot_outputFile_myj.close();
+    }
+    
 }
 
 std::string Persister::ReadData(std::ifstream &stream)
