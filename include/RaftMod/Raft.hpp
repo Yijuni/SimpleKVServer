@@ -15,6 +15,7 @@
 #include <mutex>
 #include <vector>
 #include <memory>
+#include "rocksdbapi.hpp"
 enum STATUS
 {
     FOLLOWER = 0,
@@ -61,8 +62,10 @@ public:
     void Snapshot(long long index, std::string &snapshot);
     // 上层追加命令用 参数1：命令 参数2：如果这条命令达成共识他的index是多少 参数3：这条命令追加时服务器的任期
     bool Start(kvraft::Command command, long long &index, long long &term);
-    // 启动Raft，参数1：与其他对端通信用的stub 参数2：该服务器名字（唯一标识） 参数3：用来持久化 参数4：往上层提交达成共识的命令、快照
-    void Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, std::string &name, std::shared_ptr<Persister> persister, std::shared_ptr<LockQueue<ApplyMsg>> applyChan);
+    // 启动Raft，参数1：与其他对端通信用的stub 参数2：该服务器名字（唯一标识） 参数3：用来持久化 参数4：往上层提交达成共识的命令、快照 参数5：指向rocksdb数据库指针
+    void Make(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &peers, std::string &name, 
+        std::shared_ptr<Persister> persister, std::shared_ptr<LockQueue<ApplyMsg>> applyChan,
+        std::shared_ptr<RocksDBAPI> dbptr);
     //关闭服务
     void Close();
     //更新对端连接
@@ -116,10 +119,13 @@ private:
     //是否已经初始化完成,只有执行完Make才能响应其他服务器请求
     std::atomic<bool> ready_myj;
 
+    // 数据库指针
+    std::shared_ptr<RocksDBAPI> dbptr_myj;
+
     // 持久化函数，参数1：序列化的快照数据
-    void persist(std::string &snapshot);
+    void persist(std::string snapshot="");
     // 读取持久化信息并反序列化出来 参数1：持久化的数据
-    void readPersist(std::string &data);
+    void readPersist();
 
     // leader选举
     void electStart(std::string name, long long curterm, long long lastLogIndex, long long lastLogTerm, long long peerscount);

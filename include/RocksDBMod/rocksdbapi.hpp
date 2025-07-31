@@ -7,8 +7,10 @@
 #include <unordered_map>
 class RocksDBAPI{
 public:
-    static RocksDBAPI& GetInstance(std::string db_path="./db");
-
+    ~RocksDBAPI();
+    RocksDBAPI(const std::string& db_path="./db");
+    // 可以自己选择db路径
+    void SetPath(const std::string& db_path);
     // 存放Raft层持久化的元数据 term、voteFor、logs、snapshot等
     bool RaftMetaPut(const std::string& key,const std::string& value);
     // Raft层获取源数据
@@ -29,11 +31,7 @@ public:
     // 下载数据到当前rocksdb
     void InstallKVSnapshot(std::unordered_map<std::string,std::string>&);
 private:
-    RocksDBAPI();
-    ~RocksDBAPI();
-    RocksDBAPI(std::string& db_path);
-    RocksDBAPI(const RocksDBAPI&) = delete;
-    RocksDBAPI& operator=(const RocksDBAPI&) = delete;
+
 
     // 数据库保存路径
     std::string db_path_myj;
