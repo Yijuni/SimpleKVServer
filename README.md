@@ -21,4 +21,4 @@ C++实现的基于Raft算法、RocksDB、Zookeeper、Muduo网络库、Protobuf�
 8. **异步日志打印**  
     实现异步日志打印功能，减少日志操作对主线程的影响，提高系统性能，支持日志的缓冲和批量写入，提高日志记录的效率。
 ## 框架
-![alt text](1.png)
+![alt text](./imgs/1.png)
