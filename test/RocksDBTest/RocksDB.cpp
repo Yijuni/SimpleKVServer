@@ -3,6 +3,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <unordered_map>
 
 void testRaftMetaOperations(RocksDBAPI& db) {
     std::cout << "\n=== 测试Raft元数据操作 ===" << std::endl;
@@ -106,6 +107,38 @@ void testKVOperations(RocksDBAPI& db) {
     }
 }
 
+void testKVSnapshots(RocksDBAPI& db) {
+    std::cout << "\n=== 测试KV快照功能 ===" << std::endl;
+    // 先写入几条KV
+    db.KVPut("snap1", "v1");
+    db.KVPut("snap2", "v2");
+    db.KVPut("snap3", "v3");
+    std::cout << "已写入snap1, snap2, snap3" << std::endl;
+
+    // 获取快照
+    auto snapshot = db.GenerateKVSnapshot();
+    std::cout << "当前KV快照内容：" << std::endl;
+    for (const auto& kv : snapshot) {
+        std::cout << kv.first << " = " << kv.second << std::endl;
+    }
+
+    // 清空kv_cf（通过InstallKVSnapshot写入空map）
+    std::unordered_map<std::string, std::string> empty_map;
+    db.InstallKVSnapshot(empty_map);
+    std::cout << "已清空kv_cf列族。" << std::endl;
+    auto after_clear = db.GenerateKVSnapshot();
+    std::cout << "清空后快照内容条数: " << after_clear.size() << std::endl;
+
+    // 恢复快照
+    db.InstallKVSnapshot(snapshot);
+    std::cout << "已恢复快照。" << std::endl;
+    auto after_restore = db.GenerateKVSnapshot();
+    std::cout << "恢复后快照内容：" << std::endl;
+    for (const auto& kv : after_restore) {
+        std::cout << kv.first << " = " << kv.second << std::endl;
+    }
+}
+
 void testInteractiveMode(RocksDBAPI& db) {
     std::cout << "\n=== 交互式测试模式 ===" << std::endl;
     std::cout << "请输入要测试的操作类型 (1:Raft元数据, 2:KV数据, 0:退出): ";
@@ -172,7 +205,7 @@ int main() {
     try {
         // 获取RocksDBAPI实例
         std::cout << "初始化RocksDBAPI..." << std::endl;
-        RocksDBAPI& db = RocksDBAPI::GetInstance("./test_db");
+        RocksDBAPI db = RocksDBAPI();
         
         // 打开数据库
         std::cout << "打开数据库..." << std::endl;
@@ -185,6 +218,7 @@ int main() {
         // 执行自动化测试
         testRaftMetaOperations(db);
         testKVOperations(db);
+        testKVSnapshots(db);
         
         // 交互式测试
         char continue_test;

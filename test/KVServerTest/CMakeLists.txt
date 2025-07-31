@@ -12,3 +12,12 @@ target_link_libraries(kvserver kvrpc protobuf zookeeper_mt boost_serialization)
 
 add_executable(kvclient ${SRC_LIST2})
 target_link_libraries(kvclient kvrpc protobuf zookeeper_mt)
+
+# 为KVServerTest设置专门的输出目录
+set_target_properties(kvserver PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/kvserver_test
+)
+
+set_target_properties(kvclient PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/kvserver_test
+)
