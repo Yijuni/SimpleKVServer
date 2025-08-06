@@ -31,8 +31,10 @@ public:
     // 下载数据到当前rocksdb
     void InstallKVSnapshot(std::unordered_map<std::string,std::string>&);
 private:
-
-
+    // raft层操作时临界区锁
+    std::mutex db_raft_mutex_myj;
+    // service层操作时的临界区锁
+    std::mutex db_service_mutex_myj;
     // 数据库保存路径
     std::string db_path_myj;
     // 数据库实例指针

@@ -1,6 +1,5 @@
 #include "rocksdbapi.hpp"
 #include <iostream>
-
 void RocksDBAPI::SetPath(const std::string &db_path)
 {
     db_path_myj = db_path;
@@ -8,6 +7,7 @@ void RocksDBAPI::SetPath(const std::string &db_path)
 
 bool RocksDBAPI::RaftMetaPut(const std::string &key, const std::string &value)
 {
+    std::unique_lock<std::mutex> lock(db_raft_mutex_myj);
     if(!db_myj || !raft_cf_myj){
         LOG_ERROR("raft层元数据写入失败，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
         return false;
@@ -22,6 +22,7 @@ bool RocksDBAPI::RaftMetaPut(const std::string &key, const std::string &value)
 
 bool RocksDBAPI::RaftMetaGet(const std::string &key, std::string &value)
 {
+    std::unique_lock<std::mutex> lock(db_raft_mutex_myj);
     if(!db_myj || !raft_cf_myj){
         LOG_ERROR("raft层元数据读取失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
         return false;
@@ -41,6 +42,7 @@ bool RocksDBAPI::RaftMetaGet(const std::string &key, std::string &value)
 
 bool RocksDBAPI::RaftMetaDelete(const std::string &key)
 {
+    std::unique_lock<std::mutex> lock(db_raft_mutex_myj);
     if(!db_myj || !raft_cf_myj){
         LOG_ERROR("raft层元数据删除失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
         return false;
@@ -55,6 +57,7 @@ bool RocksDBAPI::RaftMetaDelete(const std::string &key)
 
 bool RocksDBAPI::KVPut(const std::string &key, const std::string &value)
 {
+    std::unique_lock<std::mutex> lock(db_service_mutex_myj);
     if(!db_myj || !kv_cf_myj){        
         LOG_ERROR("kv层元数据写入失败，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
         return false;
@@ -69,6 +72,7 @@ bool RocksDBAPI::KVPut(const std::string &key, const std::string &value)
 
 bool RocksDBAPI::KVGet(const std::string &key, std::string &value)
 {
+    std::unique_lock<std::mutex> lock(db_service_mutex_myj);
     if(!db_myj || !kv_cf_myj){
         LOG_ERROR("kv层元数据读取失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
         return false;
@@ -88,6 +92,7 @@ bool RocksDBAPI::KVGet(const std::string &key, std::string &value)
 
 bool RocksDBAPI::KVDelete(const std::string &key)
 {
+    std::unique_lock<std::mutex> lock(db_service_mutex_myj);
     if(!db_myj || !kv_cf_myj){
         LOG_ERROR("kv层元数据删除失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
         return false;
@@ -125,6 +130,7 @@ bool RocksDBAPI::DBOpen()
 
 std::unordered_map<std::string, std::string> RocksDBAPI::GenerateKVSnapshot()
 {
+    std::unique_lock<std::mutex> lock(db_service_mutex_myj);
     std::unordered_map<std::string,std::string> tmp_map;
     rocksdb::ReadOptions read_opts;
     // 创建迭代器
@@ -138,6 +144,7 @@ std::unordered_map<std::string, std::string> RocksDBAPI::GenerateKVSnapshot()
 
 void RocksDBAPI::InstallKVSnapshot(std::unordered_map<std::string, std::string> &kv_map)
 {
+    std::unique_lock<std::mutex> lock(db_service_mutex_myj);
     for(int i=0;i<cf_handles_myj.size();i++){
         if(cf_handles_myj[i]->GetName()=="kv_cf");
         cf_handles_myj.erase(cf_handles_myj.begin()+i);    
