@@ -81,11 +81,10 @@ bool RocksDBAPI::KVGet(const std::string &key, std::string &value)
     if(!s.ok()){
         if(s.IsNotFound()){
             value = "";
-            return true;
         }else{
             LOG_ERROR("kv层原数据读取失败，信息:%s",s.ToString().c_str());
-            return false;
         }
+        return false;
     }
     return true;
 }
@@ -100,6 +99,55 @@ bool RocksDBAPI::KVDelete(const std::string &key)
     rocksdb::Status s = db_myj->Delete(rocksdb::WriteOptions(),kv_cf_myj,key);
     if(!s.ok()){
         LOG_ERROR("kv层原数据删除失败，信息:%s",s.ToString().c_str());
+        return false;
+    }
+    return true;
+}
+
+bool RocksDBAPI::ClientRequestPut(const std::string &key, const std::string &value)
+{                                       
+    std::unique_lock<std::mutex> lock(db_client_request_mutex_myj);
+    if(!db_myj || !client_request_cf_myj){        
+        LOG_ERROR("client请求信息写入失败，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return false;
+    }
+    rocksdb::Status s = db_myj->Put(rocksdb::WriteOptions(),client_request_cf_myj,key,value);
+    if(!s.ok()){
+        LOG_ERROR("client请求信息写入失败，信息:%s",s.ToString().c_str());
+        return false;
+    }
+    return true;
+}
+
+bool RocksDBAPI::ClientRequestGet(const std::string &key, std::string &value)
+{
+    std::unique_lock<std::mutex> lock(db_client_request_mutex_myj);
+    if(!db_myj || !client_request_cf_myj){
+        LOG_ERROR("client请求信息读取失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return false;
+    }
+    rocksdb::Status s = db_myj->Get(rocksdb::ReadOptions(),client_request_cf_myj,key,&value);
+    if(!s.ok()){
+        if(s.IsNotFound()){
+            value = "";
+        }else{
+            LOG_ERROR("client请求信息读取失败，信息:%s",s.ToString().c_str());
+        }
+        return false;
+    }
+    return true;
+}
+
+bool RocksDBAPI::ClientRequestDelete(const std::string &key)
+{
+    std::unique_lock<std::mutex> lock(db_client_request_mutex_myj);
+    if(!db_myj || !client_request_cf_myj){
+        LOG_ERROR("client请求信息数据删除失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return false;
+    }
+    rocksdb::Status s = db_myj->Delete(rocksdb::WriteOptions(),client_request_cf_myj,key);
+    if(!s.ok()){
+        LOG_ERROR("client请求信息数据删除失败，信息:%s",s.ToString().c_str());
         return false;
     }
     return true;
@@ -123,6 +171,9 @@ bool RocksDBAPI::DBOpen()
         }
         if(cf_handles_myj[i]->GetName()=="kv_cf"){
             kv_cf_myj = cf_handles_myj[i];
+        }
+        if(cf_handles_myj[i]->GetName()=="client_request_cf"){
+            client_request_cf_myj = cf_handles_myj[i];
         }
     }
     return true;
@@ -182,7 +233,7 @@ RocksDBAPI::~RocksDBAPI()
         db_myj = nullptr;
     }
 }
-RocksDBAPI::RocksDBAPI(const std::string &db_path) : db_myj(nullptr), raft_cf_myj(nullptr), kv_cf_myj(nullptr)
+RocksDBAPI::RocksDBAPI(const std::string &db_path) : db_myj(nullptr), raft_cf_myj(nullptr), kv_cf_myj(nullptr),client_request_cf_myj(nullptr)
 {
     LOG_INFO("开始初始化Rocksdb");
     db_path_myj = db_path;
@@ -192,7 +243,7 @@ RocksDBAPI::RocksDBAPI(const std::string &db_path) : db_myj(nullptr), raft_cf_my
     // 没有对应的列族就创建
     options_myj.create_missing_column_families = true;
     // 列族名称
-    std::vector<std::string> cf_names = {"default","raft_cf","kv_cf"}; 
+    std::vector<std::string> cf_names = {"default","raft_cf","kv_cf","client_request_cf"}; 
     // 构建列族的描述符，包括列名和对应的选项
     for(auto& name : cf_names){
         cf_desc_myj.emplace_back(name,rocksdb::ColumnFamilyOptions());

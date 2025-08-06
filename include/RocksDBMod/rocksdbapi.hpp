@@ -24,6 +24,13 @@ public:
     bool KVGet(const std::string& key, std::string &value);
     // 删除KV数据
     bool KVDelete(const std::string& key);
+
+    // 存放client请求信息
+    bool ClientRequestPut(const std::string& key,const std::string& value);
+    // 获取client请求信息
+    bool ClientRequestGet(const std::string& key, std::string &value);
+    // 删除client请求信息
+    bool ClientRequestDelete(const std::string& key);
     // 开启数据库
     bool DBOpen();
     // 获取某个时间点rocksdb的所有kv数据
@@ -35,6 +42,8 @@ private:
     std::mutex db_raft_mutex_myj;
     // service层操作时的临界区锁
     std::mutex db_service_mutex_myj;
+    // client请求信息的锁
+    std::mutex db_client_request_mutex_myj;
     // 数据库保存路径
     std::string db_path_myj;
     // 数据库实例指针
@@ -49,5 +58,6 @@ private:
     std::vector<rocksdb::ColumnFamilyDescriptor> cf_desc_myj;
     rocksdb::ColumnFamilyHandle* raft_cf_myj;
     rocksdb::ColumnFamilyHandle* kv_cf_myj;
+    rocksdb::ColumnFamilyHandle* client_request_cf_myj;
 
 };
