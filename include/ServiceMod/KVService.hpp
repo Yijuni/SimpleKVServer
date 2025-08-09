@@ -5,6 +5,7 @@
  * KV服务器服务层的service，供客户端调用，完成了get put append 操作
  */
 #include "KVService.pb.h"
+#include "rocksdbapi.hpp"
 #include "Persister.hpp"
 #include "LockQueue.hpp"
 #include "Raft.hpp"
@@ -54,7 +55,8 @@ public:
     /// @param applyChan raft层往服务层提交共识日志的channel
     /// @param timeout 客户端请求等待超时时间
     /// @param maxraftstate raftstate持久化信息大小阈值
-    KVService(std::string name,std::shared_ptr<Persister> persister,std::shared_ptr<KVRaft> raft,std::shared_ptr<LockQueue<ApplyMsg>> applyChan,int timeout,int maxraftstate);
+    KVService(std::string name,std::shared_ptr<Persister> persister,std::shared_ptr<KVRaft> raft,
+        std::shared_ptr<LockQueue<ApplyMsg>> applyChan,int timeout,int maxraftstate,std::shared_ptr<RocksDBAPI> db);
     void Get(google::protobuf::RpcController* controller,const ::kvservice::GetRequest* request,
         ::kvservice::GetResponse* response,
         ::google::protobuf::Closure* done);
@@ -96,6 +98,9 @@ private:
     long long maxraftstate_myj;
     //当前提交日志的最高下标，就算某条日志的命令没执行也要记录（可能重复命令）
     long long maxCommitIndex_myj;
+    
+    // 数据库指针
+    std::shared_ptr<RocksDBAPI> db_myj;
 
     //记录键值对
     std::unordered_map<std::string,std::string> keyvalue_myj;

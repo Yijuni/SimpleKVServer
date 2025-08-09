@@ -9,11 +9,13 @@ KVService::KVService()
 {
 }
 
-KVService::KVService(std::string name, std::shared_ptr<Persister> persister, std::shared_ptr<KVRaft> raft, std::shared_ptr<LockQueue<ApplyMsg>> applyChan, int timeout, int maxraftstate)
+KVService::KVService(std::string name, std::shared_ptr<Persister> persister, std::shared_ptr<KVRaft> raft, 
+    std::shared_ptr<LockQueue<ApplyMsg>> applyChan, int timeout, int maxraftstate,std::shared_ptr<RocksDBAPI> db)
     : name_myj(name), persister_myj(persister), raft_myj(raft), applyChan_myj(applyChan), ready_myj(false),
       timeout_myj(timeout), maxraftstate_myj(maxraftstate), snapshoting_myj(false), maxCommitIndex_myj(-1)
 {
-    readPersist(persister_myj->ReadSnapshot());
+    db_myj = db;
+    // readPersist(persister_myj->ReadSnapshot());
     ready_myj = true;
     std::thread td(std::bind(&KVService::applyLogs, this));
     td.detach();
@@ -27,13 +29,19 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     LOG_INFO("server[%s]>>收到Get请求,clientid[%s],requestid[%lld]", name_myj.c_str(), clientid.c_str(), requestid);
 
-    auto iter = clientLastRequest_myj.find(clientid);
-    if (iter != clientLastRequest_myj.end() && iter->second.requestid >= request->requestid())
-    {
-        response->mutable_resultcode()->set_errorcode(OK);
-        response->set_value(iter->second.replyMsg);
-        done->Run();
-        return;
+    std::string requestinfo;
+    // 获取请求信息并反序列化出来
+    if(db_myj->ClientRequestGet(clientid,requestinfo)){
+        std::istringstream iss(requestinfo);
+        boost::archive::binary_iarchive bis(iss);
+        clientLastReply clr;
+        bis >> clr;
+        if(clr.requestid >= request->requestid()){
+            response->mutable_resultcode()->set_errorcode(OK);
+            response->set_value(clr.replyMsg);
+            done->Run();
+            return;
+        }
     }
 
     lock.unlock();
@@ -84,12 +92,18 @@ void KVService::Put(google::protobuf::RpcController *controller, const ::kvservi
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     LOG_INFO("server[%s]>>收到Put请求,clientid[%s],requestid[%lld]", name_myj.c_str(), clientid.c_str(), requestid);
 
-    auto iter = clientLastRequest_myj.find(clientid);
-    if (iter != clientLastRequest_myj.end() && iter->second.requestid >= request->requestid())
-    {
-        response->mutable_resultcode()->set_errorcode(OK);
-        done->Run();
-        return;
+    std::string requestinfo;
+    // 获取请求信息并反序列化出来
+    if(db_myj->ClientRequestGet(clientid,requestinfo)){
+        std::istringstream iss(requestinfo);
+        boost::archive::binary_iarchive bis(iss);
+        clientLastReply clr;
+        bis >> clr;
+        if(clr.requestid >= request->requestid()){
+            response->mutable_resultcode()->set_errorcode(OK);
+            done->Run();
+            return;
+        }
     }
 
     lock.unlock();
@@ -140,12 +154,18 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     LOG_INFO("server[%s]>>收到Append请求,clientid[%s],requestid[%lld]", name_myj.c_str(), clientid.c_str(), requestid);
 
-    auto iter = clientLastRequest_myj.find(clientid);
-    if (iter != clientLastRequest_myj.end() && iter->second.requestid >= request->requestid())
-    {
-        response->mutable_resultcode()->set_errorcode(OK);
-        done->Run();
-        return;
+    std::string requestinfo;
+    // 获取请求信息并反序列化出来
+    if(db_myj->ClientRequestGet(clientid,requestinfo)){
+        std::istringstream iss(requestinfo);
+        boost::archive::binary_iarchive bis(iss);
+        clientLastReply clr;
+        bis >> clr;
+        if(clr.requestid >= request->requestid()){
+            response->mutable_resultcode()->set_errorcode(OK);
+            done->Run();
+            return;
+        }
     }
 
     lock.unlock();
@@ -212,15 +232,23 @@ void KVService::snapshot(long long logindex)
         LOG_INFO("server[%s]>>开始生成快照，快照最后命令的index = %lld,datalen[%f],maxraftsize[%lld]", name_myj.c_str(), logindex, datalen, maxraftstate_myj);
         std::ostringstream oss;
         boost::archive::binary_oarchive bos(oss);
+        // 生成KV快照
+        std::unordered_map<std::string,std::string> kvmap=db_myj->GenerateKVSnapshot();
+        // 生成client_request快照
+        std::unordered_map<std::string,std::string> client_request = db_myj->GenerateClientRequestSnapshot();
+        // 记录当前执行的最后一条命令的index
         bos << maxCommitIndex_myj;
-        bos << keyvalue_myj;
-        bos << clientLastRequest_myj;
+        // 当前kv数据
+        bos << kvmap;
+        // 记录客户端回应结果
+        bos << client_request;
         std::string data = oss.str();
         raft_myj->Snapshot(logindex, data);
     }
     snapshoting_myj = false;
 }
 
+// 2025.8.4 这个函数没有存在的必要了
 void KVService::readPersist(std::string data)
 {
     if (data.size() == 0)
@@ -230,9 +258,11 @@ void KVService::readPersist(std::string data)
     LOG_INFO("server[%s]启动！", name_myj.c_str());
     std::istringstream iss(data);
     boost::archive::binary_iarchive bis(iss);
+    std::unordered_map<std::string,std::string> kvmap;
     bis >> maxCommitIndex_myj;
-    bis >> keyvalue_myj;
+    bis >> kvmap;
     bis >> clientLastRequest_myj;
+
 }
 
 void KVService::commandApplyHandler(ApplyMsg applymsg)
@@ -251,20 +281,29 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
 
     if (logindex <= maxCommitIndex_myj)
     {
-        LOG_INFO("server[%s]>>maxCommitIndex[%lld],current log index[%lld]", name_myj.c_str(), maxCommitIndex_myj, logindex);
+        LOG_INFO("server[%s]>>maxCommitIndex[%lld],current log index[%lld]已经执行过", name_myj.c_str(), maxCommitIndex_myj, logindex);
         return;
     }
-    auto iter = clientLastRequest_myj.find(clientid);
-    clientLastReply lastReply;
-    if (iter != clientLastRequest_myj.end())
-    {
-        lastReply = clientLastRequest_myj[clientid];
-    }
-    // 当前指令已经执行过
-    if (optype != "Get" && iter != clientLastRequest_myj.end() && lastReply.requestid >= requestid)
-    {
+    // 更新最大的提交日志的index
+    maxCommitIndex_myj = logindex;
 
-        maxCommitIndex_myj = logindex;
+    // 获取当前指令的客户端最后一个请求的requestid
+    std::string clientid;
+    std::string requestinfo;
+    clientLastReply lastReply;
+    bool existFlag=false;
+    if((existFlag = db_myj->ClientRequestGet(clientid,requestinfo))){
+        std::istringstream iss(requestinfo);
+        boost::archive::binary_iarchive bis(iss);
+        bis >> lastReply;
+    }
+
+    // 当前key对应的value
+    std::string curValue;
+    db_myj->KVGet(key,curValue);
+    // 当前指令已经执行过
+    if (optype != "Get" && existFlag && lastReply.requestid >= requestid)
+    {
 
         if (maxraftstate_myj != -1)
         {
@@ -282,18 +321,27 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
     {
         if (optype == "Append")
         {
-            keyvalue_myj[key] = keyvalue_myj[key] + value;
-            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), key.c_str(), keyvalue_myj[key].c_str());
+            // 获取原始数据，然后拼接
+            curValue += value;
+            db_myj->KVPut(key,curValue);
+            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), key.c_str(), curValue.c_str());
         }
         if (optype == "Put")
         {
-            keyvalue_myj[key] = value;
-            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), key.c_str(), value.c_str());
+            curValue = value;
+            db_myj->KVPut(key,curValue);
+            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), key.c_str(), curValue.c_str());
         }
-        clientLastRequest_myj[clientid] = clientLastReply(requestid, keyvalue_myj[key]);
+        // 更新客户端最后请求信息
+        std::ostringstream oss;
+        boost::archive::binary_oarchive obs(oss);
+        lastReply = clientLastReply(requestid, curValue);
+        obs << lastReply;
+        std::string data = oss.str();
+        db_myj->ClientRequestPut(clientid,data); 
     }
 
-    maxCommitIndex_myj = logindex;
+    
 
     if (maxraftstate_myj != -1)
     {
@@ -310,7 +358,7 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
     if (notifyChanIter != notifyChan_myj.end())
     {
         notifyChanMsg notifymsg;
-        notifymsg.result = keyvalue_myj[key];
+        notifymsg.result = curValue;
         notifymsg.errid = OK;
 
         std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChanIter->second;
@@ -340,7 +388,7 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
 void KVService::snapshotHandler(ApplyMsg applymsg)
 {
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
-    if (maxCommitIndex_myj > applymsg.snapshotIndex)
+    if (maxCommitIndex_myj >= applymsg.snapshotIndex)
     {
         return;
     }
@@ -350,11 +398,16 @@ void KVService::snapshotHandler(ApplyMsg applymsg)
     {
         return;
     }
+    std::unordered_map<std::string,std::string> kvmap;
+    std::unordered_map<std::string,std::string> client_request;
     std::istringstream iss(data);
     boost::archive::binary_iarchive bis(iss);
     bis >> maxCommitIndex_myj;
-    bis >> keyvalue_myj;
-    bis >> clientLastRequest_myj;
+    bis >> kvmap;
+    bis >> client_request;
+    // 下载leader传来的快照，更新到本地数据库
+    db_myj->InstallKVSnapshot(kvmap);
+    db_myj->InstallClientRequestSnapshot(client_request);
 }
 
 void KVService::waitRequestCommit(std::shared_ptr<LockQueue<notifyChanMsg>> notifychan, kvservice::ResultCode &resultcode, std::string &value)
