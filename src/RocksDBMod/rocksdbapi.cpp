@@ -218,6 +218,43 @@ void RocksDBAPI::InstallKVSnapshot(std::unordered_map<std::string, std::string> 
     }
 }
 
+std::unordered_map<std::string, std::string> RocksDBAPI::GenerateClientRequestSnapshot()
+{
+    std::unique_lock<std::mutex> lock(db_client_request_mutex_myj);
+    std::unordered_map<std::string,std::string> tmp_map;
+    rocksdb::ReadOptions read_opts;
+    // 创建迭代器
+    std::unique_ptr<rocksdb::Iterator> iter(db_myj->NewIterator(read_opts,client_request_cf_myj));
+    for(iter->SeekToFirst();iter->Valid();iter->Next()){
+        tmp_map[iter->key().ToString()] = iter->value().ToString();
+    }
+    return tmp_map;
+}
+
+void RocksDBAPI::InstallClientRequestSnapshot(std::unordered_map<std::string, std::string> &client_request_map)
+{
+    std::unique_lock<std::mutex> lock(db_client_request_mutex_myj);
+    for(int i=0;i<cf_handles_myj.size();i++){
+        if(cf_handles_myj[i]->GetName()=="client_request_cf");
+        cf_handles_myj.erase(cf_handles_myj.begin()+i);    
+    }
+
+    // 删除列族
+    db_myj->DropColumnFamily(client_request_cf_myj);
+    client_request_cf_myj = nullptr;
+
+    // 创建列族
+    rocksdb::ColumnFamilyOptions col_opt;
+    std::string name = "client_request_cf";
+    db_myj->CreateColumnFamily(col_opt,name,&client_request_cf_myj);
+    cf_handles_myj.push_back(client_request_cf_myj);
+    
+    for(auto iter = client_request_map.begin();iter!=client_request_map.end();iter++){
+        std::string key = iter->first;
+        std::string value = iter->second;
+        ClientRequestPut(key,value);
+    }
+}
 RocksDBAPI::~RocksDBAPI()
 {
     LOG_INFO("rocksdb关闭");

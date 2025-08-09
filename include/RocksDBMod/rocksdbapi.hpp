@@ -35,8 +35,12 @@ public:
     bool DBOpen();
     // 获取某个时间点rocksdb的所有kv数据
     std::unordered_map<std::string,std::string> GenerateKVSnapshot();
-    // 下载数据到当前rocksdb
+    // 下载KV数据到当前rocksdb
     void InstallKVSnapshot(std::unordered_map<std::string,std::string>&);
+    // 获取某个时间点rocksdb的所有客户端请求信息
+    std::unordered_map<std::string,std::string> GenerateClientRequestSnapshot();
+    // 下载客户端请求信息数据到当前rocksdb
+    void InstallClientRequestSnapshot(std::unordered_map<std::string,std::string>&);
 private:
     // raft层操作时临界区锁
     std::mutex db_raft_mutex_myj;
