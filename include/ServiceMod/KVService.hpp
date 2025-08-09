@@ -102,10 +102,13 @@ private:
     // 数据库指针
     std::shared_ptr<RocksDBAPI> db_myj;
 
+    // 2025.8.9 以下内容失效了
     //记录键值对
     std::unordered_map<std::string,std::string> keyvalue_myj;
     //记录某客户端最后一条请求结果
     std::unordered_map<std::string,clientLastReply> clientLastRequest_myj;
+
+
     //给正在等待结果的请求返回结果
     std::unordered_map<long long,std::shared_ptr<LockQueue<notifyChanMsg>>> notifyChan_myj;
     //等待结果超时时间

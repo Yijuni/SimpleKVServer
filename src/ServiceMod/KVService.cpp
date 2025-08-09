@@ -259,9 +259,10 @@ void KVService::readPersist(std::string data)
     std::istringstream iss(data);
     boost::archive::binary_iarchive bis(iss);
     std::unordered_map<std::string,std::string> kvmap;
+    std::unordered_map<std::string,std::string> client_request;
     bis >> maxCommitIndex_myj;
     bis >> kvmap;
-    bis >> clientLastRequest_myj;
+    bis >> client_request;
 
 }
 
@@ -288,7 +289,6 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
     maxCommitIndex_myj = logindex;
 
     // 获取当前指令的客户端最后一个请求的requestid
-    std::string clientid;
     std::string requestinfo;
     clientLastReply lastReply;
     bool existFlag=false;
