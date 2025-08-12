@@ -14,6 +14,7 @@
 #include "Persister.hpp"
 #include "KVRpcProvider.hpp"
 #include "KVRpcChannel.hpp"
+#include "rocksdbapi.hpp"
 #include <vector>
 #include "ZKClient.hpp"
 #include <memory>
@@ -51,7 +52,9 @@ private:
     std::shared_ptr<KVRaft> raft_myj;
     // raft往service提交日志用
     std::shared_ptr<LockQueue<ApplyMsg>> applyChan_myj;
-    
+    // rocksdb的api指针
+    std::shared_ptr<RocksDBAPI> db_myj;
+
     void connectPeers(std::vector<std::string> &info);
     void childWatcher();
 };

@@ -9,8 +9,14 @@ KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkp
     applyChan_myj = std::make_shared<LockQueue<ApplyMsg>>(0);
     zkConnptr_myj = std::make_shared<ZKClient>(zkip, zkport);
     raft_myj = std::make_shared<KVRaft>();
-    service_myj = std::make_shared<KVService>(name_myj, persister_myj, raft_myj, applyChan_myj, 500, maxraftsize);
+    db_myj = std::make_shared<RocksDBAPI>();
 
+    // 打开本地数据库
+    db_myj->DBOpen();
+
+    // 初始化服务层
+    service_myj = std::make_shared<KVService>(name_myj, persister_myj, raft_myj, applyChan_myj, 500, maxraftsize,db_myj);
+    
     // 连接zookeeper
     zkConnptr_myj->Connect();
     zkConnptr_myj->initChildWatcher("/kvserver/servers", std::bind(&KVServer::childWatcher, this));
@@ -28,9 +34,9 @@ KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkp
 
     // 连接到对端
     connectPeers(server);
-
+    
     // 初始化raft
-    raft_myj->Make(peersConnPtrs_myj, name_myj, persister_myj, applyChan_myj);
+    raft_myj->Make(peersConnPtrs_myj, name_myj, persister_myj, applyChan_myj,db_myj);
 }
 
 void KVServer::connectPeers(std::vector<std::string> &server)
