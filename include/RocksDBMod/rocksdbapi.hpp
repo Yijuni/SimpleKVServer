@@ -1,3 +1,5 @@
+#ifndef ROCKSDBAPI_H
+#define ROCKSDBAPI_H
 #include <rocksdb/db.h>
 #include <rocksdb/slice.h>
 #include <rocksdb/options.h>
@@ -65,3 +67,5 @@ private:
     rocksdb::ColumnFamilyHandle* client_request_cf_myj;
 
 };
+
+#endif
