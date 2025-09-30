@@ -7,13 +7,32 @@ syntax = "proto3";
 package kvraft;
 option cc_generic_services = true;
 
+//服务器名字列表
+message Servers{
+    repeated string serversName=1;
+}
 //命令类型
 message Command{
     bytes type = 1;     //命令类型
-    bytes key = 2;
-    bytes value = 3;
-    bytes clientid = 4;
-    int64 requestid = 5;
+    bytes clientid = 2;
+    int64 requestid = 3;
+
+    //Put、Get、Append
+    bytes key = 4;
+    bytes value = 5;
+    
+    //Query
+    int64 num = 6;
+
+    //Join
+    map<int64,Servers> groups = 7;
+
+    //Leave
+    repeated int64 gids = 8;
+
+    //Move
+    int64 shard = 9;
+    int64 gid = 10;
 }
 
 //日志类型

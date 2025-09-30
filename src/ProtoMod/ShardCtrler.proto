@@ -1,0 +1,75 @@
+/*
+* 2025-9-30 moyoj
+* 配置组的proto
+*/
+
+syntax = "proto3";
+package shardctrler;
+option cc_generic_services=true;
+
+message Servers{
+    repeated string serversName=1;
+}
+
+/*
+* shrads对应某分片所对应的复制组
+*/
+message Config{
+    int64 num = 1;
+    repeated int64 shards = 2;
+    map<int64,Servers> groups = 3;
+}
+
+
+message JoinRequest{
+    string clientid = 1;
+    int64 requestid = 2;
+    map<int64,Servers> groups = 3;
+}
+
+message JoinResponse{
+    bool wrongLeader = 1;
+    string err = 2;
+}
+
+message LeaveRequest{
+    string clientid = 1;
+    int64 requestid = 2;
+    repeated int64 gids = 3;
+}
+
+message LeaveResponse{
+    bool wrongLeader = 1;
+    string err = 2;
+}
+
+message MoveRequest{
+    string clientid = 1;
+    int64 requestid = 2;
+    int64 shard = 3;
+    int64 gid = 4;
+}
+
+message MoveResponse{
+    bool wrongLeader = 1;
+    string err = 2;
+}
+
+message QueryRequest{
+    int64 num = 1;
+    string clientid = 2;
+    int64 requestid = 3;
+}
+
+message QueryResponse{
+    bool wrongLeader = 1;
+    string err = 2;
+    Config config = 3;
+}
+
+service ShardCtrlerRPC{
+    rpc Join(JoinRequest) returns (JoinResponse);
+    rpc Leave(LeaveRequest) returns (LeaveResponse);
+    rpc Move(MoveRequest) returns (MoveResponse);
+    rpc Query(QueryRequest) returns (QueryResponse); 
+}
