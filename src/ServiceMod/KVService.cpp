@@ -302,7 +302,7 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
     std::string curValue;
     db_myj->KVGet(key,curValue);
     // 当前指令已经执行过
-    if (optype != "Get" && existFlag && lastReply.requestid >= requestid)
+    if (existFlag && lastReply.requestid >= requestid)
     {
 
         if (maxraftstate_myj != -1)
