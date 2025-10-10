@@ -431,8 +431,9 @@ void KVRaft::persist(std::string snapshot)
     // 新增的持久化数据，重启后不需要重复commit已经commit的日志，因为rocksdb存储的kv数据是最新的，
     // 如果不持久化这个，重启后有可能会重复提交重启之前已经提交的日志，
     // 因为原来每次重启commitIndex和lastApplied是从-1开始的，也就是从头开始，所以会导致重复提交
-    dbptr_myj->RaftMetaPut("lastApplied",std::to_string(lastApplied_myj));
-    dbptr_myj->RaftMetaPut("commitIndex",std::to_string(commitIndex_myj));
+    //2025-10-10,为了兼容分片配置组，取消持久化这两项，KVService的重复操作过滤，通过上层的maxCommitIndex过滤
+    // dbptr_myj->RaftMetaPut("lastApplied",std::to_string(lastApplied_myj));
+    // dbptr_myj->RaftMetaPut("commitIndex",std::to_string(commitIndex_myj));
     // bo << currentTerm_myj;
     // bo << voterFor_myj;
     // bo << lastSnapshotIndex_myj;
@@ -457,8 +458,7 @@ void KVRaft::readPersist()
     std::string currentTerm="";
     std::string lastSnapshotIndex="";
     std::string lastSnapshotTerm="";
-    std::string commitIndex="";
-    std::string lastApplied="";
+    std::string voteFor="";
     if(dbptr_myj->RaftMetaGet("currentTerm",currentTerm)){
         currentTerm_myj = std::stoll(currentTerm);
     }
@@ -468,13 +468,16 @@ void KVRaft::readPersist()
     if(dbptr_myj->RaftMetaGet("lastSnapshotTerm",lastSnapshotTerm)){
         lastSnapshotTerm_myj  =std::stoll(lastSnapshotTerm);
     }
-    if(dbptr_myj->RaftMetaGet("commitIndex",commitIndex)){
-        commitIndex_myj  = std::stoll(commitIndex);
+    if(dbptr_myj->RaftMetaGet("voteFor",voteFor)){
+        voterFor_myj = voteFor;
     }
-    if(dbptr_myj->RaftMetaGet("lastApplied",lastApplied)){
-        lastApplied_myj = std::stoll(lastApplied);
-    }
-    dbptr_myj->RaftMetaGet("voteFor",voterFor_myj);
+    // if(dbptr_myj->RaftMetaGet("commitIndex",commitIndex)){
+    //     commitIndex_myj  = std::stoll(commitIndex);
+    // }
+    // if(dbptr_myj->RaftMetaGet("lastApplied",lastApplied)){
+    //     lastApplied_myj = std::stoll(lastApplied);
+    // }
+
     // bi >> currentTerm_myj;
     // bi >> voterFor_myj;
     // bi >> lastSnapshotIndex_myj;
@@ -817,7 +820,7 @@ void KVRaft::applyEntries(long long sleep)
             if (lastApplied_myj + 1 == nextApplied)
             {
                 lastApplied_myj = nextApplied;
-                persist();
+                // persist();
                 LOG_INFO("server[%s]>>lastApplied[%lld],commitIndex[%lld]", name_myj.c_str(), lastApplied_myj, commitIndex_myj);
             }
         }
