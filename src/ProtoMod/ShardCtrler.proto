@@ -29,7 +29,7 @@ message JoinRequest{
 
 message JoinResponse{
     bool wrongLeader = 1;
-    string err = 2;
+    int32 err = 2;
 }
 
 message LeaveRequest{
@@ -40,7 +40,7 @@ message LeaveRequest{
 
 message LeaveResponse{
     bool wrongLeader = 1;
-    string err = 2;
+    int32 err = 2;
 }
 
 message MoveRequest{
@@ -52,7 +52,7 @@ message MoveRequest{
 
 message MoveResponse{
     bool wrongLeader = 1;
-    string err = 2;
+    int32 err = 2;
 }
 
 message QueryRequest{
@@ -63,7 +63,7 @@ message QueryRequest{
 
 message QueryResponse{
     bool wrongLeader = 1;
-    string err = 2;
+    int32 err = 2;
     Config config = 3;
 }
 

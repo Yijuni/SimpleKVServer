@@ -772,25 +772,9 @@ class JoinResponse :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kErrFieldNumber = 2,
     kWrongLeaderFieldNumber = 1,
+    kErrFieldNumber = 2,
   };
-  // string err = 2;
-  void clear_err();
-  const std::string& err() const;
-  void set_err(const std::string& value);
-  void set_err(std::string&& value);
-  void set_err(const char* value);
-  void set_err(const char* value, size_t size);
-  std::string* mutable_err();
-  std::string* release_err();
-  void set_allocated_err(std::string* err);
-  private:
-  const std::string& _internal_err() const;
-  void _internal_set_err(const std::string& value);
-  std::string* _internal_mutable_err();
-  public:
-
   // bool wrongLeader = 1;
   void clear_wrongleader();
   bool wrongleader() const;
@@ -800,13 +784,22 @@ class JoinResponse :
   void _internal_set_wrongleader(bool value);
   public:
 
+  // int32 err = 2;
+  void clear_err();
+  ::PROTOBUF_NAMESPACE_ID::int32 err() const;
+  void set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_err() const;
+  void _internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:shardctrler.JoinResponse)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr err_;
   bool wrongleader_;
+  ::PROTOBUF_NAMESPACE_ID::int32 err_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ShardCtrler_2eproto;
 };
@@ -1089,25 +1082,9 @@ class LeaveResponse :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kErrFieldNumber = 2,
     kWrongLeaderFieldNumber = 1,
+    kErrFieldNumber = 2,
   };
-  // string err = 2;
-  void clear_err();
-  const std::string& err() const;
-  void set_err(const std::string& value);
-  void set_err(std::string&& value);
-  void set_err(const char* value);
-  void set_err(const char* value, size_t size);
-  std::string* mutable_err();
-  std::string* release_err();
-  void set_allocated_err(std::string* err);
-  private:
-  const std::string& _internal_err() const;
-  void _internal_set_err(const std::string& value);
-  std::string* _internal_mutable_err();
-  public:
-
   // bool wrongLeader = 1;
   void clear_wrongleader();
   bool wrongleader() const;
@@ -1117,13 +1094,22 @@ class LeaveResponse :
   void _internal_set_wrongleader(bool value);
   public:
 
+  // int32 err = 2;
+  void clear_err();
+  ::PROTOBUF_NAMESPACE_ID::int32 err() const;
+  void set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_err() const;
+  void _internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:shardctrler.LeaveResponse)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr err_;
   bool wrongleader_;
+  ::PROTOBUF_NAMESPACE_ID::int32 err_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ShardCtrler_2eproto;
 };
@@ -1403,25 +1389,9 @@ class MoveResponse :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kErrFieldNumber = 2,
     kWrongLeaderFieldNumber = 1,
+    kErrFieldNumber = 2,
   };
-  // string err = 2;
-  void clear_err();
-  const std::string& err() const;
-  void set_err(const std::string& value);
-  void set_err(std::string&& value);
-  void set_err(const char* value);
-  void set_err(const char* value, size_t size);
-  std::string* mutable_err();
-  std::string* release_err();
-  void set_allocated_err(std::string* err);
-  private:
-  const std::string& _internal_err() const;
-  void _internal_set_err(const std::string& value);
-  std::string* _internal_mutable_err();
-  public:
-
   // bool wrongLeader = 1;
   void clear_wrongleader();
   bool wrongleader() const;
@@ -1431,13 +1401,22 @@ class MoveResponse :
   void _internal_set_wrongleader(bool value);
   public:
 
+  // int32 err = 2;
+  void clear_err();
+  ::PROTOBUF_NAMESPACE_ID::int32 err() const;
+  void set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_err() const;
+  void _internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:shardctrler.MoveResponse)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr err_;
   bool wrongleader_;
+  ::PROTOBUF_NAMESPACE_ID::int32 err_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ShardCtrler_2eproto;
 };
@@ -1706,26 +1685,10 @@ class QueryResponse :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kErrFieldNumber = 2,
     kConfigFieldNumber = 3,
     kWrongLeaderFieldNumber = 1,
+    kErrFieldNumber = 2,
   };
-  // string err = 2;
-  void clear_err();
-  const std::string& err() const;
-  void set_err(const std::string& value);
-  void set_err(std::string&& value);
-  void set_err(const char* value);
-  void set_err(const char* value, size_t size);
-  std::string* mutable_err();
-  std::string* release_err();
-  void set_allocated_err(std::string* err);
-  private:
-  const std::string& _internal_err() const;
-  void _internal_set_err(const std::string& value);
-  std::string* _internal_mutable_err();
-  public:
-
   // .shardctrler.Config config = 3;
   bool has_config() const;
   private:
@@ -1750,14 +1713,23 @@ class QueryResponse :
   void _internal_set_wrongleader(bool value);
   public:
 
+  // int32 err = 2;
+  void clear_err();
+  ::PROTOBUF_NAMESPACE_ID::int32 err() const;
+  void set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_err() const;
+  void _internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:shardctrler.QueryResponse)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr err_;
   ::shardctrler::Config* config_;
   bool wrongleader_;
+  ::PROTOBUF_NAMESPACE_ID::int32 err_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ShardCtrler_2eproto;
 };
@@ -2170,64 +2142,24 @@ inline void JoinResponse::set_wrongleader(bool value) {
   // @@protoc_insertion_point(field_set:shardctrler.JoinResponse.wrongLeader)
 }
 
-// string err = 2;
+// int32 err = 2;
 inline void JoinResponse::clear_err() {
-  err_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  err_ = 0;
 }
-inline const std::string& JoinResponse::err() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 JoinResponse::_internal_err() const {
+  return err_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 JoinResponse::err() const {
   // @@protoc_insertion_point(field_get:shardctrler.JoinResponse.err)
   return _internal_err();
 }
-inline void JoinResponse::set_err(const std::string& value) {
+inline void JoinResponse::_internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  err_ = value;
+}
+inline void JoinResponse::set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_err(value);
   // @@protoc_insertion_point(field_set:shardctrler.JoinResponse.err)
-}
-inline std::string* JoinResponse::mutable_err() {
-  // @@protoc_insertion_point(field_mutable:shardctrler.JoinResponse.err)
-  return _internal_mutable_err();
-}
-inline const std::string& JoinResponse::_internal_err() const {
-  return err_.GetNoArena();
-}
-inline void JoinResponse::_internal_set_err(const std::string& value) {
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void JoinResponse::set_err(std::string&& value) {
-  
-  err_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:shardctrler.JoinResponse.err)
-}
-inline void JoinResponse::set_err(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:shardctrler.JoinResponse.err)
-}
-inline void JoinResponse::set_err(const char* value, size_t size) {
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:shardctrler.JoinResponse.err)
-}
-inline std::string* JoinResponse::_internal_mutable_err() {
-  
-  return err_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* JoinResponse::release_err() {
-  // @@protoc_insertion_point(field_release:shardctrler.JoinResponse.err)
-  
-  return err_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void JoinResponse::set_allocated_err(std::string* err) {
-  if (err != nullptr) {
-    
-  } else {
-    
-  }
-  err_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), err);
-  // @@protoc_insertion_point(field_set_allocated:shardctrler.JoinResponse.err)
 }
 
 // -------------------------------------------------------------------
@@ -2385,64 +2317,24 @@ inline void LeaveResponse::set_wrongleader(bool value) {
   // @@protoc_insertion_point(field_set:shardctrler.LeaveResponse.wrongLeader)
 }
 
-// string err = 2;
+// int32 err = 2;
 inline void LeaveResponse::clear_err() {
-  err_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  err_ = 0;
 }
-inline const std::string& LeaveResponse::err() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 LeaveResponse::_internal_err() const {
+  return err_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 LeaveResponse::err() const {
   // @@protoc_insertion_point(field_get:shardctrler.LeaveResponse.err)
   return _internal_err();
 }
-inline void LeaveResponse::set_err(const std::string& value) {
+inline void LeaveResponse::_internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  err_ = value;
+}
+inline void LeaveResponse::set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_err(value);
   // @@protoc_insertion_point(field_set:shardctrler.LeaveResponse.err)
-}
-inline std::string* LeaveResponse::mutable_err() {
-  // @@protoc_insertion_point(field_mutable:shardctrler.LeaveResponse.err)
-  return _internal_mutable_err();
-}
-inline const std::string& LeaveResponse::_internal_err() const {
-  return err_.GetNoArena();
-}
-inline void LeaveResponse::_internal_set_err(const std::string& value) {
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void LeaveResponse::set_err(std::string&& value) {
-  
-  err_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:shardctrler.LeaveResponse.err)
-}
-inline void LeaveResponse::set_err(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:shardctrler.LeaveResponse.err)
-}
-inline void LeaveResponse::set_err(const char* value, size_t size) {
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:shardctrler.LeaveResponse.err)
-}
-inline std::string* LeaveResponse::_internal_mutable_err() {
-  
-  return err_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* LeaveResponse::release_err() {
-  // @@protoc_insertion_point(field_release:shardctrler.LeaveResponse.err)
-  
-  return err_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void LeaveResponse::set_allocated_err(std::string* err) {
-  if (err != nullptr) {
-    
-  } else {
-    
-  }
-  err_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), err);
-  // @@protoc_insertion_point(field_set_allocated:shardctrler.LeaveResponse.err)
 }
 
 // -------------------------------------------------------------------
@@ -2593,64 +2485,24 @@ inline void MoveResponse::set_wrongleader(bool value) {
   // @@protoc_insertion_point(field_set:shardctrler.MoveResponse.wrongLeader)
 }
 
-// string err = 2;
+// int32 err = 2;
 inline void MoveResponse::clear_err() {
-  err_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  err_ = 0;
 }
-inline const std::string& MoveResponse::err() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 MoveResponse::_internal_err() const {
+  return err_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 MoveResponse::err() const {
   // @@protoc_insertion_point(field_get:shardctrler.MoveResponse.err)
   return _internal_err();
 }
-inline void MoveResponse::set_err(const std::string& value) {
+inline void MoveResponse::_internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  err_ = value;
+}
+inline void MoveResponse::set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_err(value);
   // @@protoc_insertion_point(field_set:shardctrler.MoveResponse.err)
-}
-inline std::string* MoveResponse::mutable_err() {
-  // @@protoc_insertion_point(field_mutable:shardctrler.MoveResponse.err)
-  return _internal_mutable_err();
-}
-inline const std::string& MoveResponse::_internal_err() const {
-  return err_.GetNoArena();
-}
-inline void MoveResponse::_internal_set_err(const std::string& value) {
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void MoveResponse::set_err(std::string&& value) {
-  
-  err_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:shardctrler.MoveResponse.err)
-}
-inline void MoveResponse::set_err(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:shardctrler.MoveResponse.err)
-}
-inline void MoveResponse::set_err(const char* value, size_t size) {
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:shardctrler.MoveResponse.err)
-}
-inline std::string* MoveResponse::_internal_mutable_err() {
-  
-  return err_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* MoveResponse::release_err() {
-  // @@protoc_insertion_point(field_release:shardctrler.MoveResponse.err)
-  
-  return err_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void MoveResponse::set_allocated_err(std::string* err) {
-  if (err != nullptr) {
-    
-  } else {
-    
-  }
-  err_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), err);
-  // @@protoc_insertion_point(field_set_allocated:shardctrler.MoveResponse.err)
 }
 
 // -------------------------------------------------------------------
@@ -2781,64 +2633,24 @@ inline void QueryResponse::set_wrongleader(bool value) {
   // @@protoc_insertion_point(field_set:shardctrler.QueryResponse.wrongLeader)
 }
 
-// string err = 2;
+// int32 err = 2;
 inline void QueryResponse::clear_err() {
-  err_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  err_ = 0;
 }
-inline const std::string& QueryResponse::err() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 QueryResponse::_internal_err() const {
+  return err_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 QueryResponse::err() const {
   // @@protoc_insertion_point(field_get:shardctrler.QueryResponse.err)
   return _internal_err();
 }
-inline void QueryResponse::set_err(const std::string& value) {
+inline void QueryResponse::_internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  err_ = value;
+}
+inline void QueryResponse::set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_err(value);
   // @@protoc_insertion_point(field_set:shardctrler.QueryResponse.err)
-}
-inline std::string* QueryResponse::mutable_err() {
-  // @@protoc_insertion_point(field_mutable:shardctrler.QueryResponse.err)
-  return _internal_mutable_err();
-}
-inline const std::string& QueryResponse::_internal_err() const {
-  return err_.GetNoArena();
-}
-inline void QueryResponse::_internal_set_err(const std::string& value) {
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void QueryResponse::set_err(std::string&& value) {
-  
-  err_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:shardctrler.QueryResponse.err)
-}
-inline void QueryResponse::set_err(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:shardctrler.QueryResponse.err)
-}
-inline void QueryResponse::set_err(const char* value, size_t size) {
-  
-  err_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:shardctrler.QueryResponse.err)
-}
-inline std::string* QueryResponse::_internal_mutable_err() {
-  
-  return err_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* QueryResponse::release_err() {
-  // @@protoc_insertion_point(field_release:shardctrler.QueryResponse.err)
-  
-  return err_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void QueryResponse::set_allocated_err(std::string* err) {
-  if (err != nullptr) {
-    
-  } else {
-    
-  }
-  err_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), err);
-  // @@protoc_insertion_point(field_set_allocated:shardctrler.QueryResponse.err)
 }
 
 // .shardctrler.Config config = 3;

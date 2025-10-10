@@ -381,16 +381,16 @@ const char descriptor_table_protodef_ShardCtrler_2eproto[] PROTOBUF_SECTION_VARI
   "oupsEntry\032C\n\013GroupsEntry\022\013\n\003key\030\001 \001(\003\022#\n"
   "\005value\030\002 \001(\0132\024.shardctrler.Servers:\0028\001\"0"
   "\n\014JoinResponse\022\023\n\013wrongLeader\030\001 \001(\010\022\013\n\003e"
-  "rr\030\002 \001(\t\"A\n\014LeaveRequest\022\020\n\010clientid\030\001 \001"
+  "rr\030\002 \001(\005\"A\n\014LeaveRequest\022\020\n\010clientid\030\001 \001"
   "(\t\022\021\n\trequestid\030\002 \001(\003\022\014\n\004gids\030\003 \003(\003\"1\n\rL"
   "eaveResponse\022\023\n\013wrongLeader\030\001 \001(\010\022\013\n\003err"
-  "\030\002 \001(\t\"N\n\013MoveRequest\022\020\n\010clientid\030\001 \001(\t\022"
+  "\030\002 \001(\005\"N\n\013MoveRequest\022\020\n\010clientid\030\001 \001(\t\022"
   "\021\n\trequestid\030\002 \001(\003\022\r\n\005shard\030\003 \001(\003\022\013\n\003gid"
   "\030\004 \001(\003\"0\n\014MoveResponse\022\023\n\013wrongLeader\030\001 "
-  "\001(\010\022\013\n\003err\030\002 \001(\t\"@\n\014QueryRequest\022\013\n\003num\030"
+  "\001(\010\022\013\n\003err\030\002 \001(\005\"@\n\014QueryRequest\022\013\n\003num\030"
   "\001 \001(\003\022\020\n\010clientid\030\002 \001(\t\022\021\n\trequestid\030\003 \001"
   "(\003\"V\n\rQueryResponse\022\023\n\013wrongLeader\030\001 \001(\010"
-  "\022\013\n\003err\030\002 \001(\t\022#\n\006config\030\003 \001(\0132\023.shardctr"
+  "\022\013\n\003err\030\002 \001(\005\022#\n\006config\030\003 \001(\0132\023.shardctr"
   "ler.Config2\212\002\n\016ShardCtrlerRPC\022;\n\004Join\022\030."
   "shardctrler.JoinRequest\032\031.shardctrler.Jo"
   "inResponse\022>\n\005Leave\022\031.shardctrler.LeaveR"
@@ -1239,18 +1239,16 @@ JoinResponse::JoinResponse(const JoinResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  err_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_err().empty()) {
-    err_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.err_);
-  }
-  wrongleader_ = from.wrongleader_;
+  ::memcpy(&wrongleader_, &from.wrongleader_,
+    static_cast<size_t>(reinterpret_cast<char*>(&err_) -
+    reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
   // @@protoc_insertion_point(copy_constructor:shardctrler.JoinResponse)
 }
 
 void JoinResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_JoinResponse_ShardCtrler_2eproto.base);
-  err_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  wrongleader_ = false;
+  ::memset(&wrongleader_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&err_) -
+      reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
 }
 
 JoinResponse::~JoinResponse() {
@@ -1259,7 +1257,6 @@ JoinResponse::~JoinResponse() {
 }
 
 void JoinResponse::SharedDtor() {
-  err_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void JoinResponse::SetCachedSize(int size) const {
@@ -1277,8 +1274,9 @@ void JoinResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  err_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  wrongleader_ = false;
+  ::memset(&wrongleader_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&err_) -
+      reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
   _internal_metadata_.Clear();
 }
 
@@ -1296,12 +1294,10 @@ const char* JoinResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string err = 2;
+      // int32 err = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_err();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "shardctrler.JoinResponse.err"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          err_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1337,14 +1333,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_wrongleader(), target);
   }
 
-  // string err = 2;
-  if (this->err().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_err().data(), static_cast<int>(this->_internal_err().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "shardctrler.JoinResponse.err");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_err(), target);
+  // int32 err = 2;
+  if (this->err() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_err(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1363,16 +1355,16 @@ size_t JoinResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string err = 2;
-  if (this->err().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_err());
-  }
-
   // bool wrongLeader = 1;
   if (this->wrongleader() != 0) {
     total_size += 1 + 1;
+  }
+
+  // int32 err = 2;
+  if (this->err() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_err());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1406,12 +1398,11 @@ void JoinResponse::MergeFrom(const JoinResponse& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.err().size() > 0) {
-
-    err_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.err_);
-  }
   if (from.wrongleader() != 0) {
     _internal_set_wrongleader(from._internal_wrongleader());
+  }
+  if (from.err() != 0) {
+    _internal_set_err(from._internal_err());
   }
 }
 
@@ -1436,9 +1427,8 @@ bool JoinResponse::IsInitialized() const {
 void JoinResponse::InternalSwap(JoinResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  err_.Swap(&other->err_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   swap(wrongleader_, other->wrongleader_);
+  swap(err_, other->err_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata JoinResponse::GetMetadata() const {
@@ -1727,18 +1717,16 @@ LeaveResponse::LeaveResponse(const LeaveResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  err_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_err().empty()) {
-    err_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.err_);
-  }
-  wrongleader_ = from.wrongleader_;
+  ::memcpy(&wrongleader_, &from.wrongleader_,
+    static_cast<size_t>(reinterpret_cast<char*>(&err_) -
+    reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
   // @@protoc_insertion_point(copy_constructor:shardctrler.LeaveResponse)
 }
 
 void LeaveResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_LeaveResponse_ShardCtrler_2eproto.base);
-  err_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  wrongleader_ = false;
+  ::memset(&wrongleader_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&err_) -
+      reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
 }
 
 LeaveResponse::~LeaveResponse() {
@@ -1747,7 +1735,6 @@ LeaveResponse::~LeaveResponse() {
 }
 
 void LeaveResponse::SharedDtor() {
-  err_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void LeaveResponse::SetCachedSize(int size) const {
@@ -1765,8 +1752,9 @@ void LeaveResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  err_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  wrongleader_ = false;
+  ::memset(&wrongleader_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&err_) -
+      reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
   _internal_metadata_.Clear();
 }
 
@@ -1784,12 +1772,10 @@ const char* LeaveResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string err = 2;
+      // int32 err = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_err();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "shardctrler.LeaveResponse.err"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          err_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1825,14 +1811,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_wrongleader(), target);
   }
 
-  // string err = 2;
-  if (this->err().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_err().data(), static_cast<int>(this->_internal_err().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "shardctrler.LeaveResponse.err");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_err(), target);
+  // int32 err = 2;
+  if (this->err() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_err(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1851,16 +1833,16 @@ size_t LeaveResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string err = 2;
-  if (this->err().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_err());
-  }
-
   // bool wrongLeader = 1;
   if (this->wrongleader() != 0) {
     total_size += 1 + 1;
+  }
+
+  // int32 err = 2;
+  if (this->err() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_err());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1894,12 +1876,11 @@ void LeaveResponse::MergeFrom(const LeaveResponse& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.err().size() > 0) {
-
-    err_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.err_);
-  }
   if (from.wrongleader() != 0) {
     _internal_set_wrongleader(from._internal_wrongleader());
+  }
+  if (from.err() != 0) {
+    _internal_set_err(from._internal_err());
   }
 }
 
@@ -1924,9 +1905,8 @@ bool LeaveResponse::IsInitialized() const {
 void LeaveResponse::InternalSwap(LeaveResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  err_.Swap(&other->err_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   swap(wrongleader_, other->wrongleader_);
+  swap(err_, other->err_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata LeaveResponse::GetMetadata() const {
@@ -2231,18 +2211,16 @@ MoveResponse::MoveResponse(const MoveResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  err_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_err().empty()) {
-    err_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.err_);
-  }
-  wrongleader_ = from.wrongleader_;
+  ::memcpy(&wrongleader_, &from.wrongleader_,
+    static_cast<size_t>(reinterpret_cast<char*>(&err_) -
+    reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
   // @@protoc_insertion_point(copy_constructor:shardctrler.MoveResponse)
 }
 
 void MoveResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_MoveResponse_ShardCtrler_2eproto.base);
-  err_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  wrongleader_ = false;
+  ::memset(&wrongleader_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&err_) -
+      reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
 }
 
 MoveResponse::~MoveResponse() {
@@ -2251,7 +2229,6 @@ MoveResponse::~MoveResponse() {
 }
 
 void MoveResponse::SharedDtor() {
-  err_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void MoveResponse::SetCachedSize(int size) const {
@@ -2269,8 +2246,9 @@ void MoveResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  err_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  wrongleader_ = false;
+  ::memset(&wrongleader_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&err_) -
+      reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
   _internal_metadata_.Clear();
 }
 
@@ -2288,12 +2266,10 @@ const char* MoveResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string err = 2;
+      // int32 err = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_err();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "shardctrler.MoveResponse.err"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          err_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -2329,14 +2305,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_wrongleader(), target);
   }
 
-  // string err = 2;
-  if (this->err().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_err().data(), static_cast<int>(this->_internal_err().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "shardctrler.MoveResponse.err");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_err(), target);
+  // int32 err = 2;
+  if (this->err() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_err(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2355,16 +2327,16 @@ size_t MoveResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string err = 2;
-  if (this->err().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_err());
-  }
-
   // bool wrongLeader = 1;
   if (this->wrongleader() != 0) {
     total_size += 1 + 1;
+  }
+
+  // int32 err = 2;
+  if (this->err() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_err());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2398,12 +2370,11 @@ void MoveResponse::MergeFrom(const MoveResponse& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.err().size() > 0) {
-
-    err_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.err_);
-  }
   if (from.wrongleader() != 0) {
     _internal_set_wrongleader(from._internal_wrongleader());
+  }
+  if (from.err() != 0) {
+    _internal_set_err(from._internal_err());
   }
 }
 
@@ -2428,9 +2399,8 @@ bool MoveResponse::IsInitialized() const {
 void MoveResponse::InternalSwap(MoveResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  err_.Swap(&other->err_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   swap(wrongleader_, other->wrongleader_);
+  swap(err_, other->err_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata MoveResponse::GetMetadata() const {
@@ -2718,25 +2688,22 @@ QueryResponse::QueryResponse(const QueryResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  err_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_err().empty()) {
-    err_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.err_);
-  }
   if (from._internal_has_config()) {
     config_ = new ::shardctrler::Config(*from.config_);
   } else {
     config_ = nullptr;
   }
-  wrongleader_ = from.wrongleader_;
+  ::memcpy(&wrongleader_, &from.wrongleader_,
+    static_cast<size_t>(reinterpret_cast<char*>(&err_) -
+    reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
   // @@protoc_insertion_point(copy_constructor:shardctrler.QueryResponse)
 }
 
 void QueryResponse::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_QueryResponse_ShardCtrler_2eproto.base);
-  err_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&config_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&wrongleader_) -
-      reinterpret_cast<char*>(&config_)) + sizeof(wrongleader_));
+      reinterpret_cast<char*>(&err_) -
+      reinterpret_cast<char*>(&config_)) + sizeof(err_));
 }
 
 QueryResponse::~QueryResponse() {
@@ -2745,7 +2712,6 @@ QueryResponse::~QueryResponse() {
 }
 
 void QueryResponse::SharedDtor() {
-  err_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete config_;
 }
 
@@ -2764,12 +2730,13 @@ void QueryResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  err_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == nullptr && config_ != nullptr) {
     delete config_;
   }
   config_ = nullptr;
-  wrongleader_ = false;
+  ::memset(&wrongleader_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&err_) -
+      reinterpret_cast<char*>(&wrongleader_)) + sizeof(err_));
   _internal_metadata_.Clear();
 }
 
@@ -2787,12 +2754,10 @@ const char* QueryResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string err = 2;
+      // int32 err = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_err();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "shardctrler.QueryResponse.err"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          err_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -2835,14 +2800,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_wrongleader(), target);
   }
 
-  // string err = 2;
-  if (this->err().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_err().data(), static_cast<int>(this->_internal_err().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "shardctrler.QueryResponse.err");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_err(), target);
+  // int32 err = 2;
+  if (this->err() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_err(), target);
   }
 
   // .shardctrler.Config config = 3;
@@ -2869,13 +2830,6 @@ size_t QueryResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string err = 2;
-  if (this->err().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_err());
-  }
-
   // .shardctrler.Config config = 3;
   if (this->has_config()) {
     total_size += 1 +
@@ -2886,6 +2840,13 @@ size_t QueryResponse::ByteSizeLong() const {
   // bool wrongLeader = 1;
   if (this->wrongleader() != 0) {
     total_size += 1 + 1;
+  }
+
+  // int32 err = 2;
+  if (this->err() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_err());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2919,15 +2880,14 @@ void QueryResponse::MergeFrom(const QueryResponse& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.err().size() > 0) {
-
-    err_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.err_);
-  }
   if (from.has_config()) {
     _internal_mutable_config()->::shardctrler::Config::MergeFrom(from._internal_config());
   }
   if (from.wrongleader() != 0) {
     _internal_set_wrongleader(from._internal_wrongleader());
+  }
+  if (from.err() != 0) {
+    _internal_set_err(from._internal_err());
   }
 }
 
@@ -2952,10 +2912,9 @@ bool QueryResponse::IsInitialized() const {
 void QueryResponse::InternalSwap(QueryResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  err_.Swap(&other->err_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   swap(config_, other->config_);
   swap(wrongleader_, other->wrongleader_);
+  swap(err_, other->err_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata QueryResponse::GetMetadata() const {
