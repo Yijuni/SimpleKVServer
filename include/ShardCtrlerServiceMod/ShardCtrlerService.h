@@ -9,8 +9,10 @@
 #include "LockQueue.hpp"
 #include "Raft.hpp"
 #include <memory>
+#include <vector>
 #include <mutex>
 #include <unordered_map>
+#include <algorithm>
 
 struct clientLastReply
 {
@@ -44,6 +46,7 @@ struct notifyChanMsg
 class ShardCtrlerService : public shardctrler::ShardCtrlerRPC
 {
 public:
+    ShardCtrlerService();
     /// @brief
     /// @param name 服务器名称，ip:port
     /// @param raft raft层实例
@@ -60,6 +63,7 @@ public:
                ::shardctrler::QueryResponse *response, ::google::protobuf::Closure *done);
 
 private:
+    
     // 从raft层接受数据
     void applyLogs();
     // 处理命令
@@ -67,11 +71,11 @@ private:
     // 等待请求执行提交
     void waitRequestCommit(ERRORID &err, bool &wrongleader, shardctrler::Config &config, std::shared_ptr<LockQueue<notifyChanMsg>> notifychan);
     // 处理join请求
-    void joinHandler(std::unordered_map<long long, std::vector<std::string>> &groups);
+    void joinHandler(const std::unordered_map<long long, std::vector<std::string>> &groups);
     // 处理leave请求
-    void leaveHandler(std::vector<long long> &gids);
+    void leaveHandler(const std::vector<long long> &gids);
     //  处理move请求
-    void moveHandler(long long &gid, long long &shrad);
+    void moveHandler(const long long &gid, const long long &shrad);
     // 处理Query请求
     shardctrler::Config queryHandler(long long num);
     std::string name_myj;
@@ -91,4 +95,6 @@ private:
     std::unordered_map<std::string, clientLastReply> clientLastRequest_myj;
     // 给正在等待结果的请求返回结果
     std::unordered_map<long long, std::shared_ptr<LockQueue<notifyChanMsg>>> notifyChan_myj;
+    // 所有的历史Config列表
+    std::vector<shardctrler::Config> configs_myj;
 };
