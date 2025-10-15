@@ -8,6 +8,7 @@
  */
 
 #include "KVService.hpp"
+#include "ShardCtrlerService.hpp"
 #include "Raft.hpp"
 #include "LockQueue.hpp"
 #include "KVRaft.pb.h"
@@ -19,6 +20,10 @@
 #include "ZKClient.hpp"
 #include <memory>
 
+enum SERVICE_TYPE{
+    KVSERVICE = 0,
+    SHARDCTRLER = 1
+};
 class KVServer
 {
 public:
@@ -27,8 +32,12 @@ public:
     /// @param port 当前服务器端口
     /// @param zkip zookeeper服务器ip
     /// @param zkport zookeeper服务器端口
-    /// @param maxraftsize 持久化raftstate数据最大大小
-    KVServer(std::string ip = "127.0.0.1", uint16_t port = 8009, std::string zkip = "127.0.0.1", uint16_t zkport = 2181, long long maxraftsize = -1);
+    /// @param maxraftsize 持久化raftstate数据最大大小 
+    /// @param serive_type 当前服务器服务类型(KV存储服务器OR分片控制器)
+    /// @param gid 如果是KV服务器，当前服务器所属的组ID
+    KVServer(std::string ip = "127.0.0.1", uint16_t port = 8009, 
+        std::string zkip = "127.0.0.1", uint16_t zkport = 2181, long long maxraftsize = -1,
+        SERVICE_TYPE service_type = SERVICE_TYPE::KVSERVICE,long long gid=0);
 
 private:
     std::string ip_myj;
@@ -47,13 +56,18 @@ private:
     // 连接zookeeper服务器用的
     std::shared_ptr<ZKClient> zkConnptr_myj;
     // 客户服务
-    std::shared_ptr<KVService> service_myj;
+    std::shared_ptr<google::protobuf::Service> service_myj;
     // raft服务
     std::shared_ptr<KVRaft> raft_myj;
     // raft往service提交日志用
     std::shared_ptr<LockQueue<ApplyMsg>> applyChan_myj;
     // rocksdb的api指针
     std::shared_ptr<RocksDBAPI> db_myj;
+
+    SERVICE_TYPE service_type_myj;
+    long long gid_myj;
+    // 记录当前服务器，在zookeeper中的位置
+    std::string zk_servers_path_myj;
 
     void connectPeers(std::vector<std::string> &info);
     void childWatcher();

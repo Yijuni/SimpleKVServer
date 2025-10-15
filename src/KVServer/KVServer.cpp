@@ -1,9 +1,10 @@
 #include "KVServer.hpp"
 #include "Logger.hpp"
 #include <string>
-KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkport, long long maxraftsize)
-    : ip_myj(ip), port_myj(port), zkip_myj(zkip), zkport_myj(zkport),
-      name_myj(ip + ":" + std::to_string(port))
+KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkport, 
+    long long maxraftsize,SERVICE_TYPE service_type,long long gid):ip_myj(ip), port_myj(port), 
+    zkip_myj(zkip), zkport_myj(zkport),name_myj(ip + ":" + std::to_string(port)),
+    gid_myj(gid),service_type_myj(service_type)
 {
     persister_myj = std::make_shared<Persister>(name_myj + "raftstate", name_myj + "snapshot");
     applyChan_myj = std::make_shared<LockQueue<ApplyMsg>>(0);
@@ -14,14 +15,22 @@ KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkp
     // 打开本地数据库
     db_myj->DBOpen();
 
+    std::string path_prefix;
     // 初始化服务层
-    service_myj = std::make_shared<KVService>(name_myj, persister_myj, raft_myj, applyChan_myj, 500, maxraftsize,db_myj);
+    if(service_type==KVSERVICE){
+        service_myj = std::make_shared<KVService>(name_myj, gid_myj,persister_myj, raft_myj, applyChan_myj, 500, maxraftsize,db_myj);
+        path_prefix = "/kvserver/replica_group/gid"+std::to_string(gid)+"/";
+    }else if(service_type==SHARDCTRLER){
+        service_myj = std::make_shared<ShardCtrlerService>(name_myj,raft_myj,applyChan_myj,500);
+        path_prefix = "/kvserver/shard_config_group/";
+    }
     
+    zk_servers_path_myj = path_prefix+"servers";
     // 连接zookeeper
     zkConnptr_myj->Connect();
-    zkConnptr_myj->initChildWatcher("/kvserver/servers", std::bind(&KVServer::childWatcher, this));
+    zkConnptr_myj->initChildWatcher(zk_servers_path_myj, std::bind(&KVServer::childWatcher, this));
     std::vector<std::string> server;
-    zkConnptr_myj->registerChildWatcher("/kvserver/servers", server);
+    zkConnptr_myj->registerChildWatcher(zk_servers_path_myj, server);
 
     std::thread td([&]()
                    {
@@ -45,7 +54,7 @@ void KVServer::connectPeers(std::vector<std::string> &server)
     for (int i = 0; i < server.size(); i++)
     {
         std::string peerinfo;
-        zkConnptr_myj->getPathData("/kvserver/servers/" + server[i], peerinfo);
+        zkConnptr_myj->getPathData(zk_servers_path_myj+"/" + server[i], peerinfo);
         if (peerinfo == name_myj)
         {
             continue;
@@ -62,9 +71,9 @@ void KVServer::connectPeers(std::vector<std::string> &server)
 
 void KVServer::childWatcher()
 {
-    LOG_INFO("server[%s]>>/kvserver/servers的子节点发生改变",name_myj.c_str());
+    LOG_INFO("server[%s]>>%s的子节点发生改变",zk_servers_path_myj.c_str(),name_myj.c_str());
     std::vector<std::string> serverinfo;
-    zkConnptr_myj->getChildInfo("/kvserver/servers",serverinfo);
+    zkConnptr_myj->getChildInfo(zk_servers_path_myj,serverinfo);
     connectPeers(serverinfo);
     //更改raft层连接用的stubs信息
     raft_myj->ChangePeer(peersConnPtrs_myj);
