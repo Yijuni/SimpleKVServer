@@ -80,7 +80,7 @@ void AfterTimer::run()
             }
             else
             { // 毫秒
-                std::this_thread::sleep_for(std::chrono::microseconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
             }
             timecount_myj = timecount_myj + 1;
 
