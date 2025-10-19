@@ -37,7 +37,7 @@ public:
     /// @param gid 如果是KV服务器，当前服务器所属的组ID
     KVServer(std::string ip = "127.0.0.1", uint16_t port = 8009, 
         std::string zkip = "127.0.0.1", uint16_t zkport = 2181, long long maxraftsize = -1,
-        SERVICE_TYPE service_type = SERVICE_TYPE::KVSERVICE,long long gid=0);
+        SERVICE_TYPE service_type = SERVICE_TYPE::KVSERVICE,long long gid=0,int shard_len=10);
 
 private:
     std::string ip_myj;

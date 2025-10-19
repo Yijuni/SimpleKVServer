@@ -26,7 +26,7 @@ public:
     /// @brief 
     /// @param zkip zookeeper服务器ip
     /// @param zkport zookeeper服务器端口
-    /// @param name 服务器唯一标识
+    /// @param clientid 客户端唯一标识
     KVClient(std::string zkip="127.0.0.1",uint16_t zkport=2181,std::string clientid="");
     bool Get(std::string key,std::string& value);
     bool Put(std::string key,std::string value);
