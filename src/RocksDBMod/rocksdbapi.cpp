@@ -197,8 +197,9 @@ void RocksDBAPI::InstallKVSnapshot(std::unordered_map<std::string, std::string> 
 {
     std::unique_lock<std::mutex> lock(db_service_mutex_myj);
     for(int i=0;i<cf_handles_myj.size();i++){
-        if(cf_handles_myj[i]->GetName()=="kv_cf");
-        cf_handles_myj.erase(cf_handles_myj.begin()+i);    
+        if(cf_handles_myj[i]->GetName()=="kv_cf"){
+            cf_handles_myj.erase(cf_handles_myj.begin()+i); 
+        }
     }
 
     // 删除列族

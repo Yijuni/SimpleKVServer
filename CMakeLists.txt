@@ -15,6 +15,8 @@ include_directories(${PROJECT_SOURCE_DIR}/include/ZookeeperMod)
 include_directories(${PROJECT_SOURCE_DIR}/include/KVServer)
 include_directories(${PROJECT_SOURCE_DIR}/include/KVClient)
 include_directories(${PROJECT_SOURCE_DIR}/include/RocksDBMod)
+include_directories(${PROJECT_SOURCE_DIR}/include/ShardCtrlerServiceMod)
+include_directories(${PROJECT_SOURCE_DIR}/include/ShardCtrlerClient)
 #设置项目库文件输出路径
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 

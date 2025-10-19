@@ -2,7 +2,8 @@
  * 2025-9-30
  * ShardCtrler服务器服务层的service，供相应的客户端调用join leave move query。
  */
-
+#ifndef SHARDCTRLERSERVICE_HPP
+#define SHARDCTRLERSERVICE_HPP
 #include "ShardCtrler.pb.h"
 #include "rocksdbapi.hpp"
 #include "Persister.hpp"
@@ -14,6 +15,7 @@
 #include <unordered_map>
 #include <algorithm>
 
+namespace shardserviceclass{
 struct clientLastReply
 {
     long long requestid;
@@ -40,9 +42,11 @@ enum ERRORID
 };
 struct notifyChanMsg
 {
-    ERRORID errid;
+    shardserviceclass::ERRORID errid;
     shardctrler::Config config;
 };
+}
+
 class ShardCtrlerService : public shardctrler::ShardCtrlerRPC
 {
 public:
@@ -52,7 +56,9 @@ public:
     /// @param raft raft层实例
     /// @param applyChan raft层往服务层提交共识日志的channel
     /// @param timeout 客户端请求超时时间
-    ShardCtrlerService(std::string name, std::shared_ptr<KVRaft> raft, std::shared_ptr<LockQueue<ApplyMsg>> applyChan, int timeout);
+    /// @param shard_len 分片数目
+    ShardCtrlerService(std::string name, std::shared_ptr<KVRaft> raft, 
+        std::shared_ptr<LockQueue<ApplyMsg>> applyChan, int timeout=500,int shard_len=10);
     void Join(google::protobuf::RpcController *controller, const ::shardctrler::JoinRequest *request,
               ::shardctrler::JoinResponse *response, ::google::protobuf::Closure *done);
     void Leave(google::protobuf::RpcController *controller, const ::shardctrler::LeaveRequest *request,
@@ -69,7 +75,7 @@ private:
     // 处理命令
     void commandApplyHandler(ApplyMsg applymsg);
     // 等待请求执行提交
-    void waitRequestCommit(ERRORID &err, bool &wrongleader, shardctrler::Config &config, std::shared_ptr<LockQueue<notifyChanMsg>> notifychan);
+    void waitRequestCommit(shardserviceclass::ERRORID &err, bool &wrongleader, shardctrler::Config &config, std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>> notifychan);
     // 处理join请求
     void joinHandler(const std::unordered_map<long long, std::vector<std::string>> &groups);
     // 处理leave请求
@@ -87,14 +93,19 @@ private:
     std::mutex sourceMutex_myj;
     // 起否初始化完成,是否还在运行
     std::atomic<bool> ready_myj;
-    // 当前提交日志的最高下标，就算某条日志的命令没执行也要记录（可能重复命令）
+    // 当前提交日志的最高下标，就算某条日志的命令没执行也要记录（可能是收到客户端重复发送的命令），
+    // 因为分片控制器的所有配置是存在内存中的，也没有用raft的快照，并没有持久化数据到磁盘，所以并不需要
+    // 持久化maxCommitIndex到数据库
     long long maxCommitIndex_myj;
     // 等待结果超时时间
     int timeout_myj;
     // 记录某客户端最后一条请求结果
-    std::unordered_map<std::string, clientLastReply> clientLastRequest_myj;
+    std::unordered_map<std::string, shardserviceclass::clientLastReply> clientLastRequest_myj;
     // 给正在等待结果的请求返回结果
-    std::unordered_map<long long, std::shared_ptr<LockQueue<notifyChanMsg>>> notifyChan_myj;
+    std::unordered_map<long long, std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>>> notifyChan_myj;
     // 所有的历史Config列表
     std::vector<shardctrler::Config> configs_myj;
+    // 记录分片数
+    int shard_len_myj;
 };
+#endif

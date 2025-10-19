@@ -1,24 +1,38 @@
-#include "ShardCtrlerService.h"
+#include "ShardCtrlerService.hpp"
+#include <string>
+ShardCtrlerService::ShardCtrlerService()
+{
+}
 
 ShardCtrlerService::ShardCtrlerService(std::string name, std::shared_ptr<KVRaft> raft,
-                                       std::shared_ptr<LockQueue<ApplyMsg>> applyChan, int timeout) : name_myj(name), raft_myj(raft),
-                                                                                                      applyChan_myj(applyChan), timeout_myj(timeout)
+                                       std::shared_ptr<LockQueue<ApplyMsg>> applyChan, int timeout, int shard_len)
+    : name_myj(name), raft_myj(raft), applyChan_myj(applyChan), timeout_myj(timeout), shard_len_myj(shard_len), maxCommitIndex_myj(-1)
 {
+    shardctrler::Config config;
+    config.set_num(0);
+    for (int i = 0; i < shard_len; i++)
+    {
+        // 初始配置所有shard所属配置组都为0
+        config.add_shards(0);
+    }
+    configs_myj.push_back(config);
     ready_myj = true;
-    std::thread td(std::bind(applyLogs, this));
+    std::thread td(std::bind(&ShardCtrlerService::applyLogs, this));
     td.detach();
 }
 
 void ShardCtrlerService::Join(google::protobuf::RpcController *controller, const ::shardctrler::JoinRequest *request, ::shardctrler::JoinResponse *response, ::google::protobuf::Closure *done)
 {
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    LOG_INFO("收到客户端JOIN请求,CLIENTID[%s],REQUESTID[%ld]", request->clientid().c_str(), request->requestid());
     std::string clientid = request->clientid();
     long long reqeustid = request->requestid();
     auto groups = request->groups();
     auto iter = clientLastRequest_myj.find(clientid);
     if (iter != clientLastRequest_myj.end() && iter->second.requestid >= reqeustid)
     {
-        response->set_err(OK);
+        LOG_INFO("JOIN RETURN");
+        response->set_err(shardserviceclass::OK);
         response->set_wrongleader(false);
         done->Run();
         return;
@@ -45,18 +59,18 @@ void ShardCtrlerService::Join(google::protobuf::RpcController *controller, const
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
-        response->set_err(ErrWrongLeader);
+        response->set_err(shardserviceclass::ERRORID::ErrWrongLeader);
         response->set_wrongleader(true);
         done->Run();
         return;
     }
 
     lock.lock();
-    notifyChan_myj[logindex] = std::make_shared<LockQueue<notifyChanMsg>>(2);
-    std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChan_myj[logindex];
+    notifyChan_myj[logindex] = std::make_shared<LockQueue<shardserviceclass::notifyChanMsg>>(2);
+    std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>> notifychan = notifyChan_myj[logindex];
     lock.unlock();
 
-    ERRORID errid;
+    shardserviceclass::ERRORID errid;
     bool wrongleader;
     shardctrler::Config config;
     waitRequestCommit(errid, wrongleader, config, notifychan);
@@ -64,10 +78,10 @@ void ShardCtrlerService::Join(google::protobuf::RpcController *controller, const
     response->set_err(errid);
     response->set_wrongleader(wrongleader);
 
-    std::thread td([&]()
+    std::thread td([&](long long logindextmp)
                    {
         std::unique_lock<std::mutex> llock(sourceMutex_myj);
-        notifyChan_myj.erase(logindex); });
+        notifyChan_myj.erase(logindex); }, logindex);
     td.detach();
     done->Run();
 }
@@ -75,13 +89,14 @@ void ShardCtrlerService::Join(google::protobuf::RpcController *controller, const
 void ShardCtrlerService::Leave(google::protobuf::RpcController *controller, const ::shardctrler::LeaveRequest *request, ::shardctrler::LeaveResponse *response, ::google::protobuf::Closure *done)
 {
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    LOG_INFO("收到客户端LEAVE请求,CLIENTID[%s],REQUESTID[%ld]", request->clientid().c_str(), request->requestid());
     std::string clientid = request->clientid();
     long long reqeustid = request->requestid();
     auto gids = request->gids();
     auto iter = clientLastRequest_myj.find(clientid);
     if (iter != clientLastRequest_myj.end() && iter->second.requestid >= reqeustid)
     {
-        response->set_err(OK);
+        response->set_err(shardserviceclass::OK);
         response->set_wrongleader(false);
         done->Run();
         return;
@@ -94,24 +109,25 @@ void ShardCtrlerService::Leave(google::protobuf::RpcController *controller, cons
     command.set_type("Leave");
     command.set_clientid(clientid);
     command.set_requestid(reqeustid);
-    for(int i =0;i<gids.size();i++){
+    for (int i = 0; i < gids.size(); i++)
+    {
         command.add_gids(gids.Get(i));
     }
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
-        response->set_err(ErrWrongLeader);
+        response->set_err(shardserviceclass::ErrWrongLeader);
         response->set_wrongleader(true);
         done->Run();
         return;
     }
 
     lock.lock();
-    notifyChan_myj[logindex] = std::make_shared<LockQueue<notifyChanMsg>>(2);
-    std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChan_myj[logindex];
+    notifyChan_myj[logindex] = std::make_shared<LockQueue<shardserviceclass::notifyChanMsg>>(2);
+    std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>> notifychan = notifyChan_myj[logindex];
     lock.unlock();
 
-    ERRORID errid;
+    shardserviceclass::ERRORID errid;
     bool wrongleader;
     shardctrler::Config config;
     waitRequestCommit(errid, wrongleader, config, notifychan);
@@ -119,10 +135,10 @@ void ShardCtrlerService::Leave(google::protobuf::RpcController *controller, cons
     response->set_err(errid);
     response->set_wrongleader(wrongleader);
 
-    std::thread td([&]()
+    std::thread td([&](long long logindextmp)
                    {
         std::unique_lock<std::mutex> llock(sourceMutex_myj);
-        notifyChan_myj.erase(logindex); });
+        notifyChan_myj.erase(logindex); }, logindex);
     td.detach();
     done->Run();
 }
@@ -130,6 +146,7 @@ void ShardCtrlerService::Leave(google::protobuf::RpcController *controller, cons
 void ShardCtrlerService::Move(google::protobuf::RpcController *controller, const ::shardctrler::MoveRequest *request, ::shardctrler::MoveResponse *response, ::google::protobuf::Closure *done)
 {
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    LOG_INFO("收到客户端MOVE请求,CLIENTID[%s],REQUESTID[%ld]", request->clientid().c_str(), request->requestid());
     std::string clientid = request->clientid();
     long long reqeustid = request->requestid();
     long long shardid = request->shard();
@@ -137,7 +154,7 @@ void ShardCtrlerService::Move(google::protobuf::RpcController *controller, const
     auto iter = clientLastRequest_myj.find(clientid);
     if (iter != clientLastRequest_myj.end() && iter->second.requestid >= reqeustid)
     {
-        response->set_err(OK);
+        response->set_err(shardserviceclass::OK);
         response->set_wrongleader(false);
         done->Run();
         return;
@@ -155,18 +172,18 @@ void ShardCtrlerService::Move(google::protobuf::RpcController *controller, const
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
-        response->set_err(ErrWrongLeader);
+        response->set_err(shardserviceclass::ErrWrongLeader);
         response->set_wrongleader(true);
         done->Run();
         return;
     }
 
     lock.lock();
-    notifyChan_myj[logindex] = std::make_shared<LockQueue<notifyChanMsg>>(2);
-    std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChan_myj[logindex];
+    notifyChan_myj[logindex] = std::make_shared<LockQueue<shardserviceclass::notifyChanMsg>>(2);
+    std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>> notifychan = notifyChan_myj[logindex];
     lock.unlock();
 
-    ERRORID errid;
+    shardserviceclass::ERRORID errid;
     bool wrongleader;
     shardctrler::Config config;
     waitRequestCommit(errid, wrongleader, config, notifychan);
@@ -174,10 +191,10 @@ void ShardCtrlerService::Move(google::protobuf::RpcController *controller, const
     response->set_err(errid);
     response->set_wrongleader(wrongleader);
 
-    std::thread td([&]()
+    std::thread td([&](long long logindextmp)
                    {
         std::unique_lock<std::mutex> llock(sourceMutex_myj);
-        notifyChan_myj.erase(logindex); });
+        notifyChan_myj.erase(logindex); }, logindex);
     td.detach();
     done->Run();
 }
@@ -185,22 +202,25 @@ void ShardCtrlerService::Move(google::protobuf::RpcController *controller, const
 void ShardCtrlerService::Query(google::protobuf::RpcController *controller, const ::shardctrler::QueryRequest *request, ::shardctrler::QueryResponse *response, ::google::protobuf::Closure *done)
 {
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    LOG_INFO("收到客户端QUERY请求,CLIENTID[%s],REQUESTID[%ld]", request->clientid().c_str(), request->requestid());
     std::string clientid = request->clientid();
     long long reqeustid = request->requestid();
     long long num = request->num();
     auto iter = clientLastRequest_myj.find(clientid);
     if (iter != clientLastRequest_myj.end() && iter->second.requestid >= reqeustid)
     {
-        response->set_err(OK);
+        response->set_err(shardserviceclass::OK);
         response->set_wrongleader(false);
         auto mconfig = response->mutable_config();
         shardctrler::Config config = iter->second.replyMsg;
         mconfig->set_num(config.num());
-        for(int i=0;i<config.shards_size();i++){
+        for (int i = 0; i < config.shards_size(); i++)
+        {
             mconfig->add_shards(config.shards(i));
         }
-        for(const auto &kv : config.groups()){
-            mconfig->mutable_groups()->insert({kv.first,kv.second});
+        for (const auto &kv : config.groups())
+        {
+            mconfig->mutable_groups()->insert({kv.first, kv.second});
         }
         done->Run();
         return;
@@ -217,29 +237,38 @@ void ShardCtrlerService::Query(google::protobuf::RpcController *controller, cons
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
-        response->set_err(ErrWrongLeader);
+        response->set_err(shardserviceclass::ErrWrongLeader);
         response->set_wrongleader(true);
         done->Run();
         return;
     }
 
     lock.lock();
-    notifyChan_myj[logindex] = std::make_shared<LockQueue<notifyChanMsg>>(2);
-    std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChan_myj[logindex];
+    notifyChan_myj[logindex] = std::make_shared<LockQueue<shardserviceclass::notifyChanMsg>>(2);
+    std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>> notifychan = notifyChan_myj[logindex];
     lock.unlock();
 
-    ERRORID errid;
+    shardserviceclass::ERRORID errid;
     bool wrongleader;
     shardctrler::Config config;
     waitRequestCommit(errid, wrongleader, config, notifychan);
 
     response->set_err(errid);
     response->set_wrongleader(wrongleader);
-
-    std::thread td([&]()
+    shardctrler::Config *rconfig = response->mutable_config();
+    rconfig->set_num(config.num());
+    for (int i = 0; i < config.shards_size(); i++)
+    {
+        rconfig->add_shards(config.shards(i));
+    }
+    for (auto &kv : config.groups())
+    {
+        rconfig->mutable_groups()->insert({kv.first, kv.second});
+    }
+    std::thread td([&](long long logindextmp)
                    {
         std::unique_lock<std::mutex> llock(sourceMutex_myj);
-        notifyChan_myj.erase(logindex); });
+        notifyChan_myj.erase(logindex); }, logindex);
     td.detach();
     done->Run();
 }
@@ -265,7 +294,6 @@ void ShardCtrlerService::commandApplyHandler(ApplyMsg applymsg)
     std::string optype = applymsg.command.type();
     LOG_INFO("server[%s]>> 开始提交的命令,receive commit command index:%lld,clientid[%s],requestid[%lld],optype[%s]", name_myj.c_str(), logindex, clientid.c_str(), requestid, optype.c_str());
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
-
     if (logindex <= maxCommitIndex_myj)
     {
         LOG_INFO("server[%s]>>maxCommitIndex[%lld],这次操作的index[%lld]已经执行过", name_myj.c_str(), maxCommitIndex_myj, logindex);
@@ -276,7 +304,7 @@ void ShardCtrlerService::commandApplyHandler(ApplyMsg applymsg)
     maxCommitIndex_myj = logindex;
 
     bool existFlag = false;
-    clientLastReply lastReply = clientLastReply{};
+    shardserviceclass::clientLastReply lastReply = shardserviceclass::clientLastReply{};
     shardctrler::Config config = shardctrler::Config{};
 
     auto iter = clientLastRequest_myj.find(clientid);
@@ -306,9 +334,11 @@ void ShardCtrlerService::commandApplyHandler(ApplyMsg applymsg)
                 auto servers = kv.second;
                 for (int i = 0; i < servers.serversname_size(); i++)
                 {
+                    
                     groups[gid].push_back(servers.serversname(i));
                 }
             }
+            LOG_INFO("JOIN PRE");
             joinHandler(groups);
         }
         if (optype == "Leave")
@@ -331,56 +361,60 @@ void ShardCtrlerService::commandApplyHandler(ApplyMsg applymsg)
             long long num = applymsg.command.num();
             config = queryHandler(num);
         }
-        clientLastRequest_myj[clientid] = clientLastReply{requestid, config};
+        clientLastRequest_myj[clientid] = shardserviceclass::clientLastReply{requestid, config};
     }
 
     auto notifyChanIter = notifyChan_myj.find(logindex);
     if (notifyChanIter != notifyChan_myj.end())
     {
-        notifyChanMsg msg;
+        shardserviceclass::notifyChanMsg msg;
         msg.config = config;
-        msg.errid = OK;
-        std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChanIter->second;
+        msg.errid = shardserviceclass::OK;
+        std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>> notifychan = notifyChanIter->second;
         lock.unlock();
-
+        LOG_INFO("TEST INFO");
         long long term;
         bool isleader = raft_myj->GetState(term);
 
         if (!isleader)
         {
-            msg.errid = ErrWrongLeader;
+            msg.errid = shardserviceclass::ErrWrongLeader;
         }
         if (term == logterm)
         {
-            std::thread td([&]()
-                           { notifychan->push(msg); });
+            std::thread td([notifychan, msg]()
+                           { notifychan->push(msg); LOG_INFO("TEST NOTIFY") });
             td.detach();
         }
     }
 }
 
-void ShardCtrlerService::waitRequestCommit(ERRORID &err, bool &wrongleader, shardctrler::Config &config, std::shared_ptr<LockQueue<notifyChanMsg>> notifychan)
+void ShardCtrlerService::waitRequestCommit(shardserviceclass::ERRORID &err, bool &wrongleader, shardctrler::Config &config, std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>> notifychan)
 {
     AfterTimer waittimeout(500, 0,
                            std::bind(
-                               [](std::shared_ptr<LockQueue<notifyChanMsg>> notifychantmp)
+                               [](std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>> notifychantmp)
                                {
-                                   notifyChanMsg notifymsg;
-                                   notifymsg.errid = ErrTimeOut;
+                                   shardserviceclass::notifyChanMsg notifymsg;
+                                   notifymsg.errid = shardserviceclass::ErrTimeOut;
                                    notifychantmp->push(notifymsg);
-                                   // LOG_INFO("TEST WAIT TIME");
+                                   LOG_INFO("TEST WAIT TIME");
                                },
                                notifychan));
     waittimeout.Reset();
-    notifyChanMsg notifymsg = notifychan->pop();
-    if (notifymsg.errid == ErrWrongLeader || notifymsg.errid == ErrTimeOut)
+    shardserviceclass::notifyChanMsg notifymsg = notifychan->pop();
+    if (notifymsg.errid == shardserviceclass::ErrWrongLeader)
     {
         wrongleader = true;
     }
     else
     {
         wrongleader = false;
-        config = notifymsg.config;
+        if (notifymsg.errid == shardserviceclass::OK)
+        {
+            config = notifymsg.config;
+            LOG_INFO("NOTIFY CONFIG");
+        }
     }
     err = notifymsg.errid;
 }
@@ -391,16 +425,19 @@ void ShardCtrlerService::joinHandler(const std::unordered_map<long long, std::ve
     shardctrler::Config newconfig;
     // 更新日志新的版本号，将旧shard配置复制到新配置
     newconfig.set_num(oldconfig.num() + 1);
+    LOG_INFO("新配置NUM[%d]", int(newconfig.num()));
     for (int i = 0; i < oldconfig.shards_size(); i++)
     {
         newconfig.add_shards(oldconfig.shards(i));
     }
+    LOG_INFO("新配置的SHARD数目[%d]", newconfig.shards_size());
     // 将旧的groups复制到新的配置
     auto newgroups = newconfig.mutable_groups();
     for (const auto &kv : oldconfig.groups())
     {
         newgroups->insert({kv.first, kv.second});
     }
+
     // 新加入的组加入到新的配置组
     for (const auto &kv : groups)
     {
@@ -411,11 +448,11 @@ void ShardCtrlerService::joinHandler(const std::unordered_map<long long, std::ve
         }
         newgroups->insert({kv.first, newservers});
     }
-
+    LOG_INFO("新配置的复制组数目[%d]", newconfig.groups_size());
     int shardlen = newconfig.shards_size();
     int groupslen = newconfig.groups_size();
-    int peerGroupShardNum = groupslen / shardlen;
-    int remain = groupslen % shardlen;
+    int peerGroupShardNum = shardlen / groupslen;
+    int remain = shardlen % groupslen;
 
     // C++的map遍历是有序的，但是protobuf的map不是有序的，要保存key的顺序遍历不管在哪个线程都是一致的
     std::vector<long long> gidVec;
@@ -463,6 +500,7 @@ void ShardCtrlerService::joinHandler(const std::unordered_map<long long, std::ve
         }
     }
     configs_myj.push_back(newconfig);
+    LOG_INFO("JOIN TEST");
 }
 
 void ShardCtrlerService::leaveHandler(const std::vector<long long> &gids)
@@ -471,16 +509,19 @@ void ShardCtrlerService::leaveHandler(const std::vector<long long> &gids)
     shardctrler::Config newconfig;
     // 更新日志新的版本号，将旧shard配置复制到新配置
     newconfig.set_num(oldconfig.num() + 1);
+
     for (int i = 0; i < oldconfig.shards_size(); i++)
     {
         newconfig.add_shards(oldconfig.shards(i));
     }
+
     // 将旧的groups复制到新的配置
     auto newgroups = newconfig.mutable_groups();
     for (const auto &kv : oldconfig.groups())
     {
         newgroups->insert({kv.first, kv.second});
     }
+
     // 根据移除的组id，删除掉对应组
     for (int i = 0; i < gids.size(); i++)
     {
@@ -497,8 +538,8 @@ void ShardCtrlerService::leaveHandler(const std::vector<long long> &gids)
     }
     int shardlen = newconfig.shards_size();
     int groupslen = newconfig.groups_size();
-    int peerGroupShardNum = groupslen / shardlen;
-    int remain = groupslen % shardlen;
+    int peerGroupShardNum = shardlen / groupslen;
+    int remain = shardlen % groupslen;
 
     // C++的map遍历是有序的，但是protobuf的map不是有序的，要保存key的顺序遍历不管在哪个线程都是一致的
     std::vector<long long> gidVec;
@@ -585,6 +626,7 @@ shardctrler::Config ShardCtrlerService::queryHandler(long long num)
     }
     else
     {
+
         config = configs_myj[num];
     }
     return config;
