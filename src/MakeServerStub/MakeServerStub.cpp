@@ -56,7 +56,7 @@ void MakeServerStub::connectPeers(std::vector<std::string> &info,std::string pat
         all_stubs_myj[gid][info[i]] = std::make_shared<kvservice::KVServiceRPC_Stub>(new KVRpcChannel(peerip, port), Service::STUB_OWNS_CHANNEL);
         LOG_INFO("MAKESERVERSTUB>>成功连接对端:ip[%s],port[%d]", peerip.c_str(), port);
     }
-    LOG_INFO("MAKESERVERSTUB>>gid[%d],所有服务器连接完成", gid);
+    LOG_INFO("MAKESERVERSTUB>>gid[%lld],所有服务器连接完成", gid);
 }
 
 void MakeServerStub::groupsWatcher()

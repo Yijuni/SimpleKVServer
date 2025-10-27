@@ -12,7 +12,7 @@
 #include <memory>
 #include <mutex>
 #include <unordered_map>
-
+namespace kvserviceclass{
 struct clientLastReply{
     long long requestid;
     std::string replyMsg;
@@ -44,10 +44,11 @@ enum REQUESTID{
     Append = 2,
     Put = 3   
 };
+}
+
 class KVService:public kvservice::KVServiceRPC{
 public:
     KVService();
-    
     /// @brief 
     /// @param name 服务器名称
     /// @param persister 持久化类
@@ -56,7 +57,7 @@ public:
     /// @param timeout 客户端请求等待超时时间
     /// @param maxraftstate raftstate持久化信息大小阈值
     KVService(std::string name,std::shared_ptr<Persister> persister,std::shared_ptr<KVRaft> raft,
-        std::shared_ptr<LockQueue<ApplyMsg>> applyChan,int timeout,int maxraftstate,std::shared_ptr<RocksDBAPI> db);
+        std::shared_ptr<LockQueue<ApplyMsg>> applyChan,int maxraftstate,std::shared_ptr<RocksDBAPI> db,int timeout=500,long long gid=0);
     void Get(google::protobuf::RpcController* controller,const ::kvservice::GetRequest* request,
         ::kvservice::GetResponse* response,
         ::google::protobuf::Closure* done);
@@ -80,7 +81,7 @@ private:
     //处理快照
     void snapshotHandler(ApplyMsg applymsg);
     //等待请求执行提交
-    void waitRequestCommit(std::shared_ptr<LockQueue<notifyChanMsg>> notifychan,kvservice::ResultCode& resultcode,std::string &value);
+    void waitRequestCommit(std::shared_ptr<LockQueue<kvserviceclass::notifyChanMsg>> notifychan,kvservice::ResultCode& resultcode,std::string &value);
     std::string name_myj;
     //持久化
     std::shared_ptr<Persister> persister_myj;
@@ -106,13 +107,15 @@ private:
     //记录键值对
     std::unordered_map<std::string,std::string> keyvalue_myj;
     //记录某客户端最后一条请求结果
-    std::unordered_map<std::string,clientLastReply> clientLastRequest_myj;
+    std::unordered_map<std::string,kvserviceclass::clientLastReply> clientLastRequest_myj;
 
 
     //给正在等待结果的请求返回结果
-    std::unordered_map<long long,std::shared_ptr<LockQueue<notifyChanMsg>>> notifyChan_myj;
+    std::unordered_map<long long,std::shared_ptr<LockQueue<kvserviceclass::notifyChanMsg>>> notifyChan_myj;
     //等待结果超时时间
     int timeout_myj;
+    //当前服务器所处复制组id
+    long long gid_myj;
 
 };
 

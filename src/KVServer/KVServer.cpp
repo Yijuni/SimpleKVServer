@@ -2,7 +2,7 @@
 #include "Logger.hpp"
 #include <string>
 KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkport, 
-    long long maxraftsize,SERVICE_TYPE service_type,long long gid):ip_myj(ip), port_myj(port), 
+    long long maxraftsize,SERVICE_TYPE service_type,long long gid,int shard_len):ip_myj(ip), port_myj(port), 
     zkip_myj(zkip), zkport_myj(zkport),name_myj(ip + ":" + std::to_string(port)),
     gid_myj(gid),service_type_myj(service_type)
 {
@@ -15,17 +15,15 @@ KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkp
     // 打开本地数据库
     db_myj->DBOpen();
 
-    std::string path_prefix;
     // 初始化服务层
     if(service_type==KVSERVICE){
-        service_myj = std::make_shared<KVService>(name_myj, gid_myj,persister_myj, raft_myj, applyChan_myj, 500, maxraftsize,db_myj);
-        path_prefix = "/kvserver/replica_group/gid"+std::to_string(gid)+"/";
+        service_myj = std::make_shared<KVService>(name_myj,persister_myj, raft_myj, applyChan_myj, maxraftsize,db_myj,500,gid_myj);
+        zk_servers_path_myj = "/kvserver/replica_group/gid"+std::to_string(gid);
     }else if(service_type==SHARDCTRLER){
-        service_myj = std::make_shared<ShardCtrlerService>(name_myj,raft_myj,applyChan_myj,500);
-        path_prefix = "/kvserver/shard_config_group/";
+        service_myj = std::make_shared<ShardCtrlerService>(name_myj,raft_myj,applyChan_myj,500,shard_len);
+        zk_servers_path_myj = "/kvserver/shard_config_group/servers";
     }
     
-    zk_servers_path_myj = path_prefix+"servers";
     // 连接zookeeper
     zkConnptr_myj->Connect();
     zkConnptr_myj->initChildWatcher(zk_servers_path_myj, std::bind(&KVServer::childWatcher, this));

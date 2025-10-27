@@ -372,7 +372,6 @@ void ShardCtrlerService::commandApplyHandler(ApplyMsg applymsg)
         msg.errid = shardserviceclass::OK;
         std::shared_ptr<LockQueue<shardserviceclass::notifyChanMsg>> notifychan = notifyChanIter->second;
         lock.unlock();
-        LOG_INFO("TEST INFO");
         long long term;
         bool isleader = raft_myj->GetState(term);
 
@@ -383,7 +382,7 @@ void ShardCtrlerService::commandApplyHandler(ApplyMsg applymsg)
         if (term == logterm)
         {
             std::thread td([notifychan, msg]()
-                           { notifychan->push(msg); LOG_INFO("TEST NOTIFY") });
+                           { notifychan->push(msg);  });
             td.detach();
         }
     }
@@ -398,7 +397,6 @@ void ShardCtrlerService::waitRequestCommit(shardserviceclass::ERRORID &err, bool
                                    shardserviceclass::notifyChanMsg notifymsg;
                                    notifymsg.errid = shardserviceclass::ErrTimeOut;
                                    notifychantmp->push(notifymsg);
-                                   LOG_INFO("TEST WAIT TIME");
                                },
                                notifychan));
     waittimeout.Reset();
@@ -412,8 +410,7 @@ void ShardCtrlerService::waitRequestCommit(shardserviceclass::ERRORID &err, bool
         wrongleader = false;
         if (notifymsg.errid == shardserviceclass::OK)
         {
-            config = notifymsg.config;
-            LOG_INFO("NOTIFY CONFIG");
+            config = notifymsg.config;;
         }
     }
     err = notifymsg.errid;
@@ -500,7 +497,6 @@ void ShardCtrlerService::joinHandler(const std::unordered_map<long long, std::ve
         }
     }
     configs_myj.push_back(newconfig);
-    LOG_INFO("JOIN TEST");
 }
 
 void ShardCtrlerService::leaveHandler(const std::vector<long long> &gids)

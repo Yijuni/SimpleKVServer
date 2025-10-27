@@ -10,12 +10,18 @@ KVService::KVService()
 }
 
 KVService::KVService(std::string name, std::shared_ptr<Persister> persister, std::shared_ptr<KVRaft> raft, 
-    std::shared_ptr<LockQueue<ApplyMsg>> applyChan, int timeout, int maxraftstate,std::shared_ptr<RocksDBAPI> db)
+    std::shared_ptr<LockQueue<ApplyMsg>> applyChan,  int maxraftstate,std::shared_ptr<RocksDBAPI> db,int timeout,long long gid)
     : name_myj(name), persister_myj(persister), raft_myj(raft), applyChan_myj(applyChan), ready_myj(false),
-      timeout_myj(timeout), maxraftstate_myj(maxraftstate), snapshoting_myj(false), maxCommitIndex_myj(-1)
+      timeout_myj(timeout), maxraftstate_myj(maxraftstate), snapshoting_myj(false), maxCommitIndex_myj(-1),
+      gid_myj(gid)
 {
     db_myj = db;
     // readPersist(persister_myj->ReadSnapshot());
+    // 为了避免重启之后，重复执行已经在db执行过的操作，每次重启后读取最大已提交日志的下标
+    std::string max_commit;
+    if(db_myj->RaftMetaGet("service_max_commit_index",max_commit)){
+        maxCommitIndex_myj = std::stoll(max_commit);
+    }
     ready_myj = true;
     std::thread td(std::bind(&KVService::applyLogs, this));
     td.detach();
@@ -34,10 +40,10 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
     if(db_myj->ClientRequestGet(clientid,requestinfo)){
         std::istringstream iss(requestinfo);
         boost::archive::binary_iarchive bis(iss);
-        clientLastReply clr;
+        kvserviceclass::clientLastReply clr;
         bis >> clr;
         if(clr.requestid >= request->requestid()){
-            response->mutable_resultcode()->set_errorcode(OK);
+            response->mutable_resultcode()->set_errorcode(kvserviceclass::OK);
             response->set_value(clr.replyMsg);
             done->Run();
             return;
@@ -57,15 +63,15 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
-        response->mutable_resultcode()->set_errorcode(ErrWrongLeader);
+        response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongLeader);
         response->mutable_resultcode()->set_errormsg("leader节点选择错误");
         done->Run();
         return;
     }
 
     lock.lock();
-    notifyChan_myj[logindex] = std::make_shared<LockQueue<notifyChanMsg>>(2);
-    std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChan_myj[logindex];
+    notifyChan_myj[logindex] = std::make_shared<LockQueue<kvserviceclass::notifyChanMsg>>(2);
+    std::shared_ptr<LockQueue<kvserviceclass::notifyChanMsg>> notifychan = notifyChan_myj[logindex];
     lock.unlock();
 
     std::string value;
@@ -75,7 +81,7 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
     *response->mutable_resultcode() = resultcode;
     response->set_value(value);
 
-    std::thread td([&]()
+    std::thread td([&,logindex]()
                    {
         std::unique_lock<std::mutex> locktmp(sourceMutex_myj);
         notifyChan_myj.erase(logindex); });
@@ -97,10 +103,10 @@ void KVService::Put(google::protobuf::RpcController *controller, const ::kvservi
     if(db_myj->ClientRequestGet(clientid,requestinfo)){
         std::istringstream iss(requestinfo);
         boost::archive::binary_iarchive bis(iss);
-        clientLastReply clr;
+        kvserviceclass::clientLastReply clr;
         bis >> clr;
         if(clr.requestid >= request->requestid()){
-            response->mutable_resultcode()->set_errorcode(OK);
+            response->mutable_resultcode()->set_errorcode(kvserviceclass::OK);
             done->Run();
             return;
         }
@@ -120,15 +126,15 @@ void KVService::Put(google::protobuf::RpcController *controller, const ::kvservi
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
-        response->mutable_resultcode()->set_errorcode(ErrWrongLeader);
+        response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongLeader);
         response->mutable_resultcode()->set_errormsg("leader节点选择错误");
         done->Run();
         return;
     }
 
     lock.lock();
-    notifyChan_myj[logindex] = std::make_shared<LockQueue<notifyChanMsg>>(2);
-    std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChan_myj[logindex];
+    notifyChan_myj[logindex] = std::make_shared<LockQueue<kvserviceclass::notifyChanMsg>>(2);
+    std::shared_ptr<LockQueue<kvserviceclass::notifyChanMsg>> notifychan = notifyChan_myj[logindex];
     lock.unlock();
 
     std::string value;
@@ -137,12 +143,11 @@ void KVService::Put(google::protobuf::RpcController *controller, const ::kvservi
 
     *response->mutable_resultcode() = resultcode;
 
-    std::thread td([&]()
+    std::thread td([&,logindex]()
                    {
         std::unique_lock<std::mutex> locktmp(sourceMutex_myj);
         notifyChan_myj.erase(logindex); });
-    td.detach();
-
+        td.detach();
     done->Run();
 }
 
@@ -159,10 +164,10 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
     if(db_myj->ClientRequestGet(clientid,requestinfo)){
         std::istringstream iss(requestinfo);
         boost::archive::binary_iarchive bis(iss);
-        clientLastReply clr;
+        kvserviceclass::clientLastReply clr;
         bis >> clr;
         if(clr.requestid >= request->requestid()){
-            response->mutable_resultcode()->set_errorcode(OK);
+            response->mutable_resultcode()->set_errorcode(kvserviceclass::OK);
             done->Run();
             return;
         }
@@ -182,15 +187,15 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
-        response->mutable_resultcode()->set_errorcode(ErrWrongLeader);
+        response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongLeader);
         response->mutable_resultcode()->set_errormsg("leader节点选择错误");
         done->Run();
         return;
     }
 
     lock.lock();
-    notifyChan_myj[logindex] = std::make_shared<LockQueue<notifyChanMsg>>(2);
-    std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChan_myj[logindex];
+    notifyChan_myj[logindex] = std::make_shared<LockQueue<kvserviceclass::notifyChanMsg>>(2);
+    std::shared_ptr<LockQueue<kvserviceclass::notifyChanMsg>> notifychan = notifyChan_myj[logindex];
     lock.unlock();
 
     std::string value;
@@ -199,7 +204,7 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
 
     *response->mutable_resultcode() = resultcode;
 
-    std::thread td([&]()
+    std::thread td([&,logindex]()
                    {
         std::unique_lock<std::mutex> locktmp(sourceMutex_myj);
         notifyChan_myj.erase(logindex); });
@@ -285,12 +290,10 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
         LOG_INFO("server[%s]>>maxCommitIndex[%lld],current log index[%lld]已经执行过", name_myj.c_str(), maxCommitIndex_myj, logindex);
         return;
     }
-    // 更新最大的提交日志的index
-    maxCommitIndex_myj = logindex;
 
     // 获取当前指令的客户端最后一个请求的requestid
     std::string requestinfo;
-    clientLastReply lastReply;
+    kvserviceclass::clientLastReply lastReply;
     bool existFlag=false;
     if((existFlag = db_myj->ClientRequestGet(clientid,requestinfo))){
         std::istringstream iss(requestinfo);
@@ -304,7 +307,9 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
     // 当前指令已经执行过
     if (existFlag && lastReply.requestid >= requestid)
     {
-
+        maxCommitIndex_myj = logindex;
+        // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
+        db_myj->RaftMetaPut("service_max_commit_index",std::to_string(maxCommitIndex_myj));
         if (maxraftstate_myj != -1)
         {
             if (!snapshoting_myj)
@@ -335,14 +340,14 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
         // 更新客户端最后请求信息
         std::ostringstream oss;
         boost::archive::binary_oarchive obs(oss);
-        lastReply = clientLastReply(requestid, curValue);
+        lastReply = kvserviceclass::clientLastReply(requestid, curValue);
         obs << lastReply;
         std::string data = oss.str();
         db_myj->ClientRequestPut(clientid,data); 
     }
-
-    
-
+    maxCommitIndex_myj = logindex;
+    // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
+    db_myj->RaftMetaPut("service_max_commit_index",std::to_string(maxCommitIndex_myj));
     if (maxraftstate_myj != -1)
     {
         if (!snapshoting_myj)
@@ -357,18 +362,18 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
 
     if (notifyChanIter != notifyChan_myj.end())
     {
-        notifyChanMsg notifymsg;
+        kvserviceclass::notifyChanMsg notifymsg;
         notifymsg.result = curValue;
-        notifymsg.errid = OK;
+        notifymsg.errid = kvserviceclass::OK;
 
-        std::shared_ptr<LockQueue<notifyChanMsg>> notifychan = notifyChanIter->second;
+        std::shared_ptr<LockQueue<kvserviceclass::notifyChanMsg>> notifychan = notifyChanIter->second;
         lock.unlock();
 
         long long term;
         bool isleader = raft_myj->GetState(term);
         if (!isleader)
         {
-            notifymsg.errid = ErrWrongLeader;
+            notifymsg.errid = kvserviceclass::ErrWrongLeader;
             notifymsg.result = "当前服务器不是leader";
         }
 
@@ -376,7 +381,7 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
         if (term == logterm)
         {
             std::thread td(
-                [&]()
+                [notifychan,notifymsg]()
                 {
                     notifychan->push(notifymsg);
                 });
@@ -408,17 +413,19 @@ void KVService::snapshotHandler(ApplyMsg applymsg)
     // 下载leader传来的快照，更新到本地数据库
     db_myj->InstallKVSnapshot(kvmap);
     db_myj->InstallClientRequestSnapshot(client_request);
+    // 更新已提交日志的最大下标
+    db_myj->RaftMetaPut("service_max_commit_index",std::to_string(maxCommitIndex_myj));
 }
 
-void KVService::waitRequestCommit(std::shared_ptr<LockQueue<notifyChanMsg>> notifychan, kvservice::ResultCode &resultcode, std::string &value)
+void KVService::waitRequestCommit(std::shared_ptr<LockQueue<kvserviceclass::notifyChanMsg>> notifychan, kvservice::ResultCode &resultcode, std::string &value)
 {
 
     AfterTimer waittimeout(500, 0,
                            std::bind(
-                               [](std::shared_ptr<LockQueue<notifyChanMsg>> notifychantmp)
+                               [](std::shared_ptr<LockQueue<kvserviceclass::notifyChanMsg>> notifychantmp)
                                {
-                                   notifyChanMsg notifymsg;
-                                   notifymsg.errid = ErrTimeOut;
+                                   kvserviceclass::notifyChanMsg notifymsg;
+                                   notifymsg.errid = kvserviceclass::ErrTimeOut;
                                    notifymsg.result = "等待时间超时";
                                    notifychantmp->push(notifymsg);
                                    LOG_INFO("TEST WAIT TIME");
@@ -426,10 +433,10 @@ void KVService::waitRequestCommit(std::shared_ptr<LockQueue<notifyChanMsg>> noti
                                notifychan));
     waittimeout.Reset();
 
-    notifyChanMsg notifymsg = notifychan->pop();
+    kvserviceclass::notifyChanMsg notifymsg = notifychan->pop();
 
     resultcode.set_errorcode(notifymsg.errid);
-    if (notifymsg.errid == OK)
+    if (notifymsg.errid == kvserviceclass::OK)
     {
         value = notifymsg.result;
     }
