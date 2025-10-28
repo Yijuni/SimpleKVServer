@@ -471,6 +471,8 @@ void KVRaft::readPersist()
     if(dbptr_myj->RaftMetaGet("voteFor",voteFor)){
         voterFor_myj = voteFor;
     }
+    lastApplied_myj = lastSnapshotIndex_myj;
+    commitIndex_myj = lastSnapshotIndex_myj;
     // if(dbptr_myj->RaftMetaGet("commitIndex",commitIndex)){
     //     commitIndex_myj  = std::stoll(commitIndex);
     // }
