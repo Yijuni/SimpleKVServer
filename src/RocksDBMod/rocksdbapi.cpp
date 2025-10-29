@@ -175,6 +175,9 @@ bool RocksDBAPI::DBOpen()
         if(cf_handles_myj[i]->GetName()=="client_request_cf"){
             client_request_cf_myj = cf_handles_myj[i];
         }
+        if(cf_handles_myj[i]->GetName()=="config_cf"){
+            config_cf_myj = cf_handles_myj[i];
+        }
     }
     return true;
 }
@@ -182,6 +185,10 @@ bool RocksDBAPI::DBOpen()
 std::unordered_map<std::string, std::string> RocksDBAPI::GenerateKVSnapshot()
 {
     std::unique_lock<std::mutex> lock(db_service_mutex_myj);
+    if(!db_myj || !kv_cf_myj){
+        LOG_ERROR("KV快照生成失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return;
+    }
     std::unordered_map<std::string,std::string> tmp_map;
     rocksdb::ReadOptions read_opts;
     // 创建迭代器
@@ -193,9 +200,13 @@ std::unordered_map<std::string, std::string> RocksDBAPI::GenerateKVSnapshot()
     return tmp_map;
 }
 
-void RocksDBAPI::InstallKVSnapshot(std::unordered_map<std::string, std::string> &kv_map)
+bool RocksDBAPI::InstallKVSnapshot(std::unordered_map<std::string, std::string> &kv_map)
 {
     std::unique_lock<std::mutex> lock(db_service_mutex_myj);
+    if(!db_myj || !kv_cf_myj){
+        LOG_ERROR("KV快照下载失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return false;
+    }
     for(int i=0;i<cf_handles_myj.size();i++){
         if(cf_handles_myj[i]->GetName()=="kv_cf"){
             cf_handles_myj.erase(cf_handles_myj.begin()+i); 
@@ -217,11 +228,16 @@ void RocksDBAPI::InstallKVSnapshot(std::unordered_map<std::string, std::string> 
         std::string value = iter->second;
         KVPut(key,value);
     }
+    return true;
 }
 
 std::unordered_map<std::string, std::string> RocksDBAPI::GenerateClientRequestSnapshot()
 {
     std::unique_lock<std::mutex> lock(db_client_request_mutex_myj);
+    if(!db_myj || !client_request_cf_myj){
+        LOG_ERROR("client请求的快照生成失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return;
+    }
     std::unordered_map<std::string,std::string> tmp_map;
     rocksdb::ReadOptions read_opts;
     // 创建迭代器
@@ -232,9 +248,13 @@ std::unordered_map<std::string, std::string> RocksDBAPI::GenerateClientRequestSn
     return tmp_map;
 }
 
-void RocksDBAPI::InstallClientRequestSnapshot(std::unordered_map<std::string, std::string> &client_request_map)
+bool RocksDBAPI::InstallClientRequestSnapshot(std::unordered_map<std::string, std::string> &client_request_map)
 {
     std::unique_lock<std::mutex> lock(db_client_request_mutex_myj);
+    if(!db_myj || !client_request_cf_myj){
+        LOG_ERROR("client请求的快照下载失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return false;
+    }
     for(int i=0;i<cf_handles_myj.size();i++){
         if(cf_handles_myj[i]->GetName()=="client_request_cf");
         cf_handles_myj.erase(cf_handles_myj.begin()+i);    
@@ -255,6 +275,81 @@ void RocksDBAPI::InstallClientRequestSnapshot(std::unordered_map<std::string, st
         std::string value = iter->second;
         ClientRequestPut(key,value);
     }
+    return true;
+}
+bool RocksDBAPI::DeleteShardKV(long long shardid)
+{
+    std::unique_lock<std::mutex> lock(db_service_mutex_myj);
+    if(!db_myj || !kv_cf_myj){
+        LOG_ERROR("分片删除失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return false;
+    }
+    char str[32];  
+    sprintf(str,"shard_%05d_",shardid);
+    std::string start(str);
+    sprintf(str,"shard_%05d_",shardid+1);
+    std::string end(str);
+    rocksdb::Slice start_slice(start);
+    rocksdb::Slice end_slice(end);
+    rocksdb::WriteOptions write_opts;
+    rocksdb::CompactRangeOptions com_opts;
+    rocksdb::Status s1 = db_myj->DeleteRange(write_opts,kv_cf_myj,start_slice,end_slice);
+    rocksdb::Status s2 = db_myj->CompactRange(com_opts,kv_cf_myj,&start_slice,&end_slice);
+    if(!s1.ok()){
+        LOG_ERROR("sharid[%d]分片删除失败,error msg[%s]",shardid,s1.ToString().c_str());
+        return false;
+    }
+    if(!s2.ok()){
+        LOG_ERROR("sharid[%d]分片压缩失败,err msg[%s]",shardid,s2.ToString().c_str());
+        return false;
+    }
+    return true;
+}
+bool RocksDBAPI::ConfigMetaGet(const std::string &key, std::string &value)
+{
+    std::unique_lock<std::mutex> lock(db_config_mutex_myj);
+    if(!db_myj || !config_cf_myj){
+        LOG_ERROR("Config列族数据获取失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return false;
+    }
+    rocksdb::Status s = db_myj->Get(rocksdb::ReadOptions(),config_cf_myj,key,&value);
+    if(!s.ok()){
+        if(s.IsNotFound()){
+            value="";
+        }else{
+            LOG_ERROR("config列族的相关数据获取失败，信息:%s",s.ToString().c_str());
+        }
+        return false;
+    }
+    return true;
+}
+bool RocksDBAPI::ConfigMetaPut(const std::string &key, const std::string &value)
+{
+    std::unique_lock<std::mutex> lock(db_config_mutex_myj);
+    if(!db_myj || !config_cf_myj){
+        LOG_ERROR("Config列族数据写入失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return false;
+    }
+    rocksdb::Status s = db_myj->Put(rocksdb::WriteOptions(),config_cf_myj,key,value);
+    if(!s.ok()){
+        LOG_ERROR("config列族的相关数据写入失败，信息:%s",s.ToString().c_str());
+        return false;
+    }
+    return true;
+}
+bool RocksDBAPI::ConfigMetaDelete(const std::string &key)
+{
+    std::unique_lock<std::mutex> lock(db_config_mutex_myj);
+    if(!db_myj || !config_cf_myj){
+        LOG_ERROR("Config列族数据删除失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
+        return false;
+    }
+    rocksdb::Status s = db_myj->Delete(rocksdb::WriteOptions(),config_cf_myj,key);
+    if(!s.ok()){
+        LOG_ERROR("kv层原数据删除失败，信息:%s",s.ToString().c_str());
+        return false;
+    }
+    return true;
 }
 RocksDBAPI::~RocksDBAPI()
 {
@@ -281,7 +376,7 @@ RocksDBAPI::RocksDBAPI(const std::string &db_path) : db_myj(nullptr), raft_cf_my
     // 没有对应的列族就创建
     options_myj.create_missing_column_families = true;
     // 列族名称
-    std::vector<std::string> cf_names = {"default","raft_cf","kv_cf","client_request_cf"}; 
+    std::vector<std::string> cf_names = {"default","raft_cf","kv_cf","client_request_cf","config_cf"}; 
     // 构建列族的描述符，包括列名和对应的选项
     for(auto& name : cf_names){
         cf_desc_myj.emplace_back(name,rocksdb::ColumnFamilyOptions());
