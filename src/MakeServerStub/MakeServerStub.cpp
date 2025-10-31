@@ -61,9 +61,10 @@ void MakeServerStub::connectPeers(std::vector<std::string> &info,std::string pat
 
 void MakeServerStub::groupsWatcher()
 {
-    LOG_INFO("MAKESERVERSTUB>>复制组的成员发生变化,重新获取组别信息并重新连接");
+    LOG_INFO("MAKESERVERSTUB>>复制组[/kvserver/replica_group]的成员发生变化,重新获取组别信息并重新连接");
     std::vector<std::string> groups;
     zkConnptr_myj->registerChildWatcher(path_prefix_myj,groups);
+    all_stubs_myj.clear();
     for(int i=0;i<groups.size();i++){
         std::string path = path_prefix_myj+"/"+groups[i];
         std::vector<std::string> servers;

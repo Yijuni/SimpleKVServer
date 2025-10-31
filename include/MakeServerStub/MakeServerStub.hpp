@@ -8,7 +8,6 @@
 
  #include <string>
  #include <memory>
- #include "KVService.hpp"
  #include "KVService.pb.h"
  #include "KVRpcChannel.hpp"
  #include <unordered_map>
