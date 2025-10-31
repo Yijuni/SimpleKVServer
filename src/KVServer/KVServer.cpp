@@ -11,13 +11,15 @@ KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkp
     zkConnptr_myj = std::make_shared<ZKClient>(zkip, zkport);
     raft_myj = std::make_shared<KVRaft>();
     db_myj = std::make_shared<RocksDBAPI>();
+    shard_client_myj = std::make_shared<ShardCtrlerClient>(zkip,zkport,name_myj);
+    make_server_stub_myj = std::make_shared<MakeServerStub>(zkip,zkport);
 
     // 打开本地数据库
     db_myj->DBOpen();
 
     // 初始化服务层
     if(service_type==KVSERVICE){
-        service_myj = std::make_shared<KVService>(name_myj,persister_myj, raft_myj, applyChan_myj, maxraftsize,db_myj,500,gid_myj);
+        service_myj = std::make_shared<KVService>(name_myj,persister_myj, raft_myj, applyChan_myj, maxraftsize,db_myj,shard_client_myj,make_server_stub_myj,500,gid_myj);
         zk_servers_path_myj = "/kvserver/replica_group/gid"+std::to_string(gid);
     }else if(service_type==SHARDCTRLER){
         service_myj = std::make_shared<ShardCtrlerService>(name_myj,raft_myj,applyChan_myj,500,shard_len);

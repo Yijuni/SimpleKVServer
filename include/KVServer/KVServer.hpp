@@ -16,6 +16,8 @@
 #include "KVRpcProvider.hpp"
 #include "KVRpcChannel.hpp"
 #include "rocksdbapi.hpp"
+#include "ShardCtrlerClient.hpp"
+#include "MakeServerStub.hpp"
 #include <vector>
 #include "ZKClient.hpp"
 #include <memory>
@@ -63,7 +65,11 @@ private:
     std::shared_ptr<LockQueue<ApplyMsg>> applyChan_myj;
     // rocksdb的api指针
     std::shared_ptr<RocksDBAPI> db_myj;
-
+    //分片服务器客户端，可用来获取配置
+    std::shared_ptr<ShardCtrlerClient> shard_client_myj;
+    //用来获取某个复制组的某个服务器的连接stub
+    std::shared_ptr<MakeServerStub> make_server_stub_myj;
+    
     SERVICE_TYPE service_type_myj;
     long long gid_myj;
     // 记录当前服务器，在zookeeper中的位置
