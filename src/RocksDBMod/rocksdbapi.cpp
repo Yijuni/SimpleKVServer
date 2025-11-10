@@ -187,7 +187,8 @@ std::unordered_map<std::string, std::string> RocksDBAPI::GenerateKVSnapshot()
     std::unique_lock<std::mutex> lock(db_service_mutex_myj);
     if(!db_myj || !kv_cf_myj){
         LOG_ERROR("KV快照生成失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
-        return;
+        std::unordered_map<std::string,std::string> tmp;
+        return tmp;
     }
     std::unordered_map<std::string,std::string> tmp_map;
     rocksdb::ReadOptions read_opts;
@@ -236,7 +237,8 @@ std::unordered_map<std::string, std::string> RocksDBAPI::GenerateClientRequestSn
     std::unique_lock<std::mutex> lock(db_client_request_mutex_myj);
     if(!db_myj || !client_request_cf_myj){
         LOG_ERROR("client请求的快照生成失败,列族不存在或者数据库没初始化，%s>>%s>>%d",__FILE__,__FUNCTION__,__LINE__);
-        return;
+        std::unordered_map<std::string,std::string> tmp;
+        return tmp;
     }
     std::unordered_map<std::string,std::string> tmp_map;
     rocksdb::ReadOptions read_opts;
@@ -285,9 +287,9 @@ bool RocksDBAPI::DeleteShardKV(long long shardid)
         return false;
     }
     char str[32];  
-    sprintf(str,"shard_%05d_",shardid);
+    sprintf(str,"SHARD_%05lld_",shardid);
     std::string start(str);
-    sprintf(str,"shard_%05d_",shardid+1);
+    sprintf(str,"SHARD_%05lld_",shardid+1);
     std::string end(str);
     rocksdb::Slice start_slice(start);
     rocksdb::Slice end_slice(end);
@@ -296,11 +298,11 @@ bool RocksDBAPI::DeleteShardKV(long long shardid)
     rocksdb::Status s1 = db_myj->DeleteRange(write_opts,kv_cf_myj,start_slice,end_slice);
     rocksdb::Status s2 = db_myj->CompactRange(com_opts,kv_cf_myj,&start_slice,&end_slice);
     if(!s1.ok()){
-        LOG_ERROR("sharid[%d]分片删除失败,error msg[%s]",shardid,s1.ToString().c_str());
+        LOG_ERROR("sharid[%lld]分片删除失败,error msg[%s]",shardid,s1.ToString().c_str());
         return false;
     }
     if(!s2.ok()){
-        LOG_ERROR("sharid[%d]分片压缩失败,err msg[%s]",shardid,s2.ToString().c_str());
+        LOG_ERROR("sharid[%lld]分片压缩失败,err msg[%s]",shardid,s2.ToString().c_str());
         return false;
     }
     return true;

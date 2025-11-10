@@ -20,7 +20,7 @@ public:
     // Raft层删除数据
     bool RaftMetaDelete(const std::string& key);
 
-    //key的数据都以shard_id_key的形式存储，例如"Hello world"对应的shardid为2，则key为shard_00002_Hello world,并且id是5位左补0
+    //key的数据都以SHARD_id_key的形式存储，例如"Hello world"对应的shardid为2，则key为SHARD_00002_Hello world,并且id是5位左补0
     // 存放KV数据
     bool KVPut(const std::string& key,const std::string& value);
     // 获取KV数据
