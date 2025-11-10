@@ -8,20 +8,94 @@
 KVService::KVService()
 {
 }
-
-KVService::KVService(std::string name, std::shared_ptr<Persister> persister, std::shared_ptr<KVRaft> raft, 
-    std::shared_ptr<LockQueue<ApplyMsg>> applyChan,  int maxraftstate,std::shared_ptr<RocksDBAPI> db,int timeout,long long gid)
+KVService::KVService(std::string name, std::shared_ptr<Persister> persister, std::shared_ptr<KVRaft> raft,
+                     std::shared_ptr<LockQueue<ApplyMsg>> applyChan, int maxraftstate, std::shared_ptr<RocksDBAPI> db,
+                     std::shared_ptr<ShardCtrlerClient> shard_client, std::shared_ptr<MakeServerStub> make_server_stub,
+                     int timeout, long long gid, long long shard_len)
     : name_myj(name), persister_myj(persister), raft_myj(raft), applyChan_myj(applyChan), ready_myj(false),
-      timeout_myj(timeout), maxraftstate_myj(maxraftstate), snapshoting_myj(false), maxCommitIndex_myj(-1),
-      gid_myj(gid)
+      timeout_myj(timeout), maxraftstate_myj(maxraftstate), snapshoting_myj(false),
+      maxCommitIndex_myj(-1), gid_myj(gid), requestid_myj(0),
+      shard_len_myj(shard_len), shard_client_myj(shard_client), make_server_stub_myj(make_server_stub)
 {
     db_myj = db;
     // readPersist(persister_myj->ReadSnapshot());
     // 为了避免重启之后，重复执行已经在db执行过的操作，每次重启后读取最大已提交日志的下标
     std::string max_commit;
-    if(db_myj->RaftMetaGet("service_max_commit_index",max_commit)){
+    std::string request_id;
+    std::string config_data;
+
+    // 获取服务器最后执行的命令对应的index
+    if (db_myj->ConfigMetaGet("MAX_COMMIT_INDEX", max_commit))
+    {
         maxCommitIndex_myj = std::stoll(max_commit);
     }
+    // 获取服务器的最后一次请求ID
+    if (db_myj->ConfigMetaGet("REQUESTID", request_id))
+    {
+        requestid_myj = std::stoll(request_id);
+    }
+    // 初始化当前最新配置
+    if (db_myj->ConfigMetaGet("CURRENT_CONFIG", config_data))
+    {
+        curConfig_myj.ParseFromString(config_data);
+        // 存在CURRENT_CONFIG,数据库就一定存在CONFIG列表信息
+        for (long long confignum = 0; confignum <= curConfig_myj.num(); confignum++)
+        {
+            std::string config_key = "CONFIG_" + std::to_string(confignum);
+            db_myj->ConfigMetaGet(config_key, config_data);
+            kvraft::Config config;
+            config.ParseFromString(config_data);
+            configList_myj.push_back(config);
+        }
+    }
+    else
+    {
+        curConfig_myj = kvraft::Config();
+        curConfig_myj.set_num(-1);
+    }
+    // 初始化分片状态和存活状态
+    for (long long shardid = 0; shardid < shard_len; shardid++)
+    {
+        std::string shard_key = "STATE_SHARD_" + std::to_string(shardid);
+        std::string shard_info_data;
+        // 如果没有该SHARD信息，则创建新的
+        if (!db_myj->ConfigMetaGet(shard_key, shard_info_data))
+        {
+            shardStateMap_myj[shardid] = kvserviceclass::ShardStateInfo{0, kvserviceclass::ShardState::Invalid, gid, false};
+            std::ostringstream oss;
+            boost::archive::binary_oarchive bos(oss);
+            bos << shardStateMap_myj[shardid];
+            db_myj->ConfigMetaPut(shard_key, oss.str());
+        }
+        else
+        {
+            kvserviceclass::ShardStateInfo shard_info;
+            std::istringstream iss(shard_info_data);
+            boost::archive::binary_iarchive bis(iss);
+            bis >> shard_info;
+            shardStateMap_myj[shardid] = shard_info;
+        }
+
+        // 获取分片存活信息
+        shard_key = "EXIST_SHARD_" + std::to_string(shardid);
+        if (!db_myj->ConfigMetaGet(shard_key, shard_info_data))
+        {
+            shardKeysExist_myj[shardid] = false;
+            db_myj->ConfigMetaPut(shard_key, "false");
+        }
+        else
+        {
+            if (shard_info_data == "true")
+            {
+                shardKeysExist_myj[shardid] = true;
+            }
+            if (shard_info_data == "false")
+            {
+                shardKeysExist_myj[shardid] = false;
+            }
+        }
+    }
+
     ready_myj = true;
     std::thread td(std::bind(&KVService::applyLogs, this));
     td.detach();
@@ -37,12 +111,14 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
 
     std::string requestinfo;
     // 获取请求信息并反序列化出来
-    if(db_myj->ClientRequestGet(clientid,requestinfo)){
+    if (db_myj->ClientRequestGet(clientid, requestinfo))
+    {
         std::istringstream iss(requestinfo);
         boost::archive::binary_iarchive bis(iss);
         kvserviceclass::clientLastReply clr;
         bis >> clr;
-        if(clr.requestid >= request->requestid()){
+        if (clr.requestid >= request->requestid())
+        {
             response->mutable_resultcode()->set_errorcode(kvserviceclass::OK);
             response->set_value(clr.replyMsg);
             done->Run();
@@ -58,7 +134,7 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
     command.set_clientid(clientid);
     command.set_requestid(requestid);
     command.set_key(request->key());
-    command.set_type("Get");
+    command.set_type(CommandType::Get.data());
 
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
@@ -81,7 +157,7 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
     *response->mutable_resultcode() = resultcode;
     response->set_value(value);
 
-    std::thread td([&,logindex]()
+    std::thread td([&, logindex]()
                    {
         std::unique_lock<std::mutex> locktmp(sourceMutex_myj);
         notifyChan_myj.erase(logindex); });
@@ -100,12 +176,14 @@ void KVService::Put(google::protobuf::RpcController *controller, const ::kvservi
 
     std::string requestinfo;
     // 获取请求信息并反序列化出来
-    if(db_myj->ClientRequestGet(clientid,requestinfo)){
+    if (db_myj->ClientRequestGet(clientid, requestinfo))
+    {
         std::istringstream iss(requestinfo);
         boost::archive::binary_iarchive bis(iss);
         kvserviceclass::clientLastReply clr;
         bis >> clr;
-        if(clr.requestid >= request->requestid()){
+        if (clr.requestid >= request->requestid())
+        {
             response->mutable_resultcode()->set_errorcode(kvserviceclass::OK);
             done->Run();
             return;
@@ -121,7 +199,7 @@ void KVService::Put(google::protobuf::RpcController *controller, const ::kvservi
     command.set_requestid(requestid);
     command.set_key(request->key());
     command.set_value(request->value());
-    command.set_type("Put");
+    command.set_type(CommandType::Put.data());
 
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
@@ -143,11 +221,11 @@ void KVService::Put(google::protobuf::RpcController *controller, const ::kvservi
 
     *response->mutable_resultcode() = resultcode;
 
-    std::thread td([&,logindex]()
+    std::thread td([&, logindex]()
                    {
         std::unique_lock<std::mutex> locktmp(sourceMutex_myj);
         notifyChan_myj.erase(logindex); });
-        td.detach();
+    td.detach();
     done->Run();
 }
 
@@ -161,12 +239,14 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
 
     std::string requestinfo;
     // 获取请求信息并反序列化出来
-    if(db_myj->ClientRequestGet(clientid,requestinfo)){
+    if (db_myj->ClientRequestGet(clientid, requestinfo))
+    {
         std::istringstream iss(requestinfo);
         boost::archive::binary_iarchive bis(iss);
         kvserviceclass::clientLastReply clr;
         bis >> clr;
-        if(clr.requestid >= request->requestid()){
+        if (clr.requestid >= request->requestid())
+        {
             response->mutable_resultcode()->set_errorcode(kvserviceclass::OK);
             done->Run();
             return;
@@ -182,7 +262,7 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
     command.set_requestid(requestid);
     command.set_key(request->key());
     command.set_value(request->value());
-    command.set_type("Append");
+    command.set_type(CommandType::Append.data());
 
     bool isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
@@ -204,13 +284,21 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
 
     *response->mutable_resultcode() = resultcode;
 
-    std::thread td([&,logindex]()
+    std::thread td([&, logindex]()
                    {
         std::unique_lock<std::mutex> locktmp(sourceMutex_myj);
         notifyChan_myj.erase(logindex); });
     td.detach();
 
     done->Run();
+}
+
+void KVService::PullShard(google::protobuf::RpcController *controller, const kvservice::PullShardRequest *request, kvservice::PullShardResponse *response, google::protobuf::Closure *done)
+{
+}
+
+void KVService::DeleteShard(google::protobuf::RpcController *controller, const kvservice::DeleteShardRequest *request, kvservice::DeleteShardResponse *response, google::protobuf::Closure *done)
+{
 }
 
 void KVService::applyLogs()
@@ -220,6 +308,37 @@ void KVService::applyLogs()
         ApplyMsg applymsg = applyChan_myj->pop();
         if (applymsg.commandValid)
         {
+            std::string type = applymsg.command.type();
+            if (type == CommandType::ApplyNewConfig)
+            {
+                newConfigHandler(applymsg);
+                continue;
+            }
+            if (type == CommandType::InstallShard)
+            {
+                installShardHandler(applymsg);
+                continue;
+            }
+            if (type == CommandType::DeleteShard)
+            {
+                deleteShardHandler(applymsg);
+                continue;
+            }
+            if (type == CommandType::StateChange)
+            {
+                stateChangeHandler(applymsg);
+                continue;
+            }
+            if (type == CommandType::ConfigIncrease)
+            {
+                configIncreaseHandler(applymsg);
+                continue;
+            }
+            if (type == CommandType::InitConfig)
+            {
+                initConfig(applymsg);
+                continue;
+            }
             commandApplyHandler(applymsg);
         }
         else if (applymsg.snapshotValid)
@@ -231,6 +350,7 @@ void KVService::applyLogs()
 
 void KVService::snapshot(long long logindex)
 {
+    snapshoting_myj = true;
     double datalen = persister_myj->RaftStateSize();
     if (datalen / (1.0 * maxraftstate_myj) >= 0.9)
     {
@@ -238,19 +358,53 @@ void KVService::snapshot(long long logindex)
         std::ostringstream oss;
         boost::archive::binary_oarchive bos(oss);
         // 生成KV快照
-        std::unordered_map<std::string,std::string> kvmap=db_myj->GenerateKVSnapshot();
+        std::unordered_map<std::string, std::string> kvmap = db_myj->GenerateKVSnapshot();
         // 生成client_request快照
-        std::unordered_map<std::string,std::string> client_request = db_myj->GenerateClientRequestSnapshot();
+        std::unordered_map<std::string, std::string> client_request = db_myj->GenerateClientRequestSnapshot();
         // 记录当前执行的最后一条命令的index
         bos << maxCommitIndex_myj;
         // 当前kv数据
         bos << kvmap;
         // 记录客户端回应结果
         bos << client_request;
+
+        // 分片活性表快照化
+        bos << shardKeysExist_myj;
+        // 分片状态表快照化
+        std::unordered_map<long long, std::string> shardstatemap;
+        for (auto &iter : shardStateMap_myj)
+        {
+            kvserviceclass::ShardStateInfo info = iter.second;
+            std::ostringstream oss_tmp;
+            boost::archive::binary_oarchive bos_tmp(oss_tmp);
+            bos_tmp << info;
+            shardstatemap[iter.first] = oss_tmp.str();
+        }
+        bos << shardstatemap;
+        // 配置列表持久化
+        std::vector<std::string> config_str_list;
+        for (int i = 0; i < configList_myj.size(); i++)
+        {
+            std::string config_str;
+            configList_myj[i].SerializeToString(&config_str);
+            config_str_list.emplace_back(config_str);
+        }
+        bos << config_str_list;
+        // 当前最新配置持久化
+        std::string curconfig_str;
+        curConfig_myj.SerializeToString(&curconfig_str);
+        bos << curconfig_str;
+
         std::string data = oss.str();
-        raft_myj->Snapshot(logindex, data);
+        
+        std::thread([&](std::string data_tmp,long long logindex_tmp){
+            raft_myj->Snapshot(logindex_tmp, data_tmp);
+            std::unique_lock<std::mutex> lock(sourceMutex_myj);
+            snapshoting_myj = false;
+        },data,logindex);
+    }else{
+        snapshoting_myj = false;
     }
-    snapshoting_myj = false;
 }
 
 // 2025.8.4 这个函数没有存在的必要了
@@ -263,12 +417,11 @@ void KVService::readPersist(std::string data)
     LOG_INFO("server[%s]启动！", name_myj.c_str());
     std::istringstream iss(data);
     boost::archive::binary_iarchive bis(iss);
-    std::unordered_map<std::string,std::string> kvmap;
-    std::unordered_map<std::string,std::string> client_request;
+    std::unordered_map<std::string, std::string> kvmap;
+    std::unordered_map<std::string, std::string> client_request;
     bis >> maxCommitIndex_myj;
     bis >> kvmap;
     bis >> client_request;
-
 }
 
 void KVService::commandApplyHandler(ApplyMsg applymsg)
@@ -294,8 +447,9 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
     // 获取当前指令的客户端最后一个请求的requestid
     std::string requestinfo;
     kvserviceclass::clientLastReply lastReply;
-    bool existFlag=false;
-    if((existFlag = db_myj->ClientRequestGet(clientid,requestinfo))){
+    bool existFlag = false;
+    if ((existFlag = db_myj->ClientRequestGet(clientid, requestinfo)))
+    {
         std::istringstream iss(requestinfo);
         boost::archive::binary_iarchive bis(iss);
         bis >> lastReply;
@@ -303,13 +457,16 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
 
     // 当前key对应的value
     std::string curValue;
-    db_myj->KVGet(key,curValue);
+    char skey[key.size() + 15];
+    sprintf(skey, "SHARD_%05lld_%s", key2shard(key), key.c_str());
+    std::string shard_key(skey);
+    db_myj->KVGet(shard_key, curValue);
     // 当前指令已经执行过
     if (existFlag && lastReply.requestid >= requestid)
     {
         maxCommitIndex_myj = logindex;
         // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
-        db_myj->RaftMetaPut("service_max_commit_index",std::to_string(maxCommitIndex_myj));
+        db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
         if (maxraftstate_myj != -1)
         {
             if (!snapshoting_myj)
@@ -328,14 +485,14 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
         {
             // 获取原始数据，然后拼接
             curValue += value;
-            db_myj->KVPut(key,curValue);
-            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), key.c_str(), curValue.c_str());
+            db_myj->KVPut(shard_key, curValue);
+            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), shard_key.c_str(), curValue.c_str());
         }
         if (optype == "Put")
         {
             curValue = value;
-            db_myj->KVPut(key,curValue);
-            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), key.c_str(), curValue.c_str());
+            db_myj->KVPut(shard_key, curValue);
+            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), shard_key.c_str(), curValue.c_str());
         }
         // 更新客户端最后请求信息
         std::ostringstream oss;
@@ -343,11 +500,11 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
         lastReply = kvserviceclass::clientLastReply(requestid, curValue);
         obs << lastReply;
         std::string data = oss.str();
-        db_myj->ClientRequestPut(clientid,data); 
+        db_myj->ClientRequestPut(clientid, data);
     }
     maxCommitIndex_myj = logindex;
     // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
-    db_myj->RaftMetaPut("service_max_commit_index",std::to_string(maxCommitIndex_myj));
+    db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
     if (maxraftstate_myj != -1)
     {
         if (!snapshoting_myj)
@@ -381,7 +538,7 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
         if (term == logterm)
         {
             std::thread td(
-                [notifychan,notifymsg]()
+                [notifychan, notifymsg]()
                 {
                     notifychan->push(notifymsg);
                 });
@@ -403,18 +560,58 @@ void KVService::snapshotHandler(ApplyMsg applymsg)
     {
         return;
     }
-    std::unordered_map<std::string,std::string> kvmap;
-    std::unordered_map<std::string,std::string> client_request;
+    std::unordered_map<std::string, std::string> kvmap;
+    std::unordered_map<std::string, std::string> client_request;
     std::istringstream iss(data);
     boost::archive::binary_iarchive bis(iss);
     bis >> maxCommitIndex_myj;
     bis >> kvmap;
     bis >> client_request;
+
     // 下载leader传来的快照，更新到本地数据库
     db_myj->InstallKVSnapshot(kvmap);
     db_myj->InstallClientRequestSnapshot(client_request);
     // 更新已提交日志的最大下标
-    db_myj->RaftMetaPut("service_max_commit_index",std::to_string(maxCommitIndex_myj));
+    db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
+
+    // 反序列化分片状态表
+    bis >> shardKeysExist_myj;
+    // 分片状态表反序列化
+    std::unordered_map<long long, std::string> shardstatemap;
+    bis >> shardstatemap;
+    shardStateMap_myj.clear();
+    for (auto &iter : shardstatemap)
+    {
+        // 本地数据库更新
+        std::string shard_state_key = "STATE_SHARD_" + std::to_string(iter.first);
+        db_myj->ConfigMetaPut(shard_state_key, iter.second);
+
+        kvserviceclass::ShardStateInfo info;
+        std::istringstream iss_tmp(iter.second);
+        boost::archive::binary_iarchive bis_tmp(iss_tmp);
+        bis_tmp >> info;
+        shardStateMap_myj[iter.first] = info;
+    }
+    // 配置列表反序列化
+    std::vector<std::string> config_str_list;
+    bis >> config_str_list;
+    configList_myj.clear();
+    for (int i = 0; i < config_str_list.size(); i++)
+    {
+        // 本地数据库更新
+        std::string config_key = "CONFIG_" + std::to_string(i);
+        db_myj->ConfigMetaPut(config_key, config_str_list[i]);
+
+        kvraft::Config config;
+        config.ParseFromString(config_str_list[i]);
+        configList_myj.emplace_back(config);
+    }
+    // 当前最新配置反序列化
+    std::string cur_config_str;
+    bis >> cur_config_str;
+    std::string cur_config_key = "CURRENT_CONFIG";
+    db_myj->ConfigMetaPut(cur_config_key,cur_config_str);
+    curConfig_myj.ParseFromString(cur_config_str);
 }
 
 void KVService::waitRequestCommit(std::shared_ptr<LockQueue<kvserviceclass::notifyChanMsg>> notifychan, kvservice::ResultCode &resultcode, std::string &value)
@@ -443,5 +640,151 @@ void KVService::waitRequestCommit(std::shared_ptr<LockQueue<kvserviceclass::noti
     else
     {
         resultcode.set_errormsg(notifymsg.result);
+    }
+}
+
+void KVService::updateConfig()
+{
+    long long leaderid = 0;
+    while(ready_myj){
+        long long term;
+        bool isleader = raft_myj->GetState(term);
+        while(!isleader){
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            isleader = raft_myj->GetState(term);
+        }
+        kvraft::Config newConfig = getNewConfig(leaderid,curConfig_myj.num()+1);
+        std::unique_lock<std::mutex> lock(sourceMutex_myj);
+        bool flag = false;
+        if(newConfig.num()==curConfig_myj.num()+1){
+            flag = true;
+        }else{
+            flag = false;
+        }
+        if(flag){
+            LOG_INFO("server{%lld,%s}>>获取新的配置ConfigNum:%lld",gid_myj,name_myj.c_str(),newConfig.num());
+            lock.unlock();
+            kvraft::Command command;
+            command.set_type(std::string(CommandType::ApplyNewConfig));
+            auto mconfig = command.mutable_newconfig();
+            mconfig->set_num(newConfig.num());
+            for(int i=0;i<newConfig.shards_size();i++){
+                mconfig->add_shards(newConfig.shards(i));
+                LOG_INFO("server{%lld,%s}>>shardid:%d,gid:%lld",gid_myj,name_myj.c_str(),i,newConfig.shards(i));
+            }
+            auto groups = mconfig->mutable_groups();
+            for(auto kv:newConfig.groups()){
+                kvraft::Servers servers;
+                long long groupid = kv.first;
+                LOG_INFO("server{%lld,%s}>>group id:%lld",gid_myj,name_myj.c_str(),groupid);
+                for(int i=0;i<kv.second.serversname_size();i++){
+                    servers.add_serversname(kv.second.serversname(i));
+                    LOG_INFO("server{%lld,%s}>>server name:%s",gid_myj,name_myj.c_str(),kv.second.serversname(i).c_str());
+                }
+                groups->insert({groupid,servers});
+            }
+            long long logindex;
+            long long logterm;
+            raft_myj->Start(command,logindex,logterm);
+        }else{
+            LOG_INFO("server{%lld,%s}>>获取新的配置ConfigNum:%lld,不是更新的配置",gid_myj,name_myj.c_str(),newConfig.num());
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+}
+
+void KVService::updateShardState()
+{
+}
+
+kvraft::Config KVService::getNewConfig(long long &leadid, long long confignum)
+{
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    shardctrler::Config newConfig; 
+    kvraft::Config config;
+    if(shard_client_myj->Query(confignum,newConfig)){
+        LOG_INFO("成功获取新日志,num::%lld",confignum);
+        config.set_num(newConfig.num());
+        for(int i=0;i<newConfig.shards_size();i++){
+            config.add_shards(newConfig.shards(i));
+        }
+        auto groups = config.mutable_groups();
+        for(auto kv:newConfig.groups()){
+            kvraft::Servers servers;
+            long long groupid = kv.first;
+            for(int i=0;i<kv.second.serversname_size();i++){
+                servers.add_serversname(kv.second.serversname(i));
+            }
+            groups->insert({groupid,servers});
+        }
+    }else{
+        LOG_ERROR("获取日志失败,num:%lld",confignum);
+    }
+    return config;
+}
+
+bool KVService::isValidKey(const std::string &key)
+{
+    long long shardid = key2shard(key);
+    bool flag = shardStateMap_myj[shardid].state == kvserviceclass::ShardState::Serving;
+    if(flag){
+        //更新一下存在信息
+        std::string exist_key = "EXIST_SHARD_"+std::to_string(shardid);
+        std::string value = "true";
+        db_myj->ConfigMetaPut(exist_key,value);
+        shardKeysExist_myj[shardid] = true;
+    }
+    return flag;   
+}
+
+long long KVService::key2shard(std::string key)
+{
+    return std::hash<std::string>{}(key) % shard_len_myj;
+}
+
+void KVService::initConfig(ApplyMsg applymsg)
+{
+    kvraft::Command command = applymsg.command;
+    long long shardid = command.shardid();
+    long long newgid = command.gid();
+    int state = command.newstate();
+    long long confignum = command.confignum();
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    kvserviceclass::ShardStateInfo stateinfo = shardStateMap_myj[shardid];
+    if(stateinfo.confignum==0){
+        LOG_INFO("server{%lld,%s}>>shard:%lld，初始化状态，状态为：%d,组号：%lld",gid_myj,name_myj,state,newgid);
+    }
+}
+
+void KVService::configIncreaseHandler(ApplyMsg applymsg)
+{
+}
+
+void KVService::stateChangeHandler(ApplyMsg applymsg)
+{
+}
+
+void KVService::deleteShardHandler(ApplyMsg applymsg)
+{
+}
+
+void KVService::installShardHandler(ApplyMsg applymsg)
+{
+}
+
+void KVService::newConfigHandler(ApplyMsg applymsg)
+{
+    kvraft::Command command = applymsg.command;
+    kvraft::Config config = command.newconfig();
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    if(config.num()==curConfig_myj.num()+1){
+        configList_myj.push_back(config);
+        curConfig_myj = config;
+        LOG_INFO("server{%lld,%s}>>成功应用新的配置,num:%lld",gid_myj,name_myj,config.num());
+    }
+    if(maxraftstate_myj!=-1){
+        if(!snapshoting_myj){
+            snapshot(applymsg.commandIndex);
+        }
     }
 }
