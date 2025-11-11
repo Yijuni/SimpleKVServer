@@ -11,6 +11,14 @@ option cc_generic_services = true;
 message Servers{
     repeated string serversName=1;
 }
+
+//配置
+message Config{
+    int64 num = 1;
+    repeated int64 shards = 2;
+    map<int64,Servers> groups = 3;
+}
+
 //命令类型
 message Command{
     bytes type = 1;     //命令类型
@@ -33,6 +41,21 @@ message Command{
     //Move
     int64 shard = 9;
     int64 gid = 10;
+
+    //分片相关命令共用
+    int64 shardid = 11;
+    int64 confignum = 12;
+    int64 shard_gid = 13;
+
+    //StateChange
+    int32 newstate = 14;
+
+    //InstallShard
+    map<string,string> sharddata = 15;
+    map<string,string> clientlastreply = 16;
+
+    //ApplyNewConfig
+    Config newconfig = 17;
 }
 
 //日志类型

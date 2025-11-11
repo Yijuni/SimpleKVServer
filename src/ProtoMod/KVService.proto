@@ -27,15 +27,40 @@ message PutAppendRequest{
     bytes value = 2;
     string clientid = 3;
     int64 requestid = 4;
-    
 }
 
 message PutAppendResponse{
     ResultCode resultcode = 1;
 }
 
+message PullShardRequest{
+    int64 shardid = 1;
+    int64 confignum = 2;
+    string clientid = 3;
+    int64 requestid = 4;
+}
+
+message PullShardResponse{
+    map<string,bytes> sharddata = 1;
+    bytes clientlastreply = 2;
+    int32 err = 3;
+}
+
+message DeleteShardRequest{
+    int64 shardid = 1;
+    int64 confignum = 2;
+    string clientid = 3;
+    int64 requestid = 4;
+}
+
+message DeleteShardResponse{
+    int32 err = 1;
+}
+
 service KVServiceRPC{
     rpc Get(GetRequest) returns (GetResponse);
     rpc Put(PutAppendRequest) returns (PutAppendResponse);
     rpc Append(PutAppendRequest) returns (PutAppendResponse);
+    rpc PullShard(PullShardRequest) returns (PullShardResponse);
+    rpc DeleteShard(DeleteShardRequest) returns (DeleteShardResponse);
 }

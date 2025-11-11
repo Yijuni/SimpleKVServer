@@ -14,6 +14,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_KVService_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_KVService_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ResultCode_KVService_2eproto;
 namespace kvservice {
 class ResultCodeDefaultTypeInternal {
@@ -36,7 +37,55 @@ class PutAppendResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PutAppendResponse> _instance;
 } _PutAppendResponse_default_instance_;
+class PullShardRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PullShardRequest> _instance;
+} _PullShardRequest_default_instance_;
+class PullShardResponse_SharddataEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PullShardResponse_SharddataEntry_DoNotUse> _instance;
+} _PullShardResponse_SharddataEntry_DoNotUse_default_instance_;
+class PullShardResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PullShardResponse> _instance;
+} _PullShardResponse_default_instance_;
+class DeleteShardRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeleteShardRequest> _instance;
+} _DeleteShardRequest_default_instance_;
+class DeleteShardResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeleteShardResponse> _instance;
+} _DeleteShardResponse_default_instance_;
 }  // namespace kvservice
+static void InitDefaultsscc_info_DeleteShardRequest_KVService_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kvservice::_DeleteShardRequest_default_instance_;
+    new (ptr) ::kvservice::DeleteShardRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kvservice::DeleteShardRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeleteShardRequest_KVService_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DeleteShardRequest_KVService_2eproto}, {}};
+
+static void InitDefaultsscc_info_DeleteShardResponse_KVService_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kvservice::_DeleteShardResponse_default_instance_;
+    new (ptr) ::kvservice::DeleteShardResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kvservice::DeleteShardResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeleteShardResponse_KVService_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DeleteShardResponse_KVService_2eproto}, {}};
+
 static void InitDefaultsscc_info_GetRequest_KVService_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -65,6 +114,48 @@ static void InitDefaultsscc_info_GetResponse_KVService_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_GetResponse_KVService_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_GetResponse_KVService_2eproto}, {
       &scc_info_ResultCode_KVService_2eproto.base,}};
+
+static void InitDefaultsscc_info_PullShardRequest_KVService_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kvservice::_PullShardRequest_default_instance_;
+    new (ptr) ::kvservice::PullShardRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kvservice::PullShardRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PullShardRequest_KVService_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_PullShardRequest_KVService_2eproto}, {}};
+
+static void InitDefaultsscc_info_PullShardResponse_KVService_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kvservice::_PullShardResponse_default_instance_;
+    new (ptr) ::kvservice::PullShardResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kvservice::PullShardResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_PullShardResponse_KVService_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_PullShardResponse_KVService_2eproto}, {
+      &scc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto.base,}};
+
+static void InitDefaultsscc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kvservice::_PullShardResponse_SharddataEntry_DoNotUse_default_instance_;
+    new (ptr) ::kvservice::PullShardResponse_SharddataEntry_DoNotUse();
+  }
+  ::kvservice::PullShardResponse_SharddataEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto}, {}};
 
 static void InitDefaultsscc_info_PutAppendRequest_KVService_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -109,7 +200,7 @@ static void InitDefaultsscc_info_ResultCode_KVService_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ResultCode_KVService_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ResultCode_KVService_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_KVService_2eproto[5];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_KVService_2eproto[10];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_KVService_2eproto = nullptr;
 static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* file_level_service_descriptors_KVService_2eproto[1];
 
@@ -151,6 +242,47 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_KVService_2eproto::offsets[] P
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::kvservice::PutAppendResponse, resultcode_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardRequest, shardid_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardRequest, confignum_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardRequest, clientid_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardRequest, requestid_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse_SharddataEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse_SharddataEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse_SharddataEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse_SharddataEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse, sharddata_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse, clientlastreply_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse, err_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kvservice::DeleteShardRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kvservice::DeleteShardRequest, shardid_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::DeleteShardRequest, confignum_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::DeleteShardRequest, clientid_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::DeleteShardRequest, requestid_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kvservice::DeleteShardResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kvservice::DeleteShardResponse, err_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::kvservice::ResultCode)},
@@ -158,6 +290,11 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 15, -1, sizeof(::kvservice::GetResponse)},
   { 22, -1, sizeof(::kvservice::PutAppendRequest)},
   { 31, -1, sizeof(::kvservice::PutAppendResponse)},
+  { 37, -1, sizeof(::kvservice::PullShardRequest)},
+  { 46, 53, sizeof(::kvservice::PullShardResponse_SharddataEntry_DoNotUse)},
+  { 55, -1, sizeof(::kvservice::PullShardResponse)},
+  { 63, -1, sizeof(::kvservice::DeleteShardRequest)},
+  { 72, -1, sizeof(::kvservice::DeleteShardResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -166,6 +303,11 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_GetResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PutAppendRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PutAppendResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PullShardRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PullShardResponse_SharddataEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PullShardResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_DeleteShardRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_DeleteShardResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_KVService_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -178,18 +320,37 @@ const char descriptor_table_protodef_KVService_2eproto[] PROTOBUF_SECTION_VARIAB
   "key\030\001 \001(\014\022\r\n\005value\030\002 \001(\014\022\020\n\010clientid\030\003 \001"
   "(\t\022\021\n\trequestid\030\004 \001(\003\">\n\021PutAppendRespon"
   "se\022)\n\nresultcode\030\001 \001(\0132\025.kvservice.Resul"
-  "tCode2\313\001\n\014KVServiceRPC\0224\n\003Get\022\025.kvservic"
-  "e.GetRequest\032\026.kvservice.GetResponse\022@\n\003"
-  "Put\022\033.kvservice.PutAppendRequest\032\034.kvser"
-  "vice.PutAppendResponse\022C\n\006Append\022\033.kvser"
-  "vice.PutAppendRequest\032\034.kvservice.PutApp"
-  "endResponseB\003\200\001\001b\006proto3"
+  "tCode\"[\n\020PullShardRequest\022\017\n\007shardid\030\001 \001"
+  "(\003\022\021\n\tconfignum\030\002 \001(\003\022\020\n\010clientid\030\003 \001(\t\022"
+  "\021\n\trequestid\030\004 \001(\003\"\253\001\n\021PullShardResponse"
+  "\022>\n\tsharddata\030\001 \003(\0132+.kvservice.PullShar"
+  "dResponse.SharddataEntry\022\027\n\017clientlastre"
+  "ply\030\002 \001(\014\022\013\n\003err\030\003 \001(\005\0320\n\016SharddataEntry"
+  "\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"]\n\022Dele"
+  "teShardRequest\022\017\n\007shardid\030\001 \001(\003\022\021\n\tconfi"
+  "gnum\030\002 \001(\003\022\020\n\010clientid\030\003 \001(\t\022\021\n\trequesti"
+  "d\030\004 \001(\003\"\"\n\023DeleteShardResponse\022\013\n\003err\030\001 "
+  "\001(\0052\341\002\n\014KVServiceRPC\0224\n\003Get\022\025.kvservice."
+  "GetRequest\032\026.kvservice.GetResponse\022@\n\003Pu"
+  "t\022\033.kvservice.PutAppendRequest\032\034.kvservi"
+  "ce.PutAppendResponse\022C\n\006Append\022\033.kvservi"
+  "ce.PutAppendRequest\032\034.kvservice.PutAppen"
+  "dResponse\022F\n\tPullShard\022\033.kvservice.PullS"
+  "hardRequest\032\034.kvservice.PullShardRespons"
+  "e\022L\n\013DeleteShard\022\035.kvservice.DeleteShard"
+  "Request\032\036.kvservice.DeleteShardResponseB"
+  "\003\200\001\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_KVService_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_KVService_2eproto_sccs[5] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_KVService_2eproto_sccs[10] = {
+  &scc_info_DeleteShardRequest_KVService_2eproto.base,
+  &scc_info_DeleteShardResponse_KVService_2eproto.base,
   &scc_info_GetRequest_KVService_2eproto.base,
   &scc_info_GetResponse_KVService_2eproto.base,
+  &scc_info_PullShardRequest_KVService_2eproto.base,
+  &scc_info_PullShardResponse_KVService_2eproto.base,
+  &scc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto.base,
   &scc_info_PutAppendRequest_KVService_2eproto.base,
   &scc_info_PutAppendResponse_KVService_2eproto.base,
   &scc_info_ResultCode_KVService_2eproto.base,
@@ -197,10 +358,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_KVS
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_KVService_2eproto_once;
 static bool descriptor_table_KVService_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_KVService_2eproto = {
-  &descriptor_table_KVService_2eproto_initialized, descriptor_table_protodef_KVService_2eproto, "KVService.proto", 584,
-  &descriptor_table_KVService_2eproto_once, descriptor_table_KVService_2eproto_sccs, descriptor_table_KVService_2eproto_deps, 5, 0,
+  &descriptor_table_KVService_2eproto_initialized, descriptor_table_protodef_KVService_2eproto, "KVService.proto", 1132,
+  &descriptor_table_KVService_2eproto_once, descriptor_table_KVService_2eproto_sccs, descriptor_table_KVService_2eproto_deps, 10, 0,
   schemas, file_default_instances, TableStruct_KVService_2eproto::offsets,
-  file_level_metadata_KVService_2eproto, 5, file_level_enum_descriptors_KVService_2eproto, file_level_service_descriptors_KVService_2eproto,
+  file_level_metadata_KVService_2eproto, 10, file_level_enum_descriptors_KVService_2eproto, file_level_service_descriptors_KVService_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -1431,6 +1592,1056 @@ void PutAppendResponse::InternalSwap(PutAppendResponse* other) {
 
 // ===================================================================
 
+void PullShardRequest::InitAsDefaultInstance() {
+}
+class PullShardRequest::_Internal {
+ public:
+};
+
+PullShardRequest::PullShardRequest()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:kvservice.PullShardRequest)
+}
+PullShardRequest::PullShardRequest(const PullShardRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  clientid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_clientid().empty()) {
+    clientid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.clientid_);
+  }
+  ::memcpy(&shardid_, &from.shardid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&requestid_) -
+    reinterpret_cast<char*>(&shardid_)) + sizeof(requestid_));
+  // @@protoc_insertion_point(copy_constructor:kvservice.PullShardRequest)
+}
+
+void PullShardRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PullShardRequest_KVService_2eproto.base);
+  clientid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&shardid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&requestid_) -
+      reinterpret_cast<char*>(&shardid_)) + sizeof(requestid_));
+}
+
+PullShardRequest::~PullShardRequest() {
+  // @@protoc_insertion_point(destructor:kvservice.PullShardRequest)
+  SharedDtor();
+}
+
+void PullShardRequest::SharedDtor() {
+  clientid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void PullShardRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const PullShardRequest& PullShardRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PullShardRequest_KVService_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void PullShardRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kvservice.PullShardRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  clientid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&shardid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&requestid_) -
+      reinterpret_cast<char*>(&shardid_)) + sizeof(requestid_));
+  _internal_metadata_.Clear();
+}
+
+const char* PullShardRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int64 shardid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          shardid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int64 confignum = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          confignum_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string clientid = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_clientid();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kvservice.PullShardRequest.clientid"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int64 requestid = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          requestid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* PullShardRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kvservice.PullShardRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int64 shardid = 1;
+  if (this->shardid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_shardid(), target);
+  }
+
+  // int64 confignum = 2;
+  if (this->confignum() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_confignum(), target);
+  }
+
+  // string clientid = 3;
+  if (this->clientid().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_clientid().data(), static_cast<int>(this->_internal_clientid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kvservice.PullShardRequest.clientid");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_clientid(), target);
+  }
+
+  // int64 requestid = 4;
+  if (this->requestid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_requestid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kvservice.PullShardRequest)
+  return target;
+}
+
+size_t PullShardRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kvservice.PullShardRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string clientid = 3;
+  if (this->clientid().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_clientid());
+  }
+
+  // int64 shardid = 1;
+  if (this->shardid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_shardid());
+  }
+
+  // int64 confignum = 2;
+  if (this->confignum() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_confignum());
+  }
+
+  // int64 requestid = 4;
+  if (this->requestid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_requestid());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void PullShardRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kvservice.PullShardRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PullShardRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PullShardRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kvservice.PullShardRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kvservice.PullShardRequest)
+    MergeFrom(*source);
+  }
+}
+
+void PullShardRequest::MergeFrom(const PullShardRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kvservice.PullShardRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.clientid().size() > 0) {
+
+    clientid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.clientid_);
+  }
+  if (from.shardid() != 0) {
+    _internal_set_shardid(from._internal_shardid());
+  }
+  if (from.confignum() != 0) {
+    _internal_set_confignum(from._internal_confignum());
+  }
+  if (from.requestid() != 0) {
+    _internal_set_requestid(from._internal_requestid());
+  }
+}
+
+void PullShardRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kvservice.PullShardRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PullShardRequest::CopyFrom(const PullShardRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kvservice.PullShardRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PullShardRequest::IsInitialized() const {
+  return true;
+}
+
+void PullShardRequest::InternalSwap(PullShardRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  clientid_.Swap(&other->clientid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(shardid_, other->shardid_);
+  swap(confignum_, other->confignum_);
+  swap(requestid_, other->requestid_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PullShardRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+PullShardResponse_SharddataEntry_DoNotUse::PullShardResponse_SharddataEntry_DoNotUse() {}
+PullShardResponse_SharddataEntry_DoNotUse::PullShardResponse_SharddataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void PullShardResponse_SharddataEntry_DoNotUse::MergeFrom(const PullShardResponse_SharddataEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata PullShardResponse_SharddataEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+void PullShardResponse_SharddataEntry_DoNotUse::MergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
+void PullShardResponse::InitAsDefaultInstance() {
+}
+class PullShardResponse::_Internal {
+ public:
+};
+
+PullShardResponse::PullShardResponse()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:kvservice.PullShardResponse)
+}
+PullShardResponse::PullShardResponse(const PullShardResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  sharddata_.MergeFrom(from.sharddata_);
+  clientlastreply_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_clientlastreply().empty()) {
+    clientlastreply_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.clientlastreply_);
+  }
+  err_ = from.err_;
+  // @@protoc_insertion_point(copy_constructor:kvservice.PullShardResponse)
+}
+
+void PullShardResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PullShardResponse_KVService_2eproto.base);
+  clientlastreply_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  err_ = 0;
+}
+
+PullShardResponse::~PullShardResponse() {
+  // @@protoc_insertion_point(destructor:kvservice.PullShardResponse)
+  SharedDtor();
+}
+
+void PullShardResponse::SharedDtor() {
+  clientlastreply_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void PullShardResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const PullShardResponse& PullShardResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PullShardResponse_KVService_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void PullShardResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kvservice.PullShardResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  sharddata_.Clear();
+  clientlastreply_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  err_ = 0;
+  _internal_metadata_.Clear();
+}
+
+const char* PullShardResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // map<string, bytes> sharddata = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&sharddata_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // bytes clientlastreply = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_clientlastreply();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 err = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          err_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* PullShardResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kvservice.PullShardResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // map<string, bytes> sharddata = 1;
+  if (!this->_internal_sharddata().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+          "kvservice.PullShardResponse.SharddataEntry.key");
+      }
+    };
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_sharddata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_sharddata().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_sharddata().begin();
+          it != this->_internal_sharddata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = PullShardResponse_SharddataEntry_DoNotUse::Funcs::InternalSerialize(1, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_sharddata().begin();
+          it != this->_internal_sharddata().end(); ++it) {
+        target = PullShardResponse_SharddataEntry_DoNotUse::Funcs::InternalSerialize(1, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  // bytes clientlastreply = 2;
+  if (this->clientlastreply().size() > 0) {
+    target = stream->WriteBytesMaybeAliased(
+        2, this->_internal_clientlastreply(), target);
+  }
+
+  // int32 err = 3;
+  if (this->err() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_err(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kvservice.PullShardResponse)
+  return target;
+}
+
+size_t PullShardResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kvservice.PullShardResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, bytes> sharddata = 1;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_sharddata_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_sharddata().begin();
+      it != this->_internal_sharddata().end(); ++it) {
+    total_size += PullShardResponse_SharddataEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // bytes clientlastreply = 2;
+  if (this->clientlastreply().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_clientlastreply());
+  }
+
+  // int32 err = 3;
+  if (this->err() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_err());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void PullShardResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kvservice.PullShardResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PullShardResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PullShardResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kvservice.PullShardResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kvservice.PullShardResponse)
+    MergeFrom(*source);
+  }
+}
+
+void PullShardResponse::MergeFrom(const PullShardResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kvservice.PullShardResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  sharddata_.MergeFrom(from.sharddata_);
+  if (from.clientlastreply().size() > 0) {
+
+    clientlastreply_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.clientlastreply_);
+  }
+  if (from.err() != 0) {
+    _internal_set_err(from._internal_err());
+  }
+}
+
+void PullShardResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kvservice.PullShardResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PullShardResponse::CopyFrom(const PullShardResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kvservice.PullShardResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PullShardResponse::IsInitialized() const {
+  return true;
+}
+
+void PullShardResponse::InternalSwap(PullShardResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  sharddata_.Swap(&other->sharddata_);
+  clientlastreply_.Swap(&other->clientlastreply_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(err_, other->err_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PullShardResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void DeleteShardRequest::InitAsDefaultInstance() {
+}
+class DeleteShardRequest::_Internal {
+ public:
+};
+
+DeleteShardRequest::DeleteShardRequest()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:kvservice.DeleteShardRequest)
+}
+DeleteShardRequest::DeleteShardRequest(const DeleteShardRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  clientid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_clientid().empty()) {
+    clientid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.clientid_);
+  }
+  ::memcpy(&shardid_, &from.shardid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&requestid_) -
+    reinterpret_cast<char*>(&shardid_)) + sizeof(requestid_));
+  // @@protoc_insertion_point(copy_constructor:kvservice.DeleteShardRequest)
+}
+
+void DeleteShardRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DeleteShardRequest_KVService_2eproto.base);
+  clientid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&shardid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&requestid_) -
+      reinterpret_cast<char*>(&shardid_)) + sizeof(requestid_));
+}
+
+DeleteShardRequest::~DeleteShardRequest() {
+  // @@protoc_insertion_point(destructor:kvservice.DeleteShardRequest)
+  SharedDtor();
+}
+
+void DeleteShardRequest::SharedDtor() {
+  clientid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void DeleteShardRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const DeleteShardRequest& DeleteShardRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DeleteShardRequest_KVService_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void DeleteShardRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kvservice.DeleteShardRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  clientid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&shardid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&requestid_) -
+      reinterpret_cast<char*>(&shardid_)) + sizeof(requestid_));
+  _internal_metadata_.Clear();
+}
+
+const char* DeleteShardRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int64 shardid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          shardid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int64 confignum = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          confignum_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string clientid = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_clientid();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kvservice.DeleteShardRequest.clientid"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int64 requestid = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          requestid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DeleteShardRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kvservice.DeleteShardRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int64 shardid = 1;
+  if (this->shardid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_shardid(), target);
+  }
+
+  // int64 confignum = 2;
+  if (this->confignum() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_confignum(), target);
+  }
+
+  // string clientid = 3;
+  if (this->clientid().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_clientid().data(), static_cast<int>(this->_internal_clientid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kvservice.DeleteShardRequest.clientid");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_clientid(), target);
+  }
+
+  // int64 requestid = 4;
+  if (this->requestid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_requestid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kvservice.DeleteShardRequest)
+  return target;
+}
+
+size_t DeleteShardRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kvservice.DeleteShardRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string clientid = 3;
+  if (this->clientid().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_clientid());
+  }
+
+  // int64 shardid = 1;
+  if (this->shardid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_shardid());
+  }
+
+  // int64 confignum = 2;
+  if (this->confignum() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_confignum());
+  }
+
+  // int64 requestid = 4;
+  if (this->requestid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_requestid());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DeleteShardRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kvservice.DeleteShardRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeleteShardRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeleteShardRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kvservice.DeleteShardRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kvservice.DeleteShardRequest)
+    MergeFrom(*source);
+  }
+}
+
+void DeleteShardRequest::MergeFrom(const DeleteShardRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kvservice.DeleteShardRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.clientid().size() > 0) {
+
+    clientid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.clientid_);
+  }
+  if (from.shardid() != 0) {
+    _internal_set_shardid(from._internal_shardid());
+  }
+  if (from.confignum() != 0) {
+    _internal_set_confignum(from._internal_confignum());
+  }
+  if (from.requestid() != 0) {
+    _internal_set_requestid(from._internal_requestid());
+  }
+}
+
+void DeleteShardRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kvservice.DeleteShardRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeleteShardRequest::CopyFrom(const DeleteShardRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kvservice.DeleteShardRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteShardRequest::IsInitialized() const {
+  return true;
+}
+
+void DeleteShardRequest::InternalSwap(DeleteShardRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  clientid_.Swap(&other->clientid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(shardid_, other->shardid_);
+  swap(confignum_, other->confignum_);
+  swap(requestid_, other->requestid_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteShardRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void DeleteShardResponse::InitAsDefaultInstance() {
+}
+class DeleteShardResponse::_Internal {
+ public:
+};
+
+DeleteShardResponse::DeleteShardResponse()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:kvservice.DeleteShardResponse)
+}
+DeleteShardResponse::DeleteShardResponse(const DeleteShardResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  err_ = from.err_;
+  // @@protoc_insertion_point(copy_constructor:kvservice.DeleteShardResponse)
+}
+
+void DeleteShardResponse::SharedCtor() {
+  err_ = 0;
+}
+
+DeleteShardResponse::~DeleteShardResponse() {
+  // @@protoc_insertion_point(destructor:kvservice.DeleteShardResponse)
+  SharedDtor();
+}
+
+void DeleteShardResponse::SharedDtor() {
+}
+
+void DeleteShardResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const DeleteShardResponse& DeleteShardResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DeleteShardResponse_KVService_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void DeleteShardResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kvservice.DeleteShardResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  err_ = 0;
+  _internal_metadata_.Clear();
+}
+
+const char* DeleteShardResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int32 err = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          err_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DeleteShardResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kvservice.DeleteShardResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 err = 1;
+  if (this->err() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_err(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kvservice.DeleteShardResponse)
+  return target;
+}
+
+size_t DeleteShardResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kvservice.DeleteShardResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 err = 1;
+  if (this->err() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_err());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DeleteShardResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kvservice.DeleteShardResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeleteShardResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeleteShardResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kvservice.DeleteShardResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kvservice.DeleteShardResponse)
+    MergeFrom(*source);
+  }
+}
+
+void DeleteShardResponse::MergeFrom(const DeleteShardResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kvservice.DeleteShardResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.err() != 0) {
+    _internal_set_err(from._internal_err());
+  }
+}
+
+void DeleteShardResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kvservice.DeleteShardResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeleteShardResponse::CopyFrom(const DeleteShardResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kvservice.DeleteShardResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteShardResponse::IsInitialized() const {
+  return true;
+}
+
+void DeleteShardResponse::InternalSwap(DeleteShardResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(err_, other->err_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteShardResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 KVServiceRPC::~KVServiceRPC() {}
 
 const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* KVServiceRPC::descriptor() {
@@ -1466,6 +2677,22 @@ void KVServiceRPC::Append(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
   done->Run();
 }
 
+void KVServiceRPC::PullShard(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                         const ::kvservice::PullShardRequest*,
+                         ::kvservice::PullShardResponse*,
+                         ::google::protobuf::Closure* done) {
+  controller->SetFailed("Method PullShard() not implemented.");
+  done->Run();
+}
+
+void KVServiceRPC::DeleteShard(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                         const ::kvservice::DeleteShardRequest*,
+                         ::kvservice::DeleteShardResponse*,
+                         ::google::protobuf::Closure* done) {
+  controller->SetFailed("Method DeleteShard() not implemented.");
+  done->Run();
+}
+
 void KVServiceRPC::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
                              ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                              const ::PROTOBUF_NAMESPACE_ID::Message* request,
@@ -1497,6 +2724,22 @@ void KVServiceRPC::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* m
                  response),
              done);
       break;
+    case 3:
+      PullShard(controller,
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::kvservice::PullShardRequest*>(
+                 request),
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::kvservice::PullShardResponse*>(
+                 response),
+             done);
+      break;
+    case 4:
+      DeleteShard(controller,
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::kvservice::DeleteShardRequest*>(
+                 request),
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::kvservice::DeleteShardResponse*>(
+                 response),
+             done);
+      break;
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       break;
@@ -1513,6 +2756,10 @@ const ::PROTOBUF_NAMESPACE_ID::Message& KVServiceRPC::GetRequestPrototype(
       return ::kvservice::PutAppendRequest::default_instance();
     case 2:
       return ::kvservice::PutAppendRequest::default_instance();
+    case 3:
+      return ::kvservice::PullShardRequest::default_instance();
+    case 4:
+      return ::kvservice::DeleteShardRequest::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -1530,6 +2777,10 @@ const ::PROTOBUF_NAMESPACE_ID::Message& KVServiceRPC::GetResponsePrototype(
       return ::kvservice::PutAppendResponse::default_instance();
     case 2:
       return ::kvservice::PutAppendResponse::default_instance();
+    case 3:
+      return ::kvservice::PullShardResponse::default_instance();
+    case 4:
+      return ::kvservice::DeleteShardResponse::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -1569,6 +2820,20 @@ void KVServiceRPC_Stub::Append(::PROTOBUF_NAMESPACE_ID::RpcController* controlle
   channel_->CallMethod(descriptor()->method(2),
                        controller, request, response, done);
 }
+void KVServiceRPC_Stub::PullShard(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                              const ::kvservice::PullShardRequest* request,
+                              ::kvservice::PullShardResponse* response,
+                              ::google::protobuf::Closure* done) {
+  channel_->CallMethod(descriptor()->method(3),
+                       controller, request, response, done);
+}
+void KVServiceRPC_Stub::DeleteShard(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                              const ::kvservice::DeleteShardRequest* request,
+                              ::kvservice::DeleteShardResponse* response,
+                              ::google::protobuf::Closure* done) {
+  channel_->CallMethod(descriptor()->method(4),
+                       controller, request, response, done);
+}
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace kvservice
@@ -1587,6 +2852,21 @@ template<> PROTOBUF_NOINLINE ::kvservice::PutAppendRequest* Arena::CreateMaybeMe
 }
 template<> PROTOBUF_NOINLINE ::kvservice::PutAppendResponse* Arena::CreateMaybeMessage< ::kvservice::PutAppendResponse >(Arena* arena) {
   return Arena::CreateInternal< ::kvservice::PutAppendResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kvservice::PullShardRequest* Arena::CreateMaybeMessage< ::kvservice::PullShardRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::kvservice::PullShardRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kvservice::PullShardResponse_SharddataEntry_DoNotUse* Arena::CreateMaybeMessage< ::kvservice::PullShardResponse_SharddataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::kvservice::PullShardResponse_SharddataEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kvservice::PullShardResponse* Arena::CreateMaybeMessage< ::kvservice::PullShardResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::kvservice::PullShardResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kvservice::DeleteShardRequest* Arena::CreateMaybeMessage< ::kvservice::DeleteShardRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::kvservice::DeleteShardRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kvservice::DeleteShardResponse* Arena::CreateMaybeMessage< ::kvservice::DeleteShardResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::kvservice::DeleteShardResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

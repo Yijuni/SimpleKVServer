@@ -471,7 +471,6 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
         {
             if (!snapshoting_myj)
             {
-                snapshoting_myj = true;
                 // 判断是否生成快照
                 snapshot(logindex);
             }
@@ -509,7 +508,6 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
     {
         if (!snapshoting_myj)
         {
-            snapshoting_myj = true;
             // 判断是否生成快照
             snapshot(logindex);
         }
@@ -752,16 +750,123 @@ void KVService::initConfig(ApplyMsg applymsg)
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     kvserviceclass::ShardStateInfo stateinfo = shardStateMap_myj[shardid];
     if(stateinfo.confignum==0){
-        LOG_INFO("server{%lld,%s}>>shard:%lld，初始化状态，状态为：%d,组号：%lld",gid_myj,name_myj,state,newgid);
+        LOG_INFO("server{%lld,%s}>>shard:%lld，初始化状态，状态为：%d,组号：%lld",gid_myj,name_myj.c_str(),state,newgid);
+        stateinfo.confignum = confignum;
+        stateinfo.gid = newgid;
+        stateinfo.state = kvserviceclass::ShardState(state);
+        stateinfo.waitingcommit = false;
+        if(stateinfo.state==kvserviceclass::ShardState::Serving){
+            //更新分片详细状态
+            shardStateMap_myj[shardid] = stateinfo;
+            std::ostringstream oss;
+            boost::archive::binary_oarchive bos(oss);
+            bos << stateinfo;
+            std::string state_key = "STATE_SHARD_"+std::to_string(shardid);
+            db_myj->ConfigMetaPut(state_key,oss.str());
+
+            //更新分片存活状态
+            shardKeysExist_myj[shardid] = true;
+            std::string exist_key = "EXIST_SHARD_"+std::to_string(shardid);
+            db_myj->ConfigMetaPut(exist_key,"true");
+        }
+    }
+    if(maxraftstate_myj!=-1){
+        if(!snapshoting_myj){
+            snapshot(applymsg.commandIndex);
+        }
     }
 }
 
 void KVService::configIncreaseHandler(ApplyMsg applymsg)
 {
+    kvraft::Command command = applymsg.command;
+    long long shardid = command.shardid();
+    long long confignum = command.confignum();
+    long long newgid = command.gid();
+
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    kvserviceclass::ShardStateInfo stateinfo = shardStateMap_myj[shardid];
+    if(stateinfo.confignum+1 == confignum){
+        LOG_INFO("server{%lld,%s}>>shard[%lld]的config版本提升至%lld,状态仍然为%d",gid_myj,name_myj.c_str(),confignum,int(stateinfo.state));
+        stateinfo.confignum = confignum;
+        stateinfo.gid = newgid;
+        stateinfo.waitingcommit = false;
+        shardStateMap_myj[shardid] = stateinfo;
+
+        //更新数据库
+        std::string state_key = "STATE_SHARD_"+std::to_string(shardid);
+        std::ostringstream oss;
+        boost::archive::binary_oarchive bos(oss);
+        bos << stateinfo;
+        db_myj->ConfigMetaPut(state_key,oss.str());
+    }else{
+        LOG_INFO("server{%lld,%s}>>shard[%lld]的config版本提升至%lld失败,当前config num %lld",gid_myj,name_myj.c_str(),confignum,curConfig_myj.num());
+    }
+    if(maxraftstate_myj!=-1){
+        if(!snapshoting_myj){
+            snapshot(applymsg.commandIndex);
+        }
+    }   
 }
 
 void KVService::stateChangeHandler(ApplyMsg applymsg)
 {
+    kvraft::Command command = applymsg.command;
+    long long newgid = command.gid();
+    kvserviceclass::ShardState newstate = kvserviceclass::ShardState(command.newstate());
+    long long confignum = command.confignum();
+    long long shardid = command.shardid();
+
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    if(confignum==shardStateMap_myj[shardid].confignum+1){
+        // 新的配置需要处理某分片，由leader下发从Invalid转为Pulling
+        if(newstate == kvserviceclass::ShardState::Pulling){
+            if(shardStateMap_myj[shardid].state == kvserviceclass::ShardState::Invalid){
+                kvserviceclass::ShardStateInfo stateinfo(confignum,newstate,newgid,false);
+                shardStateMap_myj[shardid] = stateinfo;
+                LOG_INFO("server{%lld,%s}>>shard[%lld]状态从Invalid->Pulling,ConfigNum[%lld]",gid_myj,name_myj.c_str(),shardid,confignum);
+
+                std::string state_key = "STATE_SHARD_"+std::to_string(shardid);
+                std::ostringstream oss;
+                boost::archive::binary_oarchive bos(oss);
+                bos << stateinfo;
+                db_myj->ConfigMetaPut(state_key,oss.str());
+            }
+        }
+
+        // 新的配置不再需要处理某分片，由leader下发从Serving转为WaitingDelete
+        if(newstate==kvserviceclass::ShardState::WaitingDelete){
+            if(shardStateMap_myj[shardid].state == kvserviceclass::ShardState::Serving){
+                kvserviceclass::ShardStateInfo stateinfo(confignum,newstate,newgid,false);
+                shardStateMap_myj[shardid] = stateinfo;
+                LOG_INFO("server{gid[%lld],me[%s]}>>shard[%lld]状态从Serving->WaitingDelete,ConfigNum[%lld]", gid_myj, name_myj.c_str(), shardid, confignum)
+
+                std::string state_key = "STATE_SHARD_"+std::to_string(shardid);
+                std::ostringstream oss;
+                boost::archive::binary_oarchive bos(oss);
+                bos << stateinfo;
+                db_myj->ConfigMetaPut(state_key,oss.str());
+            }
+        }
+    }else if(confignum==shardStateMap_myj[shardid].confignum){
+        if(newstate==kvserviceclass::Serving){
+            kvserviceclass::ShardStateInfo stateinfo(confignum,newstate,newgid,false);
+            shardStateMap_myj[shardid] = stateinfo;
+            LOG_INFO("server{gid[%lld],me[%s]}>>shard[%lld]状态从Pulling->Serving,ConfigNum[%lld]", gid_myj, name_myj.c_str(), shardid, confignum);
+
+            std::string state_key = "STATE_SHARD_"+std::to_string(shardid);
+            std::ostringstream oss;
+            boost::archive::binary_oarchive bos(oss);
+            bos << stateinfo;
+            db_myj->ConfigMetaPut(state_key,oss.str());
+        }
+    }
+    if(maxraftstate_myj!=-1){
+        if(!snapshoting_myj){
+            snapshot(applymsg.commandIndex);
+        }
+    }
+
 }
 
 void KVService::deleteShardHandler(ApplyMsg applymsg)
@@ -770,6 +875,61 @@ void KVService::deleteShardHandler(ApplyMsg applymsg)
 
 void KVService::installShardHandler(ApplyMsg applymsg)
 {
+    kvraft::Command command = applymsg.command;
+    long long newgid = command.gid();
+    long long confignum = command.confignum();
+    long long shardid = command.shardid();
+    
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    if(confignum==shardStateMap_myj[shardid].confignum && shardStateMap_myj[shardid].state == kvserviceclass::ShardState::Pulling){
+        LOG_INFO("server{gid[%lld],me[%s]}>>开始下载shard[%lld],ConfigNum[%lld]", gid_myj, name_myj.c_str(), shardid, confignum);
+        
+        //保存数据到数据库
+        for(auto &kv : command.sharddata()){
+            db_myj->KVPut(kv.first,kv.second);
+        }
+        for(auto &kv : command.clientlastreply()){
+            std::string clientinfo;
+            if(!db_myj->ClientRequestGet(kv.first,clientinfo) || clientinfo.size()==0){
+                db_myj->ClientRequestPut(kv.first,kv.second);
+            }else{
+                std::istringstream newiss(kv.second);
+                boost::archive::binary_iarchive newbis(newiss);
+                kvserviceclass::clientLastReply newlastreply;
+                newbis>>newlastreply;
+
+                std::istringstream curiss(clientinfo);
+                boost::archive::binary_iarchive curbis(curiss);
+                kvserviceclass::clientLastReply curlastreply;
+                curbis>>curlastreply;
+
+                if(curlastreply.requestid < newlastreply.requestid){
+                    db_myj->ClientRequestPut(kv.first,kv.second);
+                }
+            }
+        }
+        // 这里还不能把状态设置为Serving，要等leader成功让另一复制组删除掉分片后，等待leader下发状态改变的命令
+		// 状态更改：未正在提交
+        kvserviceclass::ShardStateInfo stateinfo(confignum,kvserviceclass::ShardState::Pulling,newgid,false);
+        shardStateMap_myj[shardid] = stateinfo;
+        LOG_INFO("server{gid[%lld],me[%s]}>>成功下载shard[%lld],ConfigNum[%lld]", gid_myj, name_myj.c_str(), shardid, confignum);
+
+        std::string state_key = "STATE_SHARD_"+std::to_string(shardid);
+        std::ostringstream oss;
+        boost::archive::binary_oarchive bos(oss);
+        bos << stateinfo;
+        db_myj->ConfigMetaPut(state_key,oss.str());
+
+        //更新存活状态,方便分片状态更新函数判断是否需要删除对端的对应分片
+        shardKeysExist_myj[shardid] = true;
+        std::string exist_key = "EXIST_SHARD_"+std::to_string(shardid);
+        db_myj->ConfigMetaPut(exist_key,"true");
+    }
+    if(maxraftstate_myj!=-1){
+        if(!snapshoting_myj){
+            snapshot(applymsg.commandIndex);
+        }
+    }
 }
 
 void KVService::newConfigHandler(ApplyMsg applymsg)
@@ -780,7 +940,15 @@ void KVService::newConfigHandler(ApplyMsg applymsg)
     if(config.num()==curConfig_myj.num()+1){
         configList_myj.push_back(config);
         curConfig_myj = config;
-        LOG_INFO("server{%lld,%s}>>成功应用新的配置,num:%lld",gid_myj,name_myj,config.num());
+        LOG_INFO("server{%lld,%s}>>成功应用新的配置,num:%lld",gid_myj,name_myj.c_str(),config.num());
+
+        //更新数据库
+        std::string config_key = "CONFIG_"+std::to_string(config.num());
+        std::string curconfig_key = "CURRENT_CONFIG";
+        std::string config_data;
+        config.SerializeToString(&config_data);
+        db_myj->ConfigMetaPut(config_key,config_data);
+        db_myj->ConfigMetaPut(curconfig_key,config_data);
     }
     if(maxraftstate_myj!=-1){
         if(!snapshoting_myj){

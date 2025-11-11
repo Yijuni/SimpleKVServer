@@ -31,6 +31,9 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/map.h>  // IWYU pragma: export
+#include <google/protobuf/map_entry.h>
+#include <google/protobuf/map_field_inl.h>
 #include <google/protobuf/service.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
@@ -48,7 +51,7 @@ struct TableStruct_KVService_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[10]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -56,12 +59,27 @@ struct TableStruct_KVService_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_KVService_2eproto;
 namespace kvservice {
+class DeleteShardRequest;
+class DeleteShardRequestDefaultTypeInternal;
+extern DeleteShardRequestDefaultTypeInternal _DeleteShardRequest_default_instance_;
+class DeleteShardResponse;
+class DeleteShardResponseDefaultTypeInternal;
+extern DeleteShardResponseDefaultTypeInternal _DeleteShardResponse_default_instance_;
 class GetRequest;
 class GetRequestDefaultTypeInternal;
 extern GetRequestDefaultTypeInternal _GetRequest_default_instance_;
 class GetResponse;
 class GetResponseDefaultTypeInternal;
 extern GetResponseDefaultTypeInternal _GetResponse_default_instance_;
+class PullShardRequest;
+class PullShardRequestDefaultTypeInternal;
+extern PullShardRequestDefaultTypeInternal _PullShardRequest_default_instance_;
+class PullShardResponse;
+class PullShardResponseDefaultTypeInternal;
+extern PullShardResponseDefaultTypeInternal _PullShardResponse_default_instance_;
+class PullShardResponse_SharddataEntry_DoNotUse;
+class PullShardResponse_SharddataEntry_DoNotUseDefaultTypeInternal;
+extern PullShardResponse_SharddataEntry_DoNotUseDefaultTypeInternal _PullShardResponse_SharddataEntry_DoNotUse_default_instance_;
 class PutAppendRequest;
 class PutAppendRequestDefaultTypeInternal;
 extern PutAppendRequestDefaultTypeInternal _PutAppendRequest_default_instance_;
@@ -73,8 +91,13 @@ class ResultCodeDefaultTypeInternal;
 extern ResultCodeDefaultTypeInternal _ResultCode_default_instance_;
 }  // namespace kvservice
 PROTOBUF_NAMESPACE_OPEN
+template<> ::kvservice::DeleteShardRequest* Arena::CreateMaybeMessage<::kvservice::DeleteShardRequest>(Arena*);
+template<> ::kvservice::DeleteShardResponse* Arena::CreateMaybeMessage<::kvservice::DeleteShardResponse>(Arena*);
 template<> ::kvservice::GetRequest* Arena::CreateMaybeMessage<::kvservice::GetRequest>(Arena*);
 template<> ::kvservice::GetResponse* Arena::CreateMaybeMessage<::kvservice::GetResponse>(Arena*);
+template<> ::kvservice::PullShardRequest* Arena::CreateMaybeMessage<::kvservice::PullShardRequest>(Arena*);
+template<> ::kvservice::PullShardResponse* Arena::CreateMaybeMessage<::kvservice::PullShardResponse>(Arena*);
+template<> ::kvservice::PullShardResponse_SharddataEntry_DoNotUse* Arena::CreateMaybeMessage<::kvservice::PullShardResponse_SharddataEntry_DoNotUse>(Arena*);
 template<> ::kvservice::PutAppendRequest* Arena::CreateMaybeMessage<::kvservice::PutAppendRequest>(Arena*);
 template<> ::kvservice::PutAppendResponse* Arena::CreateMaybeMessage<::kvservice::PutAppendResponse>(Arena*);
 template<> ::kvservice::ResultCode* Arena::CreateMaybeMessage<::kvservice::ResultCode>(Arena*);
@@ -859,6 +882,673 @@ class PutAppendResponse :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_KVService_2eproto;
 };
+// -------------------------------------------------------------------
+
+class PullShardRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kvservice.PullShardRequest) */ {
+ public:
+  PullShardRequest();
+  virtual ~PullShardRequest();
+
+  PullShardRequest(const PullShardRequest& from);
+  PullShardRequest(PullShardRequest&& from) noexcept
+    : PullShardRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline PullShardRequest& operator=(const PullShardRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PullShardRequest& operator=(PullShardRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const PullShardRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PullShardRequest* internal_default_instance() {
+    return reinterpret_cast<const PullShardRequest*>(
+               &_PullShardRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(PullShardRequest& a, PullShardRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PullShardRequest* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PullShardRequest* New() const final {
+    return CreateMaybeMessage<PullShardRequest>(nullptr);
+  }
+
+  PullShardRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PullShardRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const PullShardRequest& from);
+  void MergeFrom(const PullShardRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PullShardRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kvservice.PullShardRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVService_2eproto);
+    return ::descriptor_table_KVService_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kClientidFieldNumber = 3,
+    kShardidFieldNumber = 1,
+    kConfignumFieldNumber = 2,
+    kRequestidFieldNumber = 4,
+  };
+  // string clientid = 3;
+  void clear_clientid();
+  const std::string& clientid() const;
+  void set_clientid(const std::string& value);
+  void set_clientid(std::string&& value);
+  void set_clientid(const char* value);
+  void set_clientid(const char* value, size_t size);
+  std::string* mutable_clientid();
+  std::string* release_clientid();
+  void set_allocated_clientid(std::string* clientid);
+  private:
+  const std::string& _internal_clientid() const;
+  void _internal_set_clientid(const std::string& value);
+  std::string* _internal_mutable_clientid();
+  public:
+
+  // int64 shardid = 1;
+  void clear_shardid();
+  ::PROTOBUF_NAMESPACE_ID::int64 shardid() const;
+  void set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_shardid() const;
+  void _internal_set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // int64 confignum = 2;
+  void clear_confignum();
+  ::PROTOBUF_NAMESPACE_ID::int64 confignum() const;
+  void set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_confignum() const;
+  void _internal_set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // int64 requestid = 4;
+  void clear_requestid();
+  ::PROTOBUF_NAMESPACE_ID::int64 requestid() const;
+  void set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_requestid() const;
+  void _internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:kvservice.PullShardRequest)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr clientid_;
+  ::PROTOBUF_NAMESPACE_ID::int64 shardid_;
+  ::PROTOBUF_NAMESPACE_ID::int64 confignum_;
+  ::PROTOBUF_NAMESPACE_ID::int64 requestid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_KVService_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PullShardResponse_SharddataEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PullShardResponse_SharddataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
+    0 > {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PullShardResponse_SharddataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
+    0 > SuperType;
+  PullShardResponse_SharddataEntry_DoNotUse();
+  PullShardResponse_SharddataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const PullShardResponse_SharddataEntry_DoNotUse& other);
+  static const PullShardResponse_SharddataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PullShardResponse_SharddataEntry_DoNotUse*>(&_PullShardResponse_SharddataEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "kvservice.PullShardResponse.SharddataEntry.key");
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVService_2eproto);
+    return ::descriptor_table_KVService_2eproto.file_level_metadata[6];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
+class PullShardResponse :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kvservice.PullShardResponse) */ {
+ public:
+  PullShardResponse();
+  virtual ~PullShardResponse();
+
+  PullShardResponse(const PullShardResponse& from);
+  PullShardResponse(PullShardResponse&& from) noexcept
+    : PullShardResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline PullShardResponse& operator=(const PullShardResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PullShardResponse& operator=(PullShardResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const PullShardResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PullShardResponse* internal_default_instance() {
+    return reinterpret_cast<const PullShardResponse*>(
+               &_PullShardResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(PullShardResponse& a, PullShardResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PullShardResponse* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PullShardResponse* New() const final {
+    return CreateMaybeMessage<PullShardResponse>(nullptr);
+  }
+
+  PullShardResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PullShardResponse>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const PullShardResponse& from);
+  void MergeFrom(const PullShardResponse& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PullShardResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kvservice.PullShardResponse";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVService_2eproto);
+    return ::descriptor_table_KVService_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSharddataFieldNumber = 1,
+    kClientlastreplyFieldNumber = 2,
+    kErrFieldNumber = 3,
+  };
+  // map<string, bytes> sharddata = 1;
+  int sharddata_size() const;
+  private:
+  int _internal_sharddata_size() const;
+  public:
+  void clear_sharddata();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_sharddata() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_sharddata();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      sharddata() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_sharddata();
+
+  // bytes clientlastreply = 2;
+  void clear_clientlastreply();
+  const std::string& clientlastreply() const;
+  void set_clientlastreply(const std::string& value);
+  void set_clientlastreply(std::string&& value);
+  void set_clientlastreply(const char* value);
+  void set_clientlastreply(const void* value, size_t size);
+  std::string* mutable_clientlastreply();
+  std::string* release_clientlastreply();
+  void set_allocated_clientlastreply(std::string* clientlastreply);
+  private:
+  const std::string& _internal_clientlastreply() const;
+  void _internal_set_clientlastreply(const std::string& value);
+  std::string* _internal_mutable_clientlastreply();
+  public:
+
+  // int32 err = 3;
+  void clear_err();
+  ::PROTOBUF_NAMESPACE_ID::int32 err() const;
+  void set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_err() const;
+  void _internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:kvservice.PullShardResponse)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      PullShardResponse_SharddataEntry_DoNotUse,
+      std::string, std::string,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
+      0 > sharddata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr clientlastreply_;
+  ::PROTOBUF_NAMESPACE_ID::int32 err_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_KVService_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DeleteShardRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kvservice.DeleteShardRequest) */ {
+ public:
+  DeleteShardRequest();
+  virtual ~DeleteShardRequest();
+
+  DeleteShardRequest(const DeleteShardRequest& from);
+  DeleteShardRequest(DeleteShardRequest&& from) noexcept
+    : DeleteShardRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline DeleteShardRequest& operator=(const DeleteShardRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeleteShardRequest& operator=(DeleteShardRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const DeleteShardRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DeleteShardRequest* internal_default_instance() {
+    return reinterpret_cast<const DeleteShardRequest*>(
+               &_DeleteShardRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(DeleteShardRequest& a, DeleteShardRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeleteShardRequest* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DeleteShardRequest* New() const final {
+    return CreateMaybeMessage<DeleteShardRequest>(nullptr);
+  }
+
+  DeleteShardRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DeleteShardRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const DeleteShardRequest& from);
+  void MergeFrom(const DeleteShardRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeleteShardRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kvservice.DeleteShardRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVService_2eproto);
+    return ::descriptor_table_KVService_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kClientidFieldNumber = 3,
+    kShardidFieldNumber = 1,
+    kConfignumFieldNumber = 2,
+    kRequestidFieldNumber = 4,
+  };
+  // string clientid = 3;
+  void clear_clientid();
+  const std::string& clientid() const;
+  void set_clientid(const std::string& value);
+  void set_clientid(std::string&& value);
+  void set_clientid(const char* value);
+  void set_clientid(const char* value, size_t size);
+  std::string* mutable_clientid();
+  std::string* release_clientid();
+  void set_allocated_clientid(std::string* clientid);
+  private:
+  const std::string& _internal_clientid() const;
+  void _internal_set_clientid(const std::string& value);
+  std::string* _internal_mutable_clientid();
+  public:
+
+  // int64 shardid = 1;
+  void clear_shardid();
+  ::PROTOBUF_NAMESPACE_ID::int64 shardid() const;
+  void set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_shardid() const;
+  void _internal_set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // int64 confignum = 2;
+  void clear_confignum();
+  ::PROTOBUF_NAMESPACE_ID::int64 confignum() const;
+  void set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_confignum() const;
+  void _internal_set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // int64 requestid = 4;
+  void clear_requestid();
+  ::PROTOBUF_NAMESPACE_ID::int64 requestid() const;
+  void set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_requestid() const;
+  void _internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:kvservice.DeleteShardRequest)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr clientid_;
+  ::PROTOBUF_NAMESPACE_ID::int64 shardid_;
+  ::PROTOBUF_NAMESPACE_ID::int64 confignum_;
+  ::PROTOBUF_NAMESPACE_ID::int64 requestid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_KVService_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DeleteShardResponse :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kvservice.DeleteShardResponse) */ {
+ public:
+  DeleteShardResponse();
+  virtual ~DeleteShardResponse();
+
+  DeleteShardResponse(const DeleteShardResponse& from);
+  DeleteShardResponse(DeleteShardResponse&& from) noexcept
+    : DeleteShardResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline DeleteShardResponse& operator=(const DeleteShardResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeleteShardResponse& operator=(DeleteShardResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const DeleteShardResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DeleteShardResponse* internal_default_instance() {
+    return reinterpret_cast<const DeleteShardResponse*>(
+               &_DeleteShardResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(DeleteShardResponse& a, DeleteShardResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeleteShardResponse* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DeleteShardResponse* New() const final {
+    return CreateMaybeMessage<DeleteShardResponse>(nullptr);
+  }
+
+  DeleteShardResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DeleteShardResponse>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const DeleteShardResponse& from);
+  void MergeFrom(const DeleteShardResponse& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeleteShardResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kvservice.DeleteShardResponse";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVService_2eproto);
+    return ::descriptor_table_KVService_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kErrFieldNumber = 1,
+  };
+  // int32 err = 1;
+  void clear_err();
+  ::PROTOBUF_NAMESPACE_ID::int32 err() const;
+  void set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_err() const;
+  void _internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:kvservice.DeleteShardResponse)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::int32 err_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_KVService_2eproto;
+};
 // ===================================================================
 
 class KVServiceRPC_Stub;
@@ -885,6 +1575,14 @@ class KVServiceRPC : public ::PROTOBUF_NAMESPACE_ID::Service {
   virtual void Append(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                        const ::kvservice::PutAppendRequest* request,
                        ::kvservice::PutAppendResponse* response,
+                       ::google::protobuf::Closure* done);
+  virtual void PullShard(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::kvservice::PullShardRequest* request,
+                       ::kvservice::PullShardResponse* response,
+                       ::google::protobuf::Closure* done);
+  virtual void DeleteShard(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::kvservice::DeleteShardRequest* request,
+                       ::kvservice::DeleteShardResponse* response,
                        ::google::protobuf::Closure* done);
 
   // implements Service ----------------------------------------------
@@ -926,6 +1624,14 @@ class KVServiceRPC_Stub : public KVServiceRPC {
   void Append(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                        const ::kvservice::PutAppendRequest* request,
                        ::kvservice::PutAppendResponse* response,
+                       ::google::protobuf::Closure* done);
+  void PullShard(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::kvservice::PullShardRequest* request,
+                       ::kvservice::PullShardResponse* response,
+                       ::google::protobuf::Closure* done);
+  void DeleteShard(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::kvservice::DeleteShardRequest* request,
+                       ::kvservice::DeleteShardResponse* response,
                        ::google::protobuf::Closure* done);
  private:
   ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel_;
@@ -1561,9 +2267,406 @@ inline void PutAppendResponse::set_allocated_resultcode(::kvservice::ResultCode*
   // @@protoc_insertion_point(field_set_allocated:kvservice.PutAppendResponse.resultcode)
 }
 
+// -------------------------------------------------------------------
+
+// PullShardRequest
+
+// int64 shardid = 1;
+inline void PullShardRequest::clear_shardid() {
+  shardid_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 PullShardRequest::_internal_shardid() const {
+  return shardid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 PullShardRequest::shardid() const {
+  // @@protoc_insertion_point(field_get:kvservice.PullShardRequest.shardid)
+  return _internal_shardid();
+}
+inline void PullShardRequest::_internal_set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  shardid_ = value;
+}
+inline void PullShardRequest::set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_shardid(value);
+  // @@protoc_insertion_point(field_set:kvservice.PullShardRequest.shardid)
+}
+
+// int64 confignum = 2;
+inline void PullShardRequest::clear_confignum() {
+  confignum_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 PullShardRequest::_internal_confignum() const {
+  return confignum_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 PullShardRequest::confignum() const {
+  // @@protoc_insertion_point(field_get:kvservice.PullShardRequest.confignum)
+  return _internal_confignum();
+}
+inline void PullShardRequest::_internal_set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  confignum_ = value;
+}
+inline void PullShardRequest::set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_confignum(value);
+  // @@protoc_insertion_point(field_set:kvservice.PullShardRequest.confignum)
+}
+
+// string clientid = 3;
+inline void PullShardRequest::clear_clientid() {
+  clientid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& PullShardRequest::clientid() const {
+  // @@protoc_insertion_point(field_get:kvservice.PullShardRequest.clientid)
+  return _internal_clientid();
+}
+inline void PullShardRequest::set_clientid(const std::string& value) {
+  _internal_set_clientid(value);
+  // @@protoc_insertion_point(field_set:kvservice.PullShardRequest.clientid)
+}
+inline std::string* PullShardRequest::mutable_clientid() {
+  // @@protoc_insertion_point(field_mutable:kvservice.PullShardRequest.clientid)
+  return _internal_mutable_clientid();
+}
+inline const std::string& PullShardRequest::_internal_clientid() const {
+  return clientid_.GetNoArena();
+}
+inline void PullShardRequest::_internal_set_clientid(const std::string& value) {
+  
+  clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void PullShardRequest::set_clientid(std::string&& value) {
+  
+  clientid_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:kvservice.PullShardRequest.clientid)
+}
+inline void PullShardRequest::set_clientid(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:kvservice.PullShardRequest.clientid)
+}
+inline void PullShardRequest::set_clientid(const char* value, size_t size) {
+  
+  clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:kvservice.PullShardRequest.clientid)
+}
+inline std::string* PullShardRequest::_internal_mutable_clientid() {
+  
+  return clientid_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* PullShardRequest::release_clientid() {
+  // @@protoc_insertion_point(field_release:kvservice.PullShardRequest.clientid)
+  
+  return clientid_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void PullShardRequest::set_allocated_clientid(std::string* clientid) {
+  if (clientid != nullptr) {
+    
+  } else {
+    
+  }
+  clientid_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), clientid);
+  // @@protoc_insertion_point(field_set_allocated:kvservice.PullShardRequest.clientid)
+}
+
+// int64 requestid = 4;
+inline void PullShardRequest::clear_requestid() {
+  requestid_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 PullShardRequest::_internal_requestid() const {
+  return requestid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 PullShardRequest::requestid() const {
+  // @@protoc_insertion_point(field_get:kvservice.PullShardRequest.requestid)
+  return _internal_requestid();
+}
+inline void PullShardRequest::_internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  requestid_ = value;
+}
+inline void PullShardRequest::set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_requestid(value);
+  // @@protoc_insertion_point(field_set:kvservice.PullShardRequest.requestid)
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// PullShardResponse
+
+// map<string, bytes> sharddata = 1;
+inline int PullShardResponse::_internal_sharddata_size() const {
+  return sharddata_.size();
+}
+inline int PullShardResponse::sharddata_size() const {
+  return _internal_sharddata_size();
+}
+inline void PullShardResponse::clear_sharddata() {
+  sharddata_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+PullShardResponse::_internal_sharddata() const {
+  return sharddata_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+PullShardResponse::sharddata() const {
+  // @@protoc_insertion_point(field_map:kvservice.PullShardResponse.sharddata)
+  return _internal_sharddata();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+PullShardResponse::_internal_mutable_sharddata() {
+  return sharddata_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+PullShardResponse::mutable_sharddata() {
+  // @@protoc_insertion_point(field_mutable_map:kvservice.PullShardResponse.sharddata)
+  return _internal_mutable_sharddata();
+}
+
+// bytes clientlastreply = 2;
+inline void PullShardResponse::clear_clientlastreply() {
+  clientlastreply_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& PullShardResponse::clientlastreply() const {
+  // @@protoc_insertion_point(field_get:kvservice.PullShardResponse.clientlastreply)
+  return _internal_clientlastreply();
+}
+inline void PullShardResponse::set_clientlastreply(const std::string& value) {
+  _internal_set_clientlastreply(value);
+  // @@protoc_insertion_point(field_set:kvservice.PullShardResponse.clientlastreply)
+}
+inline std::string* PullShardResponse::mutable_clientlastreply() {
+  // @@protoc_insertion_point(field_mutable:kvservice.PullShardResponse.clientlastreply)
+  return _internal_mutable_clientlastreply();
+}
+inline const std::string& PullShardResponse::_internal_clientlastreply() const {
+  return clientlastreply_.GetNoArena();
+}
+inline void PullShardResponse::_internal_set_clientlastreply(const std::string& value) {
+  
+  clientlastreply_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void PullShardResponse::set_clientlastreply(std::string&& value) {
+  
+  clientlastreply_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:kvservice.PullShardResponse.clientlastreply)
+}
+inline void PullShardResponse::set_clientlastreply(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  clientlastreply_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:kvservice.PullShardResponse.clientlastreply)
+}
+inline void PullShardResponse::set_clientlastreply(const void* value, size_t size) {
+  
+  clientlastreply_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:kvservice.PullShardResponse.clientlastreply)
+}
+inline std::string* PullShardResponse::_internal_mutable_clientlastreply() {
+  
+  return clientlastreply_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* PullShardResponse::release_clientlastreply() {
+  // @@protoc_insertion_point(field_release:kvservice.PullShardResponse.clientlastreply)
+  
+  return clientlastreply_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void PullShardResponse::set_allocated_clientlastreply(std::string* clientlastreply) {
+  if (clientlastreply != nullptr) {
+    
+  } else {
+    
+  }
+  clientlastreply_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), clientlastreply);
+  // @@protoc_insertion_point(field_set_allocated:kvservice.PullShardResponse.clientlastreply)
+}
+
+// int32 err = 3;
+inline void PullShardResponse::clear_err() {
+  err_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 PullShardResponse::_internal_err() const {
+  return err_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 PullShardResponse::err() const {
+  // @@protoc_insertion_point(field_get:kvservice.PullShardResponse.err)
+  return _internal_err();
+}
+inline void PullShardResponse::_internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  err_ = value;
+}
+inline void PullShardResponse::set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_err(value);
+  // @@protoc_insertion_point(field_set:kvservice.PullShardResponse.err)
+}
+
+// -------------------------------------------------------------------
+
+// DeleteShardRequest
+
+// int64 shardid = 1;
+inline void DeleteShardRequest::clear_shardid() {
+  shardid_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 DeleteShardRequest::_internal_shardid() const {
+  return shardid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 DeleteShardRequest::shardid() const {
+  // @@protoc_insertion_point(field_get:kvservice.DeleteShardRequest.shardid)
+  return _internal_shardid();
+}
+inline void DeleteShardRequest::_internal_set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  shardid_ = value;
+}
+inline void DeleteShardRequest::set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_shardid(value);
+  // @@protoc_insertion_point(field_set:kvservice.DeleteShardRequest.shardid)
+}
+
+// int64 confignum = 2;
+inline void DeleteShardRequest::clear_confignum() {
+  confignum_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 DeleteShardRequest::_internal_confignum() const {
+  return confignum_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 DeleteShardRequest::confignum() const {
+  // @@protoc_insertion_point(field_get:kvservice.DeleteShardRequest.confignum)
+  return _internal_confignum();
+}
+inline void DeleteShardRequest::_internal_set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  confignum_ = value;
+}
+inline void DeleteShardRequest::set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_confignum(value);
+  // @@protoc_insertion_point(field_set:kvservice.DeleteShardRequest.confignum)
+}
+
+// string clientid = 3;
+inline void DeleteShardRequest::clear_clientid() {
+  clientid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& DeleteShardRequest::clientid() const {
+  // @@protoc_insertion_point(field_get:kvservice.DeleteShardRequest.clientid)
+  return _internal_clientid();
+}
+inline void DeleteShardRequest::set_clientid(const std::string& value) {
+  _internal_set_clientid(value);
+  // @@protoc_insertion_point(field_set:kvservice.DeleteShardRequest.clientid)
+}
+inline std::string* DeleteShardRequest::mutable_clientid() {
+  // @@protoc_insertion_point(field_mutable:kvservice.DeleteShardRequest.clientid)
+  return _internal_mutable_clientid();
+}
+inline const std::string& DeleteShardRequest::_internal_clientid() const {
+  return clientid_.GetNoArena();
+}
+inline void DeleteShardRequest::_internal_set_clientid(const std::string& value) {
+  
+  clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void DeleteShardRequest::set_clientid(std::string&& value) {
+  
+  clientid_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:kvservice.DeleteShardRequest.clientid)
+}
+inline void DeleteShardRequest::set_clientid(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:kvservice.DeleteShardRequest.clientid)
+}
+inline void DeleteShardRequest::set_clientid(const char* value, size_t size) {
+  
+  clientid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:kvservice.DeleteShardRequest.clientid)
+}
+inline std::string* DeleteShardRequest::_internal_mutable_clientid() {
+  
+  return clientid_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* DeleteShardRequest::release_clientid() {
+  // @@protoc_insertion_point(field_release:kvservice.DeleteShardRequest.clientid)
+  
+  return clientid_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void DeleteShardRequest::set_allocated_clientid(std::string* clientid) {
+  if (clientid != nullptr) {
+    
+  } else {
+    
+  }
+  clientid_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), clientid);
+  // @@protoc_insertion_point(field_set_allocated:kvservice.DeleteShardRequest.clientid)
+}
+
+// int64 requestid = 4;
+inline void DeleteShardRequest::clear_requestid() {
+  requestid_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 DeleteShardRequest::_internal_requestid() const {
+  return requestid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 DeleteShardRequest::requestid() const {
+  // @@protoc_insertion_point(field_get:kvservice.DeleteShardRequest.requestid)
+  return _internal_requestid();
+}
+inline void DeleteShardRequest::_internal_set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  requestid_ = value;
+}
+inline void DeleteShardRequest::set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_requestid(value);
+  // @@protoc_insertion_point(field_set:kvservice.DeleteShardRequest.requestid)
+}
+
+// -------------------------------------------------------------------
+
+// DeleteShardResponse
+
+// int32 err = 1;
+inline void DeleteShardResponse::clear_err() {
+  err_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 DeleteShardResponse::_internal_err() const {
+  return err_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 DeleteShardResponse::err() const {
+  // @@protoc_insertion_point(field_get:kvservice.DeleteShardResponse.err)
+  return _internal_err();
+}
+inline void DeleteShardResponse::_internal_set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  err_ = value;
+}
+inline void DeleteShardResponse::set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_err(value);
+  // @@protoc_insertion_point(field_set:kvservice.DeleteShardResponse.err)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

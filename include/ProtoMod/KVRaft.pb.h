@@ -51,7 +51,7 @@ struct TableStruct_KVRaft_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[10]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[14]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -68,9 +68,21 @@ extern AppendEntriesResponseDefaultTypeInternal _AppendEntriesResponse_default_i
 class Command;
 class CommandDefaultTypeInternal;
 extern CommandDefaultTypeInternal _Command_default_instance_;
+class Command_ClientlastreplyEntry_DoNotUse;
+class Command_ClientlastreplyEntry_DoNotUseDefaultTypeInternal;
+extern Command_ClientlastreplyEntry_DoNotUseDefaultTypeInternal _Command_ClientlastreplyEntry_DoNotUse_default_instance_;
 class Command_GroupsEntry_DoNotUse;
 class Command_GroupsEntry_DoNotUseDefaultTypeInternal;
 extern Command_GroupsEntry_DoNotUseDefaultTypeInternal _Command_GroupsEntry_DoNotUse_default_instance_;
+class Command_SharddataEntry_DoNotUse;
+class Command_SharddataEntry_DoNotUseDefaultTypeInternal;
+extern Command_SharddataEntry_DoNotUseDefaultTypeInternal _Command_SharddataEntry_DoNotUse_default_instance_;
+class Config;
+class ConfigDefaultTypeInternal;
+extern ConfigDefaultTypeInternal _Config_default_instance_;
+class Config_GroupsEntry_DoNotUse;
+class Config_GroupsEntry_DoNotUseDefaultTypeInternal;
+extern Config_GroupsEntry_DoNotUseDefaultTypeInternal _Config_GroupsEntry_DoNotUse_default_instance_;
 class InstallSnapshotRequest;
 class InstallSnapshotRequestDefaultTypeInternal;
 extern InstallSnapshotRequestDefaultTypeInternal _InstallSnapshotRequest_default_instance_;
@@ -94,7 +106,11 @@ PROTOBUF_NAMESPACE_OPEN
 template<> ::kvraft::AppendEntriesRequest* Arena::CreateMaybeMessage<::kvraft::AppendEntriesRequest>(Arena*);
 template<> ::kvraft::AppendEntriesResponse* Arena::CreateMaybeMessage<::kvraft::AppendEntriesResponse>(Arena*);
 template<> ::kvraft::Command* Arena::CreateMaybeMessage<::kvraft::Command>(Arena*);
+template<> ::kvraft::Command_ClientlastreplyEntry_DoNotUse* Arena::CreateMaybeMessage<::kvraft::Command_ClientlastreplyEntry_DoNotUse>(Arena*);
 template<> ::kvraft::Command_GroupsEntry_DoNotUse* Arena::CreateMaybeMessage<::kvraft::Command_GroupsEntry_DoNotUse>(Arena*);
+template<> ::kvraft::Command_SharddataEntry_DoNotUse* Arena::CreateMaybeMessage<::kvraft::Command_SharddataEntry_DoNotUse>(Arena*);
+template<> ::kvraft::Config* Arena::CreateMaybeMessage<::kvraft::Config>(Arena*);
+template<> ::kvraft::Config_GroupsEntry_DoNotUse* Arena::CreateMaybeMessage<::kvraft::Config_GroupsEntry_DoNotUse>(Arena*);
 template<> ::kvraft::InstallSnapshotRequest* Arena::CreateMaybeMessage<::kvraft::InstallSnapshotRequest>(Arena*);
 template<> ::kvraft::InstallSnapshotResponse* Arena::CreateMaybeMessage<::kvraft::InstallSnapshotResponse>(Arena*);
 template<> ::kvraft::LogEntry* Arena::CreateMaybeMessage<::kvraft::LogEntry>(Arena*);
@@ -249,6 +265,214 @@ class Servers :
 };
 // -------------------------------------------------------------------
 
+class Config_GroupsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Config_GroupsEntry_DoNotUse, 
+    ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Config_GroupsEntry_DoNotUse, 
+    ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > SuperType;
+  Config_GroupsEntry_DoNotUse();
+  Config_GroupsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const Config_GroupsEntry_DoNotUse& other);
+  static const Config_GroupsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Config_GroupsEntry_DoNotUse*>(&_Config_GroupsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVRaft_2eproto);
+    return ::descriptor_table_KVRaft_2eproto.file_level_metadata[1];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
+class Config :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kvraft.Config) */ {
+ public:
+  Config();
+  virtual ~Config();
+
+  Config(const Config& from);
+  Config(Config&& from) noexcept
+    : Config() {
+    *this = ::std::move(from);
+  }
+
+  inline Config& operator=(const Config& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Config& operator=(Config&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const Config& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Config* internal_default_instance() {
+    return reinterpret_cast<const Config*>(
+               &_Config_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(Config& a, Config& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Config* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Config* New() const final {
+    return CreateMaybeMessage<Config>(nullptr);
+  }
+
+  Config* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Config>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const Config& from);
+  void MergeFrom(const Config& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Config* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kvraft.Config";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVRaft_2eproto);
+    return ::descriptor_table_KVRaft_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kShardsFieldNumber = 2,
+    kGroupsFieldNumber = 3,
+    kNumFieldNumber = 1,
+  };
+  // repeated int64 shards = 2;
+  int shards_size() const;
+  private:
+  int _internal_shards_size() const;
+  public:
+  void clear_shards();
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_shards(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+      _internal_shards() const;
+  void _internal_add_shards(::PROTOBUF_NAMESPACE_ID::int64 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+      _internal_mutable_shards();
+  public:
+  ::PROTOBUF_NAMESPACE_ID::int64 shards(int index) const;
+  void set_shards(int index, ::PROTOBUF_NAMESPACE_ID::int64 value);
+  void add_shards(::PROTOBUF_NAMESPACE_ID::int64 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+      shards() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+      mutable_shards();
+
+  // map<int64, .kvraft.Servers> groups = 3;
+  int groups_size() const;
+  private:
+  int _internal_groups_size() const;
+  public:
+  void clear_groups();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers >&
+      _internal_groups() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers >*
+      _internal_mutable_groups();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers >&
+      groups() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers >*
+      mutable_groups();
+
+  // int64 num = 1;
+  void clear_num();
+  ::PROTOBUF_NAMESPACE_ID::int64 num() const;
+  void set_num(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_num() const;
+  void _internal_set_num(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:kvraft.Config)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 > shards_;
+  mutable std::atomic<int> _shards_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      Config_GroupsEntry_DoNotUse,
+      ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+      0 > groups_;
+  ::PROTOBUF_NAMESPACE_ID::int64 num_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_KVRaft_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Command_GroupsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Command_GroupsEntry_DoNotUse, 
     ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64,
@@ -271,7 +495,75 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVRaft_2eproto);
-    return ::descriptor_table_KVRaft_2eproto.file_level_metadata[1];
+    return ::descriptor_table_KVRaft_2eproto.file_level_metadata[3];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
+class Command_SharddataEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Command_SharddataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Command_SharddataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  Command_SharddataEntry_DoNotUse();
+  Command_SharddataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const Command_SharddataEntry_DoNotUse& other);
+  static const Command_SharddataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Command_SharddataEntry_DoNotUse*>(&_Command_SharddataEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "kvraft.Command.SharddataEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "kvraft.Command.SharddataEntry.value");
+ }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVRaft_2eproto);
+    return ::descriptor_table_KVRaft_2eproto.file_level_metadata[4];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
+class Command_ClientlastreplyEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Command_ClientlastreplyEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Command_ClientlastreplyEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  Command_ClientlastreplyEntry_DoNotUse();
+  Command_ClientlastreplyEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const Command_ClientlastreplyEntry_DoNotUse& other);
+  static const Command_ClientlastreplyEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Command_ClientlastreplyEntry_DoNotUse*>(&_Command_ClientlastreplyEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "kvraft.Command.ClientlastreplyEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "kvraft.Command.ClientlastreplyEntry.value");
+ }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVRaft_2eproto);
+    return ::descriptor_table_KVRaft_2eproto.file_level_metadata[5];
   }
 
   public:
@@ -321,7 +613,7 @@ class Command :
                &_Command_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    6;
 
   friend void swap(Command& a, Command& b) {
     a.Swap(&b);
@@ -388,14 +680,21 @@ class Command :
   enum : int {
     kGroupsFieldNumber = 7,
     kGidsFieldNumber = 8,
+    kSharddataFieldNumber = 15,
+    kClientlastreplyFieldNumber = 16,
     kTypeFieldNumber = 1,
     kClientidFieldNumber = 2,
     kKeyFieldNumber = 4,
     kValueFieldNumber = 5,
+    kNewconfigFieldNumber = 17,
     kRequestidFieldNumber = 3,
     kNumFieldNumber = 6,
     kShardFieldNumber = 9,
     kGidFieldNumber = 10,
+    kShardidFieldNumber = 11,
+    kConfignumFieldNumber = 12,
+    kShardGidFieldNumber = 13,
+    kNewstateFieldNumber = 14,
   };
   // map<int64, .kvraft.Servers> groups = 7;
   int groups_size() const;
@@ -435,6 +734,40 @@ class Command :
       gids() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
       mutable_gids();
+
+  // map<string, string> sharddata = 15;
+  int sharddata_size() const;
+  private:
+  int _internal_sharddata_size() const;
+  public:
+  void clear_sharddata();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_sharddata() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_sharddata();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      sharddata() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_sharddata();
+
+  // map<string, string> clientlastreply = 16;
+  int clientlastreply_size() const;
+  private:
+  int _internal_clientlastreply_size() const;
+  public:
+  void clear_clientlastreply();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_clientlastreply() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_clientlastreply();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      clientlastreply() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_clientlastreply();
 
   // bytes type = 1;
   void clear_type();
@@ -500,6 +833,21 @@ class Command :
   std::string* _internal_mutable_value();
   public:
 
+  // .kvraft.Config newconfig = 17;
+  bool has_newconfig() const;
+  private:
+  bool _internal_has_newconfig() const;
+  public:
+  void clear_newconfig();
+  const ::kvraft::Config& newconfig() const;
+  ::kvraft::Config* release_newconfig();
+  ::kvraft::Config* mutable_newconfig();
+  void set_allocated_newconfig(::kvraft::Config* newconfig);
+  private:
+  const ::kvraft::Config& _internal_newconfig() const;
+  ::kvraft::Config* _internal_mutable_newconfig();
+  public:
+
   // int64 requestid = 3;
   void clear_requestid();
   ::PROTOBUF_NAMESPACE_ID::int64 requestid() const;
@@ -536,6 +884,42 @@ class Command :
   void _internal_set_gid(::PROTOBUF_NAMESPACE_ID::int64 value);
   public:
 
+  // int64 shardid = 11;
+  void clear_shardid();
+  ::PROTOBUF_NAMESPACE_ID::int64 shardid() const;
+  void set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_shardid() const;
+  void _internal_set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // int64 confignum = 12;
+  void clear_confignum();
+  ::PROTOBUF_NAMESPACE_ID::int64 confignum() const;
+  void set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_confignum() const;
+  void _internal_set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // int64 shard_gid = 13;
+  void clear_shard_gid();
+  ::PROTOBUF_NAMESPACE_ID::int64 shard_gid() const;
+  void set_shard_gid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_shard_gid() const;
+  void _internal_set_shard_gid(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // int32 newstate = 14;
+  void clear_newstate();
+  ::PROTOBUF_NAMESPACE_ID::int32 newstate() const;
+  void set_newstate(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_newstate() const;
+  void _internal_set_newstate(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kvraft.Command)
  private:
   class _Internal;
@@ -549,14 +933,31 @@ class Command :
       0 > groups_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 > gids_;
   mutable std::atomic<int> _gids_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      Command_SharddataEntry_DoNotUse,
+      std::string, std::string,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      0 > sharddata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      Command_ClientlastreplyEntry_DoNotUse,
+      std::string, std::string,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      0 > clientlastreply_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr clientid_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr key_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
+  ::kvraft::Config* newconfig_;
   ::PROTOBUF_NAMESPACE_ID::int64 requestid_;
   ::PROTOBUF_NAMESPACE_ID::int64 num_;
   ::PROTOBUF_NAMESPACE_ID::int64 shard_;
   ::PROTOBUF_NAMESPACE_ID::int64 gid_;
+  ::PROTOBUF_NAMESPACE_ID::int64 shardid_;
+  ::PROTOBUF_NAMESPACE_ID::int64 confignum_;
+  ::PROTOBUF_NAMESPACE_ID::int64 shard_gid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 newstate_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_KVRaft_2eproto;
 };
@@ -604,7 +1005,7 @@ class LogEntry :
                &_LogEntry_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    7;
 
   friend void swap(LogEntry& a, LogEntry& b) {
     a.Swap(&b);
@@ -749,7 +1150,7 @@ class AppendEntriesRequest :
                &_AppendEntriesRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    8;
 
   friend void swap(AppendEntriesRequest& a, AppendEntriesRequest& b) {
     a.Swap(&b);
@@ -948,7 +1349,7 @@ class AppendEntriesResponse :
                &_AppendEntriesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    9;
 
   friend void swap(AppendEntriesResponse& a, AppendEntriesResponse& b) {
     a.Swap(&b);
@@ -1098,7 +1499,7 @@ class InstallSnapshotRequest :
                &_InstallSnapshotRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    10;
 
   friend void swap(InstallSnapshotRequest& a, InstallSnapshotRequest& b) {
     a.Swap(&b);
@@ -1306,7 +1707,7 @@ class InstallSnapshotResponse :
                &_InstallSnapshotResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    11;
 
   friend void swap(InstallSnapshotResponse& a, InstallSnapshotResponse& b) {
     a.Swap(&b);
@@ -1434,7 +1835,7 @@ class RequestVoteRequest :
                &_RequestVoteRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    12;
 
   friend void swap(RequestVoteRequest& a, RequestVoteRequest& b) {
     a.Swap(&b);
@@ -1602,7 +2003,7 @@ class RequestVoteResponse :
                &_RequestVoteResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    13;
 
   friend void swap(RequestVoteResponse& a, RequestVoteResponse& b) {
     a.Swap(&b);
@@ -1856,6 +2257,112 @@ Servers::mutable_serversname() {
   // @@protoc_insertion_point(field_mutable_list:kvraft.Servers.serversName)
   return &serversname_;
 }
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// Config
+
+// int64 num = 1;
+inline void Config::clear_num() {
+  num_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Config::_internal_num() const {
+  return num_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Config::num() const {
+  // @@protoc_insertion_point(field_get:kvraft.Config.num)
+  return _internal_num();
+}
+inline void Config::_internal_set_num(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  num_ = value;
+}
+inline void Config::set_num(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_num(value);
+  // @@protoc_insertion_point(field_set:kvraft.Config.num)
+}
+
+// repeated int64 shards = 2;
+inline int Config::_internal_shards_size() const {
+  return shards_.size();
+}
+inline int Config::shards_size() const {
+  return _internal_shards_size();
+}
+inline void Config::clear_shards() {
+  shards_.Clear();
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Config::_internal_shards(int index) const {
+  return shards_.Get(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Config::shards(int index) const {
+  // @@protoc_insertion_point(field_get:kvraft.Config.shards)
+  return _internal_shards(index);
+}
+inline void Config::set_shards(int index, ::PROTOBUF_NAMESPACE_ID::int64 value) {
+  shards_.Set(index, value);
+  // @@protoc_insertion_point(field_set:kvraft.Config.shards)
+}
+inline void Config::_internal_add_shards(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  shards_.Add(value);
+}
+inline void Config::add_shards(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_add_shards(value);
+  // @@protoc_insertion_point(field_add:kvraft.Config.shards)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+Config::_internal_shards() const {
+  return shards_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+Config::shards() const {
+  // @@protoc_insertion_point(field_list:kvraft.Config.shards)
+  return _internal_shards();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+Config::_internal_mutable_shards() {
+  return &shards_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+Config::mutable_shards() {
+  // @@protoc_insertion_point(field_mutable_list:kvraft.Config.shards)
+  return _internal_mutable_shards();
+}
+
+// map<int64, .kvraft.Servers> groups = 3;
+inline int Config::_internal_groups_size() const {
+  return groups_.size();
+}
+inline int Config::groups_size() const {
+  return _internal_groups_size();
+}
+inline void Config::clear_groups() {
+  groups_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers >&
+Config::_internal_groups() const {
+  return groups_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers >&
+Config::groups() const {
+  // @@protoc_insertion_point(field_map:kvraft.Config.groups)
+  return _internal_groups();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers >*
+Config::_internal_mutable_groups() {
+  return groups_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int64, ::kvraft::Servers >*
+Config::mutable_groups() {
+  // @@protoc_insertion_point(field_mutable_map:kvraft.Config.groups)
+  return _internal_mutable_groups();
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -2257,6 +2764,204 @@ inline void Command::_internal_set_gid(::PROTOBUF_NAMESPACE_ID::int64 value) {
 inline void Command::set_gid(::PROTOBUF_NAMESPACE_ID::int64 value) {
   _internal_set_gid(value);
   // @@protoc_insertion_point(field_set:kvraft.Command.gid)
+}
+
+// int64 shardid = 11;
+inline void Command::clear_shardid() {
+  shardid_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Command::_internal_shardid() const {
+  return shardid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Command::shardid() const {
+  // @@protoc_insertion_point(field_get:kvraft.Command.shardid)
+  return _internal_shardid();
+}
+inline void Command::_internal_set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  shardid_ = value;
+}
+inline void Command::set_shardid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_shardid(value);
+  // @@protoc_insertion_point(field_set:kvraft.Command.shardid)
+}
+
+// int64 confignum = 12;
+inline void Command::clear_confignum() {
+  confignum_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Command::_internal_confignum() const {
+  return confignum_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Command::confignum() const {
+  // @@protoc_insertion_point(field_get:kvraft.Command.confignum)
+  return _internal_confignum();
+}
+inline void Command::_internal_set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  confignum_ = value;
+}
+inline void Command::set_confignum(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_confignum(value);
+  // @@protoc_insertion_point(field_set:kvraft.Command.confignum)
+}
+
+// int64 shard_gid = 13;
+inline void Command::clear_shard_gid() {
+  shard_gid_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Command::_internal_shard_gid() const {
+  return shard_gid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Command::shard_gid() const {
+  // @@protoc_insertion_point(field_get:kvraft.Command.shard_gid)
+  return _internal_shard_gid();
+}
+inline void Command::_internal_set_shard_gid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  shard_gid_ = value;
+}
+inline void Command::set_shard_gid(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_shard_gid(value);
+  // @@protoc_insertion_point(field_set:kvraft.Command.shard_gid)
+}
+
+// int32 newstate = 14;
+inline void Command::clear_newstate() {
+  newstate_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Command::_internal_newstate() const {
+  return newstate_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Command::newstate() const {
+  // @@protoc_insertion_point(field_get:kvraft.Command.newstate)
+  return _internal_newstate();
+}
+inline void Command::_internal_set_newstate(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  newstate_ = value;
+}
+inline void Command::set_newstate(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_newstate(value);
+  // @@protoc_insertion_point(field_set:kvraft.Command.newstate)
+}
+
+// map<string, string> sharddata = 15;
+inline int Command::_internal_sharddata_size() const {
+  return sharddata_.size();
+}
+inline int Command::sharddata_size() const {
+  return _internal_sharddata_size();
+}
+inline void Command::clear_sharddata() {
+  sharddata_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+Command::_internal_sharddata() const {
+  return sharddata_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+Command::sharddata() const {
+  // @@protoc_insertion_point(field_map:kvraft.Command.sharddata)
+  return _internal_sharddata();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+Command::_internal_mutable_sharddata() {
+  return sharddata_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+Command::mutable_sharddata() {
+  // @@protoc_insertion_point(field_mutable_map:kvraft.Command.sharddata)
+  return _internal_mutable_sharddata();
+}
+
+// map<string, string> clientlastreply = 16;
+inline int Command::_internal_clientlastreply_size() const {
+  return clientlastreply_.size();
+}
+inline int Command::clientlastreply_size() const {
+  return _internal_clientlastreply_size();
+}
+inline void Command::clear_clientlastreply() {
+  clientlastreply_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+Command::_internal_clientlastreply() const {
+  return clientlastreply_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+Command::clientlastreply() const {
+  // @@protoc_insertion_point(field_map:kvraft.Command.clientlastreply)
+  return _internal_clientlastreply();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+Command::_internal_mutable_clientlastreply() {
+  return clientlastreply_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+Command::mutable_clientlastreply() {
+  // @@protoc_insertion_point(field_mutable_map:kvraft.Command.clientlastreply)
+  return _internal_mutable_clientlastreply();
+}
+
+// .kvraft.Config newconfig = 17;
+inline bool Command::_internal_has_newconfig() const {
+  return this != internal_default_instance() && newconfig_ != nullptr;
+}
+inline bool Command::has_newconfig() const {
+  return _internal_has_newconfig();
+}
+inline void Command::clear_newconfig() {
+  if (GetArenaNoVirtual() == nullptr && newconfig_ != nullptr) {
+    delete newconfig_;
+  }
+  newconfig_ = nullptr;
+}
+inline const ::kvraft::Config& Command::_internal_newconfig() const {
+  const ::kvraft::Config* p = newconfig_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kvraft::Config*>(
+      &::kvraft::_Config_default_instance_);
+}
+inline const ::kvraft::Config& Command::newconfig() const {
+  // @@protoc_insertion_point(field_get:kvraft.Command.newconfig)
+  return _internal_newconfig();
+}
+inline ::kvraft::Config* Command::release_newconfig() {
+  // @@protoc_insertion_point(field_release:kvraft.Command.newconfig)
+  
+  ::kvraft::Config* temp = newconfig_;
+  newconfig_ = nullptr;
+  return temp;
+}
+inline ::kvraft::Config* Command::_internal_mutable_newconfig() {
+  
+  if (newconfig_ == nullptr) {
+    auto* p = CreateMaybeMessage<::kvraft::Config>(GetArenaNoVirtual());
+    newconfig_ = p;
+  }
+  return newconfig_;
+}
+inline ::kvraft::Config* Command::mutable_newconfig() {
+  // @@protoc_insertion_point(field_mutable:kvraft.Command.newconfig)
+  return _internal_mutable_newconfig();
+}
+inline void Command::set_allocated_newconfig(::kvraft::Config* newconfig) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete newconfig_;
+  }
+  if (newconfig) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      newconfig = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, newconfig, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  newconfig_ = newconfig;
+  // @@protoc_insertion_point(field_set_allocated:kvraft.Command.newconfig)
 }
 
 // -------------------------------------------------------------------
@@ -3009,6 +3714,14 @@ inline void RequestVoteResponse::set_votegranted(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
