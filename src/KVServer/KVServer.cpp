@@ -11,7 +11,7 @@ KVServer::KVServer(std::string ip, uint16_t port, std::string zkip, uint16_t zkp
     zkConnptr_myj = std::make_shared<ZKClient>(zkip, zkport);
     raft_myj = std::make_shared<KVRaft>();
     db_myj = std::make_shared<RocksDBAPI>();
-    shard_client_myj = std::make_shared<ShardCtrlerClient>(zkip,zkport,name_myj);
+    shard_client_myj = std::make_shared<ShardCtrlerClient>(zkip,zkport,std::to_string(gid)+"|"+name_myj);
     make_server_stub_myj = std::make_shared<MakeServerStub>(zkip,zkport);
 
     // 打开本地数据库

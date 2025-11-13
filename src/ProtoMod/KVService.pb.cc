@@ -14,6 +14,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_KVService_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PullShardResponse_ClientlastreplyEntry_DoNotUse_KVService_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_KVService_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_KVService_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ResultCode_KVService_2eproto;
 namespace kvservice {
@@ -45,6 +46,10 @@ class PullShardResponse_SharddataEntry_DoNotUseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PullShardResponse_SharddataEntry_DoNotUse> _instance;
 } _PullShardResponse_SharddataEntry_DoNotUse_default_instance_;
+class PullShardResponse_ClientlastreplyEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PullShardResponse_ClientlastreplyEntry_DoNotUse> _instance;
+} _PullShardResponse_ClientlastreplyEntry_DoNotUse_default_instance_;
 class PullShardResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PullShardResponse> _instance;
@@ -140,9 +145,23 @@ static void InitDefaultsscc_info_PullShardResponse_KVService_2eproto() {
   ::kvservice::PullShardResponse::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_PullShardResponse_KVService_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_PullShardResponse_KVService_2eproto}, {
-      &scc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_PullShardResponse_KVService_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_PullShardResponse_KVService_2eproto}, {
+      &scc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto.base,
+      &scc_info_PullShardResponse_ClientlastreplyEntry_DoNotUse_KVService_2eproto.base,}};
+
+static void InitDefaultsscc_info_PullShardResponse_ClientlastreplyEntry_DoNotUse_KVService_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kvservice::_PullShardResponse_ClientlastreplyEntry_DoNotUse_default_instance_;
+    new (ptr) ::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse();
+  }
+  ::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PullShardResponse_ClientlastreplyEntry_DoNotUse_KVService_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_PullShardResponse_ClientlastreplyEntry_DoNotUse_KVService_2eproto}, {}};
 
 static void InitDefaultsscc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -200,7 +219,7 @@ static void InitDefaultsscc_info_ResultCode_KVService_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ResultCode_KVService_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ResultCode_KVService_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_KVService_2eproto[10];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_KVService_2eproto[11];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_KVService_2eproto = nullptr;
 static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* file_level_service_descriptors_KVService_2eproto[1];
 
@@ -260,6 +279,15 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_KVService_2eproto::offsets[] P
   PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse_SharddataEntry_DoNotUse, value_),
   0,
   1,
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse, value_),
+  0,
+  1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kvservice::PullShardResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -292,9 +320,10 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 31, -1, sizeof(::kvservice::PutAppendResponse)},
   { 37, -1, sizeof(::kvservice::PullShardRequest)},
   { 46, 53, sizeof(::kvservice::PullShardResponse_SharddataEntry_DoNotUse)},
-  { 55, -1, sizeof(::kvservice::PullShardResponse)},
-  { 63, -1, sizeof(::kvservice::DeleteShardRequest)},
-  { 72, -1, sizeof(::kvservice::DeleteShardResponse)},
+  { 55, 62, sizeof(::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse)},
+  { 64, -1, sizeof(::kvservice::PullShardResponse)},
+  { 72, -1, sizeof(::kvservice::DeleteShardRequest)},
+  { 81, -1, sizeof(::kvservice::DeleteShardResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -305,6 +334,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PutAppendResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PullShardRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PullShardResponse_SharddataEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PullShardResponse_ClientlastreplyEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_PullShardResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_DeleteShardRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kvservice::_DeleteShardResponse_default_instance_),
@@ -322,34 +352,37 @@ const char descriptor_table_protodef_KVService_2eproto[] PROTOBUF_SECTION_VARIAB
   "se\022)\n\nresultcode\030\001 \001(\0132\025.kvservice.Resul"
   "tCode\"[\n\020PullShardRequest\022\017\n\007shardid\030\001 \001"
   "(\003\022\021\n\tconfignum\030\002 \001(\003\022\020\n\010clientid\030\003 \001(\t\022"
-  "\021\n\trequestid\030\004 \001(\003\"\253\001\n\021PullShardResponse"
+  "\021\n\trequestid\030\004 \001(\003\"\226\002\n\021PullShardResponse"
   "\022>\n\tsharddata\030\001 \003(\0132+.kvservice.PullShar"
-  "dResponse.SharddataEntry\022\027\n\017clientlastre"
-  "ply\030\002 \001(\014\022\013\n\003err\030\003 \001(\005\0320\n\016SharddataEntry"
-  "\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"]\n\022Dele"
-  "teShardRequest\022\017\n\007shardid\030\001 \001(\003\022\021\n\tconfi"
-  "gnum\030\002 \001(\003\022\020\n\010clientid\030\003 \001(\t\022\021\n\trequesti"
-  "d\030\004 \001(\003\"\"\n\023DeleteShardResponse\022\013\n\003err\030\001 "
-  "\001(\0052\341\002\n\014KVServiceRPC\0224\n\003Get\022\025.kvservice."
-  "GetRequest\032\026.kvservice.GetResponse\022@\n\003Pu"
-  "t\022\033.kvservice.PutAppendRequest\032\034.kvservi"
-  "ce.PutAppendResponse\022C\n\006Append\022\033.kvservi"
-  "ce.PutAppendRequest\032\034.kvservice.PutAppen"
-  "dResponse\022F\n\tPullShard\022\033.kvservice.PullS"
-  "hardRequest\032\034.kvservice.PullShardRespons"
-  "e\022L\n\013DeleteShard\022\035.kvservice.DeleteShard"
-  "Request\032\036.kvservice.DeleteShardResponseB"
-  "\003\200\001\001b\006proto3"
+  "dResponse.SharddataEntry\022J\n\017clientlastre"
+  "ply\030\002 \003(\01321.kvservice.PullShardResponse."
+  "ClientlastreplyEntry\022\013\n\003err\030\003 \001(\005\0320\n\016Sha"
+  "rddataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:"
+  "\0028\001\0326\n\024ClientlastreplyEntry\022\013\n\003key\030\001 \001(\t"
+  "\022\r\n\005value\030\002 \001(\014:\0028\001\"]\n\022DeleteShardReques"
+  "t\022\017\n\007shardid\030\001 \001(\003\022\021\n\tconfignum\030\002 \001(\003\022\020\n"
+  "\010clientid\030\003 \001(\t\022\021\n\trequestid\030\004 \001(\003\"\"\n\023De"
+  "leteShardResponse\022\013\n\003err\030\001 \001(\0052\341\002\n\014KVSer"
+  "viceRPC\0224\n\003Get\022\025.kvservice.GetRequest\032\026."
+  "kvservice.GetResponse\022@\n\003Put\022\033.kvservice"
+  ".PutAppendRequest\032\034.kvservice.PutAppendR"
+  "esponse\022C\n\006Append\022\033.kvservice.PutAppendR"
+  "equest\032\034.kvservice.PutAppendResponse\022F\n\t"
+  "PullShard\022\033.kvservice.PullShardRequest\032\034"
+  ".kvservice.PullShardResponse\022L\n\013DeleteSh"
+  "ard\022\035.kvservice.DeleteShardRequest\032\036.kvs"
+  "ervice.DeleteShardResponseB\003\200\001\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_KVService_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_KVService_2eproto_sccs[10] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_KVService_2eproto_sccs[11] = {
   &scc_info_DeleteShardRequest_KVService_2eproto.base,
   &scc_info_DeleteShardResponse_KVService_2eproto.base,
   &scc_info_GetRequest_KVService_2eproto.base,
   &scc_info_GetResponse_KVService_2eproto.base,
   &scc_info_PullShardRequest_KVService_2eproto.base,
   &scc_info_PullShardResponse_KVService_2eproto.base,
+  &scc_info_PullShardResponse_ClientlastreplyEntry_DoNotUse_KVService_2eproto.base,
   &scc_info_PullShardResponse_SharddataEntry_DoNotUse_KVService_2eproto.base,
   &scc_info_PutAppendRequest_KVService_2eproto.base,
   &scc_info_PutAppendResponse_KVService_2eproto.base,
@@ -358,10 +391,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_KVS
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_KVService_2eproto_once;
 static bool descriptor_table_KVService_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_KVService_2eproto = {
-  &descriptor_table_KVService_2eproto_initialized, descriptor_table_protodef_KVService_2eproto, "KVService.proto", 1132,
-  &descriptor_table_KVService_2eproto_once, descriptor_table_KVService_2eproto_sccs, descriptor_table_KVService_2eproto_deps, 10, 0,
+  &descriptor_table_KVService_2eproto_initialized, descriptor_table_protodef_KVService_2eproto, "KVService.proto", 1239,
+  &descriptor_table_KVService_2eproto_once, descriptor_table_KVService_2eproto_sccs, descriptor_table_KVService_2eproto_deps, 11, 0,
   schemas, file_default_instances, TableStruct_KVService_2eproto::offsets,
-  file_level_metadata_KVService_2eproto, 10, file_level_enum_descriptors_KVService_2eproto, file_level_service_descriptors_KVService_2eproto,
+  file_level_metadata_KVService_2eproto, 11, file_level_enum_descriptors_KVService_2eproto, file_level_service_descriptors_KVService_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -1889,6 +1922,23 @@ void PullShardResponse_SharddataEntry_DoNotUse::MergeFrom(
 
 // ===================================================================
 
+PullShardResponse_ClientlastreplyEntry_DoNotUse::PullShardResponse_ClientlastreplyEntry_DoNotUse() {}
+PullShardResponse_ClientlastreplyEntry_DoNotUse::PullShardResponse_ClientlastreplyEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void PullShardResponse_ClientlastreplyEntry_DoNotUse::MergeFrom(const PullShardResponse_ClientlastreplyEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata PullShardResponse_ClientlastreplyEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+void PullShardResponse_ClientlastreplyEntry_DoNotUse::MergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
 void PullShardResponse::InitAsDefaultInstance() {
 }
 class PullShardResponse::_Internal {
@@ -1905,17 +1955,13 @@ PullShardResponse::PullShardResponse(const PullShardResponse& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   sharddata_.MergeFrom(from.sharddata_);
-  clientlastreply_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_clientlastreply().empty()) {
-    clientlastreply_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.clientlastreply_);
-  }
+  clientlastreply_.MergeFrom(from.clientlastreply_);
   err_ = from.err_;
   // @@protoc_insertion_point(copy_constructor:kvservice.PullShardResponse)
 }
 
 void PullShardResponse::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PullShardResponse_KVService_2eproto.base);
-  clientlastreply_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   err_ = 0;
 }
 
@@ -1925,7 +1971,6 @@ PullShardResponse::~PullShardResponse() {
 }
 
 void PullShardResponse::SharedDtor() {
-  clientlastreply_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void PullShardResponse::SetCachedSize(int size) const {
@@ -1944,7 +1989,7 @@ void PullShardResponse::Clear() {
   (void) cached_has_bits;
 
   sharddata_.Clear();
-  clientlastreply_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  clientlastreply_.Clear();
   err_ = 0;
   _internal_metadata_.Clear();
 }
@@ -1968,12 +2013,16 @@ const char* PullShardResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else goto handle_unusual;
         continue;
-      // bytes clientlastreply = 2;
+      // map<string, bytes> clientlastreply = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_clientlastreply();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&clientlastreply_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else goto handle_unusual;
         continue;
       // int32 err = 3;
@@ -2050,10 +2099,45 @@ failure:
     }
   }
 
-  // bytes clientlastreply = 2;
-  if (this->clientlastreply().size() > 0) {
-    target = stream->WriteBytesMaybeAliased(
-        2, this->_internal_clientlastreply(), target);
+  // map<string, bytes> clientlastreply = 2;
+  if (!this->_internal_clientlastreply().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+          "kvservice.PullShardResponse.ClientlastreplyEntry.key");
+      }
+    };
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_clientlastreply().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_clientlastreply().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_clientlastreply().begin();
+          it != this->_internal_clientlastreply().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = PullShardResponse_ClientlastreplyEntry_DoNotUse::Funcs::InternalSerialize(2, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_clientlastreply().begin();
+          it != this->_internal_clientlastreply().end(); ++it) {
+        target = PullShardResponse_ClientlastreplyEntry_DoNotUse::Funcs::InternalSerialize(2, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
+      }
+    }
   }
 
   // int32 err = 3;
@@ -2087,11 +2171,13 @@ size_t PullShardResponse::ByteSizeLong() const {
     total_size += PullShardResponse_SharddataEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
-  // bytes clientlastreply = 2;
-  if (this->clientlastreply().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_clientlastreply());
+  // map<string, bytes> clientlastreply = 2;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_clientlastreply_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_clientlastreply().begin();
+      it != this->_internal_clientlastreply().end(); ++it) {
+    total_size += PullShardResponse_ClientlastreplyEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // int32 err = 3;
@@ -2133,10 +2219,7 @@ void PullShardResponse::MergeFrom(const PullShardResponse& from) {
   (void) cached_has_bits;
 
   sharddata_.MergeFrom(from.sharddata_);
-  if (from.clientlastreply().size() > 0) {
-
-    clientlastreply_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.clientlastreply_);
-  }
+  clientlastreply_.MergeFrom(from.clientlastreply_);
   if (from.err() != 0) {
     _internal_set_err(from._internal_err());
   }
@@ -2164,8 +2247,7 @@ void PullShardResponse::InternalSwap(PullShardResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   sharddata_.Swap(&other->sharddata_);
-  clientlastreply_.Swap(&other->clientlastreply_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  clientlastreply_.Swap(&other->clientlastreply_);
   swap(err_, other->err_);
 }
 
@@ -2858,6 +2940,9 @@ template<> PROTOBUF_NOINLINE ::kvservice::PullShardRequest* Arena::CreateMaybeMe
 }
 template<> PROTOBUF_NOINLINE ::kvservice::PullShardResponse_SharddataEntry_DoNotUse* Arena::CreateMaybeMessage< ::kvservice::PullShardResponse_SharddataEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::kvservice::PullShardResponse_SharddataEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse* Arena::CreateMaybeMessage< ::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::kvservice::PullShardResponse* Arena::CreateMaybeMessage< ::kvservice::PullShardResponse >(Arena* arena) {
   return Arena::CreateInternal< ::kvservice::PullShardResponse >(arena);

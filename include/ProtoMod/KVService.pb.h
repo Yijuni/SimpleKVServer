@@ -51,7 +51,7 @@ struct TableStruct_KVService_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[10]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -77,6 +77,9 @@ extern PullShardRequestDefaultTypeInternal _PullShardRequest_default_instance_;
 class PullShardResponse;
 class PullShardResponseDefaultTypeInternal;
 extern PullShardResponseDefaultTypeInternal _PullShardResponse_default_instance_;
+class PullShardResponse_ClientlastreplyEntry_DoNotUse;
+class PullShardResponse_ClientlastreplyEntry_DoNotUseDefaultTypeInternal;
+extern PullShardResponse_ClientlastreplyEntry_DoNotUseDefaultTypeInternal _PullShardResponse_ClientlastreplyEntry_DoNotUse_default_instance_;
 class PullShardResponse_SharddataEntry_DoNotUse;
 class PullShardResponse_SharddataEntry_DoNotUseDefaultTypeInternal;
 extern PullShardResponse_SharddataEntry_DoNotUseDefaultTypeInternal _PullShardResponse_SharddataEntry_DoNotUse_default_instance_;
@@ -97,6 +100,7 @@ template<> ::kvservice::GetRequest* Arena::CreateMaybeMessage<::kvservice::GetRe
 template<> ::kvservice::GetResponse* Arena::CreateMaybeMessage<::kvservice::GetResponse>(Arena*);
 template<> ::kvservice::PullShardRequest* Arena::CreateMaybeMessage<::kvservice::PullShardRequest>(Arena*);
 template<> ::kvservice::PullShardResponse* Arena::CreateMaybeMessage<::kvservice::PullShardResponse>(Arena*);
+template<> ::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse* Arena::CreateMaybeMessage<::kvservice::PullShardResponse_ClientlastreplyEntry_DoNotUse>(Arena*);
 template<> ::kvservice::PullShardResponse_SharddataEntry_DoNotUse* Arena::CreateMaybeMessage<::kvservice::PullShardResponse_SharddataEntry_DoNotUse>(Arena*);
 template<> ::kvservice::PutAppendRequest* Arena::CreateMaybeMessage<::kvservice::PutAppendRequest>(Arena*);
 template<> ::kvservice::PutAppendResponse* Arena::CreateMaybeMessage<::kvservice::PutAppendResponse>(Arena*);
@@ -1084,6 +1088,38 @@ public:
 
 // -------------------------------------------------------------------
 
+class PullShardResponse_ClientlastreplyEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PullShardResponse_ClientlastreplyEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
+    0 > {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PullShardResponse_ClientlastreplyEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
+    0 > SuperType;
+  PullShardResponse_ClientlastreplyEntry_DoNotUse();
+  PullShardResponse_ClientlastreplyEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const PullShardResponse_ClientlastreplyEntry_DoNotUse& other);
+  static const PullShardResponse_ClientlastreplyEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PullShardResponse_ClientlastreplyEntry_DoNotUse*>(&_PullShardResponse_ClientlastreplyEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "kvservice.PullShardResponse.ClientlastreplyEntry.key");
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_KVService_2eproto);
+    return ::descriptor_table_KVService_2eproto.file_level_metadata[7];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
 class PullShardResponse :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kvservice.PullShardResponse) */ {
  public:
@@ -1126,7 +1162,7 @@ class PullShardResponse :
                &_PullShardResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(PullShardResponse& a, PullShardResponse& b) {
     a.Swap(&b);
@@ -1212,21 +1248,22 @@ class PullShardResponse :
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
       mutable_sharddata();
 
-  // bytes clientlastreply = 2;
-  void clear_clientlastreply();
-  const std::string& clientlastreply() const;
-  void set_clientlastreply(const std::string& value);
-  void set_clientlastreply(std::string&& value);
-  void set_clientlastreply(const char* value);
-  void set_clientlastreply(const void* value, size_t size);
-  std::string* mutable_clientlastreply();
-  std::string* release_clientlastreply();
-  void set_allocated_clientlastreply(std::string* clientlastreply);
+  // map<string, bytes> clientlastreply = 2;
+  int clientlastreply_size() const;
   private:
-  const std::string& _internal_clientlastreply() const;
-  void _internal_set_clientlastreply(const std::string& value);
-  std::string* _internal_mutable_clientlastreply();
+  int _internal_clientlastreply_size() const;
   public:
+  void clear_clientlastreply();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_clientlastreply() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_clientlastreply();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      clientlastreply() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_clientlastreply();
 
   // int32 err = 3;
   void clear_err();
@@ -1248,7 +1285,12 @@ class PullShardResponse :
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
       0 > sharddata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr clientlastreply_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      PullShardResponse_ClientlastreplyEntry_DoNotUse,
+      std::string, std::string,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
+      0 > clientlastreply_;
   ::PROTOBUF_NAMESPACE_ID::int32 err_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_KVService_2eproto;
@@ -1297,7 +1339,7 @@ class DeleteShardRequest :
                &_DeleteShardRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(DeleteShardRequest& a, DeleteShardRequest& b) {
     a.Swap(&b);
@@ -1465,7 +1507,7 @@ class DeleteShardResponse :
                &_DeleteShardResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(DeleteShardResponse& a, DeleteShardResponse& b) {
     a.Swap(&b);
@@ -2395,6 +2437,8 @@ inline void PullShardRequest::set_requestid(::PROTOBUF_NAMESPACE_ID::int64 value
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // PullShardResponse
 
 // map<string, bytes> sharddata = 1;
@@ -2426,64 +2470,33 @@ PullShardResponse::mutable_sharddata() {
   return _internal_mutable_sharddata();
 }
 
-// bytes clientlastreply = 2;
-inline void PullShardResponse::clear_clientlastreply() {
-  clientlastreply_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+// map<string, bytes> clientlastreply = 2;
+inline int PullShardResponse::_internal_clientlastreply_size() const {
+  return clientlastreply_.size();
 }
-inline const std::string& PullShardResponse::clientlastreply() const {
-  // @@protoc_insertion_point(field_get:kvservice.PullShardResponse.clientlastreply)
+inline int PullShardResponse::clientlastreply_size() const {
+  return _internal_clientlastreply_size();
+}
+inline void PullShardResponse::clear_clientlastreply() {
+  clientlastreply_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+PullShardResponse::_internal_clientlastreply() const {
+  return clientlastreply_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+PullShardResponse::clientlastreply() const {
+  // @@protoc_insertion_point(field_map:kvservice.PullShardResponse.clientlastreply)
   return _internal_clientlastreply();
 }
-inline void PullShardResponse::set_clientlastreply(const std::string& value) {
-  _internal_set_clientlastreply(value);
-  // @@protoc_insertion_point(field_set:kvservice.PullShardResponse.clientlastreply)
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+PullShardResponse::_internal_mutable_clientlastreply() {
+  return clientlastreply_.MutableMap();
 }
-inline std::string* PullShardResponse::mutable_clientlastreply() {
-  // @@protoc_insertion_point(field_mutable:kvservice.PullShardResponse.clientlastreply)
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+PullShardResponse::mutable_clientlastreply() {
+  // @@protoc_insertion_point(field_mutable_map:kvservice.PullShardResponse.clientlastreply)
   return _internal_mutable_clientlastreply();
-}
-inline const std::string& PullShardResponse::_internal_clientlastreply() const {
-  return clientlastreply_.GetNoArena();
-}
-inline void PullShardResponse::_internal_set_clientlastreply(const std::string& value) {
-  
-  clientlastreply_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void PullShardResponse::set_clientlastreply(std::string&& value) {
-  
-  clientlastreply_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:kvservice.PullShardResponse.clientlastreply)
-}
-inline void PullShardResponse::set_clientlastreply(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  clientlastreply_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:kvservice.PullShardResponse.clientlastreply)
-}
-inline void PullShardResponse::set_clientlastreply(const void* value, size_t size) {
-  
-  clientlastreply_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:kvservice.PullShardResponse.clientlastreply)
-}
-inline std::string* PullShardResponse::_internal_mutable_clientlastreply() {
-  
-  return clientlastreply_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* PullShardResponse::release_clientlastreply() {
-  // @@protoc_insertion_point(field_release:kvservice.PullShardResponse.clientlastreply)
-  
-  return clientlastreply_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void PullShardResponse::set_allocated_clientlastreply(std::string* clientlastreply) {
-  if (clientlastreply != nullptr) {
-    
-  } else {
-    
-  }
-  clientlastreply_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), clientlastreply);
-  // @@protoc_insertion_point(field_set_allocated:kvservice.PullShardResponse.clientlastreply)
 }
 
 // int32 err = 3;
@@ -2657,6 +2670,8 @@ inline void DeleteShardResponse::set_err(::PROTOBUF_NAMESPACE_ID::int32 value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -42,7 +42,7 @@ message PullShardRequest{
 
 message PullShardResponse{
     map<string,bytes> sharddata = 1;
-    bytes clientlastreply = 2;
+    map<string,bytes> clientlastreply = 2;
     int32 err = 3;
 }
 
