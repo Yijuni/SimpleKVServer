@@ -57,7 +57,8 @@ public:
     bool InstallClientRequestSnapshot(std::unordered_map<std::string,std::string>&);
     //删除某个分片下的所有KV数据
     bool DeleteShardKV(long long shardid);
-
+    //获取某个分片下的所有KV数据
+    bool GetShardKV(long long shardid,std::unordered_map<std::string,std::string>& sharddata);
 private:
     // raft层操作时临界区锁
     std::mutex db_raft_mutex_myj;

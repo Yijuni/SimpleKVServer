@@ -1,9 +1,10 @@
-set(SRC_LIST1 shardctlserver.cpp ${PROJECT_SOURCE_DIR}/src/RaftMod/Raft.cpp ${PROJECT_SOURCE_DIR}/src/ProtoMod/KVRaft.pb.cc 
-    ${PROJECT_SOURCE_DIR}/src/ShardCtrlerServiceMod/ShardCtrlerService.cpp  ${PROJECT_SOURCE_DIR}/src/ServiceMod/KVService.cpp
-    ${PROJECT_SOURCE_DIR}/src/ProtoMod/ShardCtrler.pb.cc  ${PROJECT_SOURCE_DIR}/src/ProtoMod/KVService.pb.cc
+set(SRC_LIST1 shardctlserver.cpp ${PROJECT_SOURCE_DIR}/src/RaftMod/Raft.cpp  ${PROJECT_SOURCE_DIR}/src/ShardCtrlerServiceMod/ShardCtrlerService.cpp  
+    ${PROJECT_SOURCE_DIR}/src/ServiceMod/KVService.cpp ${PROJECT_SOURCE_DIR}/src/ShardCtrlerClient/ShardCtrlerClient.cpp
     ${PROJECT_SOURCE_DIR}/src/ShareMod/AfterTimer.cpp ${PROJECT_SOURCE_DIR}/src/ShareMod/Logger.cpp 
     ${PROJECT_SOURCE_DIR}/src/ShareMod/Persister.cpp ${PROJECT_SOURCE_DIR}/src/KVServer/KVServer.cpp
-    ${PROJECT_SOURCE_DIR}/src/ZookeeperMod/ZKClient.cpp ${PROJECT_SOURCE_DIR}/src/RocksDBMod/rocksdbapi.cpp)
+    ${PROJECT_SOURCE_DIR}/src/ZookeeperMod/ZKClient.cpp ${PROJECT_SOURCE_DIR}/src/RocksDBMod/rocksdbapi.cpp
+    ${PROJECT_SOURCE_DIR}/src/MakeServerStub/MakeServerStub.cpp ${PROJECT_SOURCE_DIR}/src/ProtoMod/ShardCtrler.pb.cc  
+    ${PROJECT_SOURCE_DIR}/src/ProtoMod/KVService.pb.cc ${PROJECT_SOURCE_DIR}/src/ProtoMod/KVRaft.pb.cc)
 
 set(SRC_LIST2 sharfctlclient.cpp ${PROJECT_SOURCE_DIR}/src/ShardCtrlerClient/ShardCtrlerClient.cpp ${PROJECT_SOURCE_DIR}/src/ProtoMod/ShardCtrler.pb.cc
     ${PROJECT_SOURCE_DIR}/src/ZookeeperMod/ZKClient.cpp )

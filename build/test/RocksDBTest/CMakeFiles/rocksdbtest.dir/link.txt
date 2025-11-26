@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/rocksdbtest.dir/RocksDB.cpp.o CMakeFiles/rocksdbtest.dir/__/__/src/ShareMod/Logger.cpp.o CMakeFiles/rocksdbtest.dir/__/__/src/RocksDBMod/rocksdbapi.cpp.o -o ../../../bin/rocksdb_test/rocksdbtest   -L/home/moyoj/桌面/MPZ_KVServer/lib  -Wl,-rpath,/home/moyoj/桌面/MPZ_KVServer/lib -lrocksdb 

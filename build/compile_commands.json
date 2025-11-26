@@ -1,0 +1,417 @@
+[
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/src/RpcMod",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvrpc.dir/KVRpcChannel.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcChannel.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/src/RpcMod",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvrpc.dir/KVRpcController.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcController.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcController.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/src/RpcMod",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvrpc.dir/KVRpcProvider.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RpcMod/KVRpcProvider.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/src/RpcMod",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvrpc.dir/__/ProtoMod/RpcHeader.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/RpcHeader.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/RpcHeader.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/src/RpcMod",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvrpc.dir/__/ShareMod/Logger.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/src/RpcMod",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvrpc.dir/__/ShareMod/HostNet.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/HostNet.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/HostNet.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/HostNetTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/HostNetTest.dir/HostNetTest.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/HostNetTest/HostNetTest.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/HostNetTest/HostNetTest.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/HostNetTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/HostNetTest.dir/__/__/src/ShareMod/HostNet.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/HostNet.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/HostNet.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/LockQueueTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/LockQueueTest.dir/LockQueueTest.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/LockQueueTest/LockQueueTest.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/LockQueueTest/LockQueueTest.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/AfterTimerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/AfterTimerTest.dir/AfterTimer.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/AfterTimerTest/AfterTimer.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/AfterTimerTest/AfterTimer.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/AfterTimerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/AfterTimerTest.dir/__/__/src/ShareMod/AfterTimer.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/PersisterTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/PersisterTest.dir/Persister.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/PersisterTest/Persister.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/PersisterTest/Persister.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/PersisterTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/PersisterTest.dir/__/__/src/ShareMod/Persister.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/PersisterTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/PersisterTest.dir/__/__/src/ShareMod/Logger.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/BoostSerializeTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/serializetest.dir/serialize.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/BoostSerializeTest/serialize.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/BoostSerializeTest/serialize.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/BoostSerializeTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/serializetest.dir/__/__/src/ProtoMod/KVRaft.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RaftTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/simplerafttest.dir/SimpleRaftTest.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/RaftTest/SimpleRaftTest.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/RaftTest/SimpleRaftTest.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RaftTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/simplerafttest.dir/__/__/src/ShareMod/Persister.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RaftTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/simplerafttest.dir/__/__/src/ShareMod/Logger.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RaftTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/simplerafttest.dir/__/__/src/ShareMod/AfterTimer.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RaftTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/simplerafttest.dir/__/__/src/RaftMod/Raft.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RaftMod/Raft.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RaftMod/Raft.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RaftTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/simplerafttest.dir/__/__/src/ProtoMod/KVRaft.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RaftTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/simplerafttest.dir/__/__/src/RocksDBMod/rocksdbapi.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ZKClientTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/zkclienttest.dir/zkclient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/ZKClientTest/zkclient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/ZKClientTest/zkclient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ZKClientTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/zkclienttest.dir/__/__/src/ZookeeperMod/ZKClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ZKClientTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/zkclienttest.dir/__/__/src/ShareMod/Logger.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/kvserver.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/KVServerTest/kvserver.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/KVServerTest/kvserver.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/RaftMod/Raft.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RaftMod/Raft.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RaftMod/Raft.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ProtoMod/KVRaft.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ServiceMod/KVService.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ServiceMod/KVService.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ServiceMod/KVService.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ShardCtrlerClient/ShardCtrlerClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ProtoMod/KVService.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVService.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVService.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ProtoMod/ShardCtrler.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ShareMod/AfterTimer.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ShareMod/Logger.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ShareMod/Persister.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/KVServer/KVServer.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/KVServer/KVServer.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/KVServer/KVServer.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ZookeeperMod/ZKClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/RocksDBMod/rocksdbapi.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/MakeServerStub/MakeServerStub.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/MakeServerStub/MakeServerStub.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/MakeServerStub/MakeServerStub.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvserver.dir/__/__/src/ShardCtrlerServiceMod/ShardCtrlerService.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerServiceMod/ShardCtrlerService.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerServiceMod/ShardCtrlerService.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvclient.dir/kvclient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/KVServerTest/kvclient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/KVServerTest/kvclient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvclient.dir/__/__/src/KVClient/KVClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/KVClient/KVClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/KVClient/KVClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvclient.dir/__/__/src/ProtoMod/KVService.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVService.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVService.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvclient.dir/__/__/src/ZookeeperMod/ZKClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvclient.dir/__/__/src/MakeServerStub/MakeServerStub.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/MakeServerStub/MakeServerStub.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/MakeServerStub/MakeServerStub.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvclient.dir/__/__/src/ShardCtrlerClient/ShardCtrlerClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/KVServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/kvclient.dir/__/__/src/ProtoMod/ShardCtrler.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RocksDBTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/rocksdbtest.dir/RocksDB.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/RocksDBTest/RocksDB.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/RocksDBTest/RocksDB.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RocksDBTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/rocksdbtest.dir/__/__/src/ShareMod/Logger.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/RocksDBTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/rocksdbtest.dir/__/__/src/RocksDBMod/rocksdbapi.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/shardctlserver.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/ShardCtlerServerTest/shardctlserver.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/ShardCtlerServerTest/shardctlserver.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/RaftMod/Raft.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RaftMod/Raft.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RaftMod/Raft.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ShardCtrlerServiceMod/ShardCtrlerService.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerServiceMod/ShardCtrlerService.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerServiceMod/ShardCtrlerService.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ServiceMod/KVService.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ServiceMod/KVService.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ServiceMod/KVService.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ShardCtrlerClient/ShardCtrlerClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ShareMod/AfterTimer.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ShareMod/Logger.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ShareMod/Persister.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/KVServer/KVServer.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/KVServer/KVServer.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/KVServer/KVServer.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ZookeeperMod/ZKClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/RocksDBMod/rocksdbapi.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/MakeServerStub/MakeServerStub.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/MakeServerStub/MakeServerStub.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/MakeServerStub/MakeServerStub.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ProtoMod/ShardCtrler.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ProtoMod/KVService.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVService.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVService.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlserver.dir/__/__/src/ProtoMod/KVRaft.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlclient.dir/sharfctlclient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/ShardCtlerServerTest/sharfctlclient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/ShardCtlerServerTest/sharfctlclient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlclient.dir/__/__/src/ShardCtrlerClient/ShardCtrlerClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlclient.dir/__/__/src/ProtoMod/ShardCtrler.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/ShardCtlerServerTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/shardctlclient.dir/__/__/src/ZookeeperMod/ZKClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/makeserverstubtest.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/test/MakeServerStubTest/makeserverstubtest.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/test/MakeServerStubTest/makeserverstubtest.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/ZookeeperMod/ZKClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ZookeeperMod/ZKClient.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/ShareMod/Logger.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Logger.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/ServiceMod/KVService.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ServiceMod/KVService.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ServiceMod/KVService.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/ProtoMod/KVService.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVService.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVService.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/ProtoMod/KVRaft.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/KVRaft.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/RaftMod/Raft.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RaftMod/Raft.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RaftMod/Raft.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/MakeServerStub/MakeServerStub.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/MakeServerStub/MakeServerStub.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/MakeServerStub/MakeServerStub.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/RocksDBMod/rocksdbapi.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/RocksDBMod/rocksdbapi.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/ShareMod/Persister.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/Persister.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/ShareMod/AfterTimer.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShareMod/AfterTimer.cpp"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/ProtoMod/ShardCtrler.pb.cc.o -c /home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ProtoMod/ShardCtrler.pb.cc"
+},
+{
+  "directory": "/home/moyoj/桌面/MPZ_KVServer/build/test/MakeServerStubTest",
+  "command": "/usr/bin/g++  -I/home/moyoj/桌面/MPZ_KVServer/include/ShareMod -I/home/moyoj/桌面/MPZ_KVServer/include/RpcMod -I/home/moyoj/桌面/MPZ_KVServer/include/ProtoMod -I/home/moyoj/桌面/MPZ_KVServer/include/ServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/RaftMod -I/home/moyoj/桌面/MPZ_KVServer/include/ZookeeperMod -I/home/moyoj/桌面/MPZ_KVServer/include/KVServer -I/home/moyoj/桌面/MPZ_KVServer/include/KVClient -I/home/moyoj/桌面/MPZ_KVServer/include/RocksDBMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerServiceMod -I/home/moyoj/桌面/MPZ_KVServer/include/ShardCtrlerClient -I/home/moyoj/桌面/MPZ_KVServer/include/MakeServerStub -g -o CMakeFiles/makeserverstubtest.dir/__/__/src/ShardCtrlerClient/ShardCtrlerClient.cpp.o -c /home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp",
+  "file": "/home/moyoj/桌面/MPZ_KVServer/src/ShardCtrlerClient/ShardCtrlerClient.cpp"
+}
+]

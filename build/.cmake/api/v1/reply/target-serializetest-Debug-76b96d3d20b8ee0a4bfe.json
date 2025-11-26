@@ -1,0 +1,260 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/bin/boost_serialize_test/serializetest"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"link_directories",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"test/BoostSerializeTest/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 25,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 3,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 9,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 10,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 11,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 12,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 13,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 14,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 15,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 16,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 17,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 18,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 19,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 20,
+				"parent" : 2
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/ShareMod"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/RpcMod"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/ProtoMod"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/ServiceMod"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/RaftMod"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/ZookeeperMod"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/KVServer"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/KVClient"
+				},
+				{
+					"backtrace" : 13,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/RocksDBMod"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/ShardCtrlerServiceMod"
+				},
+				{
+					"backtrace" : 15,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/ShardCtrlerClient"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/include/MakeServerStub"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"id" : "serializetest::@dcd3ad293d6946df97d5",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-rdynamic",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-L/home/moyoj/\u684c\u9762/MPZ_KVServer/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/home/moyoj/\u684c\u9762/MPZ_KVServer/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lboost_serialization",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lprotobuf",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "serializetest",
+	"nameOnDisk" : "serializetest",
+	"paths" : 
+	{
+		"build" : "test/BoostSerializeTest",
+		"source" : "test/BoostSerializeTest"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "test/BoostSerializeTest/serialize.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/ProtoMod/KVRaft.pb.cc",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

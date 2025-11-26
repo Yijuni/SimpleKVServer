@@ -19,7 +19,7 @@ int main(int argc,char** argv){
     {
         type = SERVICE_TYPE::SHARDCTRLER;
     }
-    KVServer kvserver(sip,sport,zkip,zkport,-1,type);
+    KVServer kvserver(sip,sport,zkip,zkport,-1,type,0,10);
     while(1){}
     return 0;
 }

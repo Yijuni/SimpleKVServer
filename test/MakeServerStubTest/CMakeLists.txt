@@ -3,7 +3,8 @@ set(SRC_LIST makeserverstubtest.cpp ${PROJECT_SOURCE_DIR}/src/ZookeeperMod/ZKCli
     ${PROJECT_SOURCE_DIR}/src/ShareMod/Logger.cpp ${PROJECT_SOURCE_DIR}/src/ZookeeperMod/ZKClient.cpp
     ${PROJECT_SOURCE_DIR}/src/ProtoMod/KVRaft.pb.cc ${PROJECT_SOURCE_DIR}/src/RaftMod/Raft.cpp
     ${PROJECT_SOURCE_DIR}/src/MakeServerStub/MakeServerStub.cpp ${PROJECT_SOURCE_DIR}/src/RocksDBMod/rocksdbapi.cpp
-    ${PROJECT_SOURCE_DIR}/src/ShareMod/Persister.cpp ${PROJECT_SOURCE_DIR}/src/ShareMod/AfterTimer.cpp)
+    ${PROJECT_SOURCE_DIR}/src/ShareMod/Persister.cpp ${PROJECT_SOURCE_DIR}/src/ShareMod/AfterTimer.cpp
+    ${PROJECT_SOURCE_DIR}/src/ProtoMod/ShardCtrler.pb.cc ${PROJECT_SOURCE_DIR}/src/ShardCtrlerClient/ShardCtrlerClient.cpp)
 
 add_executable(makeserverstubtest ${SRC_LIST})
 target_link_libraries(makeserverstubtest kvrpc protobuf zookeeper_mt rocksdb boost_serialization)

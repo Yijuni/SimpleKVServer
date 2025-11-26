@@ -6,6 +6,7 @@
 #include <boost/serialization/string.hpp>
 #include <sstream>
 #include <cstdio>
+#include <cmath>
 #include "KVRpcController.hpp"
 
 KVRaft::KVRaft() : ready_myj(false),dbptr_myj(nullptr)
@@ -278,7 +279,7 @@ bool KVRaft::Start(kvraft::Command command, long long &index, long long &term)
     }
     else
     {
-        LOG_INFO("server[%s]>>追加新的命令，key:%s,value:%s,clientid:%s,requestid:%ld", name_myj.c_str(), command.key().c_str(), command.value().c_str(), command.clientid().c_str(), command.requestid());
+        LOG_INFO("server[%s]>>追加新的命令:%s，key:%s,value:%s,clientid:%s,requestid:%ld", name_myj.c_str(), command.type().c_str(),command.key().c_str(), command.value().c_str(), command.clientid().c_str(), command.requestid());
         kvraft::LogEntry log;
         log.set_term(currentTerm_myj);
         *log.mutable_command() = command;
@@ -410,6 +411,10 @@ void KVRaft::ChangePeer(std::vector<std::shared_ptr<kvraft::KVRaftRPC_Stub>> &st
     leaderid_myj = "";
     peers_myj.clear();
     peers_myj = stubs;
+    
+    nextIndex_myj.resize(peers_myj.size(),0);
+    matchIndex_myj.resize(peers_myj.size(), 0);
+
     electionTimer_myj->Reset();
     LOG_INFO("server[%s]>>对端信息改变", name_myj.c_str());
 }
@@ -527,7 +532,7 @@ void KVRaft::electStart(std::string name, long long curterm, long long lastLogIn
                             printf("server[%s]>>收到server[%d]的投票\n", name_myj.c_str(), sendindex);
                             voteCount++;
                             // 投票数超过半数
-                            if (voteCount >= (peerscount + 1) / 2 + 1)
+                            if (voteCount >= ((peerscount + 1) / 2) + 1)
                             {
                                 LOG_INFO("server[%s]>>votrCount:%d ,成为leader！term:%lld", name_myj.c_str(), voteCount.load(), curterm);
                                 // 变为leader，投票对象设为-1以便失去leader身份时可以给其他人投票
@@ -574,13 +579,33 @@ void KVRaft::electStart(std::string name, long long curterm, long long lastLogIn
     }
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     // 没收到足够选票的情况
-    if (status_myj == CANDIDATE && currentTerm_myj == curterm)
+    if (peerscount!=0 && status_myj == CANDIDATE && currentTerm_myj == curterm)
     {
         status_myj = FOLLOWER;
         voterFor_myj = "";
         electionTimer_myj->RandomReset(electionTimeout_myj, electionTimeout_myj * 2);
         persist();
         LOG_INFO("server[%s]>>没收到足够选票", name.c_str());
+    }else if(peerscount==0){
+        LOG_INFO("server[%s]>>votrCount:%d ,成为leader！term:%lld", name_myj.c_str(), voteCount.load(), curterm);
+        // 变为leader，投票对象设为-1以便失去leader身份时可以给其他人投票
+        status_myj = LEADER;
+        voterFor_myj = "";
+
+        // nextIndex数组和matchIndex数组重置(最后一个日志的下一个日志的index(原因看论文)，-1)
+        for (int index = 0; index < peerscount; index++)
+        {
+            nextIndex_myj[index] = logEntries_myj.size() + lastSnapshotIndex_myj + 1;
+            matchIndex_myj[index] = -1;
+        }
+
+        // 持久化
+        persist();
+
+        // 立即发送心跳并启动心跳计时器
+        std::thread td(std::bind(&KVRaft::appendEntriesToFollower, this, curterm, commitIndex_myj, peerscount));
+        td.detach();
+        heartbeatsTimer_myj->Reset();
     }
 }
 
@@ -748,6 +773,9 @@ void KVRaft::appendEntriesToFollower(long long curterm, long long leaderCommit, 
     {
         waitGroup[i].join();
     }
+    if(peerscount==0){
+        updateCommitIndex();
+    }
 }
 
 bool KVRaft::matchNewEntries(const std::vector<kvraft::LogEntry> &entries, long long preLogIndex, long long preLogTerm, kvraft::AppendEntriesResponse *resposne)
@@ -848,7 +876,7 @@ void KVRaft::updateCommitIndex()
                 count++;
             }
         }
-        if (count >= peers_myj.size() / 2 + 1)
+        if (count >= std::ceil(peers_myj.size()/2) + 1)
         {
             commitIndex_myj = maxMatchIndex;
             // 也实时存储最新的commitIndex(大部分节点达成共识的日志index)

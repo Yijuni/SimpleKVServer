@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../lib/libkvrpc.a CMakeFiles/kvrpc.dir/KVRpcChannel.cpp.o CMakeFiles/kvrpc.dir/KVRpcController.cpp.o CMakeFiles/kvrpc.dir/KVRpcProvider.cpp.o CMakeFiles/kvrpc.dir/__/ProtoMod/RpcHeader.pb.cc.o CMakeFiles/kvrpc.dir/__/ShareMod/Logger.cpp.o CMakeFiles/kvrpc.dir/__/ShareMod/HostNet.cpp.o
+/usr/bin/ranlib ../../../lib/libkvrpc.a

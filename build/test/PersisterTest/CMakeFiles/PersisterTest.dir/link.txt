@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/PersisterTest.dir/Persister.cpp.o CMakeFiles/PersisterTest.dir/__/__/src/ShareMod/Persister.cpp.o CMakeFiles/PersisterTest.dir/__/__/src/ShareMod/Logger.cpp.o -o ../../../bin/persister_test/PersisterTest   -L/home/moyoj/桌面/MPZ_KVServer/lib 

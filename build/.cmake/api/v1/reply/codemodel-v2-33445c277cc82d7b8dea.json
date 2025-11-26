@@ -1,0 +1,401 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						3
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src"
+				},
+				{
+					"build" : "src/RpcMod",
+					"jsonFile" : "directory-src.RpcMod-Debug-58dc5e3fabdd6dbf7e93.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/RpcMod",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "test",
+					"childIndexes" : 
+					[
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					],
+					"jsonFile" : "directory-test-Debug-451c0598f41488bb20b9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "test"
+				},
+				{
+					"build" : "test/HostNetTest",
+					"jsonFile" : "directory-test.HostNetTest-Debug-c64298d985f2517dc5a2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/HostNetTest",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "test/LockQueueTest",
+					"jsonFile" : "directory-test.LockQueueTest-Debug-07d6d7bc503daeacf964.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/LockQueueTest",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "test/AfterTimerTest",
+					"jsonFile" : "directory-test.AfterTimerTest-Debug-83d33bcc88543586883b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/AfterTimerTest",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "test/PersisterTest",
+					"jsonFile" : "directory-test.PersisterTest-Debug-b4f189c970c4d86e201f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/PersisterTest",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "test/BoostSerializeTest",
+					"jsonFile" : "directory-test.BoostSerializeTest-Debug-6dca77460ad2fe706d30.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/BoostSerializeTest",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "test/RaftTest",
+					"jsonFile" : "directory-test.RaftTest-Debug-965ef106dbc03d6ce793.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/RaftTest",
+					"targetIndexes" : 
+					[
+						12
+					]
+				},
+				{
+					"build" : "test/ZKClientTest",
+					"jsonFile" : "directory-test.ZKClientTest-Debug-f620054978b83d97e8ab.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/ZKClientTest",
+					"targetIndexes" : 
+					[
+						13
+					]
+				},
+				{
+					"build" : "test/KVServerTest",
+					"jsonFile" : "directory-test.KVServerTest-Debug-a4c72377c15b9607ef93.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/KVServerTest",
+					"targetIndexes" : 
+					[
+						4,
+						6
+					]
+				},
+				{
+					"build" : "test/RocksDBTest",
+					"jsonFile" : "directory-test.RocksDBTest-Debug-b44bc0fb17c6054d8902.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/RocksDBTest",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "test/ShardCtlerServerTest",
+					"jsonFile" : "directory-test.ShardCtlerServerTest-Debug-b294ebae783eb2ffc6ea.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/ShardCtlerServerTest",
+					"targetIndexes" : 
+					[
+						10,
+						11
+					]
+				},
+				{
+					"build" : "test/MakeServerStubTest",
+					"jsonFile" : "directory-test.MakeServerStubTest-Debug-a19cd877405acbcc831c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "test/MakeServerStubTest",
+					"targetIndexes" : 
+					[
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					],
+					"name" : "KVServer",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 6,
+					"id" : "AfterTimerTest::@109032b38ae8e426d0f5",
+					"jsonFile" : "target-AfterTimerTest-Debug-96e075ad50a0a2f33402.json",
+					"name" : "AfterTimerTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "HostNetTest::@ab5fbb5fd9428a692c9b",
+					"jsonFile" : "target-HostNetTest-Debug-201c928844a76ff38c5d.json",
+					"name" : "HostNetTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "LockQueueTest::@e55b1b98fe3a3dbdb9ec",
+					"jsonFile" : "target-LockQueueTest-Debug-765b729f45fa461dfd12.json",
+					"name" : "LockQueueTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "PersisterTest::@fb75e13e7c38d6514048",
+					"jsonFile" : "target-PersisterTest-Debug-08add59dd84ece57ec7c.json",
+					"name" : "PersisterTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "kvclient::@8fd23f9873f0641c6612",
+					"jsonFile" : "target-kvclient-Debug-305c78b89284cf475c68.json",
+					"name" : "kvclient",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "kvrpc::@1b977bb58e9dc96578f9",
+					"jsonFile" : "target-kvrpc-Debug-d3fd151150e6efb502a2.json",
+					"name" : "kvrpc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "kvserver::@8fd23f9873f0641c6612",
+					"jsonFile" : "target-kvserver-Debug-3aeb821e8dcce9ebc790.json",
+					"name" : "kvserver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 14,
+					"id" : "makeserverstubtest::@540e9ea99070eeb198d4",
+					"jsonFile" : "target-makeserverstubtest-Debug-bdffd9648136ec8dafc7.json",
+					"name" : "makeserverstubtest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "rocksdbtest::@6e5ede141e4c03b16fe2",
+					"jsonFile" : "target-rocksdbtest-Debug-8b1f2d3a5ddd0967a4b6.json",
+					"name" : "rocksdbtest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "serializetest::@dcd3ad293d6946df97d5",
+					"jsonFile" : "target-serializetest-Debug-76b96d3d20b8ee0a4bfe.json",
+					"name" : "serializetest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "shardctlclient::@700fd4042fde791d365a",
+					"jsonFile" : "target-shardctlclient-Debug-3b1cab48e3a0b141166d.json",
+					"name" : "shardctlclient",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "shardctlserver::@700fd4042fde791d365a",
+					"jsonFile" : "target-shardctlserver-Debug-09139c57fafc07967366.json",
+					"name" : "shardctlserver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "simplerafttest::@a76ad341152873a1a040",
+					"jsonFile" : "target-simplerafttest-Debug-496bd36f67c87ee95903.json",
+					"name" : "simplerafttest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "zkclienttest::@e7dd54ba3dbd1dedd740",
+					"jsonFile" : "target-zkclienttest-Debug-14d79c88dccf680e9a4a.json",
+					"name" : "zkclienttest",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/moyoj/\u684c\u9762/MPZ_KVServer/build",
+		"source" : "/home/moyoj/\u684c\u9762/MPZ_KVServer"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

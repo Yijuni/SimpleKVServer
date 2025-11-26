@@ -307,6 +307,38 @@ bool RocksDBAPI::DeleteShardKV(long long shardid)
     }
     return true;
 }
+bool RocksDBAPI::GetShardKV(long long shardid, std::unordered_map<std::string, std::string> &sharddata)
+{
+    rocksdb::ReadOptions read_opts;
+    std::unique_ptr<rocksdb::Iterator> iter(db_myj->NewIterator(read_opts,kv_cf_myj));
+
+    char str[32];  
+    sprintf(str,"SHARD_%05lld_",shardid);
+    std::string start(str);
+    sprintf(str,"SHARD_%05lld_",shardid+1);
+    std::string end(str);
+    
+    rocksdb::Slice start_slice(start);
+    rocksdb::Slice end_slice(end);
+
+    for(iter->Seek(start_slice);iter->Valid();iter->Next()){
+        rocksdb::Slice key = iter->key();
+        if(key.compare(end)>=0){
+            break;
+        }
+
+        std::string k = key.ToString();
+        std::string value = iter->value().ToString();
+
+        sharddata[k] = value;
+    }
+
+    if(!iter->status().ok()){
+        LOG_ERROR("rocksdb_api :: Iterator error: %s", iter->status().ToString().c_str());
+        return false;
+    }
+    return true;
+}
 bool RocksDBAPI::ConfigMetaGet(const std::string &key, std::string &value)
 {
     std::unique_lock<std::mutex> lock(db_config_mutex_myj);

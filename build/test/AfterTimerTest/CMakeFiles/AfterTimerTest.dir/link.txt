@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/AfterTimerTest.dir/AfterTimer.cpp.o CMakeFiles/AfterTimerTest.dir/__/__/src/ShareMod/AfterTimer.cpp.o -o ../../../bin/after_timer_test/AfterTimerTest   -L/home/moyoj/桌面/MPZ_KVServer/lib 

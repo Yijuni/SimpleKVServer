@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/LockQueueTest.dir/LockQueueTest.cpp.o -o ../../../bin/lock_queue_test/LockQueueTest   -L/home/moyoj/桌面/MPZ_KVServer/lib 

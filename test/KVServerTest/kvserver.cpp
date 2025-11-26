@@ -10,7 +10,8 @@ int main(int argc,char **argv){
     uint16_t port = std::atoi(argv[2]);
     std::string zkip(argv[3]);
     uint16_t zkport = std::atoi(argv[4]);
-    KVServer kvserver(ip,port,zkip,zkport,512);
+    long long gid = std::atoll(argv[5]);
+    KVServer kvserver(ip,port,zkip,zkport,512,SERVICE_TYPE::KVSERVICE,gid,10);
 
     while(1){}
     return 0;

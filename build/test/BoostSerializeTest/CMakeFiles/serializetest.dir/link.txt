@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/serializetest.dir/serialize.cpp.o CMakeFiles/serializetest.dir/__/__/src/ProtoMod/KVRaft.pb.cc.o -o ../../../bin/boost_serialize_test/serializetest   -L/home/moyoj/桌面/MPZ_KVServer/lib  -Wl,-rpath,/home/moyoj/桌面/MPZ_KVServer/lib -lboost_serialization -lprotobuf 

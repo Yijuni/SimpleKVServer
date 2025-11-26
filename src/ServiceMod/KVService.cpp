@@ -99,6 +99,9 @@ KVService::KVService(std::string name, std::shared_ptr<Persister> persister, std
     ready_myj = true;
     std::thread td(std::bind(&KVService::applyLogs, this));
     td.detach();
+    std::thread config_td(std::bind(&KVService::updateConfig,this));
+    config_td.detach();
+    updateShardState();
 }
 
 void KVService::Get(google::protobuf::RpcController *controller, const ::kvservice::GetRequest *request, ::kvservice::GetResponse *response, ::google::protobuf::Closure *done)
@@ -108,6 +111,24 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
 
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     LOG_INFO("server[%s]>>收到Get请求,clientid[%s],requestid[%lld]", name_myj.c_str(), clientid.c_str(), requestid);
+
+    long long term;
+    lock.unlock();
+    bool isleader = raft_myj->GetState(term);
+    lock.lock();
+    if(!isleader){
+        LOG_INFO("server[%s]>>收到Get请求,clientid[%s],requestid[%lld],但不是复制组的leader", name_myj.c_str(), clientid.c_str(), requestid);
+        response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongLeader);
+        done->Run();
+        return;
+    }
+
+    if(!isValidKey(request->key())){
+        LOG_INFO("server[%s]>>收到Get请求,clientid[%s],requestid[%lld],但不是处理该key的复制组", name_myj.c_str(), clientid.c_str(), requestid);
+        response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongGroup);
+        done->Run();
+        return;
+    }
 
     std::string requestinfo;
     // 获取请求信息并反序列化出来
@@ -119,6 +140,7 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
         bis >> clr;
         if (clr.requestid >= request->requestid())
         {
+            LOG_INFO("server[%s]>>收到Get请求,clientid[%s],requestid[%lld],已经处理过该请求", name_myj.c_str(), clientid.c_str(), requestid)
             response->mutable_resultcode()->set_errorcode(kvserviceclass::OK);
             response->set_value(clr.replyMsg);
             done->Run();
@@ -136,7 +158,7 @@ void KVService::Get(google::protobuf::RpcController *controller, const ::kvservi
     command.set_key(request->key());
     command.set_type(CommandType::Get.data());
 
-    bool isleader = raft_myj->Start(command, logindex, logterm);
+    isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
         response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongLeader);
@@ -174,6 +196,24 @@ void KVService::Put(google::protobuf::RpcController *controller, const ::kvservi
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     LOG_INFO("server[%s]>>收到Put请求,clientid[%s],requestid[%lld]", name_myj.c_str(), clientid.c_str(), requestid);
 
+    long long term;
+    lock.unlock();
+    bool isleader = raft_myj->GetState(term);
+    lock.lock();
+    if(!isleader){
+        LOG_INFO("server[%s]>>收到Put请求,clientid[%s],requestid[%lld],但不是复制组的leader", name_myj.c_str(), clientid.c_str(), requestid);
+        response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongLeader);
+        done->Run();
+        return;
+    }
+
+    if(!isValidKey(request->key())){
+        LOG_INFO("server[%s]>>收到Put请求,clientid[%s],requestid[%lld],但不是处理该key的复制组", name_myj.c_str(), clientid.c_str(), requestid);
+        response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongGroup);
+        done->Run();
+        return;
+    }
+
     std::string requestinfo;
     // 获取请求信息并反序列化出来
     if (db_myj->ClientRequestGet(clientid, requestinfo))
@@ -201,7 +241,7 @@ void KVService::Put(google::protobuf::RpcController *controller, const ::kvservi
     command.set_value(request->value());
     command.set_type(CommandType::Put.data());
 
-    bool isleader = raft_myj->Start(command, logindex, logterm);
+    isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
         response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongLeader);
@@ -237,6 +277,24 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     LOG_INFO("server[%s]>>收到Append请求,clientid[%s],requestid[%lld]", name_myj.c_str(), clientid.c_str(), requestid);
 
+    long long term;
+    lock.unlock();
+    bool isleader = raft_myj->GetState(term);
+    lock.lock();
+    if(!isleader){
+        LOG_INFO("server[%s]>>收到Append请求,clientid[%s],requestid[%lld],但不是复制组的leader", name_myj.c_str(), clientid.c_str(), requestid);
+        response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongLeader);
+        done->Run();
+        return;
+    }
+
+    if(!isValidKey(request->key())){
+        LOG_INFO("server[%s]>>收到Append请求,clientid[%s],requestid[%lld],但不是处理该key的复制组", name_myj.c_str(), clientid.c_str(), requestid);
+        response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongGroup);
+        done->Run();
+        return;
+    }
+
     std::string requestinfo;
     // 获取请求信息并反序列化出来
     if (db_myj->ClientRequestGet(clientid, requestinfo))
@@ -264,7 +322,7 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
     command.set_value(request->value());
     command.set_type(CommandType::Append.data());
 
-    bool isleader = raft_myj->Start(command, logindex, logterm);
+    isleader = raft_myj->Start(command, logindex, logterm);
     if (!isleader)
     {
         response->mutable_resultcode()->set_errorcode(kvserviceclass::ErrWrongLeader);
@@ -295,10 +353,115 @@ void KVService::Append(google::protobuf::RpcController *controller, const ::kvse
 
 void KVService::PullShard(google::protobuf::RpcController *controller, const kvservice::PullShardRequest *request, kvservice::PullShardResponse *response, google::protobuf::Closure *done)
 {
+    long long requestconfignum = request->confignum();
+    long long requestshardid = request->shardid();
+
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    long long term;
+    if(!raft_myj->GetState(term)){
+        response->set_err(kvserviceclass::ErrWrongLeader);
+        done->Run();
+        return;
+    }
+
+    LOG_INFO("server{gid[%lld],me[%s]}>> 收到server:%s,requestid:%ld的拉取shard[%lld]请求,ConfigNum[%lld]", gid_myj, name_myj.c_str(), request->clientid().c_str(), request->requestid(), requestshardid, requestconfignum);
+    kvserviceclass::ShardStateInfo shardstateinfo = shardStateMap_myj[requestshardid];
+    if(shardstateinfo.confignum==requestconfignum){
+        if(shardstateinfo.state == kvserviceclass::WaitingDelete){
+            response->set_err(kvserviceclass::OK);
+            std::unordered_map<std::string,std::string> sharddata;
+            std::unordered_map<std::string,std::string> clientreplydata;
+
+            db_myj->GetShardKV(requestshardid,sharddata);
+            clientreplydata = db_myj->GenerateClientRequestSnapshot();
+
+            auto msharddata = response->mutable_sharddata();
+            auto mclienreplydata = response->mutable_clientlastreply();
+
+            for(auto &kv:sharddata){
+                msharddata->insert({kv.first,kv.second});
+            }
+            for(auto &kv : clientreplydata){
+                mclienreplydata->insert({kv.first,kv.second});
+            }
+
+            LOG_INFO("server{gid[%lld],me[%s]}>> 收到server:%s,requestid:%ld的拉取shard[%lld]请求,并成功返回,ConfigNum[%lld]", gid_myj, name_myj.c_str(), request->clientid().c_str(), request->requestid(), requestshardid, requestconfignum);
+
+        }else{
+            response->set_err(kvserviceclass::WaitAndRetry);
+        }
+       
+    }else{
+        response->set_err(kvserviceclass::WaitAndRetry);
+    }
+    done->Run();
 }
 
 void KVService::DeleteShard(google::protobuf::RpcController *controller, const kvservice::DeleteShardRequest *request, kvservice::DeleteShardResponse *response, google::protobuf::Closure *done)
 {
+    long long requestconfignum = request->confignum();
+    long long requestshardid = request->shardid();
+
+    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    long long term;
+    if(!raft_myj->GetState(term)){
+        response->set_err(kvserviceclass::ErrWrongLeader);
+        done->Run();
+        return;
+    }
+
+    LOG_INFO("server{gid[%lld],me[%s]}>> 收到server:%s,requestid:%ld的删除shard[%lld]请求,ConfigNum[%lld]", gid_myj, name_myj.c_str(), request->clientid().c_str(), request->requestid(), requestshardid, requestconfignum);
+    kvserviceclass::ShardStateInfo shardstateinfo = shardStateMap_myj[requestshardid];
+
+    // 当前请求比当前服务器的配置更新快，要请求方等待(实际上不可能出现这种情况)
+    if(requestconfignum > shardstateinfo.confignum || (requestconfignum == shardstateinfo.confignum && shardstateinfo.waitingcommit)){
+        LOG_INFO("server{gid[%lld],me[%s]}>> 收到server:%s,requestid:%ld的删除shard[%lld]请求,ConfigNum[%lld],删除请求已经在提交(或者当前配置落后，概率小)", gid_myj, name_myj.c_str(), request->clientid().c_str(), request->requestid(), requestshardid, requestconfignum);
+        response->set_err(kvserviceclass::WaitAndRetry);
+        done->Run();
+        return;
+    }
+
+    if(requestconfignum == shardstateinfo.confignum && shardstateinfo.state == kvserviceclass::Invalid || requestconfignum<shardstateinfo.confignum){
+        LOG_INFO("server{gid[%lld],me[%s]}>> 收到server:%s,requestid:%ld的删除shard[%lld]请求,ConfigNum[%lld],目标分片已经删除", gid_myj, name_myj.c_str(), request->clientid().c_str(), request->requestid(), requestshardid, requestconfignum);
+        response->set_err(kvserviceclass::OK);
+        done->Run();
+        return;
+    }
+    lock.unlock();
+    long long logindex;
+    bool isleader = false;
+    kvraft::Command command;
+    command.set_type(std::string(CommandType::DeleteShard));
+    command.set_shardid(requestshardid);
+    command.set_confignum(requestconfignum);
+    command.set_gid(shardstateinfo.gid);
+    isleader = raft_myj->Start(command,logindex,term);
+    lock.lock();
+    if(isleader){
+        //这里得重新获取一下，防止释放锁的期间，分片状态已经变了
+        shardstateinfo = shardStateMap_myj[requestshardid];
+        //仍然是等待删除状态
+        if(shardstateinfo.state == kvserviceclass::WaitingDelete){
+            shardstateinfo.waitingcommit = true;
+            shardStateMap_myj[requestshardid] = shardstateinfo;
+            LOG_INFO("server{gid[%lld],me[%s]}>> 收到server:%s,requestid:%ld的删除shard[%lld]请求,ConfigNum[%lld],发起删除分片的OP", gid_myj, name_myj.c_str(), request->clientid().c_str(), request->requestid(), requestshardid, requestconfignum)
+
+            std::thread td_timeout([&](long long shardid_timeout,long long current_config_num_timeout){
+                std::this_thread::sleep_for(std::chrono::seconds(10));
+                std::unique_lock<std::mutex> lock_timeout(sourceMutex_myj);
+                kvserviceclass::ShardStateInfo shardstateinfo_timeout = shardStateMap_myj[shardid_timeout];
+
+                // config版本没变，而且还在等待提交，并且还处于Serving,那就说明没成功提交,WaitingCommit重置
+                if(shardstateinfo_timeout.confignum==current_config_num_timeout && shardstateinfo_timeout.waitingcommit && shardstateinfo_timeout.state==kvserviceclass::ShardState::WaitingDelete){
+                    LOG_INFO("server{%lld,%s}>>删除分片:%lld，超时",gid_myj,name_myj.c_str(),shardid_timeout);
+                    shardstateinfo_timeout.waitingcommit = false;
+                }
+                shardStateMap_myj[shardid_timeout] = shardstateinfo_timeout;
+            },requestshardid,requestconfignum);
+            td_timeout.detach();
+        }
+    }
+    done->Run();
 }
 
 void KVService::applyLogs()
@@ -375,6 +538,8 @@ void KVService::snapshot(long long logindex)
         for (auto &iter : shardStateMap_myj)
         {
             kvserviceclass::ShardStateInfo info = iter.second;
+            //都必须设为false，对端获取后，肯定都是处于“没有正在提交的状态"
+            info.waitingcommit = false;
             std::ostringstream oss_tmp;
             boost::archive::binary_oarchive bos_tmp(oss_tmp);
             bos_tmp << info;
@@ -488,17 +653,18 @@ void KVService::commandApplyHandler(ApplyMsg applymsg)
             // 获取原始数据，然后拼接
             curValue += value;
             db_myj->KVPut(shard_key, curValue);
-            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), shard_key.c_str(), curValue.c_str());
+            LOG_INFO("server[%lld,%s]>>KEY[%s],VALUE[%s]",gid_myj, name_myj.c_str(), shard_key.c_str(), curValue.c_str());
         }
         if (optype == "Put")
         {
             curValue = value;
             db_myj->KVPut(shard_key, curValue);
-            LOG_INFO("server[%s]>>KEY[%s],VALUE[%s]", name_myj.c_str(), shard_key.c_str(), curValue.c_str());
+            LOG_INFO("server[%lld,%s]>>KEY[%s],VALUE[%s]", gid_myj,name_myj.c_str(), shard_key.c_str(), curValue.c_str());
         }
         // 更新客户端最后请求信息
         std::ostringstream oss;
         boost::archive::binary_oarchive obs(oss);
+        //去掉前缀，给客户端的肯定不能带前缀
         lastReply = kvserviceclass::clientLastReply(requestid, curValue);
         obs << lastReply;
         std::string data = oss.str();
@@ -553,12 +719,14 @@ void KVService::snapshotHandler(ApplyMsg applymsg)
     std::unique_lock<std::mutex> lock(sourceMutex_myj);
     if (maxCommitIndex_myj >= applymsg.snapshotIndex)
     {
+        LOG_INFO("server[%s]>>快照落后,lastLogIndex[%lld]，maxCommitIndex[%lld]", name_myj.c_str(), applymsg.snapshotIndex,maxCommitIndex_myj);
         return;
     }
     LOG_INFO("server[%s]>>开始处理提交的快照,lastLogIndex[%lld]", name_myj.c_str(), applymsg.snapshotIndex);
     std::string data = applymsg.data;
-    if (data == "")
+    if (data.size()==0)
     {
+        LOG_INFO("server[%s]>>开始处理提交的快照,lastLogIndex[%lld]，但是数据为空", name_myj.c_str(), applymsg.snapshotIndex)
         return;
     }
     std::unordered_map<std::string, std::string> kvmap;
@@ -576,6 +744,7 @@ void KVService::snapshotHandler(ApplyMsg applymsg)
     db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
 
     // 反序列化分片状态表
+    shardKeysExist_myj.clear();
     bis >> shardKeysExist_myj;
     // 分片状态表反序列化
     std::unordered_map<long long, std::string> shardstatemap;
@@ -591,6 +760,7 @@ void KVService::snapshotHandler(ApplyMsg applymsg)
         std::istringstream iss_tmp(iter.second);
         boost::archive::binary_iarchive bis_tmp(iss_tmp);
         bis_tmp >> info;
+        info.waitingcommit  = false;
         shardStateMap_myj[iter.first] = info;
     }
     // 配置列表反序列化
@@ -649,11 +819,13 @@ void KVService::updateConfig()
     long long leaderid = 0;
     while (ready_myj)
     {
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+        LOG_INFO("server{%lld,%s}>>开始检查配置状态",gid_myj,name_myj.c_str());
         long long term;
         bool isleader = raft_myj->GetState(term);
         while (!isleader)
         {
-            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            std::this_thread::sleep_for(std::chrono::seconds(10));
             isleader = raft_myj->GetState(term);
         }
         kvraft::Config newConfig = getNewConfig(leaderid, curConfig_myj.num() + 1);
@@ -669,7 +841,7 @@ void KVService::updateConfig()
         }
         if (flag)
         {
-            LOG_INFO("server{%lld,%s}>>获取新的配置ConfigNum:%lld", gid_myj, name_myj.c_str(), newConfig.num());
+            LOG_INFO("server{%lld,%s}>>获取更新的配置ConfigNum:%ld", gid_myj, name_myj.c_str(), newConfig.num());
             lock.unlock();
             kvraft::Command command;
             command.set_type(std::string(CommandType::ApplyNewConfig));
@@ -678,7 +850,7 @@ void KVService::updateConfig()
             for (int i = 0; i < newConfig.shards_size(); i++)
             {
                 mconfig->add_shards(newConfig.shards(i));
-                LOG_INFO("server{%lld,%s}>>shardid:%d,gid:%lld", gid_myj, name_myj.c_str(), i, newConfig.shards(i));
+                LOG_INFO("server{%lld,%s}>>shardid:%d,gid:%ld", gid_myj, name_myj.c_str(), i, newConfig.shards(i));
             }
             auto groups = mconfig->mutable_groups();
             for (auto kv : newConfig.groups())
@@ -699,24 +871,25 @@ void KVService::updateConfig()
         }
         else
         {
-            LOG_INFO("server{%lld,%s}>>获取新的配置ConfigNum:%lld,不是更新的配置", gid_myj, name_myj.c_str(), newConfig.num());
+            LOG_INFO("server{%lld,%s}>>获取新的配置ConfigNum:%ld,不是更新的配置", gid_myj, name_myj.c_str(), newConfig.num());
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        
     }
 }
 
 void KVService::updateShardState()
 {
-    std::unique_lock<std::mutex> lock(sourceMutex_myj);
+    std::unique_lock<std::mutex> plock(sourceMutex_myj);
     for (auto &kv : shardStateMap_myj)
     {
         std::thread state_td([&](long long shardid)
                              {
             while(ready_myj){
-                std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+                std::this_thread::sleep_for(std::chrono::seconds(5));
+                LOG_INFO("server{%lld,%s}>>分片:%lld，开始检查状态",gid_myj,name_myj.c_str(),shardid);
                 std::unique_lock<std::mutex> lock(sourceMutex_myj);
-                kvserviceclass::ShardStateInfo shardstateinfo = shardStateMap_myj[shardid];
 
+                kvserviceclass::ShardStateInfo shardstateinfo = shardStateMap_myj[shardid];
                 //当前分片配置号
                 long long current_config_num = shardstateinfo.confignum;
 
@@ -740,9 +913,13 @@ void KVService::updateShardState()
                             command.set_gid(next_config.shards(shardid));
                             command.set_newstate(kvserviceclass::ShardState::Invalid);
                         }
+                        lock.unlock();
                         isleader = raft_myj->Start(command,logindex,term);
+                        lock.lock();
 
-                        if(isleader){
+                        //释放锁期间有可能完成了这次命令的提交，尽管概率很小
+                        shardstateinfo = shardStateMap_myj[shardid];
+                        if(isleader && shardstateinfo.confignum != command.confignum()){
                             shardstateinfo.waitingcommit = true;
                             shardStateMap_myj[shardid] = shardstateinfo;
                             
@@ -754,7 +931,7 @@ void KVService::updateShardState()
                             // db_myj->ConfigMetaPut(state_key,oss.str());
 
                             //设置超时等待计时，10s后还没提交就设为“没有正在提交”
-                            std::thread td_timeout([&](long long shardid_timeout){
+                            std::thread td_timeout([this](long long shardid_timeout){
                                 std::this_thread::sleep_for(std::chrono::seconds(10));
                                 std::unique_lock<std::mutex> lock_timeout(sourceMutex_myj);
                                 kvserviceclass::ShardStateInfo shardstateinfo_timeout = shardStateMap_myj[shardid_timeout];
@@ -770,12 +947,12 @@ void KVService::updateShardState()
                     }
 
                     bool isleader = false;
-                    long long term,logindex;
+                    lock.unlock();
                     isleader = raft_myj->GetState(term);
+                    lock.lock();
                     if(!isleader){
                         continue;
                     }
-
                     // 当前配置处于Serving
                     if(shardstateinfo.state==kvserviceclass::ShardState::Serving){
                         //正在提交
@@ -792,16 +969,20 @@ void KVService::updateShardState()
                             command.set_shardid(shardid);
                             command.set_confignum(current_config_num+1);
                             command.set_newstate(kvserviceclass::ShardState::WaitingDelete);
+                            lock.unlock();
                             isleader = raft_myj->Start(command,logindex,term);
+                            lock.lock();
 
-                            if(isleader){
+                            //释放锁期间有可能完成了这次命令的提交，尽管概率很小
+                            shardstateinfo = shardStateMap_myj[shardid];
+                            if(isleader&& shardstateinfo.confignum != command.confignum()){
                                 shardstateinfo.waitingcommit=true;
                                 shardStateMap_myj[shardid] = shardstateinfo;
-                                LOG_INFO("server{gid[%lld],me[%s]}>>发起shard[%lld]状态转为WaitingDelete的Op,ConfigNum[%lld]",gid_myj,name_myj,shardid,next_config.num());
+                                LOG_INFO("server{gid[%lld],me[%s]}>>发起shard[%lld]状态转为WaitingDelete的Op,ConfigNum[%ld]",gid_myj,name_myj.c_str(),shardid,next_config.num());
                                 
                                 //设置超时等待计时，10s后还没提交就设为“没有正在提交”
 
-                                std::thread td_timeout([&](long long shardid_timeout,long long current_config_num_timeout){
+                                std::thread td_timeout([this](long long shardid_timeout,long long current_config_num_timeout){
                                     std::this_thread::sleep_for(std::chrono::seconds(10));
                                     std::unique_lock<std::mutex> lock_timeout(sourceMutex_myj);
                                     kvserviceclass::ShardStateInfo shardstateinfo_timeout = shardStateMap_myj[shardid_timeout];
@@ -822,15 +1003,17 @@ void KVService::updateShardState()
                             command.set_gid(next_config.shards(shardid));
                             command.set_confignum(current_config_num+1);
                             command.set_shardid(shardid);
-
+                            lock.unlock();
                             isleader = raft_myj->Start(command,logindex,term);
-
-                            if(isleader){
+                            lock.lock();
+                            //释放锁期间有可能完成了这次命令的提交，尽管概率很小
+                            shardstateinfo = shardStateMap_myj[shardid];
+                            if(isleader&& shardstateinfo.confignum != command.confignum()){
                                 shardstateinfo.waitingcommit=true;
                                 shardStateMap_myj[shardid] = shardstateinfo;
-                                LOG_INFO("server{gid[%lld],me[%s]}>>发起shard[%lld]配置+1的Op操作,Now ConfigNum[%lld]",gid_myj,name_myj,shardid,current_config_num)
+                                LOG_INFO("server{gid[%lld],me[%s]}>>发起shard[%lld]配置+1的Op操作,Now ConfigNum[%lld]",gid_myj,name_myj.c_str(),shardid,current_config_num)
 
-                                std::thread td_timeout([&](long long shardid_timeout,long long current_config_num_timeout){
+                                std::thread td_timeout([this](long long shardid_timeout,long long current_config_num_timeout){
                                     std::this_thread::sleep_for(std::chrono::seconds(10));
                                     std::unique_lock<std::mutex> lock_timeout(sourceMutex_myj);
                                     kvserviceclass::ShardStateInfo shardstateinfo_timeout = shardStateMap_myj[shardid_timeout];
@@ -857,15 +1040,17 @@ void KVService::updateShardState()
                             command.set_shardid(shardid);
                             command.set_confignum(current_config_num+1);
                             command.set_newstate(kvserviceclass::ShardState::Pulling);
-
+                            lock.unlock();
                             isleader = raft_myj->Start(command,logindex,term);
-
-                            if(isleader){
-                                LOG_INFO("server{gid[%lld],me[%s]}>>发起shard[%lld]状态转为Pulling的Op,ConfigNum[%lld]",gid_myj,name_myj,shardid,current_config_num)
+                            lock.lock();
+                            //释放锁期间有可能完成了这次命令的提交，尽管概率很小
+                            shardstateinfo = shardStateMap_myj[shardid];
+                            if(isleader&& shardstateinfo.confignum != command.confignum()){
+                                LOG_INFO("server{gid[%lld],me[%s]}>>发起shard[%lld]状态转为Pulling的Op,ConfigNum[%lld]",gid_myj,name_myj.c_str(),shardid,current_config_num)
                                 shardstateinfo.waitingcommit = true;
                                 shardStateMap_myj[shardid] = shardstateinfo;
 
-                                std::thread td_timeout([&](long long shardid_timeout,long long current_config_num_timeout){
+                                std::thread td_timeout([this](long long shardid_timeout,long long current_config_num_timeout){
                                     std::this_thread::sleep_for(std::chrono::seconds(10));
                                     std::unique_lock<std::mutex> lock_timeout(sourceMutex_myj);
                                     kvserviceclass::ShardStateInfo shardstateinfo_timeout = shardStateMap_myj[shardid_timeout];
@@ -887,15 +1072,17 @@ void KVService::updateShardState()
                             command.set_gid(next_config.shards(shardid));
                             command.set_confignum(current_config_num+1);
                             command.set_shardid(shardid);
-
+                            lock.unlock();
                             isleader = raft_myj->Start(command,logindex,term);
-
-                            if(isleader){
+                            lock.lock();
+                            //释放锁期间有可能完成了这次命令的提交，尽管概率很小
+                            shardstateinfo = shardStateMap_myj[shardid];
+                            if(isleader&& shardstateinfo.confignum != command.confignum()){
                                 shardstateinfo.waitingcommit=true;
                                 shardStateMap_myj[shardid] = shardstateinfo;
-                                LOG_INFO("server{gid[%lld],me[%s]}>>发起shard[%lld]配置+1的Op操作,Now ConfigNum[%lld]",gid_myj,name_myj,shardid,current_config_num)
+                                LOG_INFO("server{gid[%lld],me[%s]}>>发起shard[%lld]配置+1的Op操作,Now ConfigNum[%lld]",gid_myj,name_myj.c_str(),shardid,current_config_num)
 
-                                std::thread td_timeout([&](long long shardid_timeout,long long current_config_num_timeout){
+                                std::thread td_timeout([this](long long shardid_timeout,long long current_config_num_timeout){
                                     std::this_thread::sleep_for(std::chrono::seconds(10));
                                     std::unique_lock<std::mutex> lock_timeout(sourceMutex_myj);
                                     kvserviceclass::ShardStateInfo shardstateinfo_timeout = shardStateMap_myj[shardid_timeout];
@@ -911,11 +1098,14 @@ void KVService::updateShardState()
                             }
                         }
                     }
+                    continue;
                 }
 
                 bool isleader = false;
                 long long term,logindex;
+                lock.unlock();
                 isleader = raft_myj->GetState(term);
+                lock.lock();
                 if(!isleader){
                     continue;
                 }
@@ -995,14 +1185,16 @@ void KVService::updateShardState()
                                 command.set_confignum(current_config_num);
                                 command.set_shardid(shardid);
                                 command.set_gid(gid_myj);
-
+                                lock.unlock();
                                 isleader = raft_myj->Start(command,logindex,term);
-
-                                if(isleader){
+                                lock.lock();
+                                //释放锁期间有可能完成了这次命令的提交，尽管概率很小
+                                shardstateinfo = shardStateMap_myj[shardid];
+                                if(isleader&& shardstateinfo.confignum != command.confignum()){
                                     LOG_INFO("server{gid[%lld],me[%s]}>>发起shard[%lld]状态转变为Serving的Op", gid_myj, name_myj.c_str(), shardid);
                                     shardstateinfo.waitingcommit = true;
                                     shardStateMap_myj[shardid] = shardstateinfo;
-                                    std::thread td_timeout([&](long long shardid_timeout,long long current_config_num_timeout){
+                                    std::thread td_timeout([this](long long shardid_timeout,long long current_config_num_timeout){
                                         std::this_thread::sleep_for(std::chrono::seconds(10));
                                         std::unique_lock<std::mutex> lock_timeout(sourceMutex_myj);
                                         kvserviceclass::ShardStateInfo shardstateinfo_timeout = shardStateMap_myj[shardid_timeout];
@@ -1077,20 +1269,23 @@ void KVService::updateShardState()
                                     mclientreply->insert({kv.first,kv.second});
                                 }
 
-
+                                lock.unlock();
                                 isleader = raft_myj->Start(command,logindex,term);
-
-                                if(isleader){
+                                lock.lock();
+                                //释放锁期间有可能完成了这次命令的提交，尽管概率很小
+                                shardstateinfo = shardStateMap_myj[shardid];
+                                if(isleader&& shardstateinfo.confignum != command.confignum()){
                                     LOG_INFO("server{gid[%lld],me[%s]}>>发起下载shard[%lld]的Op", gid_myj, name_myj.c_str(), shardid);
                                     shardstateinfo.waitingcommit = true;
                                     shardStateMap_myj[shardid] = shardstateinfo;
-                                    std::thread td_timeout([&](long long shardid_timeout,long long current_config_num_timeout){
+                                    std::thread td_timeout([this](long long shardid_timeout,long long current_config_num_timeout){
                                         std::this_thread::sleep_for(std::chrono::seconds(10));
                                         std::unique_lock<std::mutex> lock_timeout(sourceMutex_myj);
                                         kvserviceclass::ShardStateInfo shardstateinfo_timeout = shardStateMap_myj[shardid_timeout];
 
+                                        bool exist = shardKeysExist_myj[shardid_timeout];
                                         // config版本没变，而且还在等待提交，并且还处于Serving,那就说明没成功提交,WaitingCommit重置
-                                        if(shardstateinfo_timeout.confignum==current_config_num_timeout && shardstateinfo_timeout.waitingcommit && shardstateinfo_timeout.state==kvserviceclass::ShardState::Pulling && !isexist){
+                                        if(shardstateinfo_timeout.confignum==current_config_num_timeout && shardstateinfo_timeout.waitingcommit && shardstateinfo_timeout.state==kvserviceclass::ShardState::Pulling && !exist){
                                             LOG_INFO("server{%lld,%s}>>下载分片:%lld，超时",gid_myj,name_myj.c_str(),shardid_timeout);
                                             shardstateinfo_timeout.waitingcommit = false;
                                         }
@@ -1127,7 +1322,7 @@ kvraft::Config KVService::getNewConfig(long long &leadid, long long confignum)
     kvraft::Config config;
     if (shard_client_myj->Query(confignum, newConfig))
     {
-        LOG_INFO("成功获取新日志,num::%lld", confignum);
+        LOG_INFO("成功获取新配置");
         config.set_num(newConfig.num());
         for (int i = 0; i < newConfig.shards_size(); i++)
         {
@@ -1183,27 +1378,36 @@ void KVService::initConfig(ApplyMsg applymsg)
     kvserviceclass::ShardStateInfo stateinfo = shardStateMap_myj[shardid];
     if (stateinfo.confignum == 0)
     {
-        LOG_INFO("server{%lld,%s}>>shard:%lld，初始化状态，状态为：%d,组号：%lld", gid_myj, name_myj.c_str(), state, newgid);
+        LOG_INFO("server{%lld,%s}>>shard:%lld，初始化状态，状态为：%d,组号：%lld", gid_myj, name_myj.c_str(), shardid,state, newgid);
         stateinfo.confignum = confignum;
         stateinfo.gid = newgid;
         stateinfo.state = kvserviceclass::ShardState(state);
         stateinfo.waitingcommit = false;
+
+        // 更新分片详细状态
+        shardStateMap_myj[shardid] = stateinfo;
+        std::ostringstream oss;
+        boost::archive::binary_oarchive bos(oss);
+        bos << stateinfo;
+        std::string state_key = "STATE_SHARD_" + std::to_string(shardid);
+        db_myj->ConfigMetaPut(state_key, oss.str());
+
         if (stateinfo.state == kvserviceclass::ShardState::Serving)
         {
-            // 更新分片详细状态
-            shardStateMap_myj[shardid] = stateinfo;
-            std::ostringstream oss;
-            boost::archive::binary_oarchive bos(oss);
-            bos << stateinfo;
-            std::string state_key = "STATE_SHARD_" + std::to_string(shardid);
-            db_myj->ConfigMetaPut(state_key, oss.str());
-
             // 更新分片存活状态
             shardKeysExist_myj[shardid] = true;
             std::string exist_key = "EXIST_SHARD_" + std::to_string(shardid);
             db_myj->ConfigMetaPut(exist_key, "true");
+        }else{
+            // 更新分片存活状态
+            shardKeysExist_myj[shardid] = false;
+            std::string exist_key = "EXIST_SHARD_" + std::to_string(shardid);
+            db_myj->ConfigMetaPut(exist_key, "false");
         }
     }
+    maxCommitIndex_myj = applymsg.commandIndex;
+    // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
+    db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
     if (maxraftstate_myj != -1)
     {
         if (!snapshoting_myj)
@@ -1224,7 +1428,7 @@ void KVService::configIncreaseHandler(ApplyMsg applymsg)
     kvserviceclass::ShardStateInfo stateinfo = shardStateMap_myj[shardid];
     if (stateinfo.confignum + 1 == confignum)
     {
-        LOG_INFO("server{%lld,%s}>>shard[%lld]的config版本提升至%lld,状态仍然为%d", gid_myj, name_myj.c_str(), confignum, int(stateinfo.state));
+        LOG_INFO("server{%lld,%s}>>shard[%lld]的config版本提升至%lld,状态仍然为%d", gid_myj, name_myj.c_str(), shardid,confignum, int(stateinfo.state));
         stateinfo.confignum = confignum;
         stateinfo.gid = newgid;
         stateinfo.waitingcommit = false;
@@ -1239,8 +1443,11 @@ void KVService::configIncreaseHandler(ApplyMsg applymsg)
     }
     else
     {
-        LOG_INFO("server{%lld,%s}>>shard[%lld]的config版本提升至%lld失败,当前config num %lld", gid_myj, name_myj.c_str(), confignum, curConfig_myj.num());
+        LOG_INFO("server{%lld,%s}>>shard[%lld]的config版本提升至%lld失败,当前config num %ld", gid_myj, name_myj.c_str(),shardid, confignum, curConfig_myj.num());
     }
+    maxCommitIndex_myj = applymsg.commandIndex;
+    // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
+    db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
     if (maxraftstate_myj != -1)
     {
         if (!snapshoting_myj)
@@ -1310,6 +1517,9 @@ void KVService::stateChangeHandler(ApplyMsg applymsg)
             db_myj->ConfigMetaPut(state_key, oss.str());
         }
     }
+    maxCommitIndex_myj = applymsg.commandIndex;
+    // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
+    db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
     if (maxraftstate_myj != -1)
     {
         if (!snapshoting_myj)
@@ -1346,6 +1556,9 @@ void KVService::deleteShardHandler(ApplyMsg applymsg)
 
         LOG_INFO("server{gid[%lld],me[%s]}>>已经删除shard[%lld]，WaitingDelete->Invalid", gid_myj, name_myj.c_str(), shardid);
     }
+    maxCommitIndex_myj = applymsg.commandIndex;
+    // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
+    db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
     if (maxraftstate_myj != -1)
     {
         if (!snapshoting_myj)
@@ -1414,6 +1627,9 @@ void KVService::installShardHandler(ApplyMsg applymsg)
         std::string exist_key = "EXIST_SHARD_" + std::to_string(shardid);
         db_myj->ConfigMetaPut(exist_key, "true");
     }
+    maxCommitIndex_myj = applymsg.commandIndex;
+    // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
+    db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
     if (maxraftstate_myj != -1)
     {
         if (!snapshoting_myj)
@@ -1432,7 +1648,7 @@ void KVService::newConfigHandler(ApplyMsg applymsg)
     {
         configList_myj.push_back(config);
         curConfig_myj = config;
-        LOG_INFO("server{%lld,%s}>>成功应用新的配置,num:%lld", gid_myj, name_myj.c_str(), config.num());
+        LOG_INFO("server{%lld,%s}>>成功应用新的配置,num:%ld", gid_myj, name_myj.c_str(), config.num());
 
         // 更新数据库
         std::string config_key = "CONFIG_" + std::to_string(config.num());
@@ -1442,6 +1658,9 @@ void KVService::newConfigHandler(ApplyMsg applymsg)
         db_myj->ConfigMetaPut(config_key, config_data);
         db_myj->ConfigMetaPut(curconfig_key, config_data);
     }
+    maxCommitIndex_myj = applymsg.commandIndex;
+    // 为了避免重启之后，重复执行已经在db执行过的操作，需要保存最大的已执行日志的下标
+    db_myj->ConfigMetaPut("MAX_COMMIT_INDEX", std::to_string(maxCommitIndex_myj));
     if (maxraftstate_myj != -1)
     {
         if (!snapshoting_myj)

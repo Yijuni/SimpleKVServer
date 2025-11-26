@@ -11,6 +11,7 @@
 #include "Raft.hpp"
 #include "ShardCtrlerClient.hpp"
 #include "MakeServerStub.hpp"
+#include "ShardCtrler.pb.h"
 #include <memory>
 #include <mutex>
 #include <unordered_map>
